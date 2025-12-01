@@ -228,6 +228,44 @@
             font-weight: 700;
             border-bottom: 4px solid #1d70b8;
         }
+
+        /* Dropdown styles */
+.app-service-nav__item {
+    position: relative;
+}
+
+.app-service-nav__item--has-dropdown:hover .app-service-nav__dropdown {
+    display: block;
+}
+
+.app-service-nav__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #b1b4b6;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 280px;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-service-nav__dropdown-link {
+    display: block;
+    padding: 10px 15px;
+    color: #1d70b8;
+    text-decoration: none;
+    font-family: "GDS Transport", arial, sans-serif;
+    font-size: 14px;
+}
+
+.app-service-nav__dropdown-link:hover {
+    background: #f3f2f1;
+    text-decoration: underline;
+}
         
         /* Responsive */
         @media (max-width: 768px) {
@@ -281,14 +319,19 @@
     
     <!-- Service Navigation -->
     <nav class="app-service-nav">
-        <div class="govuk-width-container">
-            <ul class="app-service-nav__list">
-                <li><a class="app-service-nav__link app-service-nav__link--active" href="index.html">Documentation</a></li>
-                <li><a class="app-service-nav__link" href="#">Support</a></li>
-                <li><a class="app-service-nav__link" href="#">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="govuk-width-container">
+        <ul class="app-service-nav__list">
+            <li class="app-service-nav__item app-service-nav__item--has-dropdown">
+                <a class="app-service-nav__link app-service-nav__link--active" href="index.html">Documentation</a>
+                <ul class="app-service-nav__dropdown">
+                    <li><a class="app-service-nav__dropdown-link" href="downloads/Digital Capability Reference Playbook.xlsx">Digital Capability Reference Playbook (Excel)</a></li>
+                </ul>
+            </li>
+            <li><a class="app-service-nav__link" href="#">Support</a></li>
+            <li><a class="app-service-nav__link" href="#">Contact</a></li>
+        </ul>
+    </div>
+</nav>
     
     <!-- PHASE BANNER - Place here -->
     <div class="govuk-width-container">
