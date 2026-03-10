@@ -1,72 +1,237 @@
-# PublishEA - OCTO Architecture Resources
+# PublishEA – OCTO Architecture Resources
 
 ## Overview
-This repository contains the PublishEA project, which is designed to facilitate architectural resources and frameworks for the OCTO team.
+
+PublishEA provides a centralised collection of **enterprise architecture resources, guidance, templates, and frameworks** to be used by public sector architecture community.
+
+The repository supports the discovery, reuse, and continuous improvement of architectural artefacts across the **wider UK Government digital ecosystem**.
+
+---
+
+## Contents
+
+- [Overview](#overview)
+- [Purpose](#purpose)
+- [Intended Audience](#intended-audience)
+- [Key Features](#key-features)
+- [Repository Structure](#repository-structure)
+- [Getting Started](#getting-started)
+- [Reusing These Resources](#reusing-these-resources)
+- [Development Guidelines](#development-guidelines)
+- [Design Standards](#design-standards)
+- [Contributing](#contributing)
+- [Suggesting Improvements](#suggesting-improvements)
+- [Current Status](#current-status)
+- [Deployment](#deployment)
+- [Expected Outcomes](#expected-outcomes)
+- [License](#license)
+---
 
 ## Purpose
-The purpose of the PublishEA project is to provide a cohesive set of resources that can be utilised by team members for effective architectural decision-making and documentation.
+
+The purpose of this repository is to:
+
+* Provide **reusable enterprise architecture resources**
+* Improve **discoverability of architecture guidance**
+* Support **consistent architecture practices**
+* Enable **collaboration across architecture teams**
+
+PublishEA acts as a **shared reference library for architecture artefacts and supporting materials**.
+
+---
+
+## Intended Audience
+
+This repository is intended for:
+
+* Enterprise Architects
+* Solution Architects
+* Technical Architects
+* Digital and platform teams
+* Programme delivery teams working on Digital capabilities
+
+Resources can be **reused and adapted by teams across government services and programmes**.
+
+---
 
 ## Key Features
-- Comprehensive resource library
-- Easy access to architectural frameworks
-- User-friendly documentation
 
-## File Descriptions
+* Centralised architecture resource library
+* Domain-specific architectural guidance
+* Capability models and frameworks
+* Reusable templates and supporting artefacts
+* GOV.UK design standard compliant presentation
 
-- **index.html**: The main entry point featuring the OCTO Architecture Resources landing page with service navigation and resource cards
-- **citizen-architecture/**: Repository for citizen-centric architectural content and guidelines
-- **digital-capability-model/**: Resources related to the digital capability assessment and maturity framework
-- **downloads/**: Storage for supporting documents, templates, and downloadable resources
-- **images/**: Visual assets including domain logos, diagrams, and illustrations
+---
 
-## Current Status
-The project is currently in active development. Features are being added based on team feedback and project requirements.
+## Repository Structure
+
+| Directory/File              | Description                                                                   |
+| --------------------------- | ----------------------------------------------------------------------------- |
+| `index.html`                | Main landing page providing navigation to architectural domains and resources |
+| `citizen-architecture/`     | Citizen-centric architecture guidance and supporting content                  |
+| `digital-capability-model/` | Digital capability framework and maturity assessment resources                |
+| `downloads/`                | Templates, documents, and downloadable artefacts                              |
+| `images/`                   | Visual assets including diagrams, icons, and illustrations                    |
+
+---
 
 ## Getting Started
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/govuk-digital-backbone/publish-ea.git
-Open index.html in a web browser to view the landing page
+### Clone the Repository
 
-Navigate to specific domain pages to view architectural resources
+```bash
+git clone https://github.com/govuk-digital-backbone/publish-ea.git
+```
 
-## Development
-Adding Resources
-- Create domain-specific pages in the relevant directory
-- Add images to the /images directory
-- Upload supporting documents to the /downloads directory
-- Update navigation links in the main pages
+### Run Locally
+
+1. Clone the repository.
+2. Navigate to the project directory.
+3. Open `index.html` in a web browser.
+
+This will load the **OCTO Architecture Resources landing page**.
+
+---
+
+## Reusing These Resources
+
+The content and materials in this repository are **intended to be reused and adapted** by architecture and delivery teams.
+
+You are encouraged to:
+
+* Reuse architecture patterns and reference models
+* Adapt templates for your projects or services
+* Copy components or content into your own documentation
+* Extend the frameworks with domain-specific guidance
+
+Where possible, please **retain attribution or link back to this repository** when reusing materials.
+
+---
+
+## Development Guidelines
+
+When adding or updating resources:
+
+* Place content in the appropriate **domain directory**
+* Add images to the `/images` directory
+* Upload downloadable artefacts to `/downloads`
+* Update navigation links if new pages are introduced
+* Ensure pages render correctly across desktop and mobile
+
+---
 
 ## Design Standards
-This project uses:
 
-- GOV.UK Frontend CSS framework
-- GDS Transport font family
-- GOV.UK colour palette (#1d70b8 primary blue)
-- Responsive design patterns for mobile and desktop
+This project follows **GOV.UK design standards**.
 
-## Deployment
-- The project is configured for deployment via GitHub Pages using the custom domain specified in CNAME.`
+Key components include:
 
-## Main Outcomes
-Upon completion, PublishEA will deliver:
+* **GOV.UK Frontend CSS framework**
+* **GDS Transport font family**
+* **GOV.UK colour palette** (Primary: `#1d70b8`)
+* **Responsive design patterns**
 
-- A unified platform for enterprise architecture resources across UK Government digital backbone
-- Improved discoverability of architectural guidance and domain-specific resources
-- Clear visibility of capability gaps through coverage heatmaps
-- Standardized presentation of EA content using GOV.UK design patterns
-- Centralized repository for architectural artefacts and supporting documentation
+Reference: [GOV.UK Design System](https://design-system.service.gov.uk/)
+
+---
 
 ## Contributing
-To contribute to this project:
 
-- Add or update content in the relevant domain directory
-- Ensure compliance with GOV.UK Frontend standards
-- Test responsive design across devices
-- Submit updates with clear descriptions of changes
+Contributions are welcome from architecture and delivery teams.
 
-## Note:
-This project is currently in PoC phase. Content and structure may change as the project evolves.
+You can contribute by:
+
+* Adding new architecture resources
+* Improving existing guidance
+* Fixing documentation or navigation
+* Updating diagrams or supporting materials
+
+### Contribution Workflow
+
+#### 1. Fork the Repository
+
+Create your own fork of the repository.
+
+#### 2. Create a Branch
+
+```bash
+git checkout -b feature/add-new-architecture-resource
+```
+
+#### 3. Make Your Changes
+
+Examples:
+
+* Add architecture content to a domain directory
+* Upload templates to `/downloads`
+* Add diagrams to `/images`
+
+#### 4. Commit Your Changes
+
+```bash
+git commit -m "Add service architecture blueprint template"
+```
+
+#### 5. Submit a Pull Request
+
+Open a Pull Request describing:
+
+* What was added or changed
+* Why the change is useful
+* Any supporting references or documentation
+
+All contributions will be reviewed before merging.
+
+---
+
+## Suggesting Improvements
+
+If you have suggestions for improvements but do not want to submit a Pull Request, you can:
+
+1. Open a **GitHub Issue**
+2. Describe the proposed improvement or resource
+3. Include any supporting context or references
+
+Examples of suggestions:
+
+* New architecture patterns
+* Additional templates
+* Improvements to navigation or structure
+* Capability model updates
+
+---
+
+## Current Status
+
+This repository is currently in **Proof of Concept (PoC)** phase.
+
+Content, structure, and navigation may evolve as the architecture community provides feedback.
+
+---
+
+## Deployment
+
+The site is deployed using **GitHub Pages** and the domain specified in the `CNAME` file.
+
+Deployment occurs automatically when changes are merged into the main branch.
+
+---
+
+## Expected Outcomes
+
+PublishEA aims to deliver:
+
+* A **central architecture resource platform** for the public sector
+* Improved **discoverability of architectural guidance**
+* Clear **capability visibility through coverage heatmaps**
+* Standardised **presentation of EA content**
+* A collaborative **architecture knowledge base**
+
+---
+
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+This project is licensed under the **MIT License**.
+
+See the [LICENSE](LICENSE) file for details.
