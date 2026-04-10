@@ -70,7 +70,6 @@
         .app-main-content {
             flex: 1;
             padding: 30px 40px;
-            /* Allow graph to expand if needed */
             max-width: 100%; 
         }
         
@@ -168,14 +167,14 @@
         .capability-block a:hover { text-decoration: underline; }
         .capability-block--service { background: #1d70b8; }
         .capability-block--service:hover { background: #003078; }
-        .capability-block--corporate { background: #4c2c92; }
-        .capability-block--corporate:hover { background: #3d2375; }
         .capability-block--middleware { background: #28a197; }
         .capability-block--middleware:hover { background: #1e7e76; }
         .capability-block--foundational { background: #d4351c; }
         .capability-block--foundational:hover { background: #aa2a16; }
         .capability-block--governance { background: #f47738; }
         .capability-block--governance:hover { background: #c45f2c; }
+        .capability-block--corporate { background: #4c2c92; }
+        .capability-block--corporate:hover { background: #3d2375; }
         
         .capability-row {
             display: flex;
@@ -234,9 +233,9 @@
         
         #networkContainer {
             position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0; /* Ensures rigid 100% inheritance */
+            top: 0; right: 0; bottom: 0; left: 0; 
             background-color: #ffffff;
-            border: 2px solid var(--govuk-dark-grey); /* Moved border just to the canvas */
+            border: 2px solid var(--govuk-dark-grey);
         }
         .vis-network { outline: none; }
         
@@ -335,10 +334,10 @@
         <nav class="app-sidebar" aria-label="Documentation navigation">
             <h2 class="app-navigation__heading">Contents</h2>
             <ul class="app-navigation">
-                <li class="app-navigation__item"><a class="app-navigation__link" href="#overview">Introduction</a></li>
-                <li class="app-navigation__item"><a class="app-navigation__link" href="#architecture-model">Architecture layers</a></li>
-                <li class="app-navigation__item"><a class="app-navigation__link" href="#layer-domains">Layer descriptions</a></li>
-                <li class="app-navigation__item"><a class="app-navigation__link" href="#interactive-explorer">Interactive architecture explorer</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#introduction">Introduction</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#architecture-layers">Architecture layers</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#layer-descriptions">Layer descriptions</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#interactive-architecture-explorer">Interactive architecture explorer</a></li>
             </ul>
             
             <h2 class="app-navigation__heading">Layers</h2>
@@ -346,14 +345,13 @@
                 <li class="app-navigation__item"><a class="app-navigation__link" href="#public-channels">Public channels</a></li>
                 <li class="app-navigation__item"><a class="app-navigation__link" href="#council-agents">Council agents</a></li>
                 <li class="app-navigation__item"><a class="app-navigation__link" href="#capabilities">Capabilities</a></li>
-                <li class="app-navigation__item"><a class="app-navigation__link" href="#business-areas">Business areas</a></li>
-                <li class="app-navigation__item"><a class="app-navigation__link" href="#corporate-areas">Corporate areas</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#business-and-corporate-areas">Business and corporate areas</a></li>
             </ul>
         </nav>
 
         <main class="app-main-content" id="main-content">
-            <!-- SECTION 1: Overview -->
-            <section id="overview">
+            <!-- SECTION 1: Introduction -->
+            <section id="introduction">
                 <h2 class="govuk-heading-l">Introduction</h2>
                 <p class="govuk-body">
                     The local government architecture model (LGAM) is designed to be a guide to the public technology layers that are used to deliver local public services.
@@ -376,8 +374,8 @@
             
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
             
-            <!-- SECTION 2: Architecture Layers Static Block -->
-            <section id="architecture-model">
+            <!-- SECTION 2: Architecture layers Static Block -->
+            <section id="architecture-layers">
                 <h2 class="govuk-heading-l">Architecture layers</h2>
                 <p class="govuk-body">The visual model below outlines the hierarchy of capabilities within the Local Government standard format.</p>
                 
@@ -396,10 +394,7 @@
                     
                     <div class="capability-row">
                         <div class="capability-block capability-block--governance">
-                            <a href="#business-areas">Business areas</a>
-                        </div>
-                        <div class="capability-block capability-block--corporate">
-                            <a href="#corporate-areas">Corporate areas</a>
+                            <a href="#business-and-corporate-areas">Business and corporate areas</a>
                         </div>
                     </div>
                 </div>
@@ -407,37 +402,37 @@
             
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-            <!-- SECTION 3: Layer domains descriptions -->
-            <section id="layer-domains">
+            <!-- SECTION 3: Layer descriptions -->
+            <section id="layer-descriptions">
                 <h2 class="govuk-heading-l">Layer descriptions</h2>
                 
                 <div class="capability-description" id="public-channels">
-                    <h3 class="govuk-heading-m">Public Channels</h3>
-                    <p class="govuk-body">Public channels are how service users interact with councils, so government services are required to be delivered across as many channels as possible. The Service Manual provides more information in point 3: provide a joined up experience across all channels.</p>
+                    <h3 class="govuk-heading-m">Public channels</h3>
+                    <p class="govuk-body">The medium through which a service user interacts with the council (e.g., Phone, Online, In-Person).</p>
                     <ul class="govuk-list govuk-list--bullet">
                         <li><strong>In person:</strong> Some council services will still need to be delivered in-person. This includes at a council’s offices, at a household or business, or at another location.</li>
-                        <li><strong>Phone:</strong> [add content here]</li>
-                        <li><strong>Email</strong></li>
-                        <li><strong>Letter</strong></li>
-                        <li><strong>Online</strong></li>
-                        <li><strong>SMS / Messaging</strong></li>
-                        <li><strong>Social Media</strong></li>
-                        <li><strong>Smart Device</strong></li>
-                        <li><strong>Third Party</strong></li>
-                        <li><strong>Video</strong></li>
+                        <li><strong>Phone:</strong> Some services are delivered via telephone, allowing users to speak directly with council staff for support, enquiries, or transactions where digital access may not be suitable/available to the user.</li>
+                        <li><strong>Email:</strong> Asynchronous written communication via email.</li>
+                        <li><strong>Letter:</strong> Some services rely on postal communication, particularly for formal notifications, legal correspondence or where physical record of delivery is required.</li>
+                        <li><strong>Online:</strong> Many council services are delivered online through websites, portals or forms, enabling users to self-serve at a time that suits them.</li>
+                        <li><strong>SMS/ Messaging:</strong> Some services may use SMS or messaging channels to provide updates, reminders or quick interactions.</li>
+                        <li><strong>Social Media:</strong> Some councils may use social media platforms to share information, respond to enquiries and engage with residents in a more informal/accessible way.</li>
+                        <li><strong>Smart Device:</strong> Some services can be accessed through smart devices such as Internet of Things, to enable automated interaction where appropriate.</li>
+                        <li><strong>Third Party:</strong> Users may sometimes access council services through proxy; by going through their local MP or local media.</li>
+                        <li><strong>Video:</strong> Some councils may use video calls to deliver service remotely, allowing users to speak face-to-face with staff without needing to attend in person.</li>
                     </ul>
                 </div>
                 
                 <div class="capability-description" id="council-agents">
-                    <h3 class="govuk-heading-m">Council Agents</h3>
+                    <h3 class="govuk-heading-m">Council agents</h3>
                     <p class="govuk-body">Agents are interfaces which allow service users to contact and use a council’s services.</p>
                     <ul class="govuk-list govuk-list--bullet">
-                        <li><strong>App</strong></li>
-                        <li><strong>API Gateway</strong></li>
-                        <li><strong>Automated Phone</strong></li>
-                        <li><strong>Human</strong></li>
+                        <li><strong>App:</strong> Native or cross-platform mobile application providing dedicated services to citizens.</li>
+                        <li><strong>API Gateway:</strong> Machine-to-machine interface handling third-party integrations and smart device inputs.</li>
+                        <li><strong>Automated Phone:</strong> Automated telephony system, such as IVR or conversational voicebots.</li>
+                        <li><strong>Human:</strong> Customer Service Representatives or specialist officers handling queries.</li>
                         <li><strong>Public Device:</strong> These are devices owned by the council that are in the public domain, and include technology such as touch-screens in a public location for example in a library, or an internet of things device for example in a drain or bin.</li>
-                        <li><strong>Website</strong></li>
+                        <li><strong>Website:</strong> The primary council web portal, forms, and digital content interfaces.</li>
                     </ul>
                 </div>
                 
@@ -445,51 +440,32 @@
                     <h3 class="govuk-heading-m">Capabilities</h3>
                     <p class="govuk-body">Capabilities are tools that council agents use to meet the needs of their service users.</p>
                     <ul class="govuk-list govuk-list--bullet">
-                        <li><strong>Agentic AI</strong></li>
-                        <li><strong>Booking</strong></li>
-                        <li><strong>Email</strong></li>
-                        <li><strong>Forms</strong></li>
-                        <li><strong>Identity</strong></li>
-                        <li><strong>Payments</strong></li>
-                        <li><strong>SMS</strong></li>
-                        <li><strong>Telephony / Fax</strong></li>
-                        <li><strong>Workflow</strong></li>
+                        <li><strong>Agentic AI:</strong> Autonomous AI agents capable of reasoning, executing multi-step tasks, and making routing decisions.</li>
+                        <li><strong>Booking:</strong> Councils use booking tools to arrange and manage appointments or service slots, such as inspections, and interviews with users.</li>
+                        <li><strong>Email:</strong> Emails are used as the primary tool to send and receive messages when dealing with users, internal/external stakeholders.</li>
+                        <li><strong>Forms:</strong> Forms are used to collect and check information provided by users, such as in applications, reports and requests.</li>
+                        <li><strong>Identity:</strong> Councils use identity tools to check and verify who a user is.</li>
+                        <li><strong>Payments:</strong> Payment tools are used to take and track payments made by users for services, such as council tax, licences or permits.</li>
+                        <li><strong>SMS:</strong> Councils use SMS tools to send and receive text messages for updates, reminders and quick communications with users.</li>
+                        <li><strong>Telephony / Fax:</strong> Councils use telephone (and in some cases where still needed, fax) to communicate/exchange information with their users.</li>
+                        <li><strong>Workflow:</strong> These are used to manage and track users request/application/casework as it moves through different processing stages.</li>
                     </ul>
                 </div>
                 
-                <div class="capability-description" id="business-areas">
-                    <h3 class="govuk-heading-m">Business Areas</h3>
-                    <p class="govuk-body">Business areas cover the specific functions each council must provide, such as social care and health. Each business area features individual technology components which are designed to serve that specific need.</p>
+                <div class="capability-description" id="business-and-corporate-areas">
+                    <h3 class="govuk-heading-m">Business and corporate areas</h3>
+                    <p class="govuk-body">The overarching service domains or directorates defined by the Local Government Association (LGA) standard functions.</p>
                     <ul class="govuk-list govuk-list--bullet">
-                        <li><strong>Adult Social Care</strong></li>
-                        <li><strong>Children’s Social Care:</strong> This includes services such as child protection and safeguarding, children in need and family support and care for looked‑after children & care leavers.</li>
-                        <li><strong>Democratic Services</strong></li>
-                        <li><strong>Education</strong></li>
-                        <li><strong>Highways / Transport</strong></li>
-                        <li><strong>Housing</strong></li>
-                        <li><strong>Leisure / Culture</strong></li>
-                        <li><strong>Licencing / Regulation</strong></li>
-                        <li><strong>Planning / Development</strong></li>
-                        <li><strong>Public Health</strong></li>
-                        <li><strong>Revenues / Benefits</strong></li>
-                        <li><strong>Waste Management</strong></li>
-                    </ul>
-                </div>
-                
-                <div class="capability-description" id="corporate-areas">
-                    <h3 class="govuk-heading-m">Corporate Areas</h3>
-                    <p class="govuk-body">Corporate areas are business areas that are not specific to councils, each with their own individual technology components.</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                        <li><strong>Business Planning / Performance</strong></li>
-                        <li><strong>Communications / PR:</strong> Capabilities include Omnichannel Content Publishing.</li>
-                        <li><strong>Corporate Governance / Risk</strong></li>
-                        <li><strong>Customer Relationship / B2C</strong></li>
-                        <li><strong>Facilities</strong></li>
-                        <li><strong>Financial</strong></li>
-                        <li><strong>Geographical</strong></li>
-                        <li><strong>Legal / Compliance</strong></li>
-                        <li><strong>Human Resource / Workforce</strong></li>
-                        <li><strong>Procurement / B2B</strong></li>
+                      <li><strong>Administration and government:</strong> Core governance and administrative operations.</li>
+                      <li><strong>Advice and benefits:</strong> Welfare rights, financial support, and resident advisory services.</li>
+                      <li><strong>Business and employment:</strong> Local enterprise support and economic development.</li>
+                      <li><strong>Community safety:</strong> Emergency planning and public protection services.</li>
+                      <li><strong>Environmental protection:</strong> Health, conservation, and sustainability.</li>
+                      <li><strong>Health and social care:</strong> Statutory adult and children's social services and public health.</li>
+                      <li><strong>Housing:</strong> Social housing management, repairs, and homelessness prevention.</li>
+                      <li><strong>Leisure and culture:</strong> Management of parks, arts venues, and local heritage.</li>
+                      <li><strong>Planning and building control:</strong> Spatial planning and construction regulation.</li>
+                      <li><strong>Transport and highways:</strong> Infrastructure management and transport schemes.</li>
                     </ul>
                 </div>
                 
@@ -497,30 +473,30 @@
 
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-            <!-- SECTION 4: Interactive Architecture Explorer Tool -->
-            <section id="interactive-explorer">
+            <!-- SECTION 4: Interactive architecture explorer -->
+            <section id="interactive-architecture-explorer">
                 <h2 class="govuk-heading-l">Interactive architecture explorer</h2>
                 <p class="govuk-body">Use the tool below to interrogate the live capabilities model, trace technology paths, and view underlying data systems visually.</p>
 
                 <div class="explorer-app-wrapper font-['GDS_Transport',Arial,sans-serif]">
                     <!-- App Header & Controls -->
-                    <div class="bg-[#0b0c0c] text-white p-4 border-b-[6px] border-[#1d70b8] flex flex-col xl:flex-row gap-6 xl:gap-8 justify-start xl:items-center z-10 shrink-0" role="region" aria-label="Architecture Explorer Controls">
+                    <div class="bg-[#0b0c0c] text-white p-4 border-b-[6px] border-[#1d70b8] flex flex-col xl:flex-row gap-6 xl:gap-8 justify-start xl:items-center z-10 shrink-0" role="region" aria-label="Architecture explorer controls">
                         <div class="flex items-center gap-4 shrink-0">
                             <div class="text-2xl font-bold">LGAM Explorer</div>
                         </div>
                         
-                        <nav aria-label="Graph Controls" class="flex flex-col items-start gap-3 w-full">
+                        <nav aria-label="Graph controls" class="flex flex-col items-start gap-3 w-full">
                             <!-- Primary Controls Row -->
                             <div class="flex flex-wrap items-center justify-start gap-4">
                                 <div class="flex items-center gap-2">
-                                    <label for="nodeFilter" class="text-sm font-bold">Focus Base:</label>
+                                    <label for="nodeFilter" class="text-sm font-bold">Focus base:</label>
                                     <select id="nodeFilter" class="bg-white text-[#0b0c0c] border-2 border-[#0b0c0c] p-1.5 text-sm" aria-label="Filter graph by specific node">
-                                        <option value="ALL">Show All (Unfiltered)</option>
+                                        <option value="ALL">Show all (Unfiltered)</option>
                                     </select>
                                 </div>
 
                                 <div id="subFunctionsToggleContainer" class="flex items-center gap-2 border-l border-gray-600 pl-4">
-                                    <span class="text-sm font-bold">Sub-Functions:</span>
+                                    <span class="text-sm font-bold">Sub-functions:</span>
                                     <label class="relative inline-flex items-center cursor-pointer">
                                       <input type="checkbox" id="toggleFunctions" class="sr-only peer">
                                       <div class="w-10 h-6 bg-gray-500 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#ffdd00] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#00703c]"></div>
@@ -553,7 +529,7 @@
 
                             <!-- Secondary Controls Row -->
                             <div class="flex items-center justify-start gap-4">
-                                <button id="btnLegend" class="bg-transparent hover:underline px-2 py-1 text-sm font-bold transition" aria-label="View Relationship Definitions">
+                                <button id="btnLegend" class="bg-transparent hover:underline px-2 py-1 text-sm font-bold transition" aria-label="View relationship definitions">
                                     Legend
                                 </button>
                                 <input type="file" id="jsonUpload" accept=".json" class="hidden">
@@ -594,7 +570,7 @@
                                 
                                 <div class="mt-4 pt-4 shrink-0">
                                     <button id="btnFocusNode" class="w-full gds-btn-primary font-bold py-2 px-4 transition pointer-events-auto">
-                                        Focus Graph on this Node
+                                        Focus graph on this node
                                     </button>
                                 </div>
                             </aside>
@@ -610,17 +586,17 @@
                         <!-- ACCESSIBLE TEXT CONTAINER -->
                         <div id="a11yWrapper" class="hidden w-full py-4 bg-white" aria-hidden="true">
                             <div class="max-w-4xl mx-auto">
-                                <h2 class="text-3xl font-bold border-b-4 border-[#1d70b8] pb-2 mb-6">Semantic Architecture Record</h2>
+                                <h2 class="text-3xl font-bold border-b-4 border-[#1d70b8] pb-2 mb-6">Semantic architecture record</h2>
                                 <p class="mb-6 text-[19px] text-[#0b0c0c]">This view provides a screen-reader friendly, hierarchical breakdown of the enterprise architecture data, incorporating LGA standard functions.</p>
                                 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                     <div id="a11yGlossary" class="p-4 bg-[#f3f2f1] border-l-4 border-[#1d70b8]">
-                                        <h3 class="font-bold text-xl mb-2">Relationship Glossary</h3>
+                                        <h3 class="font-bold text-xl mb-2">Relationship glossary</h3>
                                         <dl id="a11yGlossaryList" class="space-y-2 text-[16px] text-[#0b0c0c]"></dl>
                                     </div>
             
                                     <div id="a11yTypeGlossary" class="p-4 bg-[#f3f2f1] border-l-4 border-[#1d70b8]">
-                                        <h3 class="font-bold text-xl mb-2">Node Type Glossary</h3>
+                                        <h3 class="font-bold text-xl mb-2">Node type glossary</h3>
                                         <dl id="a11yTypeGlossaryList" class="space-y-2 text-[16px] text-[#0b0c0c]"></dl>
                                     </div>
                                 </div>
@@ -635,7 +611,7 @@
                         <div id="legendModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" aria-modal="true" role="dialog" aria-labelledby="legendTitle">
                             <div class="bg-white p-8 border-t-8 border-[#1d70b8] w-full max-w-lg">
                                 <div class="flex justify-between items-center mb-6">
-                                    <h2 id="legendTitle" class="text-2xl font-bold text-[#0b0c0c]">Connection Glossary</h2>
+                                    <h2 id="legendTitle" class="text-2xl font-bold text-[#0b0c0c]">Connection glossary</h2>
                                     <button id="closeLegend" class="text-gray-500 hover:text-[#0b0c0c] p-1 rounded" aria-label="Close legend">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
                                     </button>
@@ -695,117 +671,327 @@
         </div>
     </footer>
     
-    <!-- Scripts -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.js"></script>
-    <script type="module">
-        import { initAll } from 'https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.js'
-        initAll()
-    </script>
-
     <!-- Interactive Explorer Logic -->
     <script>
         let serverData = {
-            "types": {
-                "FunctionGroup": { "description": "The overarching service domain or directorate (e.g., Adult Social Care, Environmental Services)." },
-                "Function": { "description": "A specific statutory or corporate task being executed (e.g., Waste collection, Adult safeguarding)." },
-                "ITSystem": { "description": "The actual physical software application, SaaS, or platform (e.g., Generic CRM, GovPay)." },
-                "Capability": { "description": "The modular business or technical building block used by an agent to fulfill a need (e.g., Payments, Identity, Workflow)." },
-                "CouncilAgent": { "description": "The interface or actor that receives the interaction on behalf of the council (e.g., Website, Human, API Gateway)." },
-                "PublicChannel": { "description": "The medium through which a service user interacts with the council (e.g., Phone, Online, In-Person)." }
-            },
-            "nodes": [
-                { "id": "LGA_F1", "label": "Adult Social Care", "type": "FunctionGroup", "description": "Statutory functions relating to the care and support of adults, including safeguarding and needs assessments." },
-                { "id": "LGA_F2", "label": "Environmental Services", "type": "FunctionGroup" },
-                { "id": "LGA_F3", "label": "Democratic Services", "type": "FunctionGroup" },
-                { "id": "LGA_F1_1", "label": "Assessment and care management", "type": "Function" },
-                { "id": "LGA_F1_1_1", "label": "Needs Assessment", "type": "Function" },
-                { "id": "LGA_F1_1_2", "label": "Care Planning", "type": "Function" },
-                { "id": "LGA_F1_2", "label": "Adult safeguarding", "type": "Function" },
-                { "id": "LGA_F2_1", "label": "Waste collection", "type": "Function" },
-                { "id": "LGA_F2_2", "label": "Street cleansing", "type": "Function" },
-                { "id": "LGA_F3_1", "label": "Elections", "type": "Function" },
-                { "id": "SYS_Care", "label": "Generic Social Care System", "type": "ITSystem" },
-                { "id": "SYS_Waste", "label": "Generic Waste System", "type": "ITSystem" },
-                { "id": "SYS_Elections", "label": "Generic Electoral System", "type": "ITSystem" },
-                { "id": "SYS_CRM", "label": "Generic Corporate CRM", "type": "ITSystem" },
-                { "id": "Cap_AgenticAI", "label": "Agentic AI", "type": "Capability" },
-                { "id": "Cap_Booking", "label": "Booking", "type": "Capability" },
-                { "id": "Cap_Email", "label": "Email", "type": "Capability" },
-                { "id": "Cap_Forms", "label": "Forms", "type": "Capability" },
-                { "id": "Cap_Identity", "label": "Identity", "type": "Capability" },
-                { "id": "Cap_Payments", "label": "Payments", "type": "Capability" },
-                { "id": "Cap_SMS", "label": "SMS", "type": "Capability" },
-                { "id": "Cap_Telephony", "label": "Telephony / Fax", "type": "Capability" },
-                { "id": "Cap_Workflow", "label": "Workflow", "type": "Capability" },
-                { "id": "CA_App", "label": "App", "type": "CouncilAgent" },
-                { "id": "CA_API", "label": "API Gateway", "type": "CouncilAgent", "description": "Automated digital actor routing inbound machine-to-machine traffic (e.g., from IoT devices or third parties) to internal capabilities." },
-                { "id": "CA_AutoPhone", "label": "Automated Phone", "type": "CouncilAgent" },
-                { "id": "CA_Human", "label": "Human", "type": "CouncilAgent" },
-                { "id": "CA_PublicDevice", "label": "Public Device", "type": "CouncilAgent" },
-                { "id": "CA_Website", "label": "Website", "type": "CouncilAgent" },
-                { "id": "PC_InPerson", "label": "In person", "type": "PublicChannel" },
-                { "id": "PC_Phone", "label": "Phone", "type": "PublicChannel" },
-                { "id": "PC_Email", "label": "Email", "type": "PublicChannel" },
-                { "id": "PC_Letter", "label": "Letter", "type": "PublicChannel" },
-                { "id": "PC_Online", "label": "Online", "type": "PublicChannel" },
-                { "id": "PC_SMS", "label": "SMS/ Messaging", "type": "PublicChannel" },
-                { "id": "PC_SocialMedia", "label": "Social Media", "type": "PublicChannel" },
-                { "id": "PC_SmartDevice", "label": "Smart Device", "type": "PublicChannel" },
-                { "id": "PC_ThirdParty", "label": "Third Party", "type": "PublicChannel" },
-                { "id": "PC_Video", "label": "Video", "type": "PublicChannel" }
-            ],
-            "edges": [
-                { "source": "LGA_F1_1", "target": "LGA_F1", "relationship": "PART_OF" },
-                { "source": "LGA_F1_2", "target": "LGA_F1", "relationship": "PART_OF" },
-                { "source": "LGA_F1_1_1", "target": "LGA_F1_1", "relationship": "PART_OF" },
-                { "source": "LGA_F1_1_2", "target": "LGA_F1_1", "relationship": "PART_OF" },
-                { "source": "LGA_F2_1", "target": "LGA_F2", "relationship": "PART_OF" },
-                { "source": "LGA_F2_2", "target": "LGA_F2", "relationship": "PART_OF" },
-                { "source": "LGA_F3_1", "target": "LGA_F3", "relationship": "PART_OF" },
-                { "source": "SYS_Care", "target": "LGA_F1_1_1", "relationship": "REALIZES" },
-                { "source": "SYS_Care", "target": "LGA_F1_1_2", "relationship": "REALIZES" },
-                { "source": "SYS_Care", "target": "LGA_F1_2", "relationship": "REALIZES" },
-                { "source": "SYS_Waste", "target": "LGA_F2_1", "relationship": "REALIZES" },
-                { "source": "SYS_Elections", "target": "LGA_F3_1", "relationship": "REALIZES" },
-                { "source": "Cap_Workflow", "target": "SYS_Care", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_Forms", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_Booking", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_Payments", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_Identity", "target": "SYS_Elections", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_Forms", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_Email", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_Telephony", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_AgenticAI", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-                { "source": "Cap_SMS", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-                { "source": "CA_Website", "target": "Cap_Forms", "relationship": "USES" },
-                { "source": "CA_Website", "target": "Cap_Payments", "relationship": "USES" },
-                { "source": "CA_Website", "target": "Cap_Booking", "relationship": "USES" },
-                { "source": "CA_Website", "target": "Cap_AgenticAI", "relationship": "USES" },
-                { "source": "CA_App", "target": "Cap_Forms", "relationship": "USES" },
-                { "source": "CA_App", "target": "Cap_Identity", "relationship": "USES" },
-                { "source": "CA_Human", "target": "Cap_Workflow", "relationship": "USES" },
-                { "source": "CA_Human", "target": "Cap_Email", "relationship": "USES" },
-                { "source": "CA_Human", "target": "Cap_Telephony", "relationship": "USES" },
-                { "source": "CA_AutoPhone", "target": "Cap_Telephony", "relationship": "USES" },
-                { "source": "CA_AutoPhone", "target": "Cap_Payments", "relationship": "USES" },
-                { "source": "CA_API", "target": "Cap_Identity", "relationship": "USES" },
-                { "source": "CA_API", "target": "Cap_SMS", "relationship": "USES" },
-                { "source": "CA_PublicDevice", "target": "Cap_Forms", "relationship": "USES" },
-                { "source": "CA_PublicDevice", "target": "Cap_Payments", "relationship": "USES" },
-                { "source": "PC_Online", "target": "CA_Website", "relationship": "ROUTES_TO" },
-                { "source": "PC_Online", "target": "CA_App", "relationship": "ROUTES_TO" },
-                { "source": "PC_Phone", "target": "CA_Human", "relationship": "ROUTES_TO" },
-                { "source": "PC_Phone", "target": "CA_AutoPhone", "relationship": "ROUTES_TO" },
-                { "source": "PC_InPerson", "target": "CA_Human", "relationship": "ROUTES_TO" },
-                { "source": "PC_InPerson", "target": "CA_PublicDevice", "relationship": "ROUTES_TO" },
-                { "source": "PC_Email", "target": "CA_Human", "relationship": "ROUTES_TO" },
-                { "source": "PC_Letter", "target": "CA_Human", "relationship": "ROUTES_TO" },
-                { "source": "PC_SMS", "target": "CA_API", "relationship": "ROUTES_TO" },
-                { "source": "PC_SocialMedia", "target": "CA_Human", "relationship": "ROUTES_TO" },
-                { "source": "PC_SmartDevice", "target": "CA_API", "relationship": "ROUTES_TO" },
-                { "source": "PC_ThirdParty", "target": "CA_API", "relationship": "ROUTES_TO" },
-                { "source": "PC_Video", "target": "CA_Human", "relationship": "ROUTES_TO" }
-            ]
+          "types": {
+            "PublicChannel": { "description": "The medium through which a service user interacts with the council (e.g., Phone, Online, In-Person)." },
+            "CouncilAgent": { "description": "Agents are interfaces which allow service users to contact and use a council’s services." },
+            "Capability": { "description": "Capabilities are tools that council agents use to meet the needs of their service users." },
+            "ITSystem": { "description": "The actual physical software application, SaaS, or platform (e.g., Generic CRM, GovPay)." },
+            "Function": { "description": "A specific statutory or corporate task being executed (e.g., Waste collection, Adult safeguarding)." },
+            "FunctionGroup": { "description": "The overarching service domain or directorate (e.g., Adult Social Care, Environmental Services)." }
+          },
+          "nodes": [
+            { "id": "PC_InPerson", "label": "In person", "type": "PublicChannel", "description": "Some council services will still need to be delivered in-person. This includes at a council’s offices, at a household or business, or at another location." },
+            { "id": "PC_Phone", "label": "Phone", "type": "PublicChannel", "description": "Some services are delivered via telephone, allowing users to speak directly with council staff for support, enquiries, or transactions where digital access may not be suitable/available to the user." },
+            { "id": "PC_Email", "label": "Email", "type": "PublicChannel", "description": "Asynchronous written communication via email." },
+            { "id": "PC_Letter", "label": "Letter", "type": "PublicChannel", "description": "Some services rely on postal communication, particularly for formal notifications, legal correspondence or where physical record of delivery is required." },
+            { "id": "PC_Online", "label": "Online", "type": "PublicChannel", "description": "Many council services are delivered online through websites, portals or forms, enabling users to self-serve at a time that suits them." },
+            { "id": "PC_SMS", "label": "SMS/ Messaging", "type": "PublicChannel", "description": "Some services may use SMS or messaging channels to provide updates, reminders or quick interactions." },
+            { "id": "PC_SocialMedia", "label": "Social Media", "type": "PublicChannel", "description": "Some councils may use social media platforms to share information, respond to enquiries and engage with residents in a more informal/accessible way." },
+            { "id": "PC_SmartDevice", "label": "Smart Device", "type": "PublicChannel", "description": "Some services can be accessed through smart devices such as Internet of Things, to enable automated interaction where appropriate." },
+            { "id": "PC_ThirdParty", "label": "Third Party", "type": "PublicChannel", "description": "Users may sometimes access council services through proxy; by going through their local MP or local media." },
+            { "id": "PC_Video", "label": "Video", "type": "PublicChannel", "description": "Some councils may use video calls to deliver service remotely, allowing users to speak face-to-face with staff without needing to attend in person." },
+            { "id": "CA_App", "label": "App", "type": "CouncilAgent", "description": "Native or cross-platform mobile application providing dedicated services to citizens." },
+            { "id": "CA_API", "label": "API Gateway", "type": "CouncilAgent", "description": "Machine-to-machine interface handling third-party integrations and smart device inputs." },
+            { "id": "CA_AutoPhone", "label": "Automated Phone", "type": "CouncilAgent", "description": "Automated telephony system, such as IVR or conversational voicebots." },
+            { "id": "CA_Human", "label": "Human", "type": "CouncilAgent", "description": "Customer Service Representatives or specialist officers handling queries." },
+            { "id": "CA_PublicDevice", "label": "Public Device", "type": "CouncilAgent", "description": "These are devices owned by the council that are in the public domain, and include technology such as touch-screens in a public location for example in a library, or an internet of things device for example in a drain or bin." },
+            { "id": "CA_Website", "label": "Website", "type": "CouncilAgent", "description": "The primary council web portal, forms, and digital content interfaces." },
+            { "id": "Cap_AgenticAI", "label": "Agentic AI", "type": "Capability", "description": "Autonomous AI agents capable of reasoning, executing multi-step tasks, and making routing decisions." },
+            { "id": "Cap_Booking", "label": "Booking", "type": "Capability", "description": "Councils use booking tools to arrange and manage appointments or service slots, such as inspections, and interviews with users." },
+            { "id": "Cap_Email", "label": "Email", "type": "Capability", "description": "Emails are used as the primary tool to send and receive messages when dealing with users, internal/external stakeholders" },
+            { "id": "Cap_Forms", "label": "Forms", "type": "Capability", "description": "Forms are used to collect and check information provided by users, such as in applications, reports and requests." },
+            { "id": "Cap_Identity", "label": "Identity", "type": "Capability", "description": "Councils use identity tools to check and verify who a user is" },
+            { "id": "Cap_Payments", "label": "Payments", "type": "Capability", "description": "Payment tools are used to take and track payments made by users for services, such as council tax, licences or permits." },
+            { "id": "Cap_SMS", "label": "SMS", "type": "Capability", "description": "Councils use SMS tools to send and receive text messages for updates, reminders and quick communications with users." },
+            { "id": "Cap_Telephony", "label": "Telephony / Fax", "type": "Capability", "description": "Councils use telephone (and in some cases where still needed, fax) to communicate/exchange information with their users." },
+            { "id": "Cap_Workflow", "label": "Workflow", "type": "Capability", "description": "These are used to manage and track users request/application/casework as it moves through different processing stages." },
+            { "id": "SYS_Care", "label": "Social Care System", "type": "ITSystem", "description": "Core case management system for Adult and Children's statutory social care." },
+            { "id": "SYS_Waste", "label": "Waste System", "type": "ITSystem", "description": "Operational system for managing domestic/commercial waste collection and fleet routing." },
+            { "id": "SYS_Elections", "label": "Electoral System", "type": "ITSystem", "description": "Specialist system for electoral registration, canvassing, and ballot management." },
+            { "id": "SYS_CRM", "label": "Corporate CRM", "type": "ITSystem", "description": "Centralised corporate system for managing citizen profiles, interactions, and service requests." },
+            { "id": "SYS_RevsBens", "label": "Revs and Bens System", "type": "ITSystem", "description": "Financial system for processing council tax, business rates, and housing benefits." },
+            { "id": "SYS_Income", "label": "Income Management System", "type": "ITSystem", "description": "Corporate income management, receipting, and cash allocation platform." },
+            { "id": "SYS_HRPayroll", "label": "HR & Payroll System", "type": "ITSystem", "description": "Human resources, staff management, recruitment, and payroll processing." },
+            { "id": "SYS_Business", "label": "Business Support System", "type": "ITSystem", "description": "Line of business system for local enterprise support, business grants, and economic development." },
+            { "id": "SYS_PublicSafety", "label": "Public Safety System", "type": "ITSystem", "description": "System supporting emergency planning, policing liaison, CCTV, and fire safety." },
+            { "id": "SYS_Education", "label": "Education Management System", "type": "ITSystem", "description": "Management information system for schools, pupil admissions, and early years tracking." },
+            { "id": "SYS_EnvHealth", "label": "Environmental Health System", "type": "ITSystem", "description": "Regulatory system for environmental protection, trading standards, and food safety." },
+            { "id": "SYS_Housing", "label": "Housing Management System", "type": "ITSystem", "description": "Housing management system covering tenancies, allocations, rents, and repairs." },
+            { "id": "SYS_Leisure", "label": "Leisure Management System", "type": "ITSystem", "description": "Booking and facility management platform for leisure centers, parks, and cultural venues." },
+            { "id": "SYS_Licensing", "label": "Licensing & Regulatory System", "type": "ITSystem", "description": "Statutory system for processing local licenses, permits, and regulatory permissions." },
+            { "id": "SYS_Planning", "label": "Planning & Building Control System", "type": "ITSystem", "description": "System managing spatial planning applications, building control, and land charges." },
+            { "id": "SYS_Highways", "label": "Highways Management System", "type": "ITSystem", "description": "Asset management system for roads, street lighting, transport schemes, and parking enforcement." },
+            { "id": "SYS_ERP", "label": "Corporate ERP", "type": "ITSystem", "description": "Enterprise Resource Planning for core back-office finance, general ledger, and procurement." },
+            { "id": "SYS_Lib", "label": "Library Management System", "type": "ITSystem", "description": "Library management system for cataloging, digital loans, and membership management." },
+            { "id": "LGA_43", "lga_id": "43", "label": "Accessing and updating personal information", "type": "Function" },
+            { "id": "LGA_42", "lga_id": "42", "label": "Administration and Government", "type": "FunctionGroup" },
+            { "id": "LGA_24", "lga_id": "24", "label": "Adult education and lifelong learning", "type": "Function" },
+            { "id": "LGA_59", "lga_id": "59", "label": "Adult services", "type": "Function" },
+            { "id": "LGA_148", "lga_id": "148", "label": "Adult social care", "type": "Function" },
+            { "id": "LGA_1", "lga_id": "1", "label": "Advice and benefits", "type": "FunctionGroup" },
+            { "id": "LGA_2", "lga_id": "2", "label": "Advice and welfare rights", "type": "Function" },
+            { "id": "LGA_83", "lga_id": "83", "label": "Alcohol and entertainment", "type": "Function" },
+            { "id": "LGA_134", "lga_id": "134", "label": "Alternative education provision", "type": "Function" },
+            { "id": "LGA_31", "lga_id": "31", "label": "Animal welfare", "type": "Function" },
+            { "id": "LGA_84", "lga_id": "84", "label": "Animals", "type": "Function" },
+            { "id": "LGA_73", "lga_id": "73", "label": "Arts and entertainment", "type": "Function" },
+            { "id": "LGA_44", "lga_id": "44", "label": "Asylum and immigration", "type": "Function" },
+            { "id": "LGA_3", "lga_id": "3", "label": "Benefits", "type": "Function" },
+            { "id": "LGA_85", "lga_id": "85", "label": "Building and construction", "type": "Function" },
+            { "id": "LGA_100", "lga_id": "100", "label": "Building control", "type": "Function" },
+            { "id": "LGA_7", "lga_id": "7", "label": "Business advice and support", "type": "Function" },
+            { "id": "LGA_6", "lga_id": "6", "label": "Business and employment", "type": "FunctionGroup" },
+            { "id": "LGA_8", "lga_id": "8", "label": "Business grants", "type": "Function" },
+            { "id": "LGA_9", "lga_id": "9", "label": "Business rates", "type": "Function" },
+            { "id": "LGA_163", "lga_id": "163", "label": "Businesses", "type": "Function" },
+            { "id": "LGA_86", "lga_id": "86", "label": "Businesses and markets", "type": "Function" },
+            { "id": "LGA_60", "lga_id": "60", "label": "Care homes, supported and sheltered housing", "type": "Function" },
+            { "id": "LGA_10", "lga_id": "10", "label": "Careers and employment", "type": "Function" },
+            { "id": "LGA_122", "lga_id": "122", "label": "Carer and disability benefits", "type": "Function" },
+            { "id": "LGA_61", "lga_id": "61", "label": "Carers", "type": "Function" },
+            { "id": "LGA_63", "lga_id": "63", "label": "Children and families", "type": "Function" },
+            { "id": "LGA_152", "lga_id": "152", "label": "Children and young people social care", "type": "Function" },
+            { "id": "LGA_96", "lga_id": "96", "label": "Coastline", "type": "Function" },
+            { "id": "LGA_95", "lga_id": "95", "label": "Coastline management", "type": "FunctionGroup" },
+            { "id": "LGA_45", "lga_id": "45", "label": "Commercial activities", "type": "Function" },
+            { "id": "LGA_11", "lga_id": "11", "label": "Commercial property", "type": "Function" },
+            { "id": "LGA_140", "lga_id": "140", "label": "Commercial waste", "type": "Function" },
+            { "id": "LGA_46", "lga_id": "46", "label": "Communications and publicity", "type": "Function" },
+            { "id": "LGA_62", "lga_id": "62", "label": "Community centres and facilities", "type": "Function" },
+            { "id": "LGA_126", "lga_id": "126", "label": "Community grants", "type": "Function" },
+            { "id": "LGA_16", "lga_id": "16", "label": "Community safety", "type": "FunctionGroup" },
+            { "id": "LGA_4", "lga_id": "4", "label": "Community support", "type": "Function" },
+            { "id": "LGA_106", "lga_id": "106", "label": "Community transport", "type": "Function" },
+            { "id": "LGA_47", "lga_id": "47", "label": "Complaints and compliments", "type": "Function" },
+            { "id": "LGA_32", "lga_id": "32", "label": "Conservation and sustainability", "type": "Function" },
+            { "id": "LGA_48", "lga_id": "48", "label": "Consultations", "type": "Function" },
+            { "id": "LGA_114", "lga_id": "114", "label": "Corporate management", "type": "Function" },
+            { "id": "LGA_67", "lga_id": "67", "label": "Council and community housing", "type": "Function" },
+            { "id": "LGA_33", "lga_id": "33", "label": "Countryside and farming", "type": "Function" },
+            { "id": "LGA_17", "lga_id": "17", "label": "Criminal justice", "type": "Function" },
+            { "id": "LGA_138", "lga_id": "138", "label": "Curriculum and policy", "type": "Function" },
+            { "id": "LGA_107", "lga_id": "107", "label": "Cycling", "type": "Function" },
+            { "id": "LGA_49", "lga_id": "49", "label": "Data protection and freedom of information", "type": "Function" },
+            { "id": "LGA_121", "lga_id": "121", "label": "Death and benefits", "type": "Function" },
+            { "id": "LGA_50", "lga_id": "50", "label": "Democracy", "type": "Function" },
+            { "id": "LGA_115", "lga_id": "115", "label": "Democratic services", "type": "Function" },
+            { "id": "LGA_146", "lga_id": "146", "label": "Democratic services", "type": "Function" },
+            { "id": "LGA_101", "lga_id": "101", "label": "Development control", "type": "Function" },
+            { "id": "LGA_127", "lga_id": "127", "label": "Disabled facilities grants", "type": "Function" },
+            { "id": "LGA_25", "lga_id": "25", "label": "Early years and childcare", "type": "Function" },
+            { "id": "LGA_26", "lga_id": "26", "label": "Educational support", "type": "Function" },
+            { "id": "LGA_147", "lga_id": "147", "label": "Elected members", "type": "Function" },
+            { "id": "LGA_18", "lga_id": "18", "label": "Emergencies", "type": "Function" },
+            { "id": "LGA_34", "lga_id": "34", "label": "Environmental health", "type": "Function" },
+            { "id": "LGA_30", "lga_id": "30", "label": "Environmental protection", "type": "FunctionGroup" },
+            { "id": "LGA_51", "lga_id": "51", "label": "Equality and diversity", "type": "Function" },
+            { "id": "LGA_149", "lga_id": "149", "label": "Equipment and supporting services", "type": "Function" },
+            { "id": "LGA_74", "lga_id": "74", "label": "Events and exhibitions", "type": "Function" },
+            { "id": "LGA_139", "lga_id": "139", "label": "Extra-curricular activities", "type": "Function" },
+            { "id": "LGA_118", "lga_id": "118", "label": "Facilities", "type": "Function" },
+            { "id": "LGA_123", "lga_id": "123", "label": "Family benefits", "type": "Function" },
+            { "id": "LGA_116", "lga_id": "116", "label": "Finance", "type": "Function" },
+            { "id": "LGA_130", "lga_id": "130", "label": "Fire attendance", "type": "Function" },
+            { "id": "LGA_131", "lga_id": "131", "label": "Fire prevention and certification", "type": "Function" },
+            { "id": "LGA_19", "lga_id": "19", "label": "Fire safety", "type": "Function" },
+            { "id": "LGA_89", "lga_id": "89", "label": "Food", "type": "Function" },
+            { "id": "LGA_108", "lga_id": "108", "label": "Footpaths, byways and bridleways", "type": "Function" },
+            { "id": "LGA_153", "lga_id": "153", "label": "Fostering and adoption", "type": "Function" },
+            { "id": "LGA_35", "lga_id": "35", "label": "Funerals and cremations", "type": "Function" },
+            { "id": "LGA_90", "lga_id": "90", "label": "Gambling and lottery", "type": "Function" },
+            { "id": "LGA_144", "lga_id": "144", "label": "Goods and services", "type": "Function" },
+            { "id": "LGA_5", "lga_id": "5", "label": "Grants and aid", "type": "Function" },
+            { "id": "LGA_128", "lga_id": "128", "label": "Grants for children and young people", "type": "Function" },
+            { "id": "LGA_88", "lga_id": "88", "label": "Hazardous materials", "type": "Function" },
+            { "id": "LGA_141", "lga_id": "141", "label": "Hazardous waste", "type": "Function" },
+            { "id": "LGA_12", "lga_id": "12", "label": "Health and safety at work", "type": "Function" },
+            { "id": "LGA_58", "lga_id": "58", "label": "Health and social care", "type": "FunctionGroup" },
+            { "id": "LGA_135", "lga_id": "135", "label": "Health and welfare at school", "type": "Function" },
+            { "id": "LGA_64", "lga_id": "64", "label": "Health services", "type": "Function" },
+            { "id": "LGA_124", "lga_id": "124", "label": "Heating and housing benefits", "type": "Function" },
+            { "id": "LGA_150", "lga_id": "150", "label": "Help and advice for adults", "type": "Function" },
+            { "id": "LGA_102", "lga_id": "102", "label": "Heritage and landscape", "type": "Function" },
+            { "id": "LGA_27", "lga_id": "27", "label": "Higher education", "type": "Function" },
+            { "id": "LGA_109", "lga_id": "109", "label": "Highway maintenance", "type": "Function" },
+            { "id": "LGA_171", "lga_id": "171", "label": "Highways", "type": "Function" },
+            { "id": "LGA_172", "lga_id": "172", "label": "Highways policy", "type": "Function" },
+            { "id": "LGA_68", "lga_id": "68", "label": "Homelessness and prevention", "type": "Function" },
+            { "id": "LGA_142", "lga_id": "142", "label": "Household waste", "type": "Function" },
+            { "id": "LGA_66", "lga_id": "66", "label": "Housing", "type": "FunctionGroup" },
+            { "id": "LGA_69", "lga_id": "69", "label": "Housing advice", "type": "Function" },
+            { "id": "LGA_156", "lga_id": "156", "label": "Housing allocation", "type": "Function" },
+            { "id": "LGA_157", "lga_id": "157", "label": "Housing finance", "type": "Function" },
+            { "id": "LGA_129", "lga_id": "129", "label": "Housing grants", "type": "Function" },
+            { "id": "LGA_158", "lga_id": "158", "label": "Housing policy", "type": "Function" },
+            { "id": "LGA_159", "lga_id": "159", "label": "Housing services", "type": "Function" },
+            { "id": "LGA_119", "lga_id": "119", "label": "Human resources", "type": "Function" },
+            { "id": "LGA_70", "lga_id": "70", "label": "Improvements and repairs", "type": "Function" },
+            { "id": "LGA_132", "lga_id": "132", "label": "Incident response", "type": "Function" },
+            { "id": "LGA_120", "lga_id": "120", "label": "Information communication technology", "type": "Function" },
+            { "id": "LGA_97", "lga_id": "97", "label": "Inland waterways", "type": "Function" },
+            { "id": "LGA_52", "lga_id": "52", "label": "Internal operation", "type": "Function" },
+            { "id": "LGA_117", "lga_id": "117", "label": "Legal", "type": "Function" },
+            { "id": "LGA_75", "lga_id": "75", "label": "Leisure activities", "type": "Function" },
+            { "id": "LGA_72", "lga_id": "72", "label": "Leisure and culture", "type": "FunctionGroup" },
+            { "id": "LGA_76", "lga_id": "76", "label": "Libraries", "type": "Function" },
+            { "id": "LGA_160", "lga_id": "160", "label": "Library membership", "type": "Function" },
+            { "id": "LGA_82", "lga_id": "82", "label": "Licences, permits and permissions", "type": "FunctionGroup" },
+            { "id": "LGA_77", "lga_id": "77", "label": "Local history and heritage", "type": "Function" },
+            { "id": "LGA_154", "lga_id": "154", "label": "Looked after children", "type": "Function" },
+            { "id": "LGA_125", "lga_id": "125", "label": "Low income benefits", "type": "Function" },
+            { "id": "LGA_164", "lga_id": "164", "label": "Markets", "type": "Function" },
+            { "id": "LGA_71", "lga_id": "71", "label": "Multiple occupancy homes", "type": "Function" },
+            { "id": "LGA_78", "lga_id": "78", "label": "Museums and galleries", "type": "Function" },
+            { "id": "LGA_21", "lga_id": "21", "label": "Neighbourhood security", "type": "Function" },
+            { "id": "LGA_175", "lga_id": "175", "label": "NHS services", "type": "Function" },
+            { "id": "LGA_110", "lga_id": "110", "label": "Parking", "type": "Function" },
+            { "id": "LGA_36", "lga_id": "36", "label": "Parks and open spaces", "type": "Function" },
+            { "id": "LGA_165", "lga_id": "165", "label": "Permissions and consents", "type": "Function" },
+            { "id": "LGA_99", "lga_id": "99", "label": "Planning and building control", "type": "FunctionGroup" },
+            { "id": "LGA_103", "lga_id": "103", "label": "Planning policy", "type": "Function" },
+            { "id": "LGA_170", "lga_id": "170", "label": "Planning services", "type": "Function" },
+            { "id": "LGA_20", "lga_id": "20", "label": "Police services", "type": "Function" },
+            { "id": "LGA_53", "lga_id": "53", "label": "Policy and performance", "type": "Function" },
+            { "id": "LGA_37", "lga_id": "37", "label": "Pollution control", "type": "Function" },
+            { "id": "LGA_168", "lga_id": "168", "label": "Port and harbour facilities", "type": "Function" },
+            { "id": "LGA_169", "lga_id": "169", "label": "Port and harbour operations", "type": "Function" },
+            { "id": "LGA_98", "lga_id": "98", "label": "Ports and harbours", "type": "Function" },
+            { "id": "LGA_174", "lga_id": "174", "label": "Private and community health providers", "type": "Function" },
+            { "id": "LGA_145", "lga_id": "145", "label": "Procurement", "type": "Function" },
+            { "id": "LGA_65", "lga_id": "65", "label": "Public health", "type": "Function" },
+            { "id": "LGA_133", "lga_id": "133", "label": "Public safety", "type": "Function" },
+            { "id": "LGA_111", "lga_id": "111", "label": "Public transport", "type": "Function" },
+            { "id": "LGA_136", "lga_id": "136", "label": "Pupil development and support", "type": "Function" },
+            { "id": "LGA_39", "lga_id": "39", "label": "Recycling", "type": "Function" },
+            { "id": "LGA_161", "lga_id": "161", "label": "Reference and research", "type": "Function" },
+            { "id": "LGA_13", "lga_id": "13", "label": "Regeneration", "type": "Function" },
+            { "id": "LGA_54", "lga_id": "54", "label": "Registration", "type": "Function" },
+            { "id": "LGA_79", "lga_id": "79", "label": "Religion and culture", "type": "Function" },
+            { "id": "LGA_151", "lga_id": "151", "label": "Residential care and housing", "type": "Function" },
+            { "id": "LGA_112", "lga_id": "112", "label": "Road safety", "type": "Function" },
+            { "id": "LGA_173", "lga_id": "173", "label": "Road signs and markings", "type": "Function" },
+            { "id": "LGA_166", "lga_id": "166", "label": "Roads and streets", "type": "Function" },
+            { "id": "LGA_137", "lga_id": "137", "label": "School admissions", "type": "Function" },
+            { "id": "LGA_162", "lga_id": "162", "label": "School and special libraries", "type": "Function" },
+            { "id": "LGA_28", "lga_id": "28", "label": "Schools", "type": "Function" },
+            { "id": "LGA_23", "lga_id": "23", "label": "Schools and education", "type": "FunctionGroup" },
+            { "id": "LGA_87", "lga_id": "87", "label": "Social care and education", "type": "Function" },
+            { "id": "LGA_176", "lga_id": "176", "label": "Social Housing Provider Regulation", "type": "Function" },
+            { "id": "LGA_29", "lga_id": "29", "label": "Special education needs", "type": "Function" },
+            { "id": "LGA_80", "lga_id": "80", "label": "Sports and sporting venues", "type": "Function" },
+            { "id": "LGA_55", "lga_id": "55", "label": "Statistics and census information", "type": "Function" },
+            { "id": "LGA_40", "lga_id": "40", "label": "Street care and cleaning", "type": "Function" },
+            { "id": "LGA_155", "lga_id": "155", "label": "Support for children and young people", "type": "Function" },
+            { "id": "LGA_56", "lga_id": "56", "label": "Taxation", "type": "Function" },
+            { "id": "LGA_167", "lga_id": "167", "label": "Taxi and private hire", "type": "Function" },
+            { "id": "LGA_14", "lga_id": "14", "label": "Tenders and contracts", "type": "Function" },
+            { "id": "LGA_81", "lga_id": "81", "label": "Tourism", "type": "Function" },
+            { "id": "LGA_104", "lga_id": "104", "label": "Town centre management", "type": "Function" },
+            { "id": "LGA_15", "lga_id": "15", "label": "Trading standards", "type": "Function" },
+            { "id": "LGA_91", "lga_id": "91", "label": "Transport", "type": "Function" },
+            { "id": "LGA_105", "lga_id": "105", "label": "Transport and highways", "type": "FunctionGroup" },
+            { "id": "LGA_113", "lga_id": "113", "label": "Transport schemes", "type": "Function" },
+            { "id": "LGA_41", "lga_id": "41", "label": "Utilites", "type": "Function" },
+            { "id": "LGA_92", "lga_id": "92", "label": "Utilites", "type": "Function" },
+            { "id": "LGA_57", "lga_id": "57", "label": "Volunteering and voluntary organisations", "type": "Function" },
+            { "id": "LGA_93", "lga_id": "93", "label": "Waste and pollution", "type": "Function" },
+            { "id": "LGA_38", "lga_id": "38", "label": "Waste management", "type": "Function" },
+            { "id": "LGA_143", "lga_id": "143", "label": "Waste policy", "type": "Function" },
+            { "id": "LGA_94", "lga_id": "94", "label": "Water activities", "type": "Function" },
+            { "id": "LGA_22", "lga_id": "22", "label": "Youth offending", "type": "Function" }
+          ],
+          "edges": [
+            { "source": "PC_Online", "target": "CA_Website", "relationship": "ROUTES_TO" },
+            { "source": "PC_Online", "target": "CA_App", "relationship": "ROUTES_TO" },
+            { "source": "PC_Phone", "target": "CA_Human", "relationship": "ROUTES_TO" },
+            { "source": "PC_Phone", "target": "CA_AutoPhone", "relationship": "ROUTES_TO" },
+            { "source": "PC_InPerson", "target": "CA_Human", "relationship": "ROUTES_TO" },
+            { "source": "PC_InPerson", "target": "CA_PublicDevice", "relationship": "ROUTES_TO" },
+            { "source": "PC_Email", "target": "CA_Human", "relationship": "ROUTES_TO" },
+            { "source": "PC_Letter", "target": "CA_Human", "relationship": "ROUTES_TO" },
+            { "source": "PC_SMS", "target": "CA_API", "relationship": "ROUTES_TO" },
+            { "source": "PC_SocialMedia", "target": "CA_Human", "relationship": "ROUTES_TO" },
+            { "source": "PC_SmartDevice", "target": "CA_API", "relationship": "ROUTES_TO" },
+            { "source": "PC_ThirdParty", "target": "CA_API", "relationship": "ROUTES_TO" },
+            { "source": "PC_Video", "target": "CA_Human", "relationship": "ROUTES_TO" },
+            { "source": "CA_Website", "target": "Cap_Forms", "relationship": "USES" },
+            { "source": "CA_Website", "target": "Cap_Payments", "relationship": "USES" },
+            { "source": "CA_Website", "target": "Cap_Booking", "relationship": "USES" },
+            { "source": "CA_Website", "target": "Cap_AgenticAI", "relationship": "USES" },
+            { "source": "CA_App", "target": "Cap_Forms", "relationship": "USES" },
+            { "source": "CA_App", "target": "Cap_Identity", "relationship": "USES" },
+            { "source": "CA_Human", "target": "Cap_Workflow", "relationship": "USES" },
+            { "source": "CA_Human", "target": "Cap_Email", "relationship": "USES" },
+            { "source": "CA_Human", "target": "Cap_Telephony", "relationship": "USES" },
+            { "source": "CA_AutoPhone", "target": "Cap_Telephony", "relationship": "USES" },
+            { "source": "CA_AutoPhone", "target": "Cap_Payments", "relationship": "USES" },
+            { "source": "CA_API", "target": "Cap_Identity", "relationship": "USES" },
+            { "source": "CA_API", "target": "Cap_SMS", "relationship": "USES" },
+            { "source": "CA_PublicDevice", "target": "Cap_Forms", "relationship": "USES" },
+            { "source": "CA_PublicDevice", "target": "Cap_Payments", "relationship": "USES" },
+            { "source": "Cap_Forms", "target": "SYS_RevsBens", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_Housing", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_Planning", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_Licensing", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_Business", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_EnvHealth", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_Lib", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_PublicSafety", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_Education", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_Highways", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_ERP", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Forms", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_RevsBens", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Housing", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Planning", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Licensing", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Business", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_EnvHealth", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_PublicSafety", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Education", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Highways", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_ERP", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Leisure", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_HRPayroll", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Care", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Workflow", "target": "SYS_Income", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_RevsBens", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Housing", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Planning", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Licensing", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Business", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_EnvHealth", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Highways", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Leisure", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Lib", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Income", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Payments", "target": "SYS_Education", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Identity", "target": "SYS_RevsBens", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Identity", "target": "SYS_Housing", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Identity", "target": "SYS_Business", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Identity", "target": "SYS_Education", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Identity", "target": "SYS_Lib", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Identity", "target": "SYS_HRPayroll", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Identity", "target": "SYS_Elections", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Identity", "target": "SYS_Care", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Booking", "target": "SYS_Leisure", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Booking", "target": "SYS_Lib", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Booking", "target": "SYS_Education", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Booking", "target": "SYS_EnvHealth", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Booking", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Booking", "target": "SYS_Housing", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Email", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_Telephony", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_AgenticAI", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+            { "source": "Cap_SMS", "target": "SYS_CRM", "relationship": "PROVIDED_BY" }
+          ]
         };
 
         const typeConfig = {
@@ -950,9 +1136,12 @@
 
             const dynamicLevels = getDynamicLevels(finalNodes, finalEdges);
 
-            const processedNodes = finalNodes.map(n => {
+            // FIX: Deduplicate nodes before adding to Vis.js
+            const processedNodesMap = new Map();
+            finalNodes.forEach(n => {
+                if (processedNodesMap.has(n.id)) return;
                 const tConfig = typeConfig[n.type] || typeConfig['Function'];
-                const nData = {
+                processedNodesMap.set(n.id, {
                     id: n.id,
                     label: n.label,
                     type: n.type,
@@ -965,14 +1154,12 @@
                         face: '"GDS Transport", Arial, sans-serif', 
                         size: n.type === 'FunctionGroup' ? 16 : 14,
                         color: tConfig.fontColor || '#0b0c0c'
-                    }
-                };
-
-                if (tConfig.shapeProperties) {
-                    nData.shapeProperties = tConfig.shapeProperties;
-                }
-                return nData;
+                    },
+                    shapeProperties: tConfig.shapeProperties || {}
+                });
             });
+
+            const processedNodes = Array.from(processedNodesMap.values());
 
             const processedEdges = finalEdges.map((e, index) => {
                 const sourceNode = processedNodes.find(n => n.id === e.source);
@@ -1012,19 +1199,21 @@
 
         function populateDropdown() {
             const dropdown = document.getElementById('nodeFilter');
-            dropdown.innerHTML = '<option value="ALL">Show All (Unfiltered)</option>';
+            dropdown.innerHTML = '<option value="ALL">Show all (Unfiltered)</option>';
             
             const layers = [
-                { type: 'FunctionGroup', label: 'Function Groups' },
+                { type: 'FunctionGroup', label: 'Function groups' },
                 { type: 'Function', label: 'Functions' },
-                { type: 'ITSystem', label: 'IT Systems' },
+                { type: 'ITSystem', label: 'IT systems' },
                 { type: 'Capability', label: 'Capabilities' },
-                { type: 'CouncilAgent', label: 'Council Agents' },
-                { type: 'PublicChannel', label: 'Public Channels' }
+                { type: 'CouncilAgent', label: 'Council agents' },
+                { type: 'PublicChannel', label: 'Public channels' }
             ];
 
             layers.forEach(layer => {
-                const nodesOfType = serverData.nodes.filter(n => n.type === layer.type);
+                // Ensure uniqueness in dropdown
+                const nodesOfType = Array.from(new Set(serverData.nodes.filter(n => n.type === layer.type).map(n => n.id)))
+                                       .map(id => serverData.nodes.find(n => n.id === id));
                 if (nodesOfType.length > 0) {
                     const optgroup = document.createElement('optgroup');
                     optgroup.label = layer.label;
@@ -1069,47 +1258,19 @@
                         edgeMinimization: true, 
                         parentCentralization: true
                     }
-                } : {
-                    hierarchical: false
-                },
-                physics: isLayeredMode ? {
-                    enabled: false  
-                } : {
+                } : { hierarchical: false },
+                physics: isLayeredMode ? { enabled: false } : {
                     enabled: true,
                     solver: 'barnesHut', 
-                    barnesHut: {
-                        gravitationalConstant: -2000,
-                        centralGravity: 0.1,
-                        springLength: 200,      
-                        springConstant: 0.04,   
-                        damping: 0.09,
-                        avoidOverlap: 1         
-                    },
+                    barnesHut: { gravitationalConstant: -2000, centralGravity: 0.1, springLength: 200, springConstant: 0.04, damping: 0.09, avoidOverlap: 1 },
                     stabilization: { iterations: 500, fit: true } 
                 },
-                interaction: { 
-                    hover: true, 
-                    tooltipDelay: 200,
-                    navigationButtons: true     
-                },
-                nodes: {
-                    widthConstraint: { maximum: 140 }, 
-                    margin: 12                         
-                },
-                edges: { 
-                    smooth: { 
-                        type: isLayeredMode ? 'cubicBezier' : 'dynamic', 
-                        forceDirection: isLayeredMode ? 'vertical' : 'none', 
-                        roundness: 0.5 
-                    },
-                    width: 2,
-                    color: { opacity: 0.8 } 
-                }
+                interaction: { hover: true, tooltipDelay: 200, navigationButtons: true },
+                nodes: { widthConstraint: { maximum: 140 }, margin: 12 },
+                edges: { smooth: { type: isLayeredMode ? 'cubicBezier' : 'dynamic', forceDirection: isLayeredMode ? 'vertical' : 'none', roundness: 0.5 }, width: 2, color: { opacity: 0.8 } }
             };
 
-            if (network !== null) {
-                network.destroy();
-            }
+            if (network !== null) { network.destroy(); }
             network = new vis.Network(container, data, options);
 
             network.on("click", function (params) {
@@ -1117,7 +1278,6 @@
                     showNodeInfo(params.nodes[0]);
                 } else {
                     document.getElementById('infoPanel').classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-                    document.getElementById('infoPanel').classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
                 }
             });
         }
@@ -1131,8 +1291,6 @@
             document.getElementById('infoType').textContent = node.type;
             document.getElementById('infoType').style.backgroundColor = typeConfig[node.type]?.color.background || '#e2e8f0';
             document.getElementById('infoType').style.color = typeConfig[node.type]?.fontColor || '#0b0c0c';
-            
-            // Pulling description from the new serverData.types
             document.getElementById('infoTypeDesc').textContent = serverData.types?.[node.type]?.description || '';
 
             const descEl = document.getElementById('infoDescription');
@@ -1141,7 +1299,6 @@
                 descEl.classList.remove('hidden');
             } else {
                 descEl.classList.add('hidden');
-                descEl.textContent = '';
             }
 
             const connectedEdges = viewEdges.get({ filter: e => e.originalSource === nodeId || e.originalTarget === nodeId });
@@ -1155,55 +1312,40 @@
                     const isOutgoing = edge.originalSource === nodeId;
                     const relatedNodeId = isOutgoing ? edge.originalTarget : edge.originalSource;
                     const relatedNode = viewNodes.get(relatedNodeId) || serverData.nodes.find(n => n.id === relatedNodeId);
-                    
                     if(!relatedNode) return;
-                    
                     const phraseObj = relationshipPhrases[edge.label];
                     const phrase = isOutgoing ? phraseObj?.out || "connects to" : phraseObj?.in || "is connected from";
-
                     const li = document.createElement('li');
                     li.className = "flex items-start gap-2 bg-[#f3f2f1] p-3 border border-gray-300";
-                    li.innerHTML = `
-                        <span class="font-normal text-[#505a5f] min-w-[90px]">${phrase}</span>
-                        <span class="font-bold break-words">${relatedNode.label}</span>
-                    `;
+                    li.innerHTML = `<span class="font-normal text-[#505a5f] min-w-[90px]">${phrase}</span><span class="font-bold break-words">${relatedNode.label}</span>`;
                     list.appendChild(li);
                 });
             }
 
             const panel = document.getElementById('infoPanel');
             panel.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
-            panel.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
         }
 
         function generateAccessibleHTML() {
             const container = document.getElementById('a11yContent');
             container.innerHTML = '';
-
             const glossary = document.getElementById('a11yGlossaryList');
             glossary.innerHTML = '';
             for (const [key, desc] of Object.entries(relationshipDefinitions)) {
                 glossary.innerHTML += `<dt class="font-bold inline">${key}:</dt> <dd class="inline ml-1">${desc}</dd><br>`;
             }
-
             const typeGlossary = document.getElementById('a11yTypeGlossaryList');
             typeGlossary.innerHTML = '';
-            // Iterating through serverData.types instead of typeConfig
             for (const [key, typeData] of Object.entries(serverData.types || {})) {
                 if (typeData.description) {
                     typeGlossary.innerHTML += `<dt class="font-bold inline">${key}:</dt> <dd class="inline ml-1">${typeData.description}</dd><br>`;
                 }
             }
-
             let html = '<ul class="space-y-6">';
-            
             const channels = viewNodes.get({ filter: n => n.type === 'PublicChannel' });
-            
             channels.forEach(channel => {
-                html += `<li class="bg-[#f3f2f1] p-6 border-l-4 border-[#0b0c0c]">
-                    <strong class="text-xl">Channel: ${channel.label}</strong>`;
+                html += `<li class="bg-[#f3f2f1] p-6 border-l-4 border-[#0b0c0c]"><strong class="text-xl">Channel: ${channel.label}</strong>`;
                 if(channel.description) html += `<p class="mt-2 text-[#505a5f]">${channel.description}</p>`;
-                
                 const agents = viewEdges.get({ filter: e => e.originalSource === channel.id }).map(e => viewNodes.get(e.originalTarget)).filter(Boolean);
                 if(agents.length > 0) {
                     html += '<ul class="ml-6 mt-4 list-disc space-y-4">';
@@ -1211,33 +1353,10 @@
                         html += `<li><strong class="text-lg">Agent:</strong> ${agent.label}`;
                         if(agent.description) html += `<p class="mt-1 text-base text-[#505a5f]">${agent.description}</p>`;
                         html += `<ul>`;
-                        
                         const caps = viewEdges.get({ filter: e => e.originalSource === agent.id }).map(e => viewNodes.get(e.originalTarget)).filter(Boolean);
                         caps.forEach(cap => {
                             html += `<li class="ml-6 mt-2">Uses <strong>Capability:</strong> ${cap.label}`;
                             if(cap.description) html += `<p class="mt-1 text-base text-[#505a5f]">${cap.description}</p>`;
-                            
-                            const syss = viewEdges.get({ filter: e => e.originalSource === cap.id && e.label === 'PROVIDED_BY' }).map(e => viewNodes.get(e.originalTarget)).filter(Boolean);
-                            if(syss.length > 0) {
-                                html += '<ul class="ml-6 mt-2 list-[circle] space-y-2">';
-                                syss.forEach(sys => {
-                                    html += `<li>Provided by <strong>IT System:</strong> ${sys.label}`;
-                                    if(sys.description) html += `<p class="mt-1 text-base text-[#505a5f]">${sys.description}</p>`;
-                                    
-                                    const funcs = viewEdges.get({ filter: e => e.originalSource === sys.id && e.label === 'REALIZES' }).map(e => viewNodes.get(e.originalTarget)).filter(Boolean);
-                                    if(funcs.length > 0) {
-                                        html += '<ul class="ml-6 mt-2 list-[square] space-y-2">';
-                                        funcs.forEach(func => {
-                                            html += `<li>Realizes <strong>Function:</strong> ${func.label}</li>`;
-                                            if(func.description) html += `<p class="mt-1 text-base text-[#505a5f]">${func.description}</p>`;
-                                        });
-                                        html += '</ul>';
-                                    }
-                                    html += `</li>`;
-                                });
-                                html += '</ul>';
-                            }
-                            html += `</li>`;
                         });
                         html += '</ul></li>';
                     });
@@ -1245,7 +1364,6 @@
                 }
                 html += `</li>`;
             });
-
             html += '</ul>';
             container.innerHTML = html;
         }
@@ -1253,56 +1371,27 @@
         function generateFlatHTML() {
             const container = document.getElementById('flatContent');
             container.innerHTML = '';
-            
             const layers = [
-                { type: ['PublicChannel'], title: 'Public Channels', desc: serverData.types?.['PublicChannel']?.description || '', color: typeConfig['PublicChannel'].color, font: typeConfig['PublicChannel'].fontColor },
-                { type: ['CouncilAgent'], title: 'Council Agents', desc: serverData.types?.['CouncilAgent']?.description || '', color: typeConfig['CouncilAgent'].color, font: typeConfig['CouncilAgent'].fontColor },
+                { type: ['PublicChannel'], title: 'Public channels', desc: serverData.types?.['PublicChannel']?.description || '', color: typeConfig['PublicChannel'].color, font: typeConfig['PublicChannel'].fontColor },
+                { type: ['CouncilAgent'], title: 'Council agents', desc: serverData.types?.['CouncilAgent']?.description || '', color: typeConfig['CouncilAgent'].color, font: typeConfig['CouncilAgent'].fontColor },
                 { type: ['Capability'], title: 'Capabilities', desc: serverData.types?.['Capability']?.description || '', color: typeConfig['Capability'].color, font: typeConfig['Capability'].fontColor },
-                { type: ['FunctionGroup', 'Function'], title: 'Business & Corporate Areas', desc: "Statutory domains and specific tasks executed by the council.", color: typeConfig['FunctionGroup'].color, font: typeConfig['FunctionGroup'].fontColor },
-                { type: ['ITSystem'], title: 'Underlying Technology Components', desc: serverData.types?.['ITSystem']?.description || '', color: typeConfig['ITSystem'].color, font: typeConfig['ITSystem'].fontColor, isBottom: true }
+                { type: ['FunctionGroup', 'Function'], title: 'Business and corporate areas', desc: "Statutory domains and specific tasks executed by the council.", color: typeConfig['FunctionGroup'].color, font: typeConfig['FunctionGroup'].fontColor },
+                { type: ['ITSystem'], title: 'Underlying technology components', desc: serverData.types?.['ITSystem']?.description || '', color: typeConfig['ITSystem'].color, font: typeConfig['ITSystem'].fontColor, isBottom: true }
             ];
-
             layers.forEach(layer => {
                 const nodes = viewNodes.get({ filter: n => layer.type.includes(n.type) });
                 if (nodes.length === 0) return;
-
                 const section = document.createElement('div');
-                section.className = layer.isBottom 
-                    ? "bg-[#f3f2f1] p-6 border-[3px] border-dashed border-[#505a5f] mt-12" 
-                    : "bg-white p-6 border-l-8 shadow-md border-gray-200";
-                
-                if (!layer.isBottom) {
-                    section.style.borderLeftColor = layer.color.background;
-                }
-
-                let html = `
-                    <div class="mb-4">
-                        <h3 class="text-2xl font-bold text-[#0b0c0c] border-b-2 border-[#b1b4b6] pb-2 flex items-center gap-2">
-                            ${layer.title}
-                        </h3>
-                        <p class="text-[16px] text-[#505a5f] mt-2">${layer.desc}</p>
-                    </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                `;
-
+                section.className = layer.isBottom ? "bg-[#f3f2f1] p-6 border-[3px] border-dashed border-[#505a5f] mt-12" : "bg-white p-6 border-l-8 shadow-md border-gray-200";
+                if (!layer.isBottom) section.style.borderLeftColor = layer.color.background;
+                let html = `<div class="mb-4"><h3 class="text-2xl font-bold text-[#0b0c0c] border-b-2 border-[#b1b4b6] pb-2 flex items-center gap-2">${layer.title}</h3><p class="text-[16px] text-[#505a5f] mt-2">${layer.desc}</p></div><div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">`;
                 nodes.forEach(node => {
                     const nodeColor = typeConfig[node.type].color;
                     const nodeFont = typeConfig[node.type].fontColor;
-                    html += `
-                        <div class="p-3 border-[2px] text-base font-bold flex flex-col items-center justify-center text-center transition-transform hover:-translate-y-1" 
-                             style="background-color: ${nodeColor.background}; border-color: ${nodeColor.border}; color: ${nodeFont};">
-                            <span>${node.label}</span>
-                            ${node.description ? `<span class="mt-2 text-sm font-normal opacity-90" title="${node.description}">${node.description}</span>` : ''}
-                        </div>
-                    `;
+                    html += `<div class="p-3 border-[2px] text-base font-bold flex flex-col items-center justify-center text-center transition-transform hover:-translate-y-1" style="background-color: ${nodeColor.background}; border-color: ${nodeColor.border}; color: ${nodeFont};"><span>${node.label}</span>${node.description ? `<span class="mt-2 text-sm font-normal opacity-90" title="${node.description}">${node.description}</span>` : ''}</div>`;
                 });
-
                 html += `</div>`;
-                
-                if(layer.isBottom) {
-                    html += `<p class="text-base text-[#505a5f] mt-4 font-bold">* Note: This layer is implicitly underneath the business/corporate areas in the LGAM specification.</p>`;
-                }
-
+                if(layer.isBottom) html += `<p class="text-base text-[#505a5f] mt-4 font-bold">* Note: This layer is implicitly underneath the business/corporate areas in the LGAM specification.</p>`;
                 section.innerHTML = html;
                 container.appendChild(section);
             });
@@ -1310,40 +1399,28 @@
 
         function filterGraph(nodeId) {
             currentFilteredNodeIds.clear();
-            
             if (nodeId === 'ALL') {
                 updateGraphView(); 
                 if(network) network.fit({animation: true});
                 return;
             }
-
             const upstreamNodes = new Set([nodeId]);
             const downstreamNodes = new Set([nodeId]);
-
             let added = true;
             while(added) {
                 added = false;
                 serverData.edges.forEach(edge => {
-                    if (upstreamNodes.has(edge.target) && !upstreamNodes.has(edge.source)) {
-                        upstreamNodes.add(edge.source);
-                        added = true;
-                    }
+                    if (upstreamNodes.has(edge.target) && !upstreamNodes.has(edge.source)) { upstreamNodes.add(edge.source); added = true; }
                 });
             }
-
             added = true;
             while(added) {
                 added = false;
                 serverData.edges.forEach(edge => {
-                    if (downstreamNodes.has(edge.source) && !downstreamNodes.has(edge.target)) {
-                        downstreamNodes.add(edge.target);
-                        added = true;
-                    }
+                    if (downstreamNodes.has(edge.source) && !downstreamNodes.has(edge.target)) { downstreamNodes.add(edge.target); added = true; }
                 });
             }
-
             [...upstreamNodes, ...downstreamNodes].forEach(id => currentFilteredNodeIds.add(id));
-
             updateGraphView();
             document.getElementById('nodeFilter').value = nodeId;
             if(network) network.fit({animation: true});
@@ -1354,227 +1431,109 @@
             const flatWrapper = document.getElementById('flatWrapper');
             const a11yWrapper = document.getElementById('a11yWrapper');
             const controls = document.getElementById('visualControls');
-            
-            ['Graph', 'Flat', 'A11y'].forEach(v => {
-                const btn = document.getElementById(`btnView${v}`);
-                btn.setAttribute('aria-pressed', 'false');
-            });
-            graphWrapper.classList.add('hidden'); graphWrapper.setAttribute('aria-hidden', 'true');
-            flatWrapper.classList.add('hidden'); flatWrapper.setAttribute('aria-hidden', 'true');
-            a11yWrapper.classList.add('hidden'); a11yWrapper.setAttribute('aria-hidden', 'true');
-            controls.classList.add('hidden');
-
+            ['Graph', 'Flat', 'A11y'].forEach(v => document.getElementById(`btnView${v}`).setAttribute('aria-pressed', 'false'));
+            graphWrapper.classList.add('hidden'); flatWrapper.classList.add('hidden'); a11yWrapper.classList.add('hidden'); controls.classList.add('hidden');
             const activeBtn = document.getElementById(`btnView${viewName.charAt(0).toUpperCase() + viewName.slice(1)}`);
             activeBtn.setAttribute('aria-pressed', 'true');
-
             if (viewName === 'graph') {
-                graphWrapper.classList.remove('hidden'); 
-                graphWrapper.setAttribute('aria-hidden', 'false');
-                controls.classList.remove('hidden');
-                
-                // CRITICAL FIX: Redraw graph logic after it becomes visible to solve zero-height canvas bug
-                setTimeout(() => {
-                    if(network) {
-                        network.redraw();
-                        network.fit({animation: false});
-                    }
-                }, 50);
-
-            } else if (viewName === 'flat') {
-                flatWrapper.classList.remove('hidden'); flatWrapper.setAttribute('aria-hidden', 'false');
-            } else if (viewName === 'a11y') {
-                a11yWrapper.classList.remove('hidden'); a11yWrapper.setAttribute('aria-hidden', 'false');
-            }
+                graphWrapper.classList.remove('hidden'); controls.classList.remove('hidden');
+                setTimeout(() => { if(network) { network.redraw(); network.fit({animation: false}); } }, 50);
+            } else if (viewName === 'flat') { flatWrapper.classList.remove('hidden'); } 
+            else if (viewName === 'a11y') { a11yWrapper.classList.remove('hidden'); }
         }
 
         function setupInteractions() {
-            document.getElementById('btnLegend').addEventListener('click', () => {
-                document.getElementById('legendModal').classList.remove('hidden');
-            });
-            document.getElementById('closeLegend').addEventListener('click', () => {
-                document.getElementById('legendModal').classList.add('hidden');
-            });
-
-            document.getElementById('toggleFunctions').addEventListener('change', (e) => {
-                showFunctions = e.target.checked;
-                updateGraphView();
-                if(network) network.fit({animation: true});
-            });
-
+            document.getElementById('btnLegend').addEventListener('click', () => document.getElementById('legendModal').classList.remove('hidden'));
+            document.getElementById('closeLegend').addEventListener('click', () => document.getElementById('legendModal').classList.add('hidden'));
+            document.getElementById('toggleFunctions').addEventListener('change', (e) => { showFunctions = e.target.checked; updateGraphView(); if(network) network.fit({animation: true}); });
             document.getElementById('nodeFilter').addEventListener('change', (e) => {
                 const selectedNodeId = e.target.value;
                 if (selectedNodeId !== 'ALL') {
                     const node = serverData.nodes.find(n => n.id === selectedNodeId);
-                    if (node && node.type === 'Function' && !showFunctions) {
-                        showFunctions = true;
-                        document.getElementById('toggleFunctions').checked = true;
-                    }
+                    if (node && node.type === 'Function' && !showFunctions) { showFunctions = true; document.getElementById('toggleFunctions').checked = true; }
                 }
                 filterGraph(selectedNodeId);
             });
-            
             document.getElementById('btnFocusNode').addEventListener('click', () => {
                 if (currentNodeId) {
                     const node = serverData.nodes.find(n => n.id === currentNodeId);
-                    if (node && node.type === 'Function' && !showFunctions) {
-                        showFunctions = true;
-                        document.getElementById('toggleFunctions').checked = true;
-                    }
+                    if (node && node.type === 'Function' && !showFunctions) { showFunctions = true; document.getElementById('toggleFunctions').checked = true; }
                     filterGraph(currentNodeId);
                 }
             });
-
-            document.getElementById('btnLoadData').addEventListener('click', () => {
-                document.getElementById('jsonUpload').click();
-            });
-
+            document.getElementById('btnLoadData').addEventListener('click', () => document.getElementById('jsonUpload').click());
             document.getElementById('jsonUpload').addEventListener('change', (e) => {
                 const file = e.target.files[0];
                 if (!file) return;
-
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     try {
                         const parsedData = JSON.parse(event.target.result);
-                        if (!parsedData.nodes || !parsedData.edges) {
-                            throw new Error("Invalid JSON structure. Must contain 'nodes' and 'edges' arrays.");
-                        }
-
-                        parsedData.nodes = parsedData.nodes.map(n => ({
-                            ...n,
-                            id: String(n.id).trim(),
-                            type: n.type || n.group || 'Function',
-                            description: n.description || '',
-                            lga_id: n.lga_id || ''
-                        }));
-
-                        parsedData.edges = parsedData.edges.map(edge => ({
-                            ...edge,
-                            source: String(edge.source || edge.from || '').trim(),
-                            target: String(edge.target || edge.to || '').trim(),
-                            relationship: edge.relationship || edge.label || 'CONNECTED_TO'
-                        }));
-                        
-                        // Retain existing types if uploaded JSON does not include them
+                        if (!parsedData.nodes || !parsedData.edges) throw new Error("Invalid JSON structure.");
+                        parsedData.nodes = parsedData.nodes.map(n => ({ ...n, id: String(n.id).trim(), type: n.type || 'Function' }));
+                        parsedData.edges = parsedData.edges.map(edge => ({ ...edge, source: String(edge.source).trim(), target: String(edge.target).trim(), relationship: edge.relationship || 'CONNECTED_TO' }));
                         parsedData.types = parsedData.types || serverData.types || {};
-
                         serverData = parsedData;
-                        
-                        showFunctions = false;
-                        document.getElementById('toggleFunctions').checked = false;
-                        
                         initApp(); 
-                        document.getElementById('infoPanel').classList.add('translate-x-full', 'opacity-0'); 
-                    } catch (err) {
-                        alert("Error parsing JSON file: " + err.message);
-                    }
+                    } catch (err) { alert("Error parsing JSON file: " + err.message); }
                     e.target.value = '';
                 };
                 reader.readAsText(file);
             });
-
-            document.getElementById('btnPhysics').addEventListener('click', (e) => {
-                isLayeredMode = false;
-                e.target.setAttribute('aria-pressed', 'true');
-                document.getElementById('btnLayered').setAttribute('aria-pressed', 'false');
-                renderGraph();
-            });
-
-            document.getElementById('btnLayered').addEventListener('click', (e) => {
-                isLayeredMode = true;
-                e.target.setAttribute('aria-pressed', 'true');
-                document.getElementById('btnPhysics').setAttribute('aria-pressed', 'false');
-                renderGraph();
-            });
-
+            document.getElementById('btnPhysics').addEventListener('click', (e) => { isLayeredMode = false; e.target.setAttribute('aria-pressed', 'true'); document.getElementById('btnLayered').setAttribute('aria-pressed', 'false'); renderGraph(); });
+            document.getElementById('btnLayered').addEventListener('click', (e) => { isLayeredMode = true; e.target.setAttribute('aria-pressed', 'true'); document.getElementById('btnPhysics').setAttribute('aria-pressed', 'false'); renderGraph(); });
             document.getElementById('btnViewGraph').addEventListener('click', () => switchMainView('graph'));
             document.getElementById('btnViewFlat').addEventListener('click', () => switchMainView('flat'));
             document.getElementById('btnViewA11y').addEventListener('click', () => switchMainView('a11y'));
-
-            document.getElementById('closeInfo').addEventListener('click', () => {
-                document.getElementById('infoPanel').classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-                document.getElementById('infoPanel').classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
-            });
+            document.getElementById('closeInfo').addEventListener('click', () => document.getElementById('infoPanel').classList.add('translate-x-full', 'opacity-0', 'pointer-events-none'));
         }
 
         function initApp() {
             currentFilteredNodeIds.clear();
             currentNodeId = null;
 
+            // DEDUPLICATE serverData.nodes on init to prevent vis-network errors
+            const uniqueNodes = [];
+            const seenIds = new Set();
+            serverData.nodes.forEach(n => {
+              if (!seenIds.has(n.id)) {
+                seenIds.add(n.id);
+                uniqueNodes.push(n);
+              }
+            });
+            serverData.nodes = uniqueNodes;
+
             const hasFunctions = serverData.nodes.some(n => n.type === 'Function');
             const toggleContainer = document.getElementById('subFunctionsToggleContainer');
-            if (toggleContainer) {
-                if (hasFunctions) {
-                    toggleContainer.classList.remove('hidden');
-                } else {
-                    toggleContainer.classList.add('hidden');
-                }
-            }
-            
-            const infoPanel = document.getElementById('infoPanel');
-            if (infoPanel) {
-                infoPanel.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-                infoPanel.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
-            }
-
-            const toggleElement = document.getElementById('toggleFunctions');
-            if (toggleElement) showFunctions = toggleElement.checked;
+            if (toggleContainer) hasFunctions ? toggleContainer.classList.remove('hidden') : toggleContainer.classList.add('hidden');
+            document.getElementById('infoPanel').classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+            showFunctions = document.getElementById('toggleFunctions').checked;
 
             populateDropdown();
             populateLegend();
-            
             updateGraphView();
             renderGraph();
             
-            if (!window.hasSetupInteractions) {
-                setupInteractions();
-                window.hasSetupInteractions = true;
-            }
-
+            if (!window.hasSetupInteractions) { setupInteractions(); window.hasSetupInteractions = true; }
             switchMainView('flat');
 
             // ----------------------------------------------------------------------------------
             // EXTERNAL JSON LOADER:
-            // To automatically load a remote JSON file on startup, uncomment the block below and
-            // replace the URL with your raw JSON endpoint.
+            // Point the URL below to your hosted JSON file to load it automatically on startup.
             // ----------------------------------------------------------------------------------
-            
-            fetch('resources/lgam-data.json')
+            /*
+            fetch('https://path-to-your-data.json')
                 .then(response => response.json())
                 .then(data => {
-                    // Normalize data structure if needed
-                    data.nodes = data.nodes.map(n => ({
-                        ...n,
-                        id: String(n.id).trim(),
-                        type: n.type || n.group || 'Function',
-                        description: n.description || '',
-                        lga_id: n.lga_id || ''
-                    }));
-                    data.edges = data.edges.map(edge => ({
-                        ...edge,
-                        source: String(edge.source || edge.from || '').trim(),
-                        target: String(edge.target || edge.to || '').trim(),
-                        relationship: edge.relationship || edge.label || 'CONNECTED_TO'
-                    }));
+                    data.nodes = data.nodes.map(n => ({ ...n, id: String(n.id).trim(), type: n.type || 'Function' }));
+                    data.edges = data.edges.map(edge => ({ ...edge, source: String(edge.source).trim(), target: String(edge.target).trim(), relationship: edge.relationship || 'CONNECTED_TO' }));
                     data.types = data.types || serverData.types || {};
-
                     serverData = data;
-
-                    showFunctions = false;
-                    const toggleElement = document.getElementById('toggleFunctions');
-                    if (toggleElement) toggleElement.checked = false;
-
-                    updateGraphView();
-                    renderGraph();
-                    populateDropdown();
-
-                    // Hide the Load JSON button if remote data is loaded successfully
-                    const btnLoadData = document.getElementById('btnLoadData');
-                    if (btnLoadData) btnLoadData.classList.add('hidden');
+                    initApp(); 
+                    document.getElementById('btnLoadData').classList.add('hidden');
                 })
                 .catch(error => console.error('Error loading remote JSON:', error));
-            
-            // ----------------------------------------------------------------------------------
+            */
         }
 
         window.onload = initApp;
