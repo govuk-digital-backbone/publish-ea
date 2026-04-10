@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template govuk-template--rebranded">
+<head>
+    <meta charset="utf-8">
+    <title>Local government architecture model - GOV.UK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1d70b8">
+    
+    <!-- GOV.UK Frontend CSS from jsDelivr CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.css">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Vis.js (CDN) -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    
+    <style>
+        /* GOV.UK Design System Typography & Colors */
+        :root {
+            --govuk-black: #0b0c0c;
+            --govuk-blue: #1d70b8;
+            --govuk-yellow: #ffdd00;
+            --govuk-green: #00703c;
+            --govuk-red: #d4351c;
+            --govuk-light-grey: #f3f2f1;
+            --govuk-dark-grey: #505a5f;
+            --govuk-focus-text: #0b0c0c;
+        }
+
+        /* Main Product Header */
+        .app-product-header {
+            background: #1d70b8;
+            padding: 40px 0;
+            margin-bottom: 0;
+        }
+        
+        .app-product-header__title {
+            color: #fff;
+            font-family: "GDS Transport", arial, sans-serif;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.1;
+            margin: 0 0 15px 0;
+        }
+        
+        .app-product-header__description {
+            color: #fff;
+            font-family: "GDS Transport", arial, sans-serif;
+            font-size: 24px;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        /* Layout with narrow sidebar */
+        .app-content-wrapper {
+            display: flex;
+            min-height: calc(100vh - 300px);
+        }
+        
+        .app-sidebar {
+            background: #f3f2f1;
+            border-right: 1px solid #b1b4b6;
+            width: 220px;
+            min-width: 220px;
+            flex-shrink: 0;
+            padding: 20px 15px;
+        }
+        
+        .app-main-content {
+            flex: 1;
+            padding: 30px 40px;
+            /* Allow graph to expand if needed */
+            max-width: 100%; 
+        }
+        
+        /* Navigation styles */
+        .app-navigation {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .app-navigation__item {
+            margin-bottom: 2px;
+        }
+        
+        .app-navigation__link {
+            display: block;
+            padding: 5px 8px;
+            color: #1d70b8;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: "GDS Transport", arial, sans-serif;
+            line-height: 1.3;
+        }
+        
+        .app-navigation__link:hover {
+            background: #fff;
+            text-decoration: underline;
+        }
+        
+        .app-navigation__heading {
+            font-family: "GDS Transport", arial, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            margin: 20px 0 8px 0;
+            padding: 0;
+            color: #0b0c0c;
+        }
+        
+        .app-navigation__heading:first-child {
+            margin-top: 0;
+        }
+
+        /* Service navigation top bar */
+        .app-service-nav {
+            background: #f3f2f1;
+            border-bottom: 1px solid #b1b4b6;
+        }
+        
+        .app-service-nav__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .app-service-nav__link {
+            display: block;
+            padding: 15px 20px;
+            color: #1d70b8;
+            text-decoration: none;
+            font-family: "GDS Transport", arial, sans-serif;
+            font-size: 16px;
+        }
+        
+        .app-service-nav__link:hover {
+            background: #fff;
+            text-decoration: underline;
+        }
+        
+        .app-service-nav__link--active {
+            background: #fff;
+            font-weight: 700;
+            border-bottom: 4px solid #1d70b8;
+        }
+
+        /* Capability Model Block Styles (Static Version) */
+        .capability-model {
+            max-width: 100%;
+            margin: 30px 0;
+        }
+        
+        .capability-block {
+            background: #1d70b8;
+            color: #fff;
+            padding: 18px 25px;
+            text-align: center;
+            margin-bottom: 8px;
+            font-family: "GDS Transport", arial, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            transition: background-color 0.15s ease-in-out;
+        }
+        
+        .capability-block a { color: #fff; text-decoration: none; }
+        .capability-block a:hover { text-decoration: underline; }
+        .capability-block--service { background: #1d70b8; }
+        .capability-block--service:hover { background: #003078; }
+        .capability-block--corporate { background: #4c2c92; }
+        .capability-block--corporate:hover { background: #3d2375; }
+        .capability-block--middleware { background: #28a197; }
+        .capability-block--middleware:hover { background: #1e7e76; }
+        .capability-block--foundational { background: #d4351c; }
+        .capability-block--foundational:hover { background: #aa2a16; }
+        .capability-block--governance { background: #f47738; }
+        .capability-block--governance:hover { background: #c45f2c; }
+        
+        .capability-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .capability-row .capability-block {
+            flex: 1;
+            margin-bottom: 0;
+            font-size: 16px;
+            padding: 18px 10px;
+        }
+
+        /* Descriptions Section */
+        .capability-description {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #b1b4b6;
+        }
+        .capability-description:last-child { border-bottom: none; }
+        .capability-description h3 { margin-top: 0; margin-bottom: 10px; }
+
+        /* EXPLORER APP STYLES */
+        .explorer-app-wrapper {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 3rem;
+        }
+
+        .explorer-app-wrapper *:focus-visible {
+            outline: 3px solid var(--govuk-yellow) !important;
+            outline-offset: 0 !important;
+            box-shadow: inset 0 0 0 2px var(--govuk-black) !important;
+            text-decoration: none !important;
+        }
+
+        .explorer-app-wrapper .gds-btn-primary {
+            background-color: var(--govuk-green);
+            color: #fff;
+            border-bottom: 3px solid #002d18;
+            box-shadow: 0 2px 0 #002d18;
+        }
+        .explorer-app-wrapper .gds-btn-primary:hover { background-color: #005a30; }
+        .explorer-app-wrapper .gds-btn-primary[aria-pressed="true"] { background-color: #002d18; border-bottom-width: 0; transform: translateY(3px); box-shadow: none; }
+
+        .explorer-app-wrapper .gds-btn-secondary {
+            background-color: #fff;
+            color: var(--govuk-black);
+            border: 2px solid var(--govuk-black);
+            border-bottom: 4px solid var(--govuk-black);
+        }
+        .explorer-app-wrapper .gds-btn-secondary:hover { background-color: var(--govuk-light-grey); }
+        .explorer-app-wrapper .gds-btn-secondary[aria-pressed="true"] { background-color: var(--govuk-blue); color: #fff; border-color: #003078; border-bottom-width: 2px; transform: translateY(2px); }
+
+        #graphWrapper { position: relative; width: 100%; height: 750px; min-height: 600px; }
+        
+        #networkContainer {
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0; /* Ensures rigid 100% inheritance */
+            background-color: #ffffff;
+            border: 2px solid var(--govuk-dark-grey); /* Moved border just to the canvas */
+        }
+        .vis-network { outline: none; }
+        
+        .explorer-app-wrapper .sr-only:not(:focus):not(:active) {
+            clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px;
+        }
+        
+        #infoPanel { max-height: calc(100% - 2rem); border: 4px solid var(--govuk-blue); }
+        #connectionsList::-webkit-scrollbar { width: 6px; }
+        #connectionsList::-webkit-scrollbar-track { background: var(--govuk-light-grey); }
+        #connectionsList::-webkit-scrollbar-thumb { background: var(--govuk-dark-grey); }
+
+        @media (max-width: 768px) {
+            .app-product-header__title { font-size: 32px; }
+            .app-product-header__description { font-size: 18px; }
+            .app-content-wrapper { flex-direction: column; }
+            .app-sidebar { width: 100%; min-width: 100%; border-right: none; border-bottom: 1px solid #b1b4b6; }
+            .app-main-content { padding: 20px; }
+            .capability-row { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body class="govuk-template__body m-0">
+    <script>
+        document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
+    </script>
+    
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+    
+    <!-- GOV.UK Header -->
+    <header class="govuk-header" data-module="govuk-header">
+        <div class="govuk-header__container govuk-width-container">
+            <div class="govuk-header__logo">
+                <a href="/" class="govuk-header__link govuk-header__link--homepage">
+                    <svg focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 60" height="30" width="162" fill="currentcolor" class="govuk-header__logotype" aria-label="GOV.UK">
+                        <title>GOV.UK</title>
+                        <g>
+                            <circle cx="20" cy="17.6" r="3.7" />
+                            <circle cx="10.2" cy="23.5" r="3.7" />
+                            <circle cx="3.7" cy="33.2" r="3.7" />
+                            <circle cx="31.7" cy="30.6" r="3.7" />
+                            <circle cx="43.3" cy="17.6" r="3.7" />
+                            <circle cx="53.2" cy="23.5" r="3.7" />
+                            <circle cx="59.7" cy="33.2" r="3.7" />
+                            <circle cx="31.7" cy="30.6" r="3.7" />
+                            <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z" />
+                        </g>
+                        <circle class="govuk-logo-dot" cx="226" cy="36" r="7.3" />
+                        <path d="M93.94 41.25c.4 1.81 1.2 3.21 2.21 4.62 1 1.4 2.21 2.41 3.61 3.21s3.21 1.2 5.22 1.2 3.61-.4 4.82-1c1.4-.6 2.41-1.4 3.21-2.41.8-1 1.4-2.01 1.61-3.01s.4-2.01.4-3.01v.14h-10.86v-7.02h20.07v24.08h-8.03v-5.56c-.6.8-1.38 1.61-2.19 2.41-.8.8-1.81 1.2-2.81 1.81-1 .4-2.21.8-3.41 1.2s-2.41.4-3.81.4a18.56 18.56 0 0 1-14.65-6.63c-1.6-2.01-3.01-4.41-3.81-7.02s-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83a20.45 20.45 0 0 1 19.46-13.65c3.21 0 4.01.2 5.82.8 1.81.4 3.61 1.2 5.02 2.01 1.61.8 2.81 2.01 4.01 3.21s2.21 2.61 2.81 4.21l-7.63 4.41c-.4-1-1-1.81-1.61-2.61-.6-.8-1.4-1.4-2.21-2.01-.8-.6-1.81-1-2.81-1.4-1-.4-2.21-.4-3.61-.4-2.01 0-3.81.4-5.22 1.2-1.4.8-2.61 1.81-3.61 3.21s-1.61 2.81-2.21 4.62c-.4 1.81-.6 3.71-.6 5.42s.8 5.22.8 5.22Zm57.8-27.9c3.21 0 6.22.6 8.63 1.81 2.41 1.2 4.82 2.81 6.62 4.82S170.2 24.39 171 27s1.4 5.62 1.4 8.83-.4 6.02-1.4 8.83-2.41 5.02-4.01 7.02-4.01 3.61-6.62 4.82-5.42 1.81-8.63 1.81-6.22-.6-8.63-1.81-4.82-2.81-6.42-4.82-3.21-4.41-4.01-7.02-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83 2.41-5.02 4.01-7.02 4.01-3.61 6.42-4.82 5.42-1.81 8.63-1.81Zm0 36.73c1.81 0 3.61-.4 5.02-1s2.61-1.81 3.61-3.01 1.81-2.81 2.21-4.41c.4-1.81.8-3.61.8-5.62 0-2.21-.2-4.21-.8-6.02s-1.2-3.21-2.21-4.62c-1-1.2-2.21-2.21-3.61-3.01s-3.21-1-5.02-1-3.61.4-5.02 1c-1.4.8-2.61 1.81-3.61 3.01s-1.81 2.81-2.21 4.62c-.4 1.81-.8 3.61-.8 5.62 0 2.41.2 4.21.8 6.02.4 1.81 1.2 3.21 2.21 4.41s2.21 2.21 3.61 3.01c1.4.8 3.21 1 5.02 1Zm36.32 7.96-12.24-44.15h9.83l8.43 32.77h.4l8.23-32.77h9.83L200.3 58.04h-12.24Zm74.14-7.96c2.18 0 3.51-.6 3.51-.6 1.2-.6 2.01-1 2.81-1.81s1.4-1.81 1.81-2.81a13 13 0 0 0 .8-4.01V13.9h8.63v28.15c0 2.41-.4 4.62-1.4 6.62-.8 2.01-2.21 3.61-3.61 5.02s-3.41 2.41-5.62 3.21-4.62 1.2-7.02 1.2-5.02-.4-7.02-1.2c-2.21-.8-4.01-1.81-5.62-3.21s-2.81-3.01-3.61-5.02-1.4-4.21-1.4-6.62V13.9h8.63v26.95c0 1.61.2 3.01.8 4.01.4 1.2 1.2 2.21 2.01 2.81.8.8 1.81 1.4 2.81 1.81 0 0 1.34.6 3.51.6Zm34.22-36.18v18.92l15.65-18.92h10.82l-15.03 17.32 16.03 26.83h-10.21l-11.44-20.21-5.62 6.22v13.99h-8.83V13.9" />
+                    </svg>
+                </a>
+            </div>
+            <div class="govuk-header__content">
+                <a href="index.html" class="govuk-header__link govuk-header__service-name">
+                    Local government architecture model
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Service Navigation -->
+    <nav class="app-service-nav">
+        <div class="govuk-width-container">
+            <ul class="app-service-nav__list">
+                <li><a class="app-service-nav__link app-service-nav__link--active" href="index.html">Documentation</a></li>
+                <li><a class="app-service-nav__link" href="#">Support</a></li>
+                <li><a class="app-service-nav__link" href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- PHASE BANNER -->
+    <div class="govuk-width-container">
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">Alpha</strong>
+                <span class="govuk-phase-banner__text">
+                    This page is an Alpha version and is not an official GOV.UK page. It should only be used in the context of developing the content for future publication.
+                </span>
+            </p>
+        </div>
+    </div>
+    
+    <!-- MAIN BLUE PRODUCT HEADER -->
+    <div class="app-product-header">
+        <div class="govuk-width-container">
+            <h1 class="app-product-header__title">Local government architecture model (LGAM)</h1>
+            <p class="app-product-header__description">A guide to the public technology layers that are used to deliver local public services.</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT AND SIDEBAR WRAPPER -->
+    <div class="app-content-wrapper">
+        
+        <!-- Narrow Left Sidebar -->
+        <nav class="app-sidebar" aria-label="Documentation navigation">
+            <h2 class="app-navigation__heading">Contents</h2>
+            <ul class="app-navigation">
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#overview">Introduction</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#architecture-model">Architecture layers</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#layer-domains">Layer descriptions</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#interactive-explorer">Interactive architecture explorer</a></li>
+            </ul>
+            
+            <h2 class="app-navigation__heading">Layers</h2>
+            <ul class="app-navigation">
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#public-channels">Public channels</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#council-agents">Council agents</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#capabilities">Capabilities</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#business-areas">Business areas</a></li>
+                <li class="app-navigation__item"><a class="app-navigation__link" href="#corporate-areas">Corporate areas</a></li>
+            </ul>
+        </nav>
+
+        <main class="app-main-content" id="main-content">
+            <!-- SECTION 1: Overview -->
+            <section id="overview">
+                <h2 class="govuk-heading-l">Introduction</h2>
+                <p class="govuk-body">
+                    The local government architecture model (LGAM) is designed to be a guide to the public technology layers that are used to deliver local public services.
+                </p> 
+                <p class="govuk-body">The LGAM is part of a wider vision for local government technology. It guides:</p>            
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>the Government Digital Service (GDS) in building common products, including those for local government</li>
+                    <li>government departments that build products and services for councils</li>
+                    <li>councils who want to work with other local authorities on products and services</li>
+                    <li>vendors who need to make common capabilities, patterns and dependencies more visible</li>
+                </ul>    
+                <p class="govuk-body">The LGAM is a work in progress and will continue to evolve as we work alongside local government to refine it.</p>
+                <p class="govuk-body">For more information on how the LGAM was created, read our blogs on:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li><a href="#" class="govuk-link">sourcing the stack for local government technology</a></li>
+                    <li><a href="#" class="govuk-link">an understanding of technical architecture in local government</a></li>
+                    <li><a href="#" class="govuk-link">how we arrived at the first iteration of the model</a></li>
+                </ul>
+            </section>
+            
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            
+            <!-- SECTION 2: Architecture Layers Static Block -->
+            <section id="architecture-model">
+                <h2 class="govuk-heading-l">Architecture layers</h2>
+                <p class="govuk-body">The visual model below outlines the hierarchy of capabilities within the Local Government standard format.</p>
+                
+                <div class="capability-model">
+                    <div class="capability-block capability-block--service">
+                        <a href="#public-channels">Public channels</a>
+                    </div>
+                    
+                    <div class="capability-block capability-block--middleware">
+                        <a href="#council-agents">Council agents</a>
+                    </div>
+
+                    <div class="capability-block capability-block--foundational">
+                        <a href="#capabilities">Capabilities</a>
+                    </div>
+                    
+                    <div class="capability-row">
+                        <div class="capability-block capability-block--governance">
+                            <a href="#business-areas">Business areas</a>
+                        </div>
+                        <div class="capability-block capability-block--corporate">
+                            <a href="#corporate-areas">Corporate areas</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+            <!-- SECTION 3: Layer domains descriptions -->
+            <section id="layer-domains">
+                <h2 class="govuk-heading-l">Layer descriptions</h2>
+                
+                <div class="capability-description" id="public-channels">
+                    <h3 class="govuk-heading-m">Public Channels</h3>
+                    <p class="govuk-body">Public channels are how service users interact with councils, so government services are required to be delivered across as many channels as possible. The Service Manual provides more information in point 3: provide a joined up experience across all channels.</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li><strong>In person:</strong> Some council services will still need to be delivered in-person. This includes at a council’s offices, at a household or business, or at another location.</li>
+                        <li><strong>Phone:</strong> [add content here]</li>
+                        <li><strong>Email</strong></li>
+                        <li><strong>Letter</strong></li>
+                        <li><strong>Online</strong></li>
+                        <li><strong>SMS / Messaging</strong></li>
+                        <li><strong>Social Media</strong></li>
+                        <li><strong>Smart Device</strong></li>
+                        <li><strong>Third Party</strong></li>
+                        <li><strong>Video</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="capability-description" id="council-agents">
+                    <h3 class="govuk-heading-m">Council Agents</h3>
+                    <p class="govuk-body">Agents are interfaces which allow service users to contact and use a council’s services.</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li><strong>App</strong></li>
+                        <li><strong>API Gateway</strong></li>
+                        <li><strong>Automated Phone</strong></li>
+                        <li><strong>Human</strong></li>
+                        <li><strong>Public Device:</strong> These are devices owned by the council that are in the public domain, and include technology such as touch-screens in a public location for example in a library, or an internet of things device for example in a drain or bin.</li>
+                        <li><strong>Website</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="capability-description" id="capabilities">
+                    <h3 class="govuk-heading-m">Capabilities</h3>
+                    <p class="govuk-body">Capabilities are tools that council agents use to meet the needs of their service users.</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li><strong>Agentic AI</strong></li>
+                        <li><strong>Booking</strong></li>
+                        <li><strong>Email</strong></li>
+                        <li><strong>Forms</strong></li>
+                        <li><strong>Identity</strong></li>
+                        <li><strong>Payments</strong></li>
+                        <li><strong>SMS</strong></li>
+                        <li><strong>Telephony / Fax</strong></li>
+                        <li><strong>Workflow</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="capability-description" id="business-areas">
+                    <h3 class="govuk-heading-m">Business Areas</h3>
+                    <p class="govuk-body">Business areas cover the specific functions each council must provide, such as social care and health. Each business area features individual technology components which are designed to serve that specific need.</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li><strong>Adult Social Care</strong></li>
+                        <li><strong>Children’s Social Care:</strong> This includes services such as child protection and safeguarding, children in need and family support and care for looked‑after children & care leavers.</li>
+                        <li><strong>Democratic Services</strong></li>
+                        <li><strong>Education</strong></li>
+                        <li><strong>Highways / Transport</strong></li>
+                        <li><strong>Housing</strong></li>
+                        <li><strong>Leisure / Culture</strong></li>
+                        <li><strong>Licencing / Regulation</strong></li>
+                        <li><strong>Planning / Development</strong></li>
+                        <li><strong>Public Health</strong></li>
+                        <li><strong>Revenues / Benefits</strong></li>
+                        <li><strong>Waste Management</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="capability-description" id="corporate-areas">
+                    <h3 class="govuk-heading-m">Corporate Areas</h3>
+                    <p class="govuk-body">Corporate areas are business areas that are not specific to councils, each with their own individual technology components.</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li><strong>Business Planning / Performance</strong></li>
+                        <li><strong>Communications / PR:</strong> Capabilities include Omnichannel Content Publishing.</li>
+                        <li><strong>Corporate Governance / Risk</strong></li>
+                        <li><strong>Customer Relationship / B2C</strong></li>
+                        <li><strong>Facilities</strong></li>
+                        <li><strong>Financial</strong></li>
+                        <li><strong>Geographical</strong></li>
+                        <li><strong>Legal / Compliance</strong></li>
+                        <li><strong>Human Resource / Workforce</strong></li>
+                        <li><strong>Procurement / B2B</strong></li>
+                    </ul>
+                </div>
+                
+            </section>
+
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+            <!-- SECTION 4: Interactive Architecture Explorer Tool -->
+            <section id="interactive-explorer">
+                <h2 class="govuk-heading-l">Interactive architecture explorer</h2>
+                <p class="govuk-body">Use the tool below to interrogate the live capabilities model, trace technology paths, and view underlying data systems visually.</p>
+
+                <div class="explorer-app-wrapper font-['GDS_Transport',Arial,sans-serif]">
+                    <!-- App Header & Controls -->
+                    <div class="bg-[#0b0c0c] text-white p-4 border-b-[6px] border-[#1d70b8] flex flex-col xl:flex-row gap-6 xl:gap-8 justify-start xl:items-center z-10 shrink-0" role="region" aria-label="Architecture Explorer Controls">
+                        <div class="flex items-center gap-4 shrink-0">
+                            <div class="text-2xl font-bold">LGAM Explorer</div>
+                        </div>
+                        
+                        <nav aria-label="Graph Controls" class="flex flex-col items-start gap-3 w-full">
+                            <!-- Primary Controls Row -->
+                            <div class="flex flex-wrap items-center justify-start gap-4">
+                                <div class="flex items-center gap-2">
+                                    <label for="nodeFilter" class="text-sm font-bold">Focus Base:</label>
+                                    <select id="nodeFilter" class="bg-white text-[#0b0c0c] border-2 border-[#0b0c0c] p-1.5 text-sm" aria-label="Filter graph by specific node">
+                                        <option value="ALL">Show All (Unfiltered)</option>
+                                    </select>
+                                </div>
+
+                                <div id="subFunctionsToggleContainer" class="flex items-center gap-2 border-l border-gray-600 pl-4">
+                                    <span class="text-sm font-bold">Sub-Functions:</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="toggleFunctions" class="sr-only peer">
+                                      <div class="w-10 h-6 bg-gray-500 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#ffdd00] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#00703c]"></div>
+                                    </label>
+                                </div>
+
+                                <div class="flex items-center gap-2 border-l border-gray-600 pl-4">
+                                    <span class="text-sm font-bold mr-1">View:</span>
+                                    <button id="btnViewFlat" class="gds-btn-secondary px-3 py-1.5 text-left transition" aria-pressed="true">
+                                        <span class="block text-sm font-bold">Flat view</span>
+                                        <span class="block text-xs font-normal">High-level overview</span>
+                                    </button>
+                                    <button id="btnViewGraph" class="gds-btn-secondary px-3 py-1.5 text-left transition" aria-pressed="false">
+                                        <span class="block text-sm font-bold">Graph view</span>
+                                        <span class="block text-xs font-normal">Deeper architecture</span>
+                                    </button>
+                                    <button id="btnViewA11y" class="gds-btn-secondary px-3 py-1.5 text-left transition" aria-pressed="false">
+                                        <span class="block text-sm font-bold">Text view</span>
+                                        <span class="block text-xs font-normal">Accessible format</span>
+                                    </button>
+                                </div>
+
+                                <!-- Layout toggle -->
+                                <div class="flex items-center gap-2 border-l border-gray-600 pl-4 hidden" id="visualControls">
+                                    <span class="text-sm font-bold mr-1">Layout:</span>
+                                    <button id="btnPhysics" class="gds-btn-secondary px-3 py-1 text-sm font-bold transition h-[46px]" aria-pressed="false">Physics</button>
+                                    <button id="btnLayered" class="gds-btn-secondary px-3 py-1 text-sm font-bold transition h-[46px]" aria-pressed="true">Layered</button>
+                                </div>
+                            </div>
+
+                            <!-- Secondary Controls Row -->
+                            <div class="flex items-center justify-start gap-4">
+                                <button id="btnLegend" class="bg-transparent hover:underline px-2 py-1 text-sm font-bold transition" aria-label="View Relationship Definitions">
+                                    Legend
+                                </button>
+                                <input type="file" id="jsonUpload" accept=".json" class="hidden">
+                                <button id="btnLoadData" class="gds-btn-primary px-4 py-1.5 text-sm font-bold transition" aria-label="Load local JSON file">
+                                    Load JSON
+                                </button>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <!-- App Workspace Area -->
+                    <div class="relative bg-white w-full mt-4">
+                        
+                        <!-- VISUAL GRAPH CONTAINER -->
+                        <div id="graphWrapper" class="hidden w-full relative" aria-hidden="true">
+                            <div id="networkContainer"></div>
+                            
+                            <!-- Context Panel for Graph -->
+                            <aside id="infoPanel" class="absolute top-8 right-8 w-[350px] bg-white shadow-xl p-5 transform transition-transform translate-x-full opacity-0 duration-300 pointer-events-none z-20 flex flex-col" aria-live="polite">
+                                <div class="flex justify-between items-start mb-2 shrink-0">
+                                    <h2 id="infoTitle" class="text-xl font-bold text-[#0b0c0c] break-words">Node</h2>
+                                    <button id="closeInfo" class="text-gray-500 hover:text-[#0b0c0c] pointer-events-auto p-1 rounded shrink-0" aria-label="Close details panel">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                    </button>
+                                </div>
+                                <div class="mb-4 shrink-0 flex flex-col items-start gap-1">
+                                    <span id="infoType" class="inline-block px-2 py-1 bg-gray-200 text-[#0b0c0c] text-sm font-bold border-b-2 border-gray-400">Type</span>
+                                    <span id="infoTypeDesc" class="text-[13px] text-[#505a5f] italic leading-tight"></span>
+                                </div>
+            
+                                <div id="infoDescription" class="mb-4 shrink-0 text-[16px] text-[#0b0c0c] border-l-4 border-[#1d70b8] pl-3 py-1 bg-[#f3f2f1] hidden">
+                                </div>
+                                
+                                <div id="infoConnections" class="text-[16px] text-[#0b0c0c] flex-1 min-h-0 flex flex-col">
+                                    <h3 class="font-bold border-b-2 border-[#0b0c0c] pb-1 mb-2 shrink-0">Connections</h3>
+                                    <ul id="connectionsList" class="space-y-3 list-none pl-0 overflow-y-auto flex-1 pr-2"></ul>
+                                </div>
+                                
+                                <div class="mt-4 pt-4 shrink-0">
+                                    <button id="btnFocusNode" class="w-full gds-btn-primary font-bold py-2 px-4 transition pointer-events-auto">
+                                        Focus Graph on this Node
+                                    </button>
+                                </div>
+                            </aside>
+                        </div>
+
+                        <!-- LGAM FLAT VIEW CONTAINER -->
+                        <div id="flatWrapper" class="w-full py-4 bg-white" aria-hidden="false">
+                            <div class="max-w-6xl mx-auto space-y-8" id="flatContent">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- ACCESSIBLE TEXT CONTAINER -->
+                        <div id="a11yWrapper" class="hidden w-full py-4 bg-white" aria-hidden="true">
+                            <div class="max-w-4xl mx-auto">
+                                <h2 class="text-3xl font-bold border-b-4 border-[#1d70b8] pb-2 mb-6">Semantic Architecture Record</h2>
+                                <p class="mb-6 text-[19px] text-[#0b0c0c]">This view provides a screen-reader friendly, hierarchical breakdown of the enterprise architecture data, incorporating LGA standard functions.</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    <div id="a11yGlossary" class="p-4 bg-[#f3f2f1] border-l-4 border-[#1d70b8]">
+                                        <h3 class="font-bold text-xl mb-2">Relationship Glossary</h3>
+                                        <dl id="a11yGlossaryList" class="space-y-2 text-[16px] text-[#0b0c0c]"></dl>
+                                    </div>
+            
+                                    <div id="a11yTypeGlossary" class="p-4 bg-[#f3f2f1] border-l-4 border-[#1d70b8]">
+                                        <h3 class="font-bold text-xl mb-2">Node Type Glossary</h3>
+                                        <dl id="a11yTypeGlossaryList" class="space-y-2 text-[16px] text-[#0b0c0c]"></dl>
+                                    </div>
+                                </div>
+            
+                                <div id="a11yContent" class="space-y-6 text-[19px]">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Legend Modal -->
+                        <div id="legendModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" aria-modal="true" role="dialog" aria-labelledby="legendTitle">
+                            <div class="bg-white p-8 border-t-8 border-[#1d70b8] w-full max-w-lg">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h2 id="legendTitle" class="text-2xl font-bold text-[#0b0c0c]">Connection Glossary</h2>
+                                    <button id="closeLegend" class="text-gray-500 hover:text-[#0b0c0c] p-1 rounded" aria-label="Close legend">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                    </button>
+                                </div>
+                                <dl id="legendList" class="space-y-4 text-[16px] text-[#0b0c0c]">
+                                    <!-- Populated by JS -->
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+
+    <!-- GOV.UK Footer -->
+    <footer class="govuk-footer mt-auto">
+        <div class="govuk-width-container">
+            <svg focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 60" height="30" width="32" fill="currentcolor" class="govuk-footer__crown">
+                <g>
+                    <circle cx="20" cy="17.6" r="3.7" />
+                    <circle cx="10.2" cy="23.5" r="3.7" />
+                    <circle cx="3.7" cy="33.2" r="3.7" />
+                    <circle cx="31.7" cy="30.6" r="3.7" />
+                    <circle cx="43.3" cy="17.6" r="3.7" />
+                    <circle cx="53.2" cy="23.5" r="3.7" />
+                    <circle cx="59.7" cy="33.2" r="3.7" />
+                    <circle cx="31.7" cy="30.6" r="3.7" />
+                    <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z" />
+                </g>
+            </svg>
+            <div class="govuk-footer__meta">
+                <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                    <h2 class="govuk-visually-hidden">Support links</h2>
+                    <ul class="govuk-footer__inline-list">
+                        <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Help</a></li>
+                        <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Cookies</a></li>
+                        <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Contact</a></li>
+                        <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Terms and conditions</a></li>
+                        <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Accessibility statement</a></li>
+                    </ul>
+                    <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483.2 195.7" height="17" width="41">
+                        <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145" />
+                    </svg>
+                    <span class="govuk-footer__licence-description">
+                        All content is available under the
+                        <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+                    </span>
+                </div>
+                <div class="govuk-footer__meta-item">
+                    <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">
+                        © Crown copyright
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.js"></script>
+    <script type="module">
+        import { initAll } from 'https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.js'
+        initAll()
+    </script>
+
+    <!-- Interactive Explorer Logic -->
+    <script>
+        let serverData = {
+            "types": {
+                "FunctionGroup": { "description": "The overarching service domain or directorate (e.g., Adult Social Care, Environmental Services)." },
+                "Function": { "description": "A specific statutory or corporate task being executed (e.g., Waste collection, Adult safeguarding)." },
+                "ITSystem": { "description": "The actual physical software application, SaaS, or platform (e.g., Generic CRM, GovPay)." },
+                "Capability": { "description": "The modular business or technical building block used by an agent to fulfill a need (e.g., Payments, Identity, Workflow)." },
+                "CouncilAgent": { "description": "The interface or actor that receives the interaction on behalf of the council (e.g., Website, Human, API Gateway)." },
+                "PublicChannel": { "description": "The medium through which a service user interacts with the council (e.g., Phone, Online, In-Person)." }
+            },
+            "nodes": [
+                { "id": "LGA_F1", "label": "Adult Social Care", "type": "FunctionGroup", "description": "Statutory functions relating to the care and support of adults, including safeguarding and needs assessments." },
+                { "id": "LGA_F2", "label": "Environmental Services", "type": "FunctionGroup" },
+                { "id": "LGA_F3", "label": "Democratic Services", "type": "FunctionGroup" },
+                { "id": "LGA_F1_1", "label": "Assessment and care management", "type": "Function" },
+                { "id": "LGA_F1_1_1", "label": "Needs Assessment", "type": "Function" },
+                { "id": "LGA_F1_1_2", "label": "Care Planning", "type": "Function" },
+                { "id": "LGA_F1_2", "label": "Adult safeguarding", "type": "Function" },
+                { "id": "LGA_F2_1", "label": "Waste collection", "type": "Function" },
+                { "id": "LGA_F2_2", "label": "Street cleansing", "type": "Function" },
+                { "id": "LGA_F3_1", "label": "Elections", "type": "Function" },
+                { "id": "SYS_Care", "label": "Generic Social Care System", "type": "ITSystem" },
+                { "id": "SYS_Waste", "label": "Generic Waste System", "type": "ITSystem" },
+                { "id": "SYS_Elections", "label": "Generic Electoral System", "type": "ITSystem" },
+                { "id": "SYS_CRM", "label": "Generic Corporate CRM", "type": "ITSystem" },
+                { "id": "Cap_AgenticAI", "label": "Agentic AI", "type": "Capability" },
+                { "id": "Cap_Booking", "label": "Booking", "type": "Capability" },
+                { "id": "Cap_Email", "label": "Email", "type": "Capability" },
+                { "id": "Cap_Forms", "label": "Forms", "type": "Capability" },
+                { "id": "Cap_Identity", "label": "Identity", "type": "Capability" },
+                { "id": "Cap_Payments", "label": "Payments", "type": "Capability" },
+                { "id": "Cap_SMS", "label": "SMS", "type": "Capability" },
+                { "id": "Cap_Telephony", "label": "Telephony / Fax", "type": "Capability" },
+                { "id": "Cap_Workflow", "label": "Workflow", "type": "Capability" },
+                { "id": "CA_App", "label": "App", "type": "CouncilAgent" },
+                { "id": "CA_API", "label": "API Gateway", "type": "CouncilAgent", "description": "Automated digital actor routing inbound machine-to-machine traffic (e.g., from IoT devices or third parties) to internal capabilities." },
+                { "id": "CA_AutoPhone", "label": "Automated Phone", "type": "CouncilAgent" },
+                { "id": "CA_Human", "label": "Human", "type": "CouncilAgent" },
+                { "id": "CA_PublicDevice", "label": "Public Device", "type": "CouncilAgent" },
+                { "id": "CA_Website", "label": "Website", "type": "CouncilAgent" },
+                { "id": "PC_InPerson", "label": "In person", "type": "PublicChannel" },
+                { "id": "PC_Phone", "label": "Phone", "type": "PublicChannel" },
+                { "id": "PC_Email", "label": "Email", "type": "PublicChannel" },
+                { "id": "PC_Letter", "label": "Letter", "type": "PublicChannel" },
+                { "id": "PC_Online", "label": "Online", "type": "PublicChannel" },
+                { "id": "PC_SMS", "label": "SMS/ Messaging", "type": "PublicChannel" },
+                { "id": "PC_SocialMedia", "label": "Social Media", "type": "PublicChannel" },
+                { "id": "PC_SmartDevice", "label": "Smart Device", "type": "PublicChannel" },
+                { "id": "PC_ThirdParty", "label": "Third Party", "type": "PublicChannel" },
+                { "id": "PC_Video", "label": "Video", "type": "PublicChannel" }
+            ],
+            "edges": [
+                { "source": "LGA_F1_1", "target": "LGA_F1", "relationship": "PART_OF" },
+                { "source": "LGA_F1_2", "target": "LGA_F1", "relationship": "PART_OF" },
+                { "source": "LGA_F1_1_1", "target": "LGA_F1_1", "relationship": "PART_OF" },
+                { "source": "LGA_F1_1_2", "target": "LGA_F1_1", "relationship": "PART_OF" },
+                { "source": "LGA_F2_1", "target": "LGA_F2", "relationship": "PART_OF" },
+                { "source": "LGA_F2_2", "target": "LGA_F2", "relationship": "PART_OF" },
+                { "source": "LGA_F3_1", "target": "LGA_F3", "relationship": "PART_OF" },
+                { "source": "SYS_Care", "target": "LGA_F1_1_1", "relationship": "REALIZES" },
+                { "source": "SYS_Care", "target": "LGA_F1_1_2", "relationship": "REALIZES" },
+                { "source": "SYS_Care", "target": "LGA_F1_2", "relationship": "REALIZES" },
+                { "source": "SYS_Waste", "target": "LGA_F2_1", "relationship": "REALIZES" },
+                { "source": "SYS_Elections", "target": "LGA_F3_1", "relationship": "REALIZES" },
+                { "source": "Cap_Workflow", "target": "SYS_Care", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_Forms", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_Booking", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_Payments", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_Identity", "target": "SYS_Elections", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_Forms", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_Email", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_Telephony", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_AgenticAI", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+                { "source": "Cap_SMS", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
+                { "source": "CA_Website", "target": "Cap_Forms", "relationship": "USES" },
+                { "source": "CA_Website", "target": "Cap_Payments", "relationship": "USES" },
+                { "source": "CA_Website", "target": "Cap_Booking", "relationship": "USES" },
+                { "source": "CA_Website", "target": "Cap_AgenticAI", "relationship": "USES" },
+                { "source": "CA_App", "target": "Cap_Forms", "relationship": "USES" },
+                { "source": "CA_App", "target": "Cap_Identity", "relationship": "USES" },
+                { "source": "CA_Human", "target": "Cap_Workflow", "relationship": "USES" },
+                { "source": "CA_Human", "target": "Cap_Email", "relationship": "USES" },
+                { "source": "CA_Human", "target": "Cap_Telephony", "relationship": "USES" },
+                { "source": "CA_AutoPhone", "target": "Cap_Telephony", "relationship": "USES" },
+                { "source": "CA_AutoPhone", "target": "Cap_Payments", "relationship": "USES" },
+                { "source": "CA_API", "target": "Cap_Identity", "relationship": "USES" },
+                { "source": "CA_API", "target": "Cap_SMS", "relationship": "USES" },
+                { "source": "CA_PublicDevice", "target": "Cap_Forms", "relationship": "USES" },
+                { "source": "CA_PublicDevice", "target": "Cap_Payments", "relationship": "USES" },
+                { "source": "PC_Online", "target": "CA_Website", "relationship": "ROUTES_TO" },
+                { "source": "PC_Online", "target": "CA_App", "relationship": "ROUTES_TO" },
+                { "source": "PC_Phone", "target": "CA_Human", "relationship": "ROUTES_TO" },
+                { "source": "PC_Phone", "target": "CA_AutoPhone", "relationship": "ROUTES_TO" },
+                { "source": "PC_InPerson", "target": "CA_Human", "relationship": "ROUTES_TO" },
+                { "source": "PC_InPerson", "target": "CA_PublicDevice", "relationship": "ROUTES_TO" },
+                { "source": "PC_Email", "target": "CA_Human", "relationship": "ROUTES_TO" },
+                { "source": "PC_Letter", "target": "CA_Human", "relationship": "ROUTES_TO" },
+                { "source": "PC_SMS", "target": "CA_API", "relationship": "ROUTES_TO" },
+                { "source": "PC_SocialMedia", "target": "CA_Human", "relationship": "ROUTES_TO" },
+                { "source": "PC_SmartDevice", "target": "CA_API", "relationship": "ROUTES_TO" },
+                { "source": "PC_ThirdParty", "target": "CA_API", "relationship": "ROUTES_TO" },
+                { "source": "PC_Video", "target": "CA_Human", "relationship": "ROUTES_TO" }
+            ]
+        };
+
+        const typeConfig = {
+            FunctionGroup: { color: { background: '#1d70b8', border: '#003078' }, fontColor: '#ffffff', shape: 'box', shapeProperties: { borderRadius: 8 }, level: 0 },
+            Function:      { color: { background: '#ffffff', border: '#1d70b8' }, fontColor: '#0b0c0c', shape: 'box', shapeProperties: { borderRadius: 8 }, level: 1 },
+            ITSystem:      { color: { background: '#53284f', border: '#331530' }, fontColor: '#ffffff', shape: 'box', shapeProperties: { borderRadius: 0 }, level: 2 },
+            Capability:    { color: { background: '#d53880', border: '#9e225c' }, fontColor: '#ffffff', shape: 'box', shapeProperties: { borderRadius: 0 }, level: 3 },
+            CouncilAgent:  { color: { background: '#00703c', border: '#002d18' }, fontColor: '#ffffff', shape: 'ellipse', level: 4 },
+            PublicChannel: { color: { background: '#f3f2f1', border: '#0b0c0c' }, fontColor: '#0b0c0c', shape: 'ellipse', level: 5 }
+        };
+
+        const relationshipDefinitions = {
+            "PART_OF": "Hierarchical composition. Indicates a specific function belongs to a broader group.",
+            "REALIZES": "Implementation. Indicates that an IT system physically performs the operations required by a business function.",
+            "PROVIDED_BY": "Sourcing. Indicates that a specific technical capability is delivered by an underlying IT System.",
+            "USES": "Consumption. Indicates that a council agent interacts with or relies on a specific capability to perform their duties.",
+            "ROUTES_TO": "Routing. Indicates that a public channel directs citizen interactions to a specific council agent."
+        };
+
+        const relationshipPhrases = {
+            "PART_OF": { out: "is part of", in: "includes" },
+            "REALIZES": { out: "realizes", in: "is realized by" },
+            "PROVIDED_BY": { out: "is provided by", in: "provides" },
+            "USES": { out: "uses", in: "is used by" },
+            "ROUTES_TO": { out: "routes to", in: "is reached via" }
+        };
+
+        let network = null;
+        let viewNodes = new vis.DataSet();
+        let viewEdges = new vis.DataSet();
+        let isLayeredMode = true; 
+        let currentNodeId = null;
+        let showFunctions = false;
+        let currentFilteredNodeIds = new Set();
+
+        function getDynamicLevels(nodes, edges) {
+            const levels = {};
+            const parentMap = {};
+            
+            edges.forEach(e => {
+                if (e.relationship === 'PART_OF') {
+                    parentMap[e.source] = e.target;
+                }
+            });
+
+            function resolveDepth(nodeId, visited = new Set()) {
+                if (levels[nodeId] !== undefined) return levels[nodeId];
+                if (visited.has(nodeId)) return 1; 
+                
+                visited.add(nodeId);
+                const node = nodes.find(n => n.id === nodeId);
+                if (!node) return 0;
+
+                if (node.type === 'FunctionGroup') {
+                    levels[nodeId] = 0;
+                    return 0;
+                }
+
+                if (parentMap[nodeId]) {
+                    const depth = resolveDepth(parentMap[nodeId], visited) + 1;
+                    levels[nodeId] = depth;
+                    return depth;
+                }
+
+                if (node.type === 'Function') {
+                    levels[nodeId] = 1;
+                    return 1;
+                }
+
+                return 0;
+            }
+
+            let maxFuncDepth = 0; 
+            nodes.forEach(n => {
+                if (n.type === 'FunctionGroup' || n.type === 'Function') {
+                    const d = resolveDepth(n.id);
+                    if (d > maxFuncDepth) maxFuncDepth = d;
+                }
+            });
+
+            nodes.forEach(n => {
+                if (n.type === 'ITSystem') levels[n.id] = maxFuncDepth + 1;
+                else if (n.type === 'Capability') levels[n.id] = maxFuncDepth + 2;
+                else if (n.type === 'CouncilAgent') levels[n.id] = maxFuncDepth + 3;
+                else if (n.type === 'PublicChannel') levels[n.id] = maxFuncDepth + 4;
+            });
+
+            return levels;
+        }
+
+        function getUltimateFunctionGroup(funcId) {
+            let currentId = funcId;
+            let visited = new Set();
+            while(currentId && !visited.has(currentId)) {
+                visited.add(currentId);
+                let node = serverData.nodes.find(n => n.id === currentId);
+                if (node && node.type === 'FunctionGroup') return currentId;
+
+                let parentEdge = serverData.edges.find(e => e.source === currentId && String(e.relationship).toUpperCase() === 'PART_OF');
+                if (parentEdge) {
+                    currentId = parentEdge.target;
+                } else {
+                    return null;
+                }
+            }
+            return null;
+        }
+
+        function updateGraphView() {
+            let baseNodes = currentFilteredNodeIds.size > 0 
+                ? serverData.nodes.filter(n => currentFilteredNodeIds.has(n.id))
+                : serverData.nodes;
+
+            let finalNodes = baseNodes.filter(n => showFunctions || n.type !== 'Function');
+            let finalEdges = [];
+            let processedVirtualEdges = new Set();
+
+            serverData.edges.forEach(e => {
+                let sourceIn = finalNodes.some(n => n.id === e.source);
+                let targetIn = finalNodes.some(n => n.id === e.target);
+
+                if (sourceIn && targetIn) {
+                    finalEdges.push({...e});
+                } else if (!showFunctions && e.relationship === 'REALIZES') {
+                    let sourceNode = baseNodes.find(n => n.id === e.source);
+                    if (sourceNode) { 
+                        let fgId = getUltimateFunctionGroup(e.target);
+                        if (fgId && finalNodes.some(n => n.id === fgId)) {
+                            let vEdgeId = `${e.source}_${fgId}_virtual`;
+                            if (!processedVirtualEdges.has(vEdgeId)) {
+                                processedVirtualEdges.add(vEdgeId);
+                                finalEdges.push({
+                                    source: e.source,
+                                    target: fgId,
+                                    relationship: 'REALIZES'
+                                });
+                            }
+                        }
+                    }
+                }
+            });
+
+            const dynamicLevels = getDynamicLevels(finalNodes, finalEdges);
+
+            const processedNodes = finalNodes.map(n => {
+                const tConfig = typeConfig[n.type] || typeConfig['Function'];
+                const nData = {
+                    id: n.id,
+                    label: n.label,
+                    type: n.type,
+                    description: n.description,
+                    shape: tConfig.shape,
+                    color: tConfig.color,
+                    borderWidth: 2,
+                    level: dynamicLevels[n.id] !== undefined ? dynamicLevels[n.id] : (tConfig.level || 0), 
+                    font: { 
+                        face: '"GDS Transport", Arial, sans-serif', 
+                        size: n.type === 'FunctionGroup' ? 16 : 14,
+                        color: tConfig.fontColor || '#0b0c0c'
+                    }
+                };
+
+                if (tConfig.shapeProperties) {
+                    nData.shapeProperties = tConfig.shapeProperties;
+                }
+                return nData;
+            });
+
+            const processedEdges = finalEdges.map((e, index) => {
+                const sourceNode = processedNodes.find(n => n.id === e.source);
+                const targetNode = processedNodes.find(n => n.id === e.target);
+                let from = e.source;
+                let to = e.target;
+                let arrows = { to: { enabled: true, scaleFactor: 0.5 } };
+
+                if (sourceNode && targetNode && sourceNode.level < targetNode.level) {
+                    from = e.source; to = e.target;
+                } else if (sourceNode && targetNode && sourceNode.level > targetNode.level) {
+                    from = e.target; to = e.source; 
+                    arrows = { from: { enabled: true, scaleFactor: 0.5 }, to: { enabled: false } };
+                }
+
+                return {
+                    id: `${e.source}_${e.target}_${e.relationship}_${index}`, 
+                    originalSource: e.source, 
+                    originalTarget: e.target,
+                    from: from,
+                    to: to,
+                    label: e.relationship,
+                    font: { align: 'middle', size: 12, color: '#505a5f', face: '"GDS Transport", Arial, sans-serif' },
+                    color: { color: '#b1b4b6', highlight: '#0b0c0c' },
+                    arrows: arrows
+                }
+            });
+
+            viewNodes.clear();
+            viewEdges.clear();
+            viewNodes.add(processedNodes);
+            viewEdges.add(processedEdges);
+
+            generateFlatHTML();
+            generateAccessibleHTML();
+        }
+
+        function populateDropdown() {
+            const dropdown = document.getElementById('nodeFilter');
+            dropdown.innerHTML = '<option value="ALL">Show All (Unfiltered)</option>';
+            
+            const layers = [
+                { type: 'FunctionGroup', label: 'Function Groups' },
+                { type: 'Function', label: 'Functions' },
+                { type: 'ITSystem', label: 'IT Systems' },
+                { type: 'Capability', label: 'Capabilities' },
+                { type: 'CouncilAgent', label: 'Council Agents' },
+                { type: 'PublicChannel', label: 'Public Channels' }
+            ];
+
+            layers.forEach(layer => {
+                const nodesOfType = serverData.nodes.filter(n => n.type === layer.type);
+                if (nodesOfType.length > 0) {
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = layer.label;
+                    
+                    nodesOfType.sort((a,b) => a.label.localeCompare(b.label)).forEach(n => {
+                        const option = document.createElement('option');
+                        option.value = n.id;
+                        option.textContent = n.label;
+                        optgroup.appendChild(option);
+                    });
+                    
+                    dropdown.appendChild(optgroup);
+                }
+            });
+        }
+
+        function populateLegend() {
+            const legendList = document.getElementById('legendList');
+            legendList.innerHTML = '';
+            for (const [key, desc] of Object.entries(relationshipDefinitions)) {
+                legendList.innerHTML += `
+                    <div class="bg-[#f3f2f1] p-4 border-l-4 border-[#1d70b8]">
+                        <dt class="font-bold">${key}</dt>
+                        <dd class="mt-1">${desc}</dd>
+                    </div>`;
+            }
+        }
+
+        function renderGraph() {
+            const container = document.getElementById('networkContainer');
+            const data = { nodes: viewNodes, edges: viewEdges };
+            
+            const options = {
+                layout: isLayeredMode ? {
+                    hierarchical: {
+                        direction: 'UD',
+                        sortMethod: 'directed',
+                        nodeSpacing: 200,       
+                        treeSpacing: 200,       
+                        levelSeparation: 180,   
+                        blockShifting: true,    
+                        edgeMinimization: true, 
+                        parentCentralization: true
+                    }
+                } : {
+                    hierarchical: false
+                },
+                physics: isLayeredMode ? {
+                    enabled: false  
+                } : {
+                    enabled: true,
+                    solver: 'barnesHut', 
+                    barnesHut: {
+                        gravitationalConstant: -2000,
+                        centralGravity: 0.1,
+                        springLength: 200,      
+                        springConstant: 0.04,   
+                        damping: 0.09,
+                        avoidOverlap: 1         
+                    },
+                    stabilization: { iterations: 500, fit: true } 
+                },
+                interaction: { 
+                    hover: true, 
+                    tooltipDelay: 200,
+                    navigationButtons: true     
+                },
+                nodes: {
+                    widthConstraint: { maximum: 140 }, 
+                    margin: 12                         
+                },
+                edges: { 
+                    smooth: { 
+                        type: isLayeredMode ? 'cubicBezier' : 'dynamic', 
+                        forceDirection: isLayeredMode ? 'vertical' : 'none', 
+                        roundness: 0.5 
+                    },
+                    width: 2,
+                    color: { opacity: 0.8 } 
+                }
+            };
+
+            if (network !== null) {
+                network.destroy();
+            }
+            network = new vis.Network(container, data, options);
+
+            network.on("click", function (params) {
+                if (params.nodes.length > 0) {
+                    showNodeInfo(params.nodes[0]);
+                } else {
+                    document.getElementById('infoPanel').classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+                    document.getElementById('infoPanel').classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+                }
+            });
+        }
+
+        function showNodeInfo(nodeId) {
+            currentNodeId = nodeId;
+            const node = viewNodes.get(nodeId) || serverData.nodes.find(n => n.id === nodeId);
+            if (!node) return;
+
+            document.getElementById('infoTitle').textContent = node.label;
+            document.getElementById('infoType').textContent = node.type;
+            document.getElementById('infoType').style.backgroundColor = typeConfig[node.type]?.color.background || '#e2e8f0';
+            document.getElementById('infoType').style.color = typeConfig[node.type]?.fontColor || '#0b0c0c';
+            
+            // Pulling description from the new serverData.types
+            document.getElementById('infoTypeDesc').textContent = serverData.types?.[node.type]?.description || '';
+
+            const descEl = document.getElementById('infoDescription');
+            if (node.description) {
+                descEl.textContent = node.description;
+                descEl.classList.remove('hidden');
+            } else {
+                descEl.classList.add('hidden');
+                descEl.textContent = '';
+            }
+
+            const connectedEdges = viewEdges.get({ filter: e => e.originalSource === nodeId || e.originalTarget === nodeId });
+            const list = document.getElementById('connectionsList');
+            list.innerHTML = '';
+
+            if (connectedEdges.length === 0) {
+                list.innerHTML = '<li class="text-[#505a5f] italic">No connections in current view.</li>';
+            } else {
+                connectedEdges.forEach(edge => {
+                    const isOutgoing = edge.originalSource === nodeId;
+                    const relatedNodeId = isOutgoing ? edge.originalTarget : edge.originalSource;
+                    const relatedNode = viewNodes.get(relatedNodeId) || serverData.nodes.find(n => n.id === relatedNodeId);
+                    
+                    if(!relatedNode) return;
+                    
+                    const phraseObj = relationshipPhrases[edge.label];
+                    const phrase = isOutgoing ? phraseObj?.out || "connects to" : phraseObj?.in || "is connected from";
+
+                    const li = document.createElement('li');
+                    li.className = "flex items-start gap-2 bg-[#f3f2f1] p-3 border border-gray-300";
+                    li.innerHTML = `
+                        <span class="font-normal text-[#505a5f] min-w-[90px]">${phrase}</span>
+                        <span class="font-bold break-words">${relatedNode.label}</span>
+                    `;
+                    list.appendChild(li);
+                });
+            }
+
+            const panel = document.getElementById('infoPanel');
+            panel.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+            panel.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
+        }
+
+        function generateAccessibleHTML() {
+            const container = document.getElementById('a11yContent');
+            container.innerHTML = '';
+
+            const glossary = document.getElementById('a11yGlossaryList');
+            glossary.innerHTML = '';
+            for (const [key, desc] of Object.entries(relationshipDefinitions)) {
+                glossary.innerHTML += `<dt class="font-bold inline">${key}:</dt> <dd class="inline ml-1">${desc}</dd><br>`;
+            }
+
+            const typeGlossary = document.getElementById('a11yTypeGlossaryList');
+            typeGlossary.innerHTML = '';
+            // Iterating through serverData.types instead of typeConfig
+            for (const [key, typeData] of Object.entries(serverData.types || {})) {
+                if (typeData.description) {
+                    typeGlossary.innerHTML += `<dt class="font-bold inline">${key}:</dt> <dd class="inline ml-1">${typeData.description}</dd><br>`;
+                }
+            }
+
+            let html = '<ul class="space-y-6">';
+            
+            const channels = viewNodes.get({ filter: n => n.type === 'PublicChannel' });
+            
+            channels.forEach(channel => {
+                html += `<li class="bg-[#f3f2f1] p-6 border-l-4 border-[#0b0c0c]">
+                    <strong class="text-xl">Channel: ${channel.label}</strong>`;
+                if(channel.description) html += `<p class="mt-2 text-[#505a5f]">${channel.description}</p>`;
+                
+                const agents = viewEdges.get({ filter: e => e.originalSource === channel.id }).map(e => viewNodes.get(e.originalTarget)).filter(Boolean);
+                if(agents.length > 0) {
+                    html += '<ul class="ml-6 mt-4 list-disc space-y-4">';
+                    agents.forEach(agent => {
+                        html += `<li><strong class="text-lg">Agent:</strong> ${agent.label}`;
+                        if(agent.description) html += `<p class="mt-1 text-base text-[#505a5f]">${agent.description}</p>`;
+                        html += `<ul>`;
+                        
+                        const caps = viewEdges.get({ filter: e => e.originalSource === agent.id }).map(e => viewNodes.get(e.originalTarget)).filter(Boolean);
+                        caps.forEach(cap => {
+                            html += `<li class="ml-6 mt-2">Uses <strong>Capability:</strong> ${cap.label}`;
+                            if(cap.description) html += `<p class="mt-1 text-base text-[#505a5f]">${cap.description}</p>`;
+                            
+                            const syss = viewEdges.get({ filter: e => e.originalSource === cap.id && e.label === 'PROVIDED_BY' }).map(e => viewNodes.get(e.originalTarget)).filter(Boolean);
+                            if(syss.length > 0) {
+                                html += '<ul class="ml-6 mt-2 list-[circle] space-y-2">';
+                                syss.forEach(sys => {
+                                    html += `<li>Provided by <strong>IT System:</strong> ${sys.label}`;
+                                    if(sys.description) html += `<p class="mt-1 text-base text-[#505a5f]">${sys.description}</p>`;
+                                    
+                                    const funcs = viewEdges.get({ filter: e => e.originalSource === sys.id && e.label === 'REALIZES' }).map(e => viewNodes.get(e.originalTarget)).filter(Boolean);
+                                    if(funcs.length > 0) {
+                                        html += '<ul class="ml-6 mt-2 list-[square] space-y-2">';
+                                        funcs.forEach(func => {
+                                            html += `<li>Realizes <strong>Function:</strong> ${func.label}</li>`;
+                                            if(func.description) html += `<p class="mt-1 text-base text-[#505a5f]">${func.description}</p>`;
+                                        });
+                                        html += '</ul>';
+                                    }
+                                    html += `</li>`;
+                                });
+                                html += '</ul>';
+                            }
+                            html += `</li>`;
+                        });
+                        html += '</ul></li>';
+                    });
+                    html += '</ul>';
+                }
+                html += `</li>`;
+            });
+
+            html += '</ul>';
+            container.innerHTML = html;
+        }
+
+        function generateFlatHTML() {
+            const container = document.getElementById('flatContent');
+            container.innerHTML = '';
+            
+            const layers = [
+                { type: ['PublicChannel'], title: 'Public Channels', desc: serverData.types?.['PublicChannel']?.description || '', color: typeConfig['PublicChannel'].color, font: typeConfig['PublicChannel'].fontColor },
+                { type: ['CouncilAgent'], title: 'Council Agents', desc: serverData.types?.['CouncilAgent']?.description || '', color: typeConfig['CouncilAgent'].color, font: typeConfig['CouncilAgent'].fontColor },
+                { type: ['Capability'], title: 'Capabilities', desc: serverData.types?.['Capability']?.description || '', color: typeConfig['Capability'].color, font: typeConfig['Capability'].fontColor },
+                { type: ['FunctionGroup', 'Function'], title: 'Business & Corporate Areas', desc: "Statutory domains and specific tasks executed by the council.", color: typeConfig['FunctionGroup'].color, font: typeConfig['FunctionGroup'].fontColor },
+                { type: ['ITSystem'], title: 'Underlying Technology Components', desc: serverData.types?.['ITSystem']?.description || '', color: typeConfig['ITSystem'].color, font: typeConfig['ITSystem'].fontColor, isBottom: true }
+            ];
+
+            layers.forEach(layer => {
+                const nodes = viewNodes.get({ filter: n => layer.type.includes(n.type) });
+                if (nodes.length === 0) return;
+
+                const section = document.createElement('div');
+                section.className = layer.isBottom 
+                    ? "bg-[#f3f2f1] p-6 border-[3px] border-dashed border-[#505a5f] mt-12" 
+                    : "bg-white p-6 border-l-8 shadow-md border-gray-200";
+                
+                if (!layer.isBottom) {
+                    section.style.borderLeftColor = layer.color.background;
+                }
+
+                let html = `
+                    <div class="mb-4">
+                        <h3 class="text-2xl font-bold text-[#0b0c0c] border-b-2 border-[#b1b4b6] pb-2 flex items-center gap-2">
+                            ${layer.title}
+                        </h3>
+                        <p class="text-[16px] text-[#505a5f] mt-2">${layer.desc}</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                `;
+
+                nodes.forEach(node => {
+                    const nodeColor = typeConfig[node.type].color;
+                    const nodeFont = typeConfig[node.type].fontColor;
+                    html += `
+                        <div class="p-3 border-[2px] text-base font-bold flex flex-col items-center justify-center text-center transition-transform hover:-translate-y-1" 
+                             style="background-color: ${nodeColor.background}; border-color: ${nodeColor.border}; color: ${nodeFont};">
+                            <span>${node.label}</span>
+                            ${node.description ? `<span class="mt-2 text-sm font-normal opacity-90" title="${node.description}">${node.description}</span>` : ''}
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+                
+                if(layer.isBottom) {
+                    html += `<p class="text-base text-[#505a5f] mt-4 font-bold">* Note: This layer is implicitly underneath the business/corporate areas in the LGAM specification.</p>`;
+                }
+
+                section.innerHTML = html;
+                container.appendChild(section);
+            });
+        }
+
+        function filterGraph(nodeId) {
+            currentFilteredNodeIds.clear();
+            
+            if (nodeId === 'ALL') {
+                updateGraphView(); 
+                if(network) network.fit({animation: true});
+                return;
+            }
+
+            const upstreamNodes = new Set([nodeId]);
+            const downstreamNodes = new Set([nodeId]);
+
+            let added = true;
+            while(added) {
+                added = false;
+                serverData.edges.forEach(edge => {
+                    if (upstreamNodes.has(edge.target) && !upstreamNodes.has(edge.source)) {
+                        upstreamNodes.add(edge.source);
+                        added = true;
+                    }
+                });
+            }
+
+            added = true;
+            while(added) {
+                added = false;
+                serverData.edges.forEach(edge => {
+                    if (downstreamNodes.has(edge.source) && !downstreamNodes.has(edge.target)) {
+                        downstreamNodes.add(edge.target);
+                        added = true;
+                    }
+                });
+            }
+
+            [...upstreamNodes, ...downstreamNodes].forEach(id => currentFilteredNodeIds.add(id));
+
+            updateGraphView();
+            document.getElementById('nodeFilter').value = nodeId;
+            if(network) network.fit({animation: true});
+        }
+
+        function switchMainView(viewName) {
+            const graphWrapper = document.getElementById('graphWrapper');
+            const flatWrapper = document.getElementById('flatWrapper');
+            const a11yWrapper = document.getElementById('a11yWrapper');
+            const controls = document.getElementById('visualControls');
+            
+            ['Graph', 'Flat', 'A11y'].forEach(v => {
+                const btn = document.getElementById(`btnView${v}`);
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            graphWrapper.classList.add('hidden'); graphWrapper.setAttribute('aria-hidden', 'true');
+            flatWrapper.classList.add('hidden'); flatWrapper.setAttribute('aria-hidden', 'true');
+            a11yWrapper.classList.add('hidden'); a11yWrapper.setAttribute('aria-hidden', 'true');
+            controls.classList.add('hidden');
+
+            const activeBtn = document.getElementById(`btnView${viewName.charAt(0).toUpperCase() + viewName.slice(1)}`);
+            activeBtn.setAttribute('aria-pressed', 'true');
+
+            if (viewName === 'graph') {
+                graphWrapper.classList.remove('hidden'); 
+                graphWrapper.setAttribute('aria-hidden', 'false');
+                controls.classList.remove('hidden');
+                
+                // CRITICAL FIX: Redraw graph logic after it becomes visible to solve zero-height canvas bug
+                setTimeout(() => {
+                    if(network) {
+                        network.redraw();
+                        network.fit({animation: false});
+                    }
+                }, 50);
+
+            } else if (viewName === 'flat') {
+                flatWrapper.classList.remove('hidden'); flatWrapper.setAttribute('aria-hidden', 'false');
+            } else if (viewName === 'a11y') {
+                a11yWrapper.classList.remove('hidden'); a11yWrapper.setAttribute('aria-hidden', 'false');
+            }
+        }
+
+        function setupInteractions() {
+            document.getElementById('btnLegend').addEventListener('click', () => {
+                document.getElementById('legendModal').classList.remove('hidden');
+            });
+            document.getElementById('closeLegend').addEventListener('click', () => {
+                document.getElementById('legendModal').classList.add('hidden');
+            });
+
+            document.getElementById('toggleFunctions').addEventListener('change', (e) => {
+                showFunctions = e.target.checked;
+                updateGraphView();
+                if(network) network.fit({animation: true});
+            });
+
+            document.getElementById('nodeFilter').addEventListener('change', (e) => {
+                const selectedNodeId = e.target.value;
+                if (selectedNodeId !== 'ALL') {
+                    const node = serverData.nodes.find(n => n.id === selectedNodeId);
+                    if (node && node.type === 'Function' && !showFunctions) {
+                        showFunctions = true;
+                        document.getElementById('toggleFunctions').checked = true;
+                    }
+                }
+                filterGraph(selectedNodeId);
+            });
+            
+            document.getElementById('btnFocusNode').addEventListener('click', () => {
+                if (currentNodeId) {
+                    const node = serverData.nodes.find(n => n.id === currentNodeId);
+                    if (node && node.type === 'Function' && !showFunctions) {
+                        showFunctions = true;
+                        document.getElementById('toggleFunctions').checked = true;
+                    }
+                    filterGraph(currentNodeId);
+                }
+            });
+
+            document.getElementById('btnLoadData').addEventListener('click', () => {
+                document.getElementById('jsonUpload').click();
+            });
+
+            document.getElementById('jsonUpload').addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const parsedData = JSON.parse(event.target.result);
+                        if (!parsedData.nodes || !parsedData.edges) {
+                            throw new Error("Invalid JSON structure. Must contain 'nodes' and 'edges' arrays.");
+                        }
+
+                        parsedData.nodes = parsedData.nodes.map(n => ({
+                            ...n,
+                            id: String(n.id).trim(),
+                            type: n.type || n.group || 'Function',
+                            description: n.description || '',
+                            lga_id: n.lga_id || ''
+                        }));
+
+                        parsedData.edges = parsedData.edges.map(edge => ({
+                            ...edge,
+                            source: String(edge.source || edge.from || '').trim(),
+                            target: String(edge.target || edge.to || '').trim(),
+                            relationship: edge.relationship || edge.label || 'CONNECTED_TO'
+                        }));
+                        
+                        // Retain existing types if uploaded JSON does not include them
+                        parsedData.types = parsedData.types || serverData.types || {};
+
+                        serverData = parsedData;
+                        
+                        showFunctions = false;
+                        document.getElementById('toggleFunctions').checked = false;
+                        
+                        initApp(); 
+                        document.getElementById('infoPanel').classList.add('translate-x-full', 'opacity-0'); 
+                    } catch (err) {
+                        alert("Error parsing JSON file: " + err.message);
+                    }
+                    e.target.value = '';
+                };
+                reader.readAsText(file);
+            });
+
+            document.getElementById('btnPhysics').addEventListener('click', (e) => {
+                isLayeredMode = false;
+                e.target.setAttribute('aria-pressed', 'true');
+                document.getElementById('btnLayered').setAttribute('aria-pressed', 'false');
+                renderGraph();
+            });
+
+            document.getElementById('btnLayered').addEventListener('click', (e) => {
+                isLayeredMode = true;
+                e.target.setAttribute('aria-pressed', 'true');
+                document.getElementById('btnPhysics').setAttribute('aria-pressed', 'false');
+                renderGraph();
+            });
+
+            document.getElementById('btnViewGraph').addEventListener('click', () => switchMainView('graph'));
+            document.getElementById('btnViewFlat').addEventListener('click', () => switchMainView('flat'));
+            document.getElementById('btnViewA11y').addEventListener('click', () => switchMainView('a11y'));
+
+            document.getElementById('closeInfo').addEventListener('click', () => {
+                document.getElementById('infoPanel').classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+                document.getElementById('infoPanel').classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+            });
+        }
+
+        function initApp() {
+            currentFilteredNodeIds.clear();
+            currentNodeId = null;
+
+            const hasFunctions = serverData.nodes.some(n => n.type === 'Function');
+            const toggleContainer = document.getElementById('subFunctionsToggleContainer');
+            if (toggleContainer) {
+                if (hasFunctions) {
+                    toggleContainer.classList.remove('hidden');
+                } else {
+                    toggleContainer.classList.add('hidden');
+                }
+            }
+            
+            const infoPanel = document.getElementById('infoPanel');
+            if (infoPanel) {
+                infoPanel.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+                infoPanel.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
+            }
+
+            const toggleElement = document.getElementById('toggleFunctions');
+            if (toggleElement) showFunctions = toggleElement.checked;
+
+            populateDropdown();
+            populateLegend();
+            
+            updateGraphView();
+            renderGraph();
+            
+            if (!window.hasSetupInteractions) {
+                setupInteractions();
+                window.hasSetupInteractions = true;
+            }
+
+            switchMainView('flat');
+
+            // ----------------------------------------------------------------------------------
+            // EXTERNAL JSON LOADER:
+            // To automatically load a remote JSON file on startup, uncomment the block below and
+            // replace the URL with your raw JSON endpoint.
+            // ----------------------------------------------------------------------------------
+            
+            fetch('resources/lgam-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Normalize data structure if needed
+                    data.nodes = data.nodes.map(n => ({
+                        ...n,
+                        id: String(n.id).trim(),
+                        type: n.type || n.group || 'Function',
+                        description: n.description || '',
+                        lga_id: n.lga_id || ''
+                    }));
+                    data.edges = data.edges.map(edge => ({
+                        ...edge,
+                        source: String(edge.source || edge.from || '').trim(),
+                        target: String(edge.target || edge.to || '').trim(),
+                        relationship: edge.relationship || edge.label || 'CONNECTED_TO'
+                    }));
+                    data.types = data.types || serverData.types || {};
+
+                    serverData = data;
+
+                    showFunctions = false;
+                    const toggleElement = document.getElementById('toggleFunctions');
+                    if (toggleElement) toggleElement.checked = false;
+
+                    updateGraphView();
+                    renderGraph();
+                    populateDropdown();
+
+                    // Hide the Load JSON button if remote data is loaded successfully
+                    const btnLoadData = document.getElementById('btnLoadData');
+                    if (btnLoadData) btnLoadData.classList.add('hidden');
+                })
+                .catch(error => console.error('Error loading remote JSON:', error));
+            
+            // ----------------------------------------------------------------------------------
+        }
+
+        window.onload = initApp;
+    </script>
+</body>
+</html>
