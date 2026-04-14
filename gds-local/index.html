@@ -300,52 +300,32 @@
        LGAM - BUTTONS & BADGES
        ========================================================================== */
 
-    /* Upgraded Open/Close All Toggle Button */
     .lgam-show-all-button {
-      font-family: "GDS Transport", arial, sans-serif;
-      font-size: 16px; 
-      color: #1d70b8;
-      background: transparent;
-      border: none;
-      padding: 0;
-      margin-bottom: 0;
-      cursor: pointer;
-      text-decoration: none; 
-      display: inline-flex;
-      align-items: center; 
+      background-color: #ffffff !important; /* Makes the button pop against the grey layer background */
+      margin-bottom: 15px; /* Restores breathing room before the grid */
     }
 
     .lgam-show-all-button:hover {
-      color: #003078;
-      text-decoration: underline;
-      text-decoration-thickness: 3px; 
-      text-underline-offset: 0.1em;
+      background-color: #f8f8f8 !important; /* Subtle hover state for the white background */
     }
 
-    .lgam-show-all-button:focus {
-      outline: 3px solid #ffdd00;
-      outline-offset: 0;
-      background-color: #ffdd00;
-      color: #0b0c0c;
-      box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c; 
-      text-decoration: none;
-    }
-
-    /* GOV.UK style arrow icon for the toggle button */
+    /* GOV.UK style arrow icon integrated into the button */
     .lgam-show-all-button::before {
       content: "";
       display: inline-block;
+      vertical-align: middle; /* Restores proper vertical alignment without using flexbox */
+      position: relative;
+      top: -1px; /* Optical vertical centering with the button text */
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 5px 0 5px 8.7px;
+      border-width: 6px 0 6px 10.4px; /* Scaled up slightly for the larger button */
       border-color: transparent transparent transparent currentColor;
-      margin-right: 8px;
+      margin-right: 10px;
       transform-origin: 25% 50%;
       transition: transform 0.1s ease-out;
     }
 
-    /* Rotate arrow down when opened */
     .lgam-show-all-button[aria-expanded="true"]::before {
       transform: rotate(90deg);
     }
@@ -494,7 +474,8 @@
       <section id="architecture-model">
         <h2 class="govuk-heading-l">Architecture layers</h2>
         <div class="lgam-container">
-          <p class="govuk-body-l">A guide to the technology layers required to deliver local public services, designed to be used alongside the GDS Capability Model.</p>
+          <p class="govuk-body-l">The architecture model separates local government technology into 5 distinct layers.</p>
+          <p class="govuk-body">It maps the journey from how a user interacts with a service down to the back-office systems that run it. Use this guide alongside the GDS Capability Model to understand and plan your own technology stack.</p>
             
           <!-- CAPABILITY ARCHITECTURE NAVIGATION BLOCK -->
           <section class="capability-architecture" aria-labelledby="cap-arch-title">
@@ -511,9 +492,10 @@
           <!-- LAYER 1: PUBLIC CHANNELS -->
           <section class="lgam-layer lgam-layer--channels" id="public-channels"> 
             <strong class="lgam-badge badge--blue">Public Channels</strong>
-            <p class="govuk-body govuk-!-font-weight-bold">Public channels are how service users interact with councils. Government services are required to be delivered across as many channels as possible.</p>
+            <p class="govuk-body govuk-!-font-weight-bold">Public channels are how service users interact with councils, so government services are required to be delivered across as many channels as possible.</p>
+            <p>The Service Manual provides more information in <a class="govuk-link" href="https://www.gov.uk/service-manual/service-standard/point-3-join-up-across-channels">point 3: provide a joined up experience across all channels.</a></p>
             
-            <button type="button" class="lgam-show-all-button" aria-expanded="false">
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
               Open all <span class="govuk-visually-hidden">sections in Public Channels</span>
             </button>
 
@@ -586,7 +568,7 @@
             <strong class="lgam-badge badge--green">Council Agents</strong>
             <p class="govuk-body govuk-!-font-weight-bold">Agents are interfaces which allow service users to contact and use a council’s services.</p>
             
-            <button type="button" class="lgam-show-all-button" aria-expanded="false">
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
               Open all <span class="govuk-visually-hidden">sections in Council Agents</span>
             </button>
 
@@ -635,7 +617,7 @@
             <strong class="lgam-badge badge--teal">Capabilities</strong>
             <p class="govuk-body govuk-!-font-weight-bold">Capabilities are tools that council agents use to meet the needs of their service users.</p>
             
-            <button type="button" class="lgam-show-all-button" aria-expanded="false">
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
               Open all <span class="govuk-visually-hidden">sections in Capabilities</span>
             </button>
 
@@ -702,7 +684,7 @@
             <strong class="lgam-badge badge--orange">Business Areas</strong>
             <p class="govuk-body govuk-!-font-weight-bold">Business areas cover the specific functions each council must provide. Each area features individual technology components designed for a specific need.</p>
             
-            <button type="button" class="lgam-show-all-button" aria-expanded="false">
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
               Open all <span class="govuk-visually-hidden">sections in Business Areas</span>
             </button>
 
@@ -787,7 +769,7 @@
             <strong class="lgam-badge badge--grey">Corporate Areas</strong>
             <p class="govuk-body govuk-!-font-weight-bold">Corporate areas are business areas that are not specific to councils, each with their own individual technology components.</p>
             
-            <button type="button" class="lgam-show-all-button" aria-expanded="false">
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
               Open all <span class="govuk-visually-hidden">sections in Corporate Areas</span>
             </button>
 
