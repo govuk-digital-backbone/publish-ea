@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template govuk-template--rebranded">
+
+<head>
+  <meta charset="utf-8">
+  <title>Local Government Architecture Model - GOV.UK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1d70b8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.css">
+  <link rel="icon" sizes="48x48" href="https://gov.uk/assets/frontend/favicon-24f9fbe064118d58937932e73edafd1d50cb60f7bd84f52308382a309bc2d655.ico">
+  <style>
+    /* ==========================================================================
+       MAIN PRODUCT HEADER
+       Full Width Blue Banner
+       ========================================================================== */
+    .app-product-header {
+      background: #1d70b8;
+      padding: 40px 0;
+      margin-bottom: 0;
+    }
+
+    .app-product-header__title {
+      color: #fff;
+      font-family: "GDS Transport", arial, sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 1.1;
+      margin: 0 0 15px 0;
+    }
+
+    .app-product-header__description {
+      color: #fff;
+      font-family: "GDS Transport", arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       PAGE LAYOUT
+       Main content area with narrow sidebar
+       ========================================================================== */
+    .app-content-wrapper {
+      display: flex;
+      min-height: calc(100vh - 300px);
+    }
+
+    .app-sidebar {
+      background: #f3f2f1;
+      border-right: 1px solid #b1b4b6;
+      width: 180px;
+      min-width: 180px;
+      flex-shrink: 0;
+      padding: 20px 15px;
+      position: sticky;
+      top: 20px;
+      align-self: flex-start;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+
+    .app-main-content {
+      flex: 1;
+      padding: 30px 40px;
+      max-width: 960px;
+    }
+
+    /* ==========================================================================
+       SIDEBAR NAVIGATION
+       ========================================================================== */
+    .app-navigation {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app-navigation__item {
+      margin-bottom: 2px;
+    }
+
+    .app-navigation__link {
+      display: block;
+      padding: 5px 8px;
+      color: #1d70b8;
+      text-decoration: none;
+      font-size: 13px;
+      font-family: "GDS Transport", arial, sans-serif;
+      line-height: 1.3;
+    }
+
+    .app-navigation__link:hover {
+      background: #fff;
+      text-decoration: underline;
+    }
+
+    .app-navigation__link--active {
+      background: #1d70b8;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .app-navigation__heading {
+      font-family: "GDS Transport", arial, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      margin: 15px 0 6px 0;
+      padding: 0;
+      color: #0b0c0c;
+    }
+
+    .app-navigation__heading:first-child {
+      margin-top: 0;
+    }
+
+    /* ==========================================================================
+       TOP SERVICE NAVIGATION
+       ========================================================================== */
+    .app-service-nav {
+      background: #f3f2f1;
+      border-bottom: 1px solid #b1b4b6;
+    }
+
+    .app-service-nav__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .app-service-nav__link {
+      display: block;
+      padding: 15px 20px;
+      color: #1d70b8;
+      text-decoration: none;
+      font-family: "GDS Transport", arial, sans-serif;
+      font-size: 16px;
+    }
+
+    .app-service-nav__link:hover {
+      background: #fff;
+      text-decoration: underline;
+    }
+
+    .app-service-nav__link--active {
+      background: #fff;
+      font-weight: 700;
+      border-bottom: 4px solid #1d70b8;
+    }
+
+    .app-service-nav__item {
+      position: relative;
+    }
+
+    .app-service-nav__item--has-dropdown:hover .app-service-nav__dropdown {
+      display: block;
+    }
+
+    .app-service-nav__dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      border: 1px solid #b1b4b6;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      min-width: 280px;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .app-service-nav__dropdown-link {
+      display: block;
+      padding: 10px 15px;
+      color: #1d70b8;
+      text-decoration: none;
+      font-family: "GDS Transport", arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .app-service-nav__dropdown-link:hover {
+      background: #f3f2f1;
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       LGAM - CAPABILITY ARCHITECTURE OVERVIEW BARS
+       ========================================================================== */
+    .lgam-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0px 15px;
+      font-family: "GDS Transport", arial, sans-serif;
+    }
+
+    .capability-architecture {
+      margin: 40px 0 60px 0;
+    }
+
+    .cap-arch-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none; /* Added for semantic list accessibility */
+      padding: 0;
+      margin: 0;
+    }
+
+    .cap-arch-bar {
+      display: block;
+      text-decoration: none;
+      color: #ffffff !important;
+      font-weight: bold;
+      font-size: 24px;
+      padding: 25px;
+      text-align: center;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .cap-arch-bar:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .cap-arch-bar:active {
+      transform: translateY(0);
+    }
+
+    /* Note: Teal and Orange adjusted for WCAG 2.2 AA Contrast Compliance */
+    .bg-blue { background-color: #3b71b0; }
+    .bg-purple { background-color: #4c2d92; }
+    .bg-teal { background-color: #28a197; }
+    .bg-burnt-orange { background-color: #c94e2e; }
+    .bg-grey { background-color: #505a5f; }
+
+    /* ==========================================================================
+       LGAM - LAYER SECTIONS & GRIDS
+       ========================================================================== */
+    .lgam-layer {
+      border-left: 10px solid;
+      padding: 20px;
+      margin-bottom: 60px;
+      background: #f3f2f1;
+      scroll-margin-top: 30px;
+    }
+
+    /* Layer Border Colors */
+    .lgam-layer--channels { border-color: #1d70b8; }
+    .lgam-layer--agents { border-color: #4c2d92; }
+    .lgam-layer--capabilities { border-color: #28a197; }
+    .lgam-layer--business { border-color: #cf611c; }
+    .lgam-layer--corporate { border-color: #505a5f; }
+
+    .lgam-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+      list-style: none; /* Strip list styling for accessibility semantic lists */
+      padding: 0;
+    }
+
+    /* Interactive Grid Items (Cards) */
+    .lgam-item {
+      background: #ffffff;
+      padding: 10px;
+      border: 1px solid #b1b4b6;
+      position: relative; /* Context for click area */
+      transition: background-color 0.2s;
+    }
+
+    /* Card Interaction States */
+    .lgam-item:hover {
+      background-color: #f8f8f8;
+      cursor: pointer;
+    }
+
+    .lgam-item:focus-within {
+      background-color: #f3f2f1;
+      outline: 3px solid #ffdd00; /* Standard GOV.UK focus yellow */
+      outline-offset: 0;
+    }
+
+    /* Details Overrides */
+    .govuk-details {
+      margin-bottom: 0;
+    }
+
+    .govuk-details__summary-text {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .govuk-details__text {
+      cursor: text; /* Ensures text selection overrides pointer cursor on expanded text */
+    }
+
+    /* ==========================================================================
+       LGAM - BUTTONS & BADGES
+       ========================================================================== */
+
+    .lgam-show-all-button {
+      background-color: #ffffff !important; /* Makes the button pop against the grey layer background */
+      margin-bottom: 15px; /* Restores breathing room before the grid */
+    }
+
+    .lgam-show-all-button:hover {
+      background-color: #f8f8f8 !important; /* Subtle hover state for the white background */
+    }
+
+    /* GOV.UK style arrow icon integrated into the button */
+    .lgam-show-all-button::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle; /* Restores proper vertical alignment without using flexbox */
+      position: relative;
+      top: -1px; /* Optical vertical centering with the button text */
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 0 6px 10.4px; /* Scaled up slightly for the larger button */
+      border-color: transparent transparent transparent currentColor;
+      margin-right: 10px;
+      transform-origin: 25% 50%;
+      transition: transform 0.1s ease-out;
+    }
+
+    .lgam-show-all-button[aria-expanded="true"]::before {
+      transform: rotate(90deg);
+    }
+
+    .lgam-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .badge--blue { background: #1d70b8; }
+    .badge--green { background: #4c2d92; }
+    .badge--teal { background: #28a197; } 
+    .badge--orange { background: #cf611c; } 
+    .badge--grey { background: #505a5f; }
+
+    /* ==========================================================================
+       RESPONSIVE (MOBILE VIEW)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .app-product-header__title { font-size: 32px; }
+      .app-product-header__description { font-size: 18px; }
+      .app-content-wrapper { flex-direction: column; }
+      
+      .app-sidebar {
+        width: 100%;
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #b1b4b6;
+        position: static;
+        height: auto;
+        max-height: none;
+      }
+
+      .app-main-content { padding: 20px; }
+      .capability-row { flex-direction: column; gap: 8px; }
+      .capability-row .capability-block { font-size: 16px; }
+      .cap-arch-bar { font-size: 18px; padding: 15px; }
+      .lgam-grid { grid-template-columns: 1fr; }
+    }
+    /* ==========================================================================
+       CDN ASSET PATH OVERRIDES & FOOTER LOGO RESTORATION
+       ========================================================================== */
+       
+    /* Override the hardcoded /assets/ root paths applied to the ::before pseudo-element */
+    .govuk-footer__copyright-logo::before {
+      background-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important;
+    }
+
+    @supports ((-webkit-mask-position:initial) or (mask-position:initial)) {
+      .govuk-footer__copyright-logo::before {
+        -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important;
+        mask-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important;
+      }
+    }
+
+    @media (min-resolution: 2dppx) {
+      .govuk-footer__copyright-logo::before {
+        background-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest-2x.png") !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="govuk-template__body">
+  <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+  <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+  
+  <header class="govuk-header" data-module="govuk-header">
+    <div class="govuk-header__container govuk-width-container">
+      <div class="govuk-header__logo"> 
+        <a href="https://www.gov.uk" class="govuk-header__link govuk-header__link--homepage"> 
+          <svg focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 60" height="30" width="162" fill="currentcolor" class="govuk-header__logotype" aria-label="GOV.UK">
+            <title>GOV.UK</title>
+            <g>
+              <circle cx="20" cy="17.6" r="3.7" />
+              <circle cx="10.2" cy="23.5" r="3.7" />
+              <circle cx="3.7" cy="33.2" r="3.7" />
+              <circle cx="31.7" cy="30.6" r="3.7" />
+              <circle cx="43.3" cy="17.6" r="3.7" />
+              <circle cx="53.2" cy="23.5" r="3.7" />
+              <circle cx="59.7" cy="33.2" r="3.7" />
+              <circle cx="31.7" cy="30.6" r="3.7" />
+              <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z" />
+            </g>
+            <circle class="govuk-logo-dot" cx="226" cy="36" r="7.3" />
+            <path d="M93.94 41.25c.4 1.81 1.2 3.21 2.21 4.62 1 1.4 2.21 2.41 3.61 3.21s3.21 1.2 5.22 1.2 3.61-.4 4.82-1c1.4-.6 2.41-1.4 3.21-2.41.8-1 1.4-2.01 1.61-3.01s.4-2.01.4-3.01v.14h-10.86v-7.02h20.07v24.08h-8.03v-5.56c-.6.8-1.38 1.61-2.19 2.41-.8.8-1.81 1.2-2.81 1.81-1 .4-2.21.8-3.41 1.2s-2.41.4-3.81.4a18.56 18.56 0 0 1-14.65-6.63c-1.6-2.01-3.01-4.41-3.81-7.02s-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83a20.45 20.45 0 0 1 19.46-13.65c3.21 0 4.01.2 5.82.8 1.81.4 3.61 1.2 5.02 2.01 1.61.8 2.81 2.01 4.01 3.21s2.21 2.61 2.81 4.21l-7.63 4.41c-.4-1-1-1.81-1.61-2.61-.6-.8-1.4-1.4-2.21-2.01-.8-.6-1.81-1-2.81-1.4-1-.4-2.21-.4-3.61-.4-2.01 0-3.81.4-5.22 1.2-1.4.8-2.61 1.81-3.61 3.21s-1.61 2.81-2.21 4.62c-.4 1.81-.6 3.71-.6 5.42s.8 5.22.8 5.22Zm57.8-27.9c3.21 0 6.22.6 8.63 1.81 2.41 1.2 4.82 2.81 6.62 4.82S170.2 24.39 171 27s1.4 5.62 1.4 8.83-.4 6.02-1.4 8.83-2.41 5.02-4.01 7.02-4.01 3.61-6.62 4.82-5.42 1.81-8.63 1.81-6.22-.6-8.63-1.81-4.82-2.81-6.42-4.82-3.21-4.41-4.01-7.02-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83 2.41-5.02 4.01-7.02 4.01-3.61 6.42-4.82 5.42-1.81 8.63-1.81Zm0 36.73c1.81 0 3.61-.4 5.02-1s2.61-1.81 3.61-3.01 1.81-2.81 2.21-4.41c.4-1.81.8-3.61.8-5.62 0-2.21-.2-4.21-.8-6.02s-1.2-3.21-2.21-4.62c-1-1.2-2.21-2.21-3.61-3.01s-3.21-1-5.02-1-3.61.4-5.02 1c-1.4.8-2.61 1.81-3.61 3.01s-1.81 2.81-2.21 4.62c-.4 1.81-.8 3.61-.8 5.62 0 2.41.2 4.21.8 6.02.4 1.81 1.2 3.21 2.21 4.41s2.21 2.21 3.61 3.01c1.4.8 3.21 1 5.02 1Zm36.32 7.96-12.24-44.15h9.83l8.43 32.77h.4l8.23-32.77h9.83L200.3 58.04h-12.24Zm74.14-7.96c2.18 0 3.51-.6 3.51-.6 1.2-.6 2.01-1 2.81-1.81s1.4-1.81 1.81-2.81a13 13 0 0 0 .8-4.01V13.9h8.63v28.15c0 2.41-.4 4.62-1.4 6.62-.8 2.01-2.21 3.61-3.61 5.02s-3.41 2.41-5.62 3.21-4.62 1.2-7.02 1.2-5.02-.4-7.02-1.2c-2.21-.8-4.01-1.81-5.62-3.21s-2.81-3.01-3.61-5.02-1.4-4.21-1.4-6.62V13.9h8.63v26.95c0 1.61.2 3.01.8 4.01.4 1.2 1.2 2.21 2.01 2.81.8.8 1.81 1.4 2.81 1.81 0 0 1.34.6 3.51.6Zm34.22-36.18v18.92l15.65-18.92h10.82l-15.03 17.32 16.03 26.83h-10.21l-11.44-20.21-5.62 6.22v13.99h-8.83V13.9" />
+          </svg> 
+        </a> 
+      </div>
+      <div class="govuk-header__content"> 
+        <a href="index.html" class="govuk-header__link govuk-header__service-name">
+          Local Government Architecture Model 
+        </a> 
+      </div>
+    </div>
+  </header>
+
+  <nav class="app-service-nav">
+    <div class="govuk-width-container">
+      <ul class="app-service-nav__list">
+        <li><a class="app-service-nav__link app-service-nav__link--active" href="index.html">Documentation</a></li>
+        <li><a class="app-service-nav__link" href="mailto:gdslocal-info@dsit.gov.uk">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="govuk-width-container">
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content"> 
+        <strong class="govuk-tag govuk-phase-banner__content__tag"> Beta </strong> 
+        <span class="govuk-phase-banner__text"> This page is a Beta version and may change. Your <a class="govuk-link" href="mailto:gdslocal-info@dsit.gov.uk">feedback</a> will help us improve the content for future publication. </span> 
+      </p>
+    </div>
+  </div>
+
+  <div class="app-product-header">
+    <div class="govuk-width-container">
+      <h1 class="app-product-header__title">Local Government Architecture Model</h1>
+      <p class="app-product-header__description">A guide to the public technology layers that are used to deliver local public services</p>
+    </div>
+  </div>
+
+  <div class="app-content-wrapper">
+    <nav class="app-sidebar" aria-label="Documentation navigation">
+      <h2 class="app-navigation__heading">Contents</h2>
+      <ul class="app-navigation">
+        <li class="app-navigation__item"> <a class="app-navigation__link" href="#overview">Introduction</a> </li>
+        <li class="app-navigation__item"> <a class="app-navigation__link" href="#architecture-model">Architecture layers</a> </li>
+      </ul>
+      <h2 class="app-navigation__heading">Layers</h2>
+      <ul class="app-navigation">
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#public-channels">Public Channels</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#council-interfaces">Council Interfaces</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#capabilities">Capabilities</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#business-areas">Business Areas</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#corporate-areas">Corporate Areas</a></li>
+      </ul>
+    </nav>
+
+    <main class="app-main-content" id="main-content" role="main">
+      <section id="overview">
+        <h2 class="govuk-heading-l">Introduction</h2>
+        <p class="govuk-body"> The Local Government Architecture Model (LGAM) is designed to be a guide to the public technology layers that are used to deliver local public services. </p>
+        <p class="govuk-body">The LGAM is part of a wider vision for local government technology. It guides:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>the Government Digital Service (GDS) in building common products, including those for local government</li>
+          <li>government departments that build products and services for councils</li>
+          <li>councils who want to work with other local authorities on products and services</li>
+          <li>vendors who need to make common capabilities, patterns and dependencies more visible</li>
+        </ul>
+        <p class="govuk-body">The LGAM is a work in progress and will continue to evolve as we work alongside local government to refine it.</p>
+        <p class="govuk-body">For more information on how the LGAM was created, read our blogs on:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="https://technology.blog.gov.uk/2025/11/07/sourcing-the-stack-for-local-government-technology/" class="govuk-link">sourcing the stack for local government technology</a></li>
+          <li><a href="https://technology.blog.gov.uk/2026/02/05/understanding-technical-architecture-across-local-government/" class="govuk-link">an understanding of technical architecture in local government</a></li>
+          <li><a href="https://technology.blog.gov.uk/2026/04/14/publishing-a-common-architectural-model-for-local-government/" class="govuk-link">how we arrived at the first iteration of the model</a></li>
+        </ul>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="architecture-model">
+        <h2 class="govuk-heading-l">Architecture layers</h2>
+        <div class="lgam-container">
+          <p class="govuk-body-l">The architecture model separates public facing local government technology into 5 distinct layers.</p>
+          <p class="govuk-body">It maps the journey from how a user interacts with a service down to the back-office systems that run it.</p>
+           <p class="govuk-body">We will shortly be publishing a wider public sector capability model that covers areas such as integration, hosting, security and foundational technology, to help councils build a complete understanding of their technology stack and how its components fit together.</p>
+            
+          <!-- CAPABILITY ARCHITECTURE NAVIGATION BLOCK -->
+          <section class="capability-architecture" aria-labelledby="cap-arch-title">
+            <ul class="cap-arch-grid">
+              <li><a href="#public-channels" class="cap-arch-bar bg-blue">Public Channels</a></li>
+              <li><a href="#council-interfaces" class="cap-arch-bar bg-purple">Council Interfaces</a></li>
+              <li><a href="#capabilities" class="cap-arch-bar bg-teal">Capabilities</a></li>
+              <li><a href="#business-areas" class="cap-arch-bar bg-burnt-orange">Business Areas</a></li>
+              <li><a href="#corporate-areas" class="cap-arch-bar
+                bg-grey">Corporate Areas</a></li>
+            </ul>
+          </section>
+            
+          <!-- LAYER 1: PUBLIC CHANNELS -->
+          <section class="lgam-layer lgam-layer--channels" id="public-channels"> 
+            <strong class="lgam-badge badge--blue">Public Channels</strong>
+            <p class="govuk-body govuk-!-font-weight-bold">Public channels are how service users interact with councils.</p>
+            <p>The Service Manual provides more information in <a class="govuk-link" href="https://www.gov.uk/service-manual/service-standard/point-3-join-up-across-channels">point 3: provide a joined up experience across all channels.</a></p>
+            
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
+              Open all <span class="govuk-visually-hidden">sections in Public Channels</span>
+            </button>
+
+            <ul class="lgam-grid">
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">In person</span></summary>
+                  <div class="govuk-details__text">Face-to-face interactions at a council office, a user's home or business, or another physical location.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Phone</span></summary>
+                  <div class="govuk-details__text">Voice calls allowing users to speak directly with council staff for support, enquiries, or complex transactions.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Email</span></summary>
+                  <div class="govuk-details__text">Asynchronous written messages used for direct communication between users and the council.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Letter</span></summary>
+                  <div class="govuk-details__text">Physical postal mail used for formal notifications, legal correspondence, or providing a permanent physical record.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Online</span></summary>
+                  <div class="govuk-details__text">Websites, web portals, apps, and online forms enabling users to self-serve and access information digitally.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">SMS or text messaging</span></summary>
+                  <div class="govuk-details__text">Text-based messages used to provide quick updates, alerts, or appointment reminders.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Social media</span></summary>
+                  <div class="govuk-details__text">Social networking platforms used to broadcast information, answer queries, and engage with the community.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Smart devices</span></summary>
+                  <div class="govuk-details__text">Connected hardware (such as Internet of Things sensors or smart speakers) enabling automated or voice-activated interactions.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Third-party channels</span></summary>
+                  <div class="govuk-details__text">Indirect channels where users interact via a proxy, such as a local MP, an advocate, or local media.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Video</span></summary>
+                  <div class="govuk-details__text">Remote video calls enabling face-to-face conversations without the need to travel to a council building.</div>
+                </details>
+              </li>
+            </ul>
+          </section>
+
+          <!-- LAYER 2: COUNCIL INTERFACES -->
+          <section class="lgam-layer lgam-layer--agents" id="council-interfaces"> 
+            <strong class="lgam-badge badge--green">Council Interfaces</strong>
+            <p class="govuk-body govuk-!-font-weight-bold">Interfaces through which councils deliver services and information.</p>
+            
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
+              Open all <span class="govuk-visually-hidden">sections in Council Interfaces</span>
+            </button>
+
+            <ul class="lgam-grid">
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Apps</span></summary>
+                  <div class="govuk-details__text">Both native and cross-platform mobile applications providing dedicated services to citizens.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">API gateways</span></summary>
+                  <div class="govuk-details__text">Machine-to-machine interfaces handling third-party integrations and smart device inputs.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Automated phones</span></summary>
+                  <div class="govuk-details__text">Automated telephony systems, such as IVR and conversational voicebots.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Human</span></summary>
+                  <div class="govuk-details__text">Customer service representatives or specialist officers handling queries.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Public devices</span></summary>
+                  <div class="govuk-details__text">Publicly-accessible devices owned by the council, such as touch-screens in a library or Internet of Things sensors in a drain or bin.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Websites</span></summary>
+                  <div class="govuk-details__text">Primary council web portals, forms, webchat, and other digital content interfaces.</div>
+                </details>
+              </li>
+            </ul>
+          </section>
+
+          <!-- LAYER 3: CAPABILITIES -->
+          <section class="lgam-layer lgam-layer--capabilities" id="capabilities"> 
+            <strong class="lgam-badge badge--teal">Capabilities</strong>
+            <p class="govuk-body govuk-!-font-weight-bold">Capabilities used by council's interfaces to help them meet the needs of their service users.</p>
+            
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
+              Open all <span class="govuk-visually-hidden">sections in Capabilities</span>
+            </button>
+
+<ul class="lgam-grid">
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Agentic AI</span></summary>
+                  <div class="govuk-details__text">Autonomous AI agents capable of reasoning, executing multi-step tasks, and making routing decisions.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Booking systems</span></summary>
+                  <div class="govuk-details__text">Capabilities used to arrange and manage appointments or service slots, such as inspections and interviews with users.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Email</span></summary>
+                  <div class="govuk-details__text">
+                    <p class="govuk-body govuk-!-margin-bottom-2">Capabilities used to send and receive messages when dealing with users and both internal and external stakeholders.</p>
+                    <!-- <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Example platforms</h4>
+                    <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16 govuk-!-margin-bottom-0">
+                      <li><a href="#" class="govuk-link">GOV.UK Notify</a></li>
+                      <li><a href="#" class="govuk-link">GovDelivery (Granicus)</a></li>
+                      <li><a href="#" class="govuk-link">Mailchimp</a></li>
+                    </ul> -->
+                  </div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Forms</span></summary>
+                  <div class="govuk-details__text">Capabilities used to collect and check information provided by users, such as within applications, reports, and requests.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Identity</span></summary>
+                  <div class="govuk-details__text">
+                    <p class="govuk-body govuk-!-margin-bottom-2">Capabilities used to check and verify a user's identity.</p>
+                    <!-- <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Example platforms</h4>
+                    <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16 govuk-!-margin-bottom-0">
+                      <li><a href="#" class="govuk-link">GOV.UK One Login</a></li>
+                      <li><a href="#" class="govuk-link">Microsoft Entra ID</a></li>
+                    </ul> -->
+                  </div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Payments</span></summary>
+                  <div class="govuk-details__text">
+                    <p class="govuk-body govuk-!-margin-bottom-2">Tools used to take and track payments made by users for services such as paying council taxes, and getting licences and permits.</p>
+                    <!-- <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Example platforms</h4>
+                    <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16 govuk-!-margin-bottom-0">
+                      <li><a href="govuk-pay-councils.html" class="govuk-link">GOV.UK Pay</a></li>
+                      <li><a href="#" class="govuk-link">Capita Pay360</a></li>
+                      <li><a href="#" class="govuk-link">Heycentric</a></li>
+                    </ul> -->
+                  </div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">SMS</span></summary>
+                  <div class="govuk-details__text">
+                    <p class="govuk-body govuk-!-margin-bottom-2">Tools used to send and receive text messages for updates, reminders, and quick communications with users.</p>
+                    <!-- <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-2">Example platforms</h4>
+                    <ul class="govuk-list govuk-list--bullet govuk-!-font-size-16 govuk-!-margin-bottom-0">
+                      <li><a href="#" class="govuk-link">GOV.UK Notify</a></li>
+                      <li><a href="#" class="govuk-link">Twilio</a></li>
+                    </ul> -->
+                  </div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Telephony and fax</span></summary>
+                  <div class="govuk-details__text">Capabilities used to communicate or exchange information with users via voice calls or fax.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Workflow</span></summary>
+                  <div class="govuk-details__text">Capabilities used to manage and track users' requests, applications, or casework as the users move through different processing stages.</div>
+                </details>
+              </li>
+            </ul>
+          </section>
+
+          <!-- LAYER 4: BUSINESS AREAS -->
+          <section class="lgam-layer lgam-layer--business" id="business-areas"> 
+            <strong class="lgam-badge badge--orange">Business Areas</strong>
+            <p class="govuk-body govuk-!-font-weight-bold">Business areas cover the specific functions each council must provide. Each area features individual technology components designed for a specific need.</p>
+            <p>Councils may choose to categorise or group these services in different ways.</p>
+            
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
+              Open all <span class="govuk-visually-hidden">sections in Business Areas</span>
+            </button>
+
+            <ul class="lgam-grid">
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Adult social care</span></summary>
+                  <div class="govuk-details__text">The provision of support services for adults with physical or mental health needs, and their carers.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Childrens’ social care</span></summary>
+                  <div class="govuk-details__text">The provision of services, including child protection and safeguarding, family support, and care for looked-after children and care leavers.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Democratic services</span></summary>
+                  <div class="govuk-details__text">The management of elections, committee meetings, and support for elected councillors.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Education</span></summary>
+                  <div class="govuk-details__text">The management of school admissions, transport, special educational needs, and support for local educational settings.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Highways and transport</span></summary>
+                  <div class="govuk-details__text">The management of road maintenance, traffic, public transport planning, and parking.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Housing</span></summary>
+                  <div class="govuk-details__text">The management of social housing, repairs, and homelessness prevention.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Leisure and culture</span></summary>
+                  <div class="govuk-details__text">The operation of parks, libraries, museums, leisure centres, and community events.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Licensing and regulation</span></summary>
+                  <div class="govuk-details__text">The processing of alcohol, taxi, and trade licences, and environmental health enforcement.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Planning and development</span></summary>
+                  <div class="govuk-details__text">The processing of planning applications, building control, and local spatial planning.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Public health</span></summary>
+                  <div class="govuk-details__text">The provision of community health initiatives, sexual health services, and health protection.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Revenues and benefits</span></summary>
+                  <div class="govuk-details__text">The collection of council tax and business rates, and administration of housing benefit.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Waste management</span></summary>
+                  <div class="govuk-details__text">The management of kerbside collections, recycling, and the operation of household waste centres.</div>
+                </details>
+              </li>
+            </ul>
+          </section>
+
+          <!-- LAYER 5: CORPORATE AREAS -->
+          <section class="lgam-layer lgam-layer--corporate" id="corporate-areas"> 
+            <strong class="lgam-badge badge--grey">Corporate Areas</strong>
+            <p class="govuk-body govuk-!-font-weight-bold">Corporate areas are required functions not specific to councils, each with their own individual technology components.</p>
+            <p>Councils may choose to categorise or group these services in different ways.</p>
+            
+            <button type="button" class="govuk-button govuk-button--secondary lgam-show-all-button" data-module="govuk-button" aria-expanded="false">
+              Open all <span class="govuk-visually-hidden">sections in Corporate Areas</span>
+            </button>
+
+            <ul class="lgam-grid">
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Business planning and performance</span></summary>
+                  <div class="govuk-details__text">The administration of strategic planning, performance monitoring, and business intelligence.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Communications and PR</span></summary>
+                  <div class="govuk-details__text">The management of press relations, public campaigns, and omnichannel content publishing.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Corporate governance and risk</span></summary>
+                  <div class="govuk-details__text">The management of internal audits, risk, and constitutional compliance.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Customer relationship (B2C)</span></summary>
+                  <div class="govuk-details__text">The management of customer service centres and general resident engagement.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Facilities</span></summary>
+                  <div class="govuk-details__text">The maintenance and management of council-owned buildings and estates.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Financial</span></summary>
+                  <div class="govuk-details__text">The administration of accounting, treasury management, payroll, and budget setting.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Geographical</span></summary>
+                  <div class="govuk-details__text">The management of geographic identity system (GIS) data, mapping services, and gazetteers.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Legal and compliance</span></summary>
+                  <div class="govuk-details__text">The provision of legal advice, litigation services, and data protection (GDPR) compliance.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Human resources and workforce</span></summary>
+                  <div class="govuk-details__text">The management of recruitment, staff training, performance, and employee relations.</div>
+                </details>
+              </li>
+              <li class="lgam-item">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Procurement (B2B)</span></summary>
+                  <div class="govuk-details__text">The management of contracts, supply chains, and purchasing of goods and services.</div>
+                </details>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="govuk-footer">
+    <div class="govuk-width-container"> 
+      <svg focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 60" height="30" width="32" fill="currentcolor" class="govuk-footer__crown">
+        <g>
+          <circle cx="20" cy="17.6" r="3.7" />
+          <circle cx="10.2" cy="23.5" r="3.7" />
+          <circle cx="3.7" cy="33.2" r="3.7" />
+          <circle cx="31.7" cy="30.6" r="3.7" />
+          <circle cx="43.3" cy="17.6" r="3.7" />
+          <circle cx="53.2" cy="23.5" r="3.7" />
+          <circle cx="59.7" cy="33.2" r="3.7" />
+          <circle cx="31.7" cy="30.6" r="3.7" />
+          <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z" />
+        </g>
+      </svg>
+      <div class="govuk-footer__meta">
+        <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <h2 class="govuk-visually-hidden">Support links</h2>
+          <ul class="govuk-footer__inline-list">
+            <!--<li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Help</a></li>
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Cookies</a></li>-->
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="mailto:gdslocal-info@dsit.gov.uk">Contact</a></li>
+            <!--<li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Terms and conditions</a></li>-->
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="https://www.gov.uk/help/accessibility-statement">Accessibility statement</a></li>
+          </ul> 
+          <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483.2 195.7" height="17" width="41">
+            <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145" />
+          </svg> 
+          <span class="govuk-footer__licence-description"> All content is available under the <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated </span>
+        </div>
+        <div class="govuk-footer__meta-item"> 
+          <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"> © Crown copyright </a> 
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">import { initAll } from 'https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.js'; initAll();</script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      const layers = document.querySelectorAll('.lgam-layer');
+
+      layers.forEach(layer => {
+        const showAllBtn = layer.querySelector('.lgam-show-all-button');
+        const grid = layer.querySelector('.lgam-grid');
+        if (!showAllBtn || !grid) return;
+
+        const detailsElements = grid.querySelectorAll('details');
+
+        // Store the visually hidden span so we don't accidentally delete it
+        const hiddenSpan = showAllBtn.querySelector('.govuk-visually-hidden');
+        const hiddenTextHtml = hiddenSpan ? ' ' + hiddenSpan.outerHTML : '';
+
+        // --- FUNCTION: Update Button Text & Aria State ---
+        const updateButtonState = () => {
+          const allOpen = Array.from(detailsElements).every(d => d.hasAttribute('open'));
+          showAllBtn.setAttribute('aria-expanded', allOpen);
+          showAllBtn.innerHTML = (allOpen ? 'Close all' : 'Open all') + hiddenTextHtml;
+        };
+
+        // --- LOGIC 1: The "Open all" Button ---
+        showAllBtn.addEventListener('click', () => {
+          const isOpening = showAllBtn.getAttribute('aria-expanded') !== 'true';
+          
+          detailsElements.forEach(details => {
+            if (isOpening) {
+              details.setAttribute('open', '');
+            } else {
+              details.removeAttribute('open');
+            }
+          });
+          updateButtonState();
+        });
+
+        // --- LOGIC 2: Click anywhere in the container ---
+        const items = grid.querySelectorAll('.lgam-item');
+        items.forEach(item => {
+          item.addEventListener('click', (e) => {
+            if (e.target.closest('.govuk-details__text') || e.target.closest('.govuk-details__summary')) {
+              return;
+            }
+            const summary = item.querySelector('summary');
+            if (summary) summary.click();
+          });
+        });
+
+        // --- LOGIC 3: Sync button if items are clicked individually ---
+        grid.addEventListener('click', (e) => {
+          if (e.target.closest('summary')) {
+            setTimeout(updateButtonState, 10);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
