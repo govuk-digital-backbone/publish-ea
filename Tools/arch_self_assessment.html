@@ -2,6 +2,7 @@
 <html lang="en" class="govuk-template govuk-template--rebranded">
 <head>
 <meta charset="utf-8">
+
 <title>Architecture maturity self-assessment - OCTO Architecture resources - GOV.UK</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1d70b8">
@@ -157,6 +158,9 @@
     .app-noprint { display: none !important; }
     .app-plan { break-inside: avoid; }
     .app-plan .app-plan__body { display: block !important; }
+    /* Ensure any disclosure content is shown on paper even if the
+       browser hasn't reflowed a details element as "open" yet. */
+    details .govuk-details__text { display: block !important; }
     body { font-size: 12pt; }
     .app-product-header { padding: 20px 0; }
   }
@@ -379,7 +383,7 @@ function renderSidebar(){
       <h2 class="app-navigation__heading">14 dimensions</h2>
       <ul class="app-navigation__list">${dimLinks}</ul>
 
-      <h2 class="app-navigation__heading">Other OCTO resources</h2>
+      <h2 class="app-navigation__heading">Other Useful resources</h2>
       <ul class="app-navigation__list">
         <li class="app-navigation__item"><a class="app-navigation__link" href="https://architecture.cddo.cabinetoffice.gov.uk/digital-capability-model/" target="_blank" rel="noreferrer">Digital technology capability model</a></li>
         <li class="app-navigation__item"><a class="app-navigation__link" href="https://architecture.cddo.cabinetoffice.gov.uk/citizen-facing-architecture/" target="_blank" rel="noreferrer">Citizen facing architecture</a></li>
@@ -433,7 +437,7 @@ function renderOrgType(){
               <p class="govuk-notification-banner__heading">
                 We do not ask for your name and you do not need to identify yourself or your team to complete it.
               </p>
-              <p class="govuk-body">Your organisation type is not linked to any personal details. Your answers stay in your browser unless you choose to share them, and even then only your organisation type and scores are used — to improve the tool and its supporting guidance.</p>
+              <p class="govuk-body">This assessment is anonymous. We collect aggregated data on organisation type and scores to identify common areas for improvement and to shape guidance and support from the centre. This data cannot be used to identify you, your team or any individual.</p>
             </div>
           </div>
 
@@ -731,7 +735,7 @@ function renderResults(){
             <button class="govuk-button govuk-button--secondary" onclick="window.print()" data-module="govuk-button">Print or save as PDF</button>
             <button class="govuk-button govuk-button--secondary" onclick="emailResults()" data-module="govuk-button">Prepare email</button>
           </div>
-          <div class="govuk-inset-text">Exports include your action steps and links. The email button opens your own mail app with a summary pre-filled.</div>
+          <div class="govuk-inset-text">Exports include your full action steps, standards and notes for every dimension. The email button opens your own mail app with the complete summary pre-filled.</div>
           <button class="govuk-button govuk-button--secondary" onclick="state.phase='assess';state.step=0;window.scrollTo(0,0);render()" data-module="govuk-button">Review answers</button>
           <button class="govuk-button govuk-button--secondary" onclick="restart()" data-module="govuk-button">Start again</button>
         </div>
@@ -781,12 +785,61 @@ function dlJSON(){
   download("maturity-action-plan.json",JSON.stringify({organisationType:orgTypeLabel(),org:state.org,date:new Date().toISOString(),results:detail},null,2),"application/json");
 }
 function emailResults(){
-  const prio = DIMENSIONS.filter(d=>state.priority[d.id] && state.current[d.id]>0 && state.target[d.id]>0);
-  let body=`Architecture Maturity Self-Assessment\nOrganisation type: ${orgTypeLabel()}\nOrganisation / team: ${state.org}\nDate: ${new Date().toLocaleDateString()}\n\nSCORES\n`+
-    rows().map(r=>`${r.priority?"[PRIORITY] ":""}${r.dimension}: ${r.current||"n/a"}/5 -> ${r.target||"n/a"}/5 (gap ${r.gap})`).join("\n");
-  if(prio.length){ body+="\n\nPRIORITY NEXT ACTIONS\n"+prio.map(d=>{ const s=journeySteps(d,state.current[d.id],state.target[d.id])[0]; return `- ${d.name}: ${s?s.text:"at target — hold and refine"}`; }).join("\n"); }
-  const to=state.email?encodeURIComponent(state.email):"";
-  window.location.href=`mailto:${to}?subject=${encodeURIComponent("Maturity Action Plan — "+(state.org||"results"))}&body=${encodeURIComponent(body)}`;
+  const scored = DIMENSIONS.filter(d=>state.current[d.id]>0 && state.target[d.id]>0);
+  const avg=(key)=> scored.length? (scored.reduce((a,d)=>a+state[key][d.id],0)/scored.length).toFixed(1) : "n/a";
+
+  // Header / metadata (mirrors the CSV meta block)
+  let body =
+    `ARCHITECTURE MATURITY SELF-ASSESSMENT\n`+
+    `=====================================\n`+
+    `Organisation type: ${orgTypeLabel()}\n`+
+    `Organisation / team: ${state.org||"(not given)"}\n`+
+    `Date: ${new Date().toLocaleDateString()}\n`+
+    `Overall current maturity: ${avg("current")}/5\n`+
+    `Overall target maturity: ${avg("target")}/5\n`;
+
+  // Full detail for every dimension — all the same fields as the CSV export,
+  // plus the complete list of action steps (not just the immediate next one).
+  body += `\nDETAILED RESULTS AND ACTION PLAN\n================================\n`;
+  DIMENSIONS.forEach(d=>{
+    const c=state.current[d.id], t=state.target[d.id];
+    const assessed = c>0 && t>0;
+    const isPrio = !!state.priority[d.id];
+    body += `\n${isPrio?"[PRIORITY] ":""}${d.name}\n`;
+    body += `  Focus: ${d.focus}\n`;
+    if(!assessed){
+      body += `  Status: Not assessed (marked not applicable or incomplete)\n`;
+    } else {
+      const gap = t-c;
+      body += `  Current: ${LEVELS[c-1]} (${c}/5)\n`;
+      body += `  Target:  ${LEVELS[t-1]} (${t}/5)\n`;
+      body += `  Gap:     ${gap<=0?"On target":"+"+gap}\n`;
+      const steps = journeySteps(d,c,t);
+      if(gap>0 && steps.length){
+        body += `  What to do to get there:\n`;
+        steps.forEach(s=>{ body += `    - Reach ${LEVELS[s.level-1]} (level ${s.level}): ${s.text.replace(/\n/g," ")}\n`; });
+      } else if(gap<=0){
+        body += `  What to do: Already at target — hold this and keep refining.\n`;
+      }
+    }
+    body += `  Standards & guides:\n`;
+    d.links.forEach(l=>{ body += `    - ${l.title}: ${l.url}\n`; });
+    const note = state.notes[d.id];
+    if(note){ body += `  Notes: ${note.replace(/\n/g," ")}\n`; }
+  });
+
+  body += `\n---\nGenerated by the OCTO Architecture maturity self-assessment tool.\n`;
+
+  const to = state.email ? encodeURIComponent(state.email) : "";
+  const subject = encodeURIComponent("Architecture Maturity Action Plan — "+(state.org||"results"));
+
+  // Some browsers / mail clients truncate very long mailto bodies. Warn the
+  // user if the assembled body is unusually large and suggest CSV/JSON instead.
+  if(body.length > 1800){
+    console.warn("Email body is long ("+body.length+" chars) — some mail clients may truncate it. Use Download CSV/JSON for the complete record.");
+  }
+
+  window.location.href = `mailto:${to}?subject=${subject}&body=${encodeURIComponent(body)}`;
 }
 
 /* Anonymous central submission — only sends org type + numeric scores. */
@@ -805,6 +858,35 @@ function submitResults(){
   fetch(SUBMIT_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
     .then(r=>{ if(!r.ok) throw new Error(r.status); if(status) status.innerHTML='<strong style="color:#00703c">Thank you — your anonymous results were submitted.</strong>'; const b=document.getElementById("submitBtn"); if(b) b.disabled=true; })
     .catch(()=>{ if(status) status.innerHTML='<strong style="color:#942514">Sorry, submission failed.</strong> You can still download or print your results.'; });
+}
+
+/* ------------------------------------------------------------------
+   Print handling: open every collapsed disclosure (action-plan cards
+   and any govuk-details) before printing so nothing is hidden on the
+   printout, then restore the original open/closed state afterwards.
+   This fires for both the "Print" button (window.print()) and the
+   browser's own print command (e.g. Ctrl/Cmd+P).
+------------------------------------------------------------------ */
+function openAllDetailsForPrint(){
+  document.querySelectorAll("details").forEach(d=>{
+    if(!d.open){ d.setAttribute("data-was-closed","1"); d.open = true; }
+  });
+}
+function restoreDetailsAfterPrint(){
+  document.querySelectorAll("details[data-was-closed='1']").forEach(d=>{
+    d.open = false;
+    d.removeAttribute("data-was-closed");
+  });
+}
+window.addEventListener("beforeprint", openAllDetailsForPrint);
+window.addEventListener("afterprint", restoreDetailsAfterPrint);
+/* Fallback for browsers that don't fire before/afterprint but do support
+   matchMedia print change events (older Safari behaviour). */
+if(window.matchMedia){
+  const mql = window.matchMedia("print");
+  const handler = (e)=>{ if(e.matches) openAllDetailsForPrint(); else restoreDetailsAfterPrint(); };
+  if(mql.addEventListener) mql.addEventListener("change", handler);
+  else if(mql.addListener) mql.addListener(handler);
 }
 
 function restart(){ state.phase="orgtype"; state.step=0; state.current={}; state.target={}; state.notes={}; state.priority={}; state.org=""; state.email=""; state.orgType=""; state.orgTypeOther=""; window.scrollTo(0,0); render(); }
