@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template govuk-template--rebranded">
+<head>
+<meta charset="utf-8">
+<title>Enterprise Architecture Principles - OCTO Architecture resources - GOV.UK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1d70b8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/govuk-frontend.min.css">
+<style>
+  /* -------------------------------------------------------------
+     Page-level styles that extend GOV.UK Frontend to match the
+     OCTO Architecture resources site (architecture.cddo.cabinetoffice.gov.uk).
+     ------------------------------------------------------------- */
+
+  /* Blue product header banner (as used across OCTO pages) */
+  .app-product-header { background: #1d70b8; padding: 40px 0; margin-bottom: 0; }
+  .app-product-header__title { color: #fff; font-family: "GDS Transport", arial, sans-serif; font-weight: 700; line-height: 1.1; font-size: 48px; margin: 0 0 15px 0; }
+  .app-product-header__description { color: #fff; font-family: "GDS Transport", arial, sans-serif; font-size: 24px; line-height: 1.3; margin: 0; }
+  @media (max-width: 768px){
+    .app-product-header { padding: 25px 0; }
+    .app-product-header__title { font-size: 32px; }
+    .app-product-header__description { font-size: 18px; }
+  }
+
+  /* Service navigation strip under the header (Home / Support / Contact) */
+  .app-service-nav { border-bottom: 1px solid #b1b4b6; background: #fff; }
+  .app-service-nav__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+  .app-service-nav__item { margin: 0; }
+  .app-service-nav__link { display: block; padding: 15px 20px; color: #1d70b8; text-decoration: none; font-family: "GDS Transport", arial, sans-serif; font-weight: 700; }
+  .app-service-nav__link:hover { text-decoration: underline; }
+  .app-service-nav__link--active { color: #0b0c0c; border-bottom: 4px solid #1d70b8; }
+
+  /* Utility spacing to keep content off the browser edges below product header */
+  main.govuk-main-wrapper { padding-top: 30px; padding-bottom: 40px; }
+
+  /* ------------------------------------------------------------------
+     Left sidebar navigation (mirrors the Digital Capability Model page).
+     Two-column layout: 220px sidebar + main content.
+     Collapses to a single column below 769px.
+     ------------------------------------------------------------------ */
+  .app-content-wrapper { display: flex; align-items: stretch; }
+  .app-sidebar {
+    background: #f3f2f1;
+    border-right: 1px solid #b1b4b6;
+    width: 220px;
+    min-width: 220px;
+    padding: 20px 15px;
+  }
+  .app-main-content { flex: 1; padding: 20px 25px; min-width: 0; }
+  .app-navigation__heading {
+    font-family: "GDS Transport", arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #505a5f;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin: 18px 0 6px;
+    padding: 0 8px;
+  }
+  .app-navigation__heading:first-child { margin-top: 0; }
+  .app-navigation__list { list-style: none; margin: 0 0 10px; padding: 0; }
+  .app-navigation__item { margin-bottom: 2px; }
+  .app-navigation__link {
+    display: block;
+    padding: 6px 8px;
+    color: #1d70b8;
+    text-decoration: none;
+    font-family: "GDS Transport", arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+  }
+  .app-navigation__link:hover { background: #fff; text-decoration: underline; }
+  .app-navigation__link--active {
+    background: #1d70b8;
+    color: #fff;
+    font-weight: 700;
+    border-left-color: #003078;
+  }
+  .app-navigation__link--active:hover { background: #003078; color: #fff; text-decoration: none; }
+
+  @media (max-width: 768px){
+    .app-content-wrapper { flex-direction: column; }
+    .app-sidebar {
+      width: 100%;
+      min-width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #b1b4b6;
+    }
+    .app-main-content { padding: 20px 15px; }
+  }
+
+  /* Sticky sidebar on wider screens so it follows the reader */
+  @media (min-width: 769px){
+    .app-sidebar { position: sticky; top: 0; align-self: flex-start; max-height: 100vh; overflow-y: auto; }
+  }
+
+  /* Principle blocks */
+  .app-principle { padding-top: 20px; margin-bottom: 10px; border-top: 2px solid #d2e2f1; scroll-margin-top: 20px; }
+  .app-principle__statement { font-weight: 700; }
+
+  /* Strategic-direction cards on the intro */
+  .app-cards { display: grid; grid-template-columns: 1fr; gap: 15px; margin: 20px 0; }
+  @media (min-width: 641px){ .app-cards { grid-template-columns: 1fr 1fr; } }
+  .app-card { border: 1px solid #b1b4b6; border-left: 10px solid #1d70b8; background: #fff; padding: 15px 15px 5px; }
+  .app-card h3 { margin-top: 0; }
+
+  @media print {
+    .app-noprint { display: none !important; }
+    .app-sidebar { display: none; }
+    .app-main-content { padding: 0; }
+    body { font-size: 12pt; }
+    .app-product-header { padding: 20px 0; }
+    .app-principle { break-inside: avoid; }
+  }
+</style>
+</head>
+<body class="govuk-template__body">
+<script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+<!-- GOV.UK header (rebranded) -->
+<header class="govuk-header" data-module="govuk-header">
+  <div class="govuk-header__container govuk-width-container">
+    <div class="govuk-header__logo">
+      <a href="https://architecture.cddo.cabinetoffice.gov.uk/" class="govuk-header__link govuk-header__link--homepage">
+        <svg focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 60" height="30" width="162" fill="currentcolor" class="govuk-header__logotype" aria-label="GOV.UK">
+          <title>GOV.UK</title>
+          <g>
+            <circle cx="20" cy="17.6" r="3.7"/>
+            <circle cx="10.2" cy="23.5" r="3.7"/>
+            <circle cx="3.7" cy="33.2" r="3.7"/>
+            <circle cx="31.7" cy="30.6" r="3.7"/>
+            <circle cx="43.3" cy="17.6" r="3.7"/>
+            <circle cx="53.2" cy="23.5" r="3.7"/>
+            <circle cx="59.7" cy="33.2" r="3.7"/>
+            <circle cx="31.7" cy="30.6" r="3.7"/>
+            <path d="M33.1,9.8c.2-.1.3-.3.5-.5l4.6,2.4v-6.8l-4.6,1.5c-.1-.2-.3-.3-.5-.5l1.9-5.9h-6.7l1.9,5.9c-.2.1-.3.3-.5.5l-4.6-1.5v6.8l4.6-2.4c.1.2.3.3.5.5l-2.6,8c-.9,2.8,1.2,5.7,4.1,5.7h0c3,0,5.1-2.9,4.1-5.7l-2.6-8ZM37,37.9s-3.4,3.8-4.1,6.1c2.2,0,4.2-.5,6.4-2.8l-.7,8.5c-2-2.8-4.4-4.1-5.7-3.8.1,3.1.5,6.7,5.8,7.2,3.7.3,6.7-1.5,7-3.8.4-2.6-2-4.3-3.7-1.6-1.4-4.5,2.4-6.1,4.9-3.2-1.9-4.5-1.8-7.7,2.4-10.9,3,4,2.6,7.3-1.2,11.1,2.4-1.3,6.2,0,4,4.6-1.2-2.8-3.7-2.2-4.2.2-.3,1.7.7,3.7,3,4.2,1.9.3,4.7-.9,7-5.9-1.3,0-2.4.7-3.9,1.7l2.4-8c.6,2.3,1.4,3.7,2.2,4.5.6-1.6.5-2.8,0-5.3l5,1.8c-2.6,3.6-5.2,8.7-7.3,17.5-7.4-1.1-15.7-1.7-24.5-1.7h0c-8.8,0-17.1.6-24.5,1.7-2.1-8.9-4.7-13.9-7.3-17.5l5-1.8c-.5,2.5-.6,3.7,0,5.3.8-.8,1.6-2.3,2.2-4.5l2.4,8c-1.5-1-2.6-1.7-3.9-1.7,2.3,5,5.2,6.2,7,5.9,2.3-.4,3.3-2.4,3-4.2-.5-2.4-3-3.1-4.2-.2-2.2-4.6,1.6-6,4-4.6-3.7-3.7-4.2-7.1-1.2-11.1,4.2,3.2,4.3,6.4,2.4,10.9,2.5-2.8,6.3-1.3,4.9,3.2-1.8-2.7-4.1-1-3.7,1.6.3,2.3,3.3,4.1,7,3.8,5.4-.5,5.7-4.2,5.8-7.2-1.3-.2-3.7,1-5.7,3.8l-.7-8.5c2.2,2.3,4.2,2.7,6.4,2.8-.7-2.3-4.1-6.1-4.1-6.1h10.6,0Z"/>
+          </g>
+          <circle class="govuk-logo-dot" cx="226" cy="36" r="7.3"/>
+          <path d="M93.94 41.25c.4 1.81 1.2 3.21 2.21 4.62 1 1.4 2.21 2.41 3.61 3.21s3.21 1.2 5.22 1.2 3.61-.4 4.82-1c1.4-.6 2.41-1.4 3.21-2.41.8-1 1.4-2.01 1.61-3.01s.4-2.01.4-3.01v.14h-10.86v-7.02h20.07v24.08h-8.03v-5.56c-.6.8-1.38 1.61-2.19 2.41-.8.8-1.81 1.2-2.81 1.81-1 .4-2.21.8-3.41 1.2s-2.41.4-3.81.4a18.56 18.56 0 0 1-14.65-6.63c-1.6-2.01-3.01-4.41-3.81-7.02s-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83a20.45 20.45 0 0 1 19.46-13.65c3.21 0 4.01.2 5.82.8 1.81.4 3.61 1.2 5.02 2.01 1.61.8 2.81 2.01 4.01 3.21s2.21 2.61 2.81 4.21l-7.63 4.41c-.4-1-1-1.81-1.61-2.61-.6-.8-1.4-1.4-2.21-2.01-.8-.6-1.81-1-2.81-1.4-1-.4-2.21-.4-3.61-.4-2.01 0-3.81.4-5.22 1.2-1.4.8-2.61 1.81-3.61 3.21s-1.61 2.81-2.21 4.62c-.4 1.81-.6 3.71-.6 5.42s.8 5.22.8 5.22Zm57.8-27.9c3.21 0 6.22.6 8.63 1.81 2.41 1.2 4.82 2.81 6.62 4.82S170.2 24.39 171 27s1.4 5.62 1.4 8.83-.4 6.02-1.4 8.83-2.41 5.02-4.01 7.02-4.01 3.61-6.62 4.82-5.42 1.81-8.63 1.81-6.22-.6-8.63-1.81-4.82-2.81-6.42-4.82-3.21-4.41-4.01-7.02-1.4-5.62-1.4-8.83.4-6.02 1.4-8.83 2.41-5.02 4.01-7.02 4.01-3.61 6.42-4.82 5.42-1.81 8.63-1.81Zm0 36.73c1.81 0 3.61-.4 5.02-1s2.61-1.81 3.61-3.01 1.81-2.81 2.21-4.41c.4-1.81.8-3.61.8-5.62 0-2.21-.2-4.21-.8-6.02s-1.2-3.21-2.21-4.62c-1-1.2-2.21-2.21-3.61-3.01s-3.21-1-5.02-1-3.61.4-5.02 1c-1.4.8-2.61 1.81-3.61 3.01s-1.81 2.81-2.21 4.62c-.4 1.81-.8 3.61-.8 5.62 0 2.41.2 4.21.8 6.02.4 1.81 1.2 3.21 2.21 4.41s2.21 2.21 3.61 3.01c1.4.8 3.21 1 5.02 1Zm36.32 7.96-12.24-44.15h9.83l8.43 32.77h.4l8.23-32.77h9.83L200.3 58.04h-12.24Zm74.14-7.96c2.18 0 3.51-.6 3.51-.6 1.2-.6 2.01-1 2.81-1.81s1.4-1.81 1.81-2.81a13 13 0 0 0 .8-4.01V13.9h8.63v28.15c0 2.41-.4 4.62-1.4 6.62-.8 2.01-2.21 3.61-3.61 5.02s-3.41 2.41-5.62 3.21-4.62 1.2-7.02 1.2-5.02-.4-7.02-1.2c-2.21-.8-4.01-1.81-5.62-3.21s-2.81-3.01-3.61-5.02-1.4-4.21-1.4-6.62V13.9h8.63v26.95c0 1.61.2 3.01.8 4.01.4 1.2 1.2 2.21 2.01 2.81.8.8 1.81 1.4 2.81 1.81 0 0 1.34.6 3.51.6Zm34.22-36.18v18.92l15.65-18.92h10.82l-15.03 17.32 16.03 26.83h-10.21l-11.44-20.21-5.62 6.22v13.99h-8.83V13.9"/>
+        </svg>
+      </a>
+    </div>
+    <div class="govuk-header__content">
+      <a href="https://architecture.cddo.cabinetoffice.gov.uk/" class="govuk-header__link govuk-header__service-name">
+        OCTO Enterprise Architecture
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Service navigation strip (matches OCTO site pattern) -->
+<nav class="app-service-nav app-noprint" aria-label="Service">
+  <div class="govuk-width-container">
+    <ul class="app-service-nav__list">
+      <li class="app-service-nav__item"><a class="app-service-nav__link" href="https://architecture.cddo.cabinetoffice.gov.uk/">Home</a></li>
+      <li class="app-service-nav__item"><a class="app-service-nav__link app-service-nav__link--active" href="#">Enterprise Architecture Principles</a></li>
+      <li class="app-service-nav__item"><a class="app-service-nav__link" href="#">Support</a></li>
+      <li class="app-service-nav__item"><a class="app-service-nav__link" href="#">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="govuk-width-container app-noprint">
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">Alpha</strong>
+      <span class="govuk-phase-banner__text">
+        This page is an Alpha version and is not an official GOV.UK page. It should only be used in the context of developing the content for future publication.
+      </span>
+    </p>
+  </div>
+</div>
+
+<!-- Blue product header block (matches OCTO pages) -->
+<div class="app-product-header">
+  <div class="govuk-width-container">
+    <h1 class="app-product-header__title">Enterprise Architecture Principles</h1>
+    <p class="app-product-header__description">Ten enduring principles to guide how UK government designs, invests in, assures and evolves its digital, data and technology capabilities.</p>
+  </div>
+</div>
+
+<main id="main-content" role="main">
+  <div class="app-content-wrapper">
+
+    <!-- Left sidebar (contextual navigation) -->
+    <aside class="app-sidebar app-noprint" aria-label="Contents">
+      <h2 class="app-navigation__heading">This page</h2>
+      <ul class="app-navigation__list">
+        <li class="app-navigation__item"><a class="app-navigation__link app-navigation__link--active" href="#about">About these principles</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#how-to-use">How to use them</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#mandatory-standards">Relationship to standards</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#contribute">Contribute and feedback</a></li>
+      </ul>
+
+      <h2 class="app-navigation__heading">The ten principles</h2>
+      <ul class="app-navigation__list">
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p1">1. Create measurable public value</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p2">2. Design around users and outcomes</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p3">3. Know your estate</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p4">4. Reuse, share and connect</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p5">5. Data as national infrastructure</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p6">6. Be open and transparent</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p7">7. Secure and resilient by design</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p8">8. Retain sovereignty and control</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p9">9. AI-ready and agent-ready</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p10">10. Govern, assure and improve</a></li>
+      </ul>
+
+      <h2 class="app-navigation__heading">Other useful resources</h2>
+      <ul class="app-navigation__list">
+        <li class="app-navigation__item"><a class="app-navigation__link" href="https://architecture.cddo.cabinetoffice.gov.uk/digital-capability-model/" target="_blank" rel="noreferrer">Digital technology capability model</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="https://architecture.cddo.cabinetoffice.gov.uk/citizen-facing-architecture/" target="_blank" rel="noreferrer">Citizen facing architecture</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="https://architecture.cddo.cabinetoffice.gov.uk/gds-local-architecture/" target="_blank" rel="noreferrer">GDS-Local architecture</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="https://architecture.cddo.cabinetoffice.gov.uk/ai-technology-enablement/" target="_blank" rel="noreferrer">AI Technology Enablement</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main content -->
+    <div class="app-main-content">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h2 class="govuk-heading-l" id="about">About these principles</h2>
+          <p class="govuk-body">Enterprise architecture principles are general rules and guidelines that inform and support decisions on how government should design and deliver services, to align with its vision and objectives. They are intended to be enduring and seldom amended. They reflect a level of consensus across the enterprise and embody the spirit and thinking of the architecture.</p>
+          <p class="govuk-body">Discovery, user research and requirements gathering provide user needs, which inform what a service does. These principles provide guidance on <em>how</em> services should be architected to meet those needs. They should be applied alongside the <a class="govuk-link" href="https://www.gov.uk/service-manual/service-standard">UK Government Service Standard</a> and the <a class="govuk-link" href="https://www.gov.uk/guidance/the-technology-code-of-practice">Technology Code of Practice</a>.</p>
+          <p class="govuk-body">They are deliberately designed to support four strategic directions:</p>
+
+          <div class="app-cards">
+            <div class="app-card">
+              <h3 class="govuk-heading-s">Firmer foundations</h3>
+              <p class="govuk-body-s">Reducing fragility, inconsistency and duplication across the government estate.</p>
+            </div>
+            <div class="app-card">
+              <h3 class="govuk-heading-s">Legacy remediation</h3>
+              <p class="govuk-body-s">Actively containing, replacing and retiring legacy systems and technical debt.</p>
+            </div>
+            <div class="app-card">
+              <h3 class="govuk-heading-s">Digital Public Infrastructure</h3>
+              <p class="govuk-body-s">Creating shared, reusable capabilities such as identity, notifications, payments, exchange and registers.</p>
+            </div>
+            <div class="app-card">
+              <h3 class="govuk-heading-s">Sovereignty and AI-readiness</h3>
+              <p class="govuk-body-s">Retaining strategic control and enabling responsible adoption of AI and agentic services.</p>
+            </div>
+          </div>
+
+          <h2 class="govuk-heading-l" id="how-to-use">How to use them</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Use the principles to frame architecture decisions early, not to retrospectively justify them.</li>
+            <li>Treat the mandatory standards as the compliance floor; use these principles to make good choices on top of them.</li>
+            <li>Use the rationale to explain intent to non-technical stakeholders, and the implications to shape design, standards and assurance questions.</li>
+            <li>Where principles conflict in a specific decision, make the trade-off explicit and record it.</li>
+            <li>Exceptions are permitted, but should be time-bound, documented and reviewed.</li>
+          </ul>
+
+          <h2 class="govuk-heading-l" id="mandatory-standards">Relationship to mandatory standards</h2>
+          <div class="govuk-inset-text">
+            <p class="govuk-body">These principles sit on top of, and require compliance with, the mandatory cross-government standards. They guide how to make good architecture choices within those obligations; they are not an alternative to them.</p>
+            <p class="govuk-body">Mandatory or strongly expected obligations include:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>the Technology Code of Practice and the Service Standard, assessed through the spend control process;</li>
+              <li>the cross-government Secure by Design approach and the Government Cyber Security Standard, with alignment to the relevant central cyber assessment framework and target profile;</li>
+              <li>the Cloud First policy (default to public cloud), and open source and open standards expectations;</li>
+              <li>data protection, accessibility and records obligations set out in law and cross-government policy.</li>
+            </ul>
+            <p class="govuk-body" style="margin-bottom:0">Where a principle cannot be met because of a mandatory obligation, or an obligation cannot be met because of legacy constraints, the trade-off must be made explicit, evidenced and time-bound, with a clear route back to compliance.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-l">The ten principles</h2>
+      <p class="govuk-body">Each principle is expressed with a short statement, a rationale (why it matters) and implications (what it means in practice).</p>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <section class="app-principle" id="p1">
+            <h3 class="govuk-heading-m">1. Create measurable public value</h3>
+            <p class="govuk-body app-principle__statement">Every architecture decision must create measurable public value &ndash; through better outcomes, improved efficiency, stronger resilience, reduced risk or greater strategic capability &ndash; at a cost the state can sustain across the whole life of the capability.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Public money must be spent on outcomes, not activity or novelty.</li>
+              <li>Without measurable value, decisions drift towards local preference and vendor influence.</li>
+              <li>Value framing anchors decisions to policy intent, ministerial priorities and citizen outcomes.</li>
+              <li>Chronic under-investment in &lsquo;run&rsquo; is a root cause of legacy; funding must cover the whole life, not just build.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Every material decision must have a stated outcome, benefit or risk-reduction rationale.</li>
+              <li>Benefits should be measurable through performance, adoption, cost-to-serve, risk reduction, reuse, user satisfaction or reduced technical debt.</li>
+              <li>Value cases must reflect whole-life cost, including sustainable funding for maintenance and modernisation.</li>
+              <li>Weigh building and retaining capability in-house against long-term dependence on external contractors.</li>
+              <li>Exceptions may be valid for security, resilience, legal, regulatory or strategic reasons, but must be explicit.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p2">
+            <h3 class="govuk-heading-m">2. Design around users, outcomes and inclusion</h3>
+            <p class="govuk-body app-principle__statement">Architecture must start from the needs of users and the outcomes government is trying to achieve, ensuring services are accessible, inclusive and usable across channels.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Government services exist to serve people, businesses and public servants, not to serve systems.</li>
+              <li>Whole-journey outcomes cross departmental boundaries, so architecture must too.</li>
+              <li>Accessibility, inclusion, assisted digital and trust are core public sector obligations.</li>
+              <li>Ignoring user reality is one of the most common causes of legacy accumulation and failed transformation.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Support whole user journeys and life events, not just individual departmental systems.</li>
+              <li>Internal users, operational teams, policy teams, suppliers and AI agents should also be treated as users.</li>
+              <li>Accessibility, inclusion, language, channel choice and continuity must be considered early.</li>
+              <li>Do not optimise back-office convenience at the expense of user outcomes.</li>
+              <li>Service, product, policy and architecture teams should co-design, not sequence handoffs.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p3">
+            <h3 class="govuk-heading-m">3. Know your estate</h3>
+            <p class="govuk-body app-principle__statement">Maintain a shared, evidence-based and continuously updated view of systems, services, data, dependencies, contracts and legacy risk, at both departmental and cross-government level.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>You cannot rewire, reuse or remediate what you cannot see; visibility is the precondition for firmer foundations.</li>
+              <li>Legacy risk can only be prioritised and funded when it is discovered, classified and made visible.</li>
+              <li>Duplication and concentration risk are invisible without a portfolio-level view across departments.</li>
+              <li>Evidence-based spend control and reuse depend on an authoritative, queryable record of what already exists.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Maintain current asset and dependency registers, with legacy systems risk-classified.</li>
+              <li>Prefer automated discovery and scanning over point-in-time manual returns where practical.</li>
+              <li>Capability, application, data and contract information should feed a federated cross-government view.</li>
+              <li>Critical legacy dependencies should be identifiable, with a published register and clear escalation paths.</li>
+              <li>Estate data should be good enough to support reuse-before-build checks and portfolio heat-mapping.</li>
+              <li>Treat estate visibility as a shared capability, not a one-off audit.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p4">
+            <h3 class="govuk-heading-m">4. Reuse, share and connect &ndash; build once, use many</h3>
+            <p class="govuk-body app-principle__statement">Reuse and share existing capabilities, platforms, patterns and data before buying or building new, and build capabilities that are interoperable, composable and machine-consumable so they can be safely connected and reused by other services, departments, partners and AI agents.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Duplication across departments creates cost, complexity, inconsistency and risk.</li>
+              <li>A &lsquo;build once, use many&rsquo; model creates the shared building blocks needed for Digital Public Infrastructure.</li>
+              <li>Interoperability is the foundation of cross-government journeys and of legacy modernisation via strangler patterns.</li>
+              <li>Cloud is the default delivery model under the Cloud First policy; the strategic question is which shared platform, and how to retain sovereignty and exit.</li>
+              <li>Open standards and well-designed interfaces protect long-term flexibility, portability and sovereignty.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>&lsquo;Reuse and share first&rsquo; should be the default; new build must have a clear justification.</li>
+              <li>Treat common capabilities (identity, notifications, payments, exchange, registers) as national assets.</li>
+              <li>Assess every capability as commodity, common, differentiating or sovereign, with different treatment for each.</li>
+              <li>Consistent with Cloud First, default to public cloud and SaaS; order of preference is shared government platform, then SaaS, then configured COTS, then PaaS, then IaaS, then bespoke build.</li>
+              <li>Configure and integrate COTS and SaaS rather than heavily customising them; reserve build for differentiating capability.</li>
+              <li>Design APIs, events and schemas as products, with discoverable catalogues and open standards.</li>
+              <li>Make services safely consumable by authorised systems and AI agents through controlled, auditable interfaces.</li>
+              <li>Avoid point-to-point integration where shared patterns exist; plan retirement and decommissioning from the start.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p5">
+            <h3 class="govuk-heading-m">5. Treat data as shared national infrastructure</h3>
+            <p class="govuk-body app-principle__statement">Design, govern, share and protect data as shared national infrastructure, with quality, meaning, lineage, access and reuse considered from the start.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Modern public services, analytics, AI and automation all depend on high-quality, well-governed data.</li>
+              <li>Data trapped inside departmental systems or proprietary products limits transformation and creates risk.</li>
+              <li>Data sharing is a policy, legal and ethical challenge as much as a technical one.</li>
+              <li>Treating data as infrastructure aligns the UK with global DPI thinking.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Data models, metadata, ownership, quality and lineage must be part of decisions from the start.</li>
+              <li>Share data by default where lawful, ethical, secure and proportionate.</li>
+              <li>Make access granular, auditable and policy-driven, supported by consent and trust frameworks.</li>
+              <li>Treat registers, exchanges and canonical data sources as strategic capabilities.</li>
+              <li>Avoid locking critical data inside proprietary formats.</li>
+              <li>Make data readiness for AI and automation an explicit architectural consideration.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p6">
+            <h3 class="govuk-heading-m">6. Be open and transparent</h3>
+            <p class="govuk-body app-principle__statement">Work in the open by default: publish source code, use and contribute to open source and open standards, and make architecture decisions and service performance visible, unless there is a clear and justified reason not to.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Public services are built with public money, so their code should be available to reuse and build on unless there is good reason not to (Service Standard point 12).</li>
+              <li>Openness improves quality, security and accountability, and reduces duplication and supplier lock-in (Technology Code of Practice point 3).</li>
+              <li>Open standards let government technology interoperate, upgrade and expand, and are a practical enabler of sovereignty and portability (Technology Code of Practice point 4).</li>
+              <li>Transparency of decisions and performance builds public trust and sharpens accountability.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Make new source code open and reusable by default, under appropriate licences, with a convincing explanation where specific code must stay closed.</li>
+              <li>It remains appropriate to keep some code or data closed &ndash; for example keys and credentials, fraud-detection algorithms and unannounced policy.</li>
+              <li>Use and contribute to open standards, common components and patterns (Service Standard point 13), and give equal consideration to open source when choosing technology.</li>
+              <li>Record architecture decisions so their context is not lost (for example, using an architecture decision record framework).</li>
+              <li>Define success measures and, where appropriate, publish performance data.</li>
+              <li>Publish reusable artefacts, patterns and guidance to a common front door and keep them current.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p7">
+            <h3 class="govuk-heading-m">7. Secure, private and resilient by design</h3>
+            <p class="govuk-body app-principle__statement">Design in security, privacy, resilience and operational continuity from the start and continually assure them, proportionate to the criticality, risk and public trust implications of the service, in line with the mandatory cross-government Secure by Design approach.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Public trust depends on services being safe, private and reliable, especially as government adopts AI and shared platforms.</li>
+              <li>Security and privacy problems are exponentially more expensive to fix after delivery.</li>
+              <li>Resilience is a national concern: many government services are effectively critical national infrastructure.</li>
+              <li>Recent incidents show that supply-chain and third-party weaknesses can disrupt essential public services.</li>
+              <li>AI, automation and agentic systems introduce new risks that traditional assurance was not designed for.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Follow the mandatory cross-government Secure by Design approach and the Government Cyber Security Standard, evidenced through spend controls.</li>
+              <li>Align security and resilience to the relevant central cyber assessment framework and target profile, set proportionate to criticality.</li>
+              <li>Move from point-in-time accreditation to continual assurance across the whole service lifecycle.</li>
+              <li>Carry out threat modelling, privacy assessment, resilience assessment and operational readiness early and iteratively.</li>
+              <li>Make systems observable and recoverable, with explicit recovery objectives, failover, incident response and continuity patterns for critical services.</li>
+              <li>Make secure by design, zero-trust, identity, least privilege and strong audit the default, not an aspiration.</li>
+              <li>Assess and manage supply-chain and third-party security, including concentration and single-point-of-failure risk.</li>
+              <li>Explicitly address AI-specific risks (prompt injection, data leakage, model misuse, hallucination, autonomous action), preserving human control for high-impact decisions.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p8">
+            <h3 class="govuk-heading-m">8. Retain sovereignty and strategic control</h3>
+            <p class="govuk-body app-principle__statement">Retain strategic control over critical data, services, models, supply chain, architecture choices and operational resilience, regardless of the technology, platform or vendor used to deliver them.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Concentration risk in cloud, AI, models and platforms has become a national concern.</li>
+              <li>Sovereignty is about control, not location &ndash; over data, decisions, operations, exit and dependency.</li>
+              <li>Public trust requires clarity over where data, models and decisions sit, and under whose jurisdiction.</li>
+              <li>Legacy remediation and DPI both require government to make deliberate choices about what it retains.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Assess sovereignty across data, models, operational control, supply chain, jurisdiction and exit routes.</li>
+              <li>Give critical services explicit exit strategies, portability plans and data repatriation routes.</li>
+              <li>Understand where data, logs, metadata and operational control physically and legally sit.</li>
+              <li>Assess AI services for model provenance, training data rights, auditability and operational dependency.</li>
+              <li>Make supplier and platform concentration risk visible and managed at cross-government level.</li>
+              <li>Treat open standards, portability and interoperability as sovereignty enablers.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p9">
+            <h3 class="govuk-heading-m">9. AI-ready and agent-ready by design</h3>
+            <p class="govuk-body app-principle__statement">Actively create the conditions for AI, automation and agentic services to operate safely, lawfully, transparently and under meaningful human control.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>AI and agentic systems will be part of how government delivers services within this decade.</li>
+              <li>Without deliberate architecture, AI risks amplifying legacy problems, security weaknesses and data quality issues.</li>
+              <li>Agent-ready architecture (APIs, identity, permissions, audit, metadata, catalogues) is the same architecture that supports firmer foundations and DPI.</li>
+              <li>The AI Playbook sets policy expectations; architecture must translate them into practical design.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>AI use cases must have a clear public value case, not just novelty.</li>
+              <li>Agentic AI must operate within defined permissions, audit trails, policy constraints and human escalation routes.</li>
+              <li>Make services discoverable, described and safely consumable by authorised agents.</li>
+              <li>Ensure underlying data is good enough, lawful and appropriate for the intended AI use.</li>
+              <li>Make model choice, hosting, provenance, evaluation and assurance explicit design decisions.</li>
+              <li>Keep accountability with public servants; AI augments, it does not replace, accountable decision-making.</li>
+            </ul>
+          </section>
+
+          <section class="app-principle" id="p10">
+            <h3 class="govuk-heading-m">10. Govern, assure and continuously improve the estate</h3>
+            <p class="govuk-body app-principle__statement">Govern architecture through proportionate standards, patterns, assurance and feedback loops; comply with the mandatory cross-government standards; and continuously improve the estate, its people and its environmental footprint through measurement, learning, skills investment and decommissioning.</p>
+            <h4 class="govuk-heading-s">Rationale</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Principles only create value if they influence spend controls, service assessments, design authorities and operational reviews.</li>
+              <li>Compliance with mandatory standards is the floor; proportionate governance must enable delivery, not obstruct it.</li>
+              <li>Firmer foundations and legacy remediation are long-term programmes that require sustained assurance and improvement.</li>
+              <li>Sustainability &ndash; environmental, financial, operational and skills &ndash; is an architectural concern, not an afterthought.</li>
+              <li>A skilled, multidisciplinary workforce is a foundation in its own right; over-reliance on external contractors weakens the state.</li>
+            </ul>
+            <h4 class="govuk-heading-s">Implications</h4>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Embed principles and mandatory standards in spend controls, service assessments, design authorities and architecture review boards.</li>
+              <li>Make standards, patterns and reference architectures discoverable, reusable and current.</li>
+              <li>Keep exceptions transparent, time-bound and reviewed, with a clear route back to compliance.</li>
+              <li>Maintain portfolio-level architecture views to see duplication, risk and legacy across government.</li>
+              <li>Make environmental sustainability, operational cost and skills sustainability part of decisions.</li>
+              <li>Build multidisciplinary team capability and in-house skills deliberately, reducing avoidable contractor dependency.</li>
+              <li>Feed learning loops back into principles, standards and patterns as government, technology and policy evolve.</li>
+            </ul>
+          </section>
+
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+          <h2 class="govuk-heading-l" id="contribute">Contribute and feedback</h2>
+          <p class="govuk-body">These principles are a working draft and are developed in the open. Suggestions and pull requests are welcome via the repository, or contact the enterprise architecture team.</p>
+          <p class="govuk-body"><a class="govuk-link" href="mailto:publicsector.architecture@dsit.gov.uk">publicsector.architecture@dsit.gov.uk</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- GOV.UK footer (rebranded) -->
+<footer class="govuk-footer app-noprint" role="contentinfo">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Help</a></li>
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Cookies</a></li>
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Contact</a></li>
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Terms and conditions</a></li>
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#">Accessibility statement</a></li>
+        </ul>
+        <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483.2 195.7" height="17" width="41">
+          <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-54.5 0-98.6 44.1-98.6 98.6s44.1 98.6 98.6 98.6c33.7 0 63.5-16.9 81.3-42.7z"/>
+          <path fill="currentColor" d="M50.7 133.9V.1L0 32.4v161.1h112.4v-50.7zm151.1 0h-90.6v-9.6h60.5V80.2h-60.5v-9.6h90.6V19.9h-141v174.7h141z"/>
+        </svg>
+        <span class="govuk-footer__licence-description">
+          All content is available under the <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+        </span>
+      </div>
+      <div class="govuk-footer__meta-item">
+        <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
