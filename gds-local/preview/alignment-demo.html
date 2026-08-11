@@ -181,10 +181,6 @@
         /* Focus styles */
         a:focus, button:focus, [tabindex]:focus { outline: 3px solid #ffdd00 !important; outline-offset: 0 !important; box-shadow: inset 0 0 0 2px #0b0c0c !important; text-decoration: none !important; }
 
-        /* CDN asset path fix */
-        .govuk-footer__copyright-logo::before { background-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important; }
-        @supports ((-webkit-mask-position:initial) or (mask-position:initial)) { .govuk-footer__copyright-logo::before { -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important; mask-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important; } }
-        @media (min-resolution: 2dppx) { .govuk-footer__copyright-logo::before { background-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest-2x.png") !important; } }
 
         /* Responsive */
         @media (max-width: 768px) {

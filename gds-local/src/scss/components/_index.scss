@@ -552,27 +552,7 @@
       .lgam-subdomain__grid { grid-template-columns: 1fr; }
       .app-navigation__link { padding: 10px 8px; font-size: 14px; min-height: 24px; }
     }
-    /* ==========================================================================
-       CDN ASSET PATH OVERRIDES & FOOTER LOGO RESTORATION
-       ========================================================================== */
-       
-    /* Override the hardcoded /assets/ root paths applied to the ::before pseudo-element */
-    .govuk-footer__copyright-logo::before {
-      background-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important;
-    }
 
-    @supports ((-webkit-mask-position:initial) or (mask-position:initial)) {
-      .govuk-footer__copyright-logo::before {
-        -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important;
-        mask-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest.svg") !important;
-      }
-    }
-
-    @media (min-resolution: 2dppx) {
-      .govuk-footer__copyright-logo::before {
-        background-image: url("https://cdn.jsdelivr.net/npm/govuk-frontend@5.13.0/dist/govuk/assets/images/govuk-crest-2x.png") !important;
-      }
-    }
 /* Restore GOV.UK v5 inline header layout for the service name */
 .govuk-header__container {
   display: flex;
