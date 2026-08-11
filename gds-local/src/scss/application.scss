@@ -3,7 +3,7 @@
 // =========================================================
 // Import GOV.UK Frontend with configuration
 @use "node_modules/govuk-frontend/dist/govuk/index" as * with (
-  $govuk-assets-path: "/assets/"
+  $govuk-assets-path: "../assets/"
 );
 
 // =========================================================
