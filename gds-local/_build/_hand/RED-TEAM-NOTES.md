@@ -1,169 +1,247 @@
-# Red-team analysis: LGAM index page
+# Red-team analysis: LGAM strengths, weaknesses, and tensions
 
-## 2. The grouping principle: what's inside FT vs what's separate?
+## 1. What the model is
 
-The current model puts 5 things inside Foundational Technology (Infrastructure & Hosting, AI, DevOps, End User & Productivity, Service Management) and 3 things outside it as "wider stack" layers (Integration, Security, Data & Information Technology).
+The LGAM as published describes itself as "a shared framework that provides a consistent way to understand, describe, and align how local government technology supports service delivery and the overall operation of a council." It contains 9 layers arranged vertically:
 
-**The stated distinction:** "These layers are not specific to local government." But that doesn't hold — AI, DevOps, and End-User Computing aren't specific to local government either.
+1. **Public Channels** — how citizens reach the council
+2. **Council Interfaces** — what the council presents to users
+3. **Capabilities** — reusable functional tools (Payments, Forms, Identity, Workflow, etc.)
+4. **Business Areas** — statutory service domains (Planning, Housing, ASC, etc.)
+5. **Corporate Areas** — non-statutory support functions (HR, Finance, GIS, etc.)
+6. **Foundational Technology** — 5 sub-domains (AI, DevOps, End User, Service Management, Infrastructure)
+7. **Integration** — connecting systems and data
+8. **Security** — protecting people, data, systems
+9. **Data and Information** — managing data assets
 
-**So what's the actual implicit logic?** Looking at what's inside vs outside:
-
-| Inside FT | Outside FT |
-|---|---|
-| Infrastructure & Hosting | Integration |
-| AI | Security |
-| DevOps | Data & Info Tech |
-| End User & Productivity | |
-| Service Management | |
-
-The items *inside* FT seem to share a characteristic: they're **things councils operate/own/run**. You procure cloud hosting. You buy end-user devices. You run a service desk. You might deploy AI tooling. These are assets and operational capabilities your IT team manages day-to-day.
-
-The items *outside* seem to share a different characteristic: they're **cross-cutting concerns that constrain or connect** everything else. Integration isn't a thing you "run" the way you run a data centre — it's a property of how your systems relate. Security isn't a platform — it's a set of controls applied to everything. Data isn't a service — it flows through everything.
-
-This maps loosely to:
-- **FT = operational technology you own** (nouns: "we have cloud hosting", "we have a service desk")
-- **Wider stack = architectural concerns that govern how technology works together** (verbs/adjectives: "we integrate", "we secure", "we manage data")
-
-**But this breaks down immediately:**
-- "API management and gateways" (in Integration) is definitely something you operate — you run an API gateway
-- "Identity and access management" (in Security) is definitely a platform — you run Azure AD
-- "Data storage and warehousing" (in Data) is absolutely infrastructure you own and operate
-- "Service Management" (in FT) is arguably more of a practice/discipline than a technology platform
-
-**The deeper tension:** the model is trying to be two things at once. The FT section describes **what councils buy and run** (a catalogue of technology assets). The wider stack sections describe **architectural disciplines** (how you approach integration, security, data). These are different types of thing, but we've put them in the same visual structure (coloured bars with expand/collapse cards), which makes them *look* equivalent when they're not.
-
-**Possible resolutions:**
-
-**A) Accept the current grouping but articulate the principle clearly.** Something like: "Foundational Technology describes the platforms and tools your IT team operates. The wider technology stack describes the cross-cutting disciplines that govern how those platforms work together." Then ruthlessly move anything that's an "operated platform" into FT (IAM, data warehousing, API gateway) and keep only true architectural/governance concerns in the wider stack.
-
-**B) Flatten everything into FT as sub-domains.** Accept that the LGAM/wider distinction is internal taxonomy and doesn't help the reader. Make Integration, Security, and Data into sub-domains of Foundational Technology alongside the others. The context map simplifies. The page shortens. The grouping problem disappears.
-
-**C) Reframe the wider stack as "disciplines" rather than "layers."** Don't call them layers at all. Call them "cross-cutting disciplines" or "architectural concerns" and present them differently — perhaps as reference guidance rather than as component catalogues. This would mean their content structure differs from FT (less "here are the cards" and more "here are the principles, patterns, and questions").
+The intended audiences (from the introduction) are GDS, government departments building for councils, councils themselves, and vendors.
 
 ---
 
-## 3. What IS this model?
+## 2. What kind of thing is it?
 
-This is the fundamental question. Right now the page is an uncomfortable hybrid:
+This is the fundamental identity question. The model occupies an uncomfortable space between several established genres:
 
-**As an enterprise architecture model** it's incomplete — it doesn't address information architecture, application portfolio, business capability mapping, governance frameworks, or strategic alignment. EA models (TOGAF, ArchiMate) provide viewpoints, relationships, and governance mechanisms. This doesn't.
+### As a **technical reference model** (TRM)
+A TRM catalogues technology categories to create shared vocabulary. TOGAF's TRM does this — it names platforms and standards without prescribing implementations. The LGAM's lower layers (FT, Integration, Security, Data) function this way: they enumerate what technology exists in councils. **Strength:** shared vocabulary is genuinely valuable in a fragmented sector with 300+ organisations. **Weakness:** a pure TRM doesn't tell you what to do, what to prioritise, or what good looks like.
 
-**As a technical reference model** it's too shallow — it names capabilities but doesn't describe how they compose, depend on each other, or get evaluated. A CTO can't use this to assess their estate because there's no maturity model, no dependency map, no "here's what good looks like."
+### As a **business capability model**
+The top layers (Channels → Interfaces → Capabilities → Business Areas) read more like a business capability map: they describe *what a council does* in terms the business side would recognise. **Strength:** traces the citizen journey end-to-end. **Weakness:** the narrative breaks at Foundational Technology, which doesn't participate in citizen interactions.
 
-**As a service delivery model** (what the LGAM originally was) it works well for the top 5 layers — you can trace a citizen interaction from channel to system. But this narrative breaks once you hit Foundational Technology, which doesn't participate in the citizen journey.
+### As an **enterprise architecture framework**
+EA frameworks (TOGAF, ArchiMate) provide viewpoints, relationships, governance, and maturity. The LGAM doesn't do this. It names things but doesn't describe how they compose, depend on each other, constrain each other, or get governed. A CTO can't use this to assess their estate because there's no maturity model, no dependency map, no "here's what good looks like."
 
-**As a procurement/market guide** it partially works — it names things councils need to buy, and the subpages link to standards and frameworks. But it doesn't tell you what to prioritise, what dependencies exist, or what maturity you need before a capability becomes relevant.
+### As a **service delivery model**
+The original LGAM intent — and its greatest strength — was to trace how technology supports service delivery. You *can* follow a citizen interaction from Channel → Interface → Capability → Business Area. This makes the top layers genuinely useful for explaining "how technology fits around what we do." But this framing doesn't extend downward: Infrastructure & Hosting doesn't "support" a Business Area the same way Payments does.
 
-**What it actually seems to be:** a **reference taxonomy** — a shared vocabulary for talking about council technology. Its primary value is that when a council CTO, a GDS product team, a vendor, and a service manager are in a room together, they can point to the model and agree on what they're talking about. "Payments" means this. "Integration" means that. "Infrastructure & Hosting" covers these things.
+### What it actually functions as
 
-**If that's the goal, then the success criteria are:**
-1. Is the taxonomy complete? (Does it cover what councils actually have?)
-2. Is it coherent? (Are items at consistent levels of abstraction?)
-3. Is it unambiguous? (Can two people point at the same item and agree what it means?)
-4. Is it useful? (Does naming and grouping things this way help people make decisions?)
+In practice, the LGAM is a **hybrid taxonomy**: part business capability map (top), part technology reference catalogue (bottom). Its primary value is as shared vocabulary — giving diverse stakeholders a common language for talking about council technology. This is not a criticism. Shared vocabulary in a sector with 300+ autonomous organisations and endemic fragmentation is genuinely hard and genuinely useful.
 
-**What the model is NOT (and shouldn't try to be):**
-- A maturity model (that's a layer on top)
-- An implementation guide (that's what subpages are for)
-- A dependency map (that's what the graph view could become)
-- A procurement framework (though it can inform one)
+---
 
-**The user need framing:**
+## 3. Structural tensions
 
-| User | They come to this page to... | What they need from it |
+### Tension A: The service delivery narrative vs the technology catalogue
+
+The top 5 layers tell a story: a citizen reaches the council (Channel), encounters an interface (Interface), which uses a tool (Capability), to support a service (Business Area), run by corporate functions (Corporate Area). This is elegant and intuitive.
+
+The bottom layers (Integration, Security, Data) are a flat catalogue: here are categories of technology councils have. They don't participate in the narrative. A reader who understood the model via the top half expects to keep following the story downward — and finds a list instead.
+
+**Note:** the context map already partially addresses this. Foundational Technology is presented as a vertical pillar alongside the full stack — not as a layer beneath. This is a more honest spatial metaphor: FT underpins and runs alongside everything. But Integration, Security, and Data are still presented as horizontal bands at a specific level, despite being equally pervasive. The visual design has already solved this problem for one element (FT) but not for the other three.
+
+**Why the remaining tension matters:** presenting Integration/Security/Data as horizontal layers *below* Business Areas implies they exist at a specific level in a hierarchy. But security constraints apply *at* the Channel layer (HTTPS, cookie policy), *at* the Capability layer (payment card compliance), *at* the Business Area layer (data protection in social care), and everywhere else simultaneously. The horizontal positioning suggests "this is what sits beneath the services" when the reality is "this is what governs everything."
+
+**Possible resolution:** acknowledge the model has two registers — a service delivery architecture (top) and a technology estate map (bottom) — and present them with appropriate framing for each. Or consider whether Integration/Security/Data deserve the same "vertical pillar" treatment that FT already has — presented as spanning the full height rather than sitting at a specific depth.
+
+### Tension B: Layers vs cross-cutting concerns
+
+The context map already treats Foundational Technology differently — as a vertical pillar spanning the full stack. This visual decision implicitly acknowledges that FT underpins everything rather than sitting at one level. It's a good decision.
+
+But Integration, Security, and Data are still presented as horizontal bands. The question is: do they deserve the same "pillar" treatment? The argument is strong:
+
+- **Security** isn't below Business Areas — it's *applied to* every layer. HTTPS at the Channel layer, PCI-DSS compliance at the Payments capability, data protection at the ASC business area, network segmentation at Infrastructure.
+- **Data** isn't below Integration — data flows *through* integrations, gets *stored* in infrastructure, gets *consumed* by capabilities, gets *produced* by business areas.
+- **Integration** exists wherever two systems need to talk — which is at every boundary in the model. The Integration *platforms* (Boomi, MuleSoft, Azure Service Bus) absolutely are things you procure and operate. But the Integration *concern* touches every inter-layer connection.
+
+**Counter-argument for keeping them horizontal:** making everything a vertical pillar risks the model collapsing into a formless blob where "everything connects to everything." The horizontal presentation at least gives the reader a linear path through the content. There's a navigation benefit to the current design even if it's slightly spatially dishonest.
+
+**The real question:** is the horizontal positioning confusing anyone in practice, or is it a theoretical impurity that readers accept without difficulty? This might be something to test with users — do they interpret the lower position as "less important" or "more foundational"?
+
+### Tension C: Consistent granularity
+
+The layers vary significantly in granularity:
+
+- **Public Channels** has 10 items, all at the same level (concrete interaction modes)
+- **Capabilities** has 9 items, all functional tools
+- **Business Areas** has 12 items, each a major service domain
+- **Foundational Technology** has 5 sub-domains, each with 2-5 sub-items (17 total)
+- **Integration** has 7 items mixing pattern types (event-driven) with tool categories (API management) with process concerns (governance)
+- **Security** has 7 items mixing operational capabilities (SOC) with tool categories (IAM) with physical infrastructure (badge systems)
+- **Data and Information** has 8 items mixing platforms (data warehousing) with disciplines (data governance) with outputs (BI/analytics)
+
+Within Foundational Technology, the sub-domains are at different levels of abstraction: "Infrastructure & Hosting" is a massive operational domain (compute, storage, networking), while "Service Management" is narrower (ITSM, portfolio, licensing). "AI" is a technology paradigm; "End User and Productivity" is a workplace concern.
+
+**This is not unusual for models at this stage** — they grow organically — but a reader expecting consistent "level of zoom" across the model won't find it.
+
+### Tension D: The model names domains of concern, not just technology
+
+A tempting way to make sense of the LGAM's structure is to distinguish "things councils operate" (platforms, tools) from "architectural disciplines" (practices, governance). Under this reading, Integration and Security would be disciplines, while Infrastructure and End User would be platforms. But this doesn't survive contact with reality — every domain in the model contains both:
+
+| Domain | Platforms you operate | Practices you exercise |
 |---|---|---|
-| Council CTO | Understand the full scope of what they should be thinking about | Completeness, groupings that map to how they organise their team |
-| GDS product team | See where their product (Payments, Notify, One Login) fits | Clear placement in the taxonomy, understanding of the council context |
-| Vendor | Understand what councils need and where their product positions | Market categories, terminology alignment |
-| Service manager | Understand how technology supports their service area | The service delivery layers (top 5), links to business areas |
-| CDDO/policy | A coherent picture of LG technology to inform strategy | The big picture context map, coverage assessment |
+| Integration | API gateway (Apigee, Kong), integration platform (Boomi, MuleSoft), message broker (Azure Service Bus) | Integration governance, pattern selection, API lifecycle management |
+| Security | SIEM (Sentinel, Splunk), IAM platform (Entra ID), EDR (CrowdStrike) | Vulnerability management, incident response, security architecture |
+| Data and Information | Data warehouse (Snowflake, Synapse), BI platform (Power BI), metadata catalogue (Alation) | Data governance, data quality, stewardship, retention policy |
+| Service Management | ITSM platform (ServiceNow, Freshservice), CMDB | Incident management, change management, SLA governance |
+| DevOps | CI/CD pipelines (Azure DevOps, GitHub Actions), monitoring (Grafana, Datadog) | Release management, SRE practices, deployment strategy |
 
-This suggests the page tries to serve too many users at surface level. The context map and taxonomy serve the CTO/CDDO/policy audience. The detailed layer content serves different audiences depending on the section (service managers for the top, architects for the bottom).
+The same holds for the upper layers. "Workflow" is both a platform you buy (Camunda, K2) and a design discipline (process engineering, service design). "Forms" is both a tool (GOV.UK Forms, Jotform) and a practice (form design, progressive disclosure, validation logic).
 
----
+**What this means for the model's identity:** the LGAM is best understood as naming *domains of concern* rather than cataloguing either technology or practice. Each domain encompasses tools, platforms, skills, governance, and standards. This is the right level of abstraction for a sector-wide reference model — it tells you "this is a thing you need to think about" without prescribing whether you approach it primarily as a procurement decision or a capability-building exercise.
 
-## 4. Duplicates — are there valid distinctions?
-
-### Monitoring & Observability
-
-- In FT → Infrastructure & Hosting: "Infrastructure and application monitoring, alerting, log aggregation, and performance baselining"
-- In FT → DevOps: "IT monitoring and observability tooling to track system health, performance, and logs across applications and infrastructure"
-
-**Is the distinction valid?** Barely. One emphasises infrastructure monitoring (is the server up?), the other application monitoring (is the deployment healthy?). But in practice, councils use the same tools (Datadog, Azure Monitor, Grafana) for both. This is a false split driven by copying the DCM's domain separation. **Verdict: merge into one place.**
-
-### Identity and Access Management
-
-- In Security layer: "Capabilities to verify identities and control access to systems... SSO, MFA..."
-- Previously in our content plan as FT → Platform & Infrastructure: "Staff SSO, MFA, directory services, privileged access management"
-- In LGAM Capabilities layer: "Identity" — "Councils use identity tools to check and verify who a user is"
-
-**Is the distinction valid?** Yes — but it needs articulating:
-- *Citizen identity* (the Capabilities layer "Identity" item) = verifying a citizen is who they say they are (One Login, face-to-face ID checks). This is a service delivery concern.
-- *Staff IAM* (the Security/FT concern) = controlling which employees can access which systems. This is an operational security concern.
-
-The problem is that both currently just say "identity" without making this distinction clear. **Verdict: valid split, but needs explicit labelling** ("Citizen identity verification" vs "Staff identity and access management").
-
-### Data integration and pipelines
-
-- In Integration layer: "Tools and processes for extracting, transforming, and loading data between systems"
-- In Data & Info Tech layer: "Data storage and warehousing" — "providing scalable databases, data warehouses, and data lakes"
-
-**Is the distinction valid?** Yes — these are genuinely different:
-- Integration is about *moving data between systems* (the pipes)
-- Data & Info Tech is about *storing and querying data* (the containers)
-
-ETL/ELT sits at the boundary — it's both an integration pattern and a data management activity. But the tools are different (MuleSoft/NiFi for integration vs Snowflake/Azure Synapse for warehousing). **Verdict: valid split, but ETL/ELT should live in one place with a cross-reference to the other.**
-
-### Geospatial
-
-- In Data & Info Tech layer: "Data for mapping, geospatial analysis, and location based services" (very thin)
-- In our adult-social-care subpage: richer treatment linking to GeoPlace, LLPG, OS data
-- Not mentioned in FT or Integration despite being a platform councils operate AND an integration challenge
-
-**Is the distinction valid?** Geospatial is genuinely cross-cutting — it's data (the datasets), platforms (ESRI ArcGIS, QGIS), and integration (LLPG/UPRN as a common key). Putting it only in Data & Info Tech is reductive. **Verdict: either give it its own sub-domain or acknowledge it as cross-cutting with a richer description.**
-
-### Physical security and access control
-
-- In Security layer: "badge access systems, CCTV surveillance, and facility security controls"
-- Not obviously a *technology architecture* concern — this is building management
-
-**Is this in scope?** Questionable. The model is about digital/IT technology. Physical security is facilities management. Yes, badge systems integrate with IAM, and CCTV is increasingly IP-based. But by this logic, you'd also include building management systems, fire alarms, and lifts. **Verdict: borderline — consider removing or reframing as "physical-digital convergence" if it stays.**
+**Where this creates a content design challenge:** the item descriptions on the published page lean toward the tooling side ("platforms for...", "tools to...", "systems for..."). This framing is natural and concrete, but it risks communicating that the model is a technology shopping list. A council CTO might read "Integration governance and tooling" and think "that's the iPaaS procurement category" rather than "that's the discipline of designing how our systems talk to each other." Both readings are valid, but the model currently signals the first more strongly.
 
 ---
 
-## 5. What could a council voice usefully look like?
+## 4. Specific structural questions
 
-The risk with "council voice" is that it becomes patronising ("councils should think about...") or anecdotal ("many councils find that..."). The service delivery layers avoid this because they describe *what councils actually do* — the content is inherently council-contextual.
+### Should Integration, Security, and Data be inside or outside Foundational Technology?
 
-For the wider stack, a useful council voice would add value in three specific ways:
+The context map already positions FT as a vertical pillar, visually separate from the horizontal stack. Integration, Security, and Data sit as horizontal layers below Business/Corporate Areas. The distinction isn't made explicit in text — it's communicated purely through visual layout.
 
-### A) Name the council-specific pain points that make this capability matter.
+**Arguments for keeping Integration/Security/Data as horizontal layers:**
+- They are genuinely cross-cutting in a way that FT sub-domains aren't. But the horizontal format gives readers a linear path through content — easy to scroll, easy to navigate.
+- Organisationally, Security and Data often report through different governance structures (CISO, CDO) than FT sub-domains (CTO/IT Director). Separate sections reflect real organisational boundaries.
+- Separating them signals their importance — collapsing them into FT risks making them seem subordinate.
 
-Generic: "API management platforms for designing, publishing, securing, and monitoring APIs."
+**Arguments for giving them the same "pillar" treatment as FT:**
+- Each contains platforms councils procure and operate (SIEM, API gateway, data warehouse), just like FT contains Infrastructure. The distinction isn't "FT is operational, these are conceptual" — they're all operational.
+- The horizontal positioning implies they sit at a specific depth in the architecture. This confuses the reader who asks: "why is Security below Integration? Is there a hierarchy here?" There isn't — the ordering is arbitrary.
+- ArchiMate handles analogous concepts (motivation, strategy) as perspectives that apply across layers, not as layers at a specific position.
 
-Council-voiced: "API management platforms for designing, publishing, securing, and monitoring APIs. In local government, most core system vendors (Civica, Capita, NEC) offer limited or inconsistent API support, making a managed API layer particularly important for councils with multi-vendor estates."
+**Arguments for merging them into FT entirely:**
+- A CTO reading the model for estate coverage might expect all technology categories to appear together under one "technology" heading.
+- It simplifies the visual and reduces the number of distinct architectural concepts the reader must hold.
+- But: this risks under-signalling the importance of Security and Data governance, which deserve strategic prominence not subordination.
 
-The addition is one sentence that tells you *why this matters more or differently for a council* than for a generic enterprise. Not every item needs it — only where the council context genuinely changes the picture.
+**Open question:** the current context map design chose well for FT. Did it stop short? Or is there a good reason these three sit horizontally that the visual design already communicates (perhaps: "these are the substrate beneath everything, while FT is the machinery alongside")?
 
-### B) Flag where the council scale/context changes the typical approach.
+### Is "Foundational Technology" the right grouping?
 
-Generic: "Security Operations Centre (SOC) capabilities... SIEM tools and threat detection platforms."
+The 5 things inside FT are: AI, DevOps, End User & Productivity, Service Management, Infrastructure & Hosting.
 
-Council-voiced: "Security Operations Centre (SOC) capabilities... Most councils (particularly districts and boroughs) lack the scale to operate an in-house SOC and instead procure managed SOC services, often shared with neighbouring authorities or through regional partnerships."
+What do these share? They're all *internally-facing technology the IT team manages for staff and systems* (not citizen-facing, not about a specific service domain). This is a reasonable grouping — it's roughly "IT department scope" — but it's never stated this way.
 
-This tells a council CTO: "you're not expected to build this yourself" — which is genuinely useful guidance that a generic enterprise model wouldn't give you.
+Problems:
+- "AI" is a technology paradigm that applies everywhere, including citizen-facing services. Why is it under FT and not a cross-cutting concern like Security?
+- "Service Management" (ITSM) is narrower than the others — it's really one tool category (ServiceNow-type platforms) plus some process. It sits alongside "Infrastructure & Hosting" which is massive.
+- "End User and Productivity" mixes devices (hardware) with collaboration tools (Teams, SharePoint) with knowledge management. These serve very different audiences at different levels.
 
-### C) Connect to the council governance/accountability structure.
+### Where are the IT Systems?
 
-Generic: "Data governance and quality — tools for managing data assets consistently and ethically."
+The model names Business Areas (Planning, Housing, ASC) and names Capabilities (Payments, Forms, Workflow) — but it doesn't name the systems that actually deliver these services day-to-day. There's no "Planning System" or "CRM" or "Social Care System" in the published model. The model describes the context *around* systems (channels, capabilities, infrastructure) but not the systems themselves.
 
-Council-voiced: "Data governance and quality — tools and processes for managing data assets consistently and ethically. In councils, data governance intersects with democratic accountability: elected members and scrutiny committees increasingly expect transparency about what data is held, how it's used, and who has access."
+This may be deliberate — specific systems are too numerous, council-specific, and market-sensitive to list generically. Including them risks the model becoming a procurement directory or appearing to endorse particular vendors. But it creates an odd gap for the CTO audience: the model helps them think about *what categories of concern they have* but not *what their actual estate contains*. The reader has to make the mental connection between "Workflow capability" and "this is where our Firmstep/Granicus platform sits" themselves.
 
-This surfaces the *democratic dimension* that is unique to local government and absent from private-sector or central-government models.
+---
 
-### Where NOT to add council voice:
-- Don't add it to items where the council context is identical to any other organisation ("Data storage and warehousing" — councils use the same databases everyone else does)
-- Don't add it where it would just be stating the obvious ("End-user devices — councils give staff laptops" — yes, everyone does)
-- Don't add it where the pain point is universal ("Vulnerability management" — everyone needs to patch, this isn't a council-specific challenge)
+## 5. User need framing: who is this for?
 
-**The test:** would a council CTO read this sentence and think "yes, that's specifically true for us in a way it isn't for, say, an NHS trust or a central government department"? If yes, include it. If no, the generic description is fine.
+| User | They come to the page to... | What they need from it |
+|---|---|---|
+| Council CTO/IT Director | Understand the full scope of what their estate should cover | Completeness, groupings that map to how they organise their team and budget |
+| GDS product team | See where their product (Payments, Notify, One Login) fits in the council landscape | Clear placement in the taxonomy, understanding of the council context their product plugs into |
+| Vendor/supplier | Understand what councils need and where their product positions | Market categories, terminology alignment, adjacent capabilities |
+| Service manager | Understand how technology supports their specific service area | The service delivery layers (top 5) with enough detail to recognise their world |
+| CDDO/policy | A coherent picture of LG technology to inform strategy and investment | The big picture, coverage assessment, gaps and opportunities |
+
+**Observation:** These audiences have quite different needs. The CTO wants a checklist they can assess their estate against. The vendor wants positioning clarity. The service manager wants to trace their service. The policy maker wants strategic context. A single flat page struggles to serve all simultaneously — it optimises for breadth (covering everything) at the expense of depth (being useful for any one task).
+
+**The deeper question for P&D work:** when we build out a Business Area subpage, which of these users are we primarily writing for? A Planning officer recognising their workflow? A CTO understanding what systems support planning? A vendor seeing where PlanX or Idox fits? These demand very different content.
+
+---
+
+## 6. Strengths (what the model does well)
+
+1. **Shared vocabulary in a fragmented sector.** 300+ autonomous councils with no mandatory technology standards. Simply naming things consistently so people can have conversations is high-value work.
+
+2. **The top-layer narrative is compelling.** Channel → Interface → Capability → Business Area tells a story that any council stakeholder can follow. It explains *why* technology exists (to serve citizens) rather than just cataloguing it.
+
+3. **Appropriate level of abstraction for a national model.** It resists the temptation to prescribe specific products (mostly — the commented-out platform examples show this was considered and deferred). This keeps it relevant across councils of vastly different sizes and maturities.
+
+4. **Business Areas provide a natural expansion point.** Each Business Area can become a subpage with domain-specific detail (as attempted with the P&D prototypes). This lets the model grow without the index page becoming unwieldy.
+
+5. **Visual clarity of the context map.** The coloured-band overview communicates structure at a glance. A CTO can immediately see the scope being described.
+
+6. **Grounded in real council organising principles.** The Business/Corporate split reflects how councils actually structure their directorates. The layers (if imperfect) reflect real boundaries in council IT governance.
+
+---
+
+## 7. Weaknesses and gaps
+
+1. **No relationships or dependencies visible.** The published page is a flat catalogue. You can't trace "Payments capability depends on Integration patterns and Security controls." The layers are presented independently with no explicit connections between them. This limits the model's utility for architecture decisions.
+
+2. **No maturity dimension.** The model tells you what *categories* exist but not what *maturity* in each area looks like. A council can't use it to self-assess. The lite-transformation prototype attempted this but it's a significant conceptual extension.
+
+3. **No "what good looks like" per item.** Each item gets a one-line description but no guidance on architectural quality, common patterns, or anti-patterns. The `lgam_architectural_principles.md` resource captures this thinking but it's not connected to the public model.
+
+4. **The layer metaphor is slightly dishonest for the bottom 4.** Stacking Integration/Security/Data below FT implies a hierarchy that doesn't exist. These aren't "lower" — they're orthogonal. The visual design communicates the wrong spatial relationship.
+
+5. **Inconsistent content design across layers.** Top layers describe things in consistent, user-centred language ("capabilities used to..."). Bottom layers mix description styles between tool categories, discipline descriptions, and process definitions. This creates a subtle shift in register that signals the model was authored by different people or at different times.
+
+6. **Corporate Areas vs Business Areas distinction is fragile.** The stated distinction ("not specific to councils") applies equally to Financial (every organisation does finance) and to Revenues & Benefits (very council-specific). The actual distinction seems to be "outward-facing statutory services" vs "inward-facing support functions" — which is useful but not what's stated.
+
+7. **No sense of council variation.** The model presents a single universal picture. But a county council (no housing, no waste) looks structurally different from a district (no social care, no education). The model doesn't acknowledge this variation, which risks confusing smaller councils who can't recognise themselves.
+
+---
+
+## 8. What this means for the P&D subpages
+
+Four prototype concepts exist for Planning & Development. They don't just differ in layout — they represent fundamentally different answers to the question "what should a business area page *be*?"
+
+### Concept comparison
+
+| Concept | Core proposition | Content type | User action it enables |
+|---|---|---|---|
+| **Hub-Lite** (published) | Domain hub + sub-pages showing which LGAM elements apply to each value stream | Card-based hub navigating to per-stream LGAM stack tables (layer, element, planning context, example technology) | "Show me which parts of the LGAM apply to development management / planning policy / building control" |
+| **Hub-Max** (draft) | Detailed prescriptive technical lifecycle per value stream | Target state SVG architecture diagrams, phased accordion lifecycle (business process → legacy anti-patterns → target architecture with best practice and real-world impact), LGAM stack tables | "Show me what good architecture looks like for each phase of a planning application, and what anti-patterns to avoid" |
+| **Lite-Max** (draft) | Single-page reference integrating LGA taxonomy, LGAM mapping, research evidence, and the national data platform | Function/service hierarchy from LGA Inform Plus, capability-to-LGAM-element mapping table, modernisation principles, planning data platform datasets with live API integration | "Help me understand the full landscape — services, technology, evidence for change — in one place" |
+| **Lite-Transformation** (draft) | Guided self-assessment and roadmap-building framework | 5-step process (scope → map → assess → roadmap → interoperability), capability heatmap with coverage/quality/interoperability ratings, cost-of-fragmentation statistics, strategic rationalisation targets | "Help me assess my current maturity and build a plan to improve" |
+
+### The tensions between these concepts
+
+**1. Descriptive vs prescriptive**
+
+The concepts sit on a spectrum. Hub-Lite is closest to purely descriptive: "here are the LGAM elements relevant to planning, here's what each one does in this context." It maps the territory without recommending a direction of travel. Hub-Max is explicitly prescriptive: it names anti-patterns to avoid, presents target state architectures, and labels best practices with "real-world impact" evidence. Lite-Max is persuasive: it builds the case for modernisation with evidence and principles. Lite-Transformation is directive: it guides you through a structured assessment process.
+
+The LGAM index page is descriptive — it names and describes without recommending. The further along this spectrum you go, the more the P&D content diverges from the parent model's tone. That may be appropriate (business area pages arguably *should* be more opinionated than the parent taxonomy) but it raises questions about voice and authority — who is saying "this is the target architecture" and on what basis?
+
+**2. Reference material vs active tool**
+
+Hub-Lite, Hub-Max, and Lite-Max are reference material — you read them, absorb information, leave. They may inform your decisions but they don't structure your decision-making process. Lite-Transformation is trying to be a tool — it walks you through steps, asks you to rate your capabilities, and outputs a roadmap structure. Tools require ongoing maintenance (are the maturity criteria still right? are the example ratings realistic?), user support, and potentially personalisation. Reference material is cheaper to maintain but less directly actionable.
+
+**3. Narrow expert audience vs broader council audience**
+
+Hub-Max assumes a technically literate reader who understands SVG architecture diagrams, concepts like "rules-as-code engines", "event brokers (pub/sub)", "PostGIS spatial databases", and "decoupled edge registers." This is senior architect or technical lead territory. Lite-Max and Lite-Transformation use the LGA taxonomy and business language ("functions and services", "capability coverage", "cost of fragmentation") that a service manager, head of planning, or IT business partner could engage with. Hub-Lite sits in between — its hub page is accessible but its sub-pages still use technical language (LGAM stack table with layer/element/technology columns).
+
+**4. LGAM-native vs planning-domain-native**
+
+Hub-Lite and Hub-Max are structured *around the LGAM*. Every section maps back to LGAM taxonomy nodes (Capabilities → Workflow, Corporate Areas → Geographical, Integration → API Gateway). The content exists to explain how LGAM concepts manifest in planning. Lite-Max and Lite-Transformation are structured *around the planning domain*. They use the LGA function/service hierarchy as the primary organising principle, with LGAM elements cross-referenced where relevant. This is the difference between "here's planning viewed through the LGAM lens" and "here's planning, with LGAM as supporting context."
+
+This tension matters for the user: a council CTO looking at the LGAM to understand their technology landscape would expect the LGAM-native framing. A head of planning service looking for guidance on their domain would expect the planning-native framing. They're different entry points into the same territory.
+
+**5. Self-contained vs ecosystem-dependent**
+
+Hub-Lite and Hub-Max route to sub-pages (development-management.html, planning-policy.html, building-control.html) — they're navigation hubs implying a family of detailed pages beneath. This creates a richer, more navigable resource but dramatically increases the content surface area that needs authoring, maintaining, and validating with subject-matter experts. The lite concepts are self-contained single pages. They're more manageable as a production unit but risk becoming very dense (Lite-Max and Lite-Transformation are already long, complex pages).
+
+### The underlying strategic question
+
+These aren't just different layouts for the same content — they express different positions on what the LGAM business area pages are *for*:
+
+- **If the purpose is navigation and taxonomy** → Hub-Lite is the right model. It extends the index page's "here are the things" approach into domain-specific territory.
+- **If the purpose is architectural guidance** → Hub-Max is the right model. It tells technical architects what target states look like and why.
+- **If the purpose is building the case for modernisation** → Lite-Max is the right model. It brings evidence and urgency to convince decision-makers.
+- **If the purpose is enabling self-assessment and planning** → Lite-Transformation is the right model. It turns the LGAM from a passive reference into an active tool.
+
+These purposes aren't mutually exclusive, but they pull in different directions on tone, depth, audience, maintenance burden, and relationship to the rest of the LGAM. Choosing which one to develop further — or which elements to combine — is a product decision that should be informed by who we've decided the primary user is and what action we want them to take after visiting.

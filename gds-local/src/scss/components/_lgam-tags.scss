@@ -69,3 +69,15 @@
   background-color: #d4351c !important;
   color: #ffffff !important;
 }
+
+.lgam-tag--interface {
+  @extend %lgam-tag-base;
+  background-color: #800080 !important;
+  color: #ffffff !important;
+}
+
+.lgam-tag--channel {
+  @extend %lgam-tag-base;
+  background-color: #CC00CC !important;
+  color: #ffffff !important;
+}

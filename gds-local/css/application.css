@@ -7517,7 +7517,7 @@
   Base overrides to ensure .govuk-tag modifier classes retain the
   legacy LGAM styling (slimmer padding, normal weight, no uppercase).
 */
-.lgam-tag--anti, .lgam-tag--target, .lgam-tag--corporate, .lgam-tag--data, .lgam-tag--security, .lgam-tag--integration, .lgam-tag--technology, .lgam-tag--business-area, .lgam-tag--capability {
+.lgam-tag--channel, .lgam-tag--interface, .lgam-tag--anti, .lgam-tag--target, .lgam-tag--corporate, .lgam-tag--data, .lgam-tag--security, .lgam-tag--integration, .lgam-tag--technology, .lgam-tag--business-area, .lgam-tag--capability {
   padding: 2px 8px !important;
   font-size: 14px !important;
   font-weight: 400 !important;
@@ -7569,6 +7569,16 @@
 
 .lgam-tag--anti {
   background-color: #d4351c !important;
+  color: #ffffff !important;
+}
+
+.lgam-tag--interface {
+  background-color: #800080 !important;
+  color: #ffffff !important;
+}
+
+.lgam-tag--channel {
+  background-color: #CC00CC !important;
   color: #ffffff !important;
 }
 
