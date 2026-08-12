@@ -199,17 +199,6 @@
     margin-top: 25px;
   }
 
-  /* Strategic-direction cards on the intro */
-  .app-cards { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 25px 0; }
-  @media (min-width: 641px){ .app-cards { grid-template-columns: 1fr 1fr; } }
-  .app-card {
-    border: 1px solid var(--govuk-mid-grey);
-    border-left: 10px solid var(--govuk-blue);
-    background: #fff;
-    padding: 20px 20px 5px;
-  }
-  .app-card h3 { margin-top: 0; }
-
   /* Back to top link */
   .app-back-to-top { margin-top: 30px; }
   .app-back-to-top__link {
@@ -295,7 +284,7 @@
 <div class="app-product-header">
   <div class="govuk-width-container">
     <h1 class="app-product-header__title">Enterprise Architecture Principles</h1>
-    <p class="app-product-header__description">Ten enduring principles to guide how UK government designs, invests in, assures and evolves its digital, data and technology capabilities.</p>
+    <p class="app-product-header__description">Nine enduring principles to guide how UK government designs, invests in, assures and evolves its digital, data and technology capabilities.</p>
   </div>
 </div>
 
@@ -312,18 +301,17 @@
         <li class="app-navigation__item"><a class="app-navigation__link" href="#contribute">Contribute and feedback</a></li>
       </ul>
 
-      <h2 class="app-navigation__heading">The ten principles</h2>
+      <h2 class="app-navigation__heading">The nine principles</h2>
       <ul class="app-navigation__list">
         <li class="app-navigation__item"><a class="app-navigation__link" href="#p1">1. Create measurable public value</a></li>
-        <li class="app-navigation__item"><a class="app-navigation__link" href="#p2">2. Design around users and outcomes</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p2">2. Design around users, outcomes, place and inclusion</a></li>
         <li class="app-navigation__item"><a class="app-navigation__link" href="#p3">3. Know your estate</a></li>
         <li class="app-navigation__item"><a class="app-navigation__link" href="#p4">4. Reuse, share and connect</a></li>
-        <li class="app-navigation__item"><a class="app-navigation__link" href="#p5">5. Data as national infrastructure</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p5">5. Data as shared national infrastructure</a></li>
         <li class="app-navigation__item"><a class="app-navigation__link" href="#p6">6. Be open and transparent</a></li>
-        <li class="app-navigation__item"><a class="app-navigation__link" href="#p7">7. Secure and resilient by design</a></li>
-        <li class="app-navigation__item"><a class="app-navigation__link" href="#p8">8. Retain sovereignty and control</a></li>
-        <li class="app-navigation__item"><a class="app-navigation__link" href="#p9">9. AI-ready and agent-ready</a></li>
-        <li class="app-navigation__item"><a class="app-navigation__link" href="#p10">10. Govern, assure and improve</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p7">7. Secure, private and resilient by design</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p8">8. AI-ready, agent-ready and adaptable</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#p9">9. Govern, assure and improve</a></li>
       </ul>
 
       <h2 class="app-navigation__heading">Other useful resources</h2>
@@ -343,26 +331,7 @@
           <h2 class="govuk-heading-l" id="about">About these principles</h2>
           <p class="govuk-body">Enterprise architecture principles are general rules and guidelines that inform and support decisions on how government should design and deliver services, to align with its vision and objectives. They are intended to be enduring and seldom amended. They reflect a level of consensus across the enterprise and embody the spirit and thinking of the architecture.</p>
           <p class="govuk-body">Discovery, user research and requirements gathering provide user needs, which inform what a service does. These principles provide guidance on <em>how</em> services should be architected to meet those needs. They should be applied alongside the <a class="govuk-link" href="https://www.gov.uk/service-manual/service-standard">UK Government Service Standard</a> and the <a class="govuk-link" href="https://www.gov.uk/guidance/the-technology-code-of-practice">Technology Code of Practice</a>.</p>
-          <p class="govuk-body">They are deliberately designed to support four strategic directions:</p>
-
-          <div class="app-cards">
-            <div class="app-card">
-              <h3 class="govuk-heading-s">Firmer foundations</h3>
-              <p class="govuk-body-s">Reducing fragility, inconsistency and duplication across the government estate.</p>
-            </div>
-            <div class="app-card">
-              <h3 class="govuk-heading-s">Legacy remediation</h3>
-              <p class="govuk-body-s">Actively containing, replacing and retiring legacy systems and technical debt.</p>
-            </div>
-            <div class="app-card">
-              <h3 class="govuk-heading-s">Digital Public Infrastructure</h3>
-              <p class="govuk-body-s">Creating shared, reusable capabilities such as identity, notifications, payments, exchange and registers.</p>
-            </div>
-            <div class="app-card">
-              <h3 class="govuk-heading-s">Sovereignty and AI-readiness</h3>
-              <p class="govuk-body-s">Retaining strategic control and enabling responsible adoption of AI and agentic services.</p>
-            </div>
-          </div>
+          <p class="govuk-body">People, place and devolution run as a theme through the whole set, signalling that place is a lens on everything government builds, not a separate concern. The principles are intended to be used by senior leaders, architects, product and service owners, commercial teams and assurance bodies to shape decisions consistently across central, regional and local government.</p>
 
           <h2 class="govuk-heading-l" id="how-to-use">How to use them</h2>
           <ul class="govuk-list govuk-list--bullet">
@@ -383,12 +352,12 @@
               <li>the Cloud First policy (default to public cloud), and open source and open standards expectations;</li>
               <li>data protection, accessibility and records obligations set out in law and cross-government policy.</li>
             </ul>
-            <p class="govuk-body" style="margin-bottom:0">Where a principle cannot be met because of a mandatory obligation, or an obligation cannot be met because of legacy constraints, the trade-off must be made explicit, evidenced and time-bound, with a clear route back to compliance.</p>
+            <p class="govuk-body" style="margin-bottom:0">Where a principle cannot be met because of a mandatory obligation, or an obligation cannot be met because of technology constraints, the trade-off must be made explicit, evidenced and time-bound, with a clear route back to compliance.</p>
           </div>
         </div>
       </div>
 
-      <h2 class="govuk-heading-l">The ten principles</h2>
+      <h2 class="govuk-heading-l">The nine principles</h2>
       <p class="govuk-body">Each principle is expressed with a short statement, a rationale (why it matters) and implications (what it means in practice).</p>
 
       <div class="govuk-grid-row">
@@ -396,217 +365,218 @@
 
           <section class="app-principle" id="p1">
             <h3 class="govuk-heading-m app-principle__title">Create measurable public value</h3>
-            <p class="govuk-body app-principle__statement">Every architecture decision must create measurable public value &ndash; through better outcomes, improved efficiency, stronger resilience, reduced risk or greater strategic capability &ndash; at a cost the state can sustain across the whole life of the capability.</p>
+            <p class="govuk-body app-principle__statement">Every architecture decision must create measurable public value &ndash; whether through better outcomes for citizens and businesses, improved efficiency, stronger resilience, reduced risk or greater strategic capability &ndash; at a cost the state can sustain across the whole life of the capability, and regardless of where in the country a citizen lives.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
               <li>Public money must be spent on outcomes, not activity or novelty.</li>
-              <li>Without measurable value, decisions drift towards local preference and vendor influence.</li>
-              <li>Value framing anchors decisions to policy intent, ministerial priorities and citizen outcomes.</li>
-              <li>Chronic under-investment in &lsquo;run&rsquo; is a root cause of legacy; funding must cover the whole life, not just build.</li>
+              <li>Without measurable value, architecture decisions drift towards local preference and vendor influence.</li>
+              <li>Value framing anchors architecture decisions to policy intent, ministerial priorities and citizen outcomes.</li>
+              <li>Chronic under-investment in &lsquo;run&rsquo; is a root cause of ageing technology; funding must cover the whole life, not just build.</li>
+              <li>Value that is concentrated in some places and absent in others is not good value; architecture should help close, not widen, geographic gaps in outcomes.</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Every material decision must have a stated outcome, benefit or risk-reduction rationale.</li>
-              <li>Benefits should be measurable through performance, adoption, cost-to-serve, risk reduction, reuse, user satisfaction or reduced technical debt.</li>
+              <li>Every material architecture decision must have a stated outcome, benefit or risk-reduction rationale.</li>
+              <li>Benefits should be measurable through service performance, adoption, cost-to-serve, risk reduction, reuse, user satisfaction or reduced technical debt.</li>
               <li>Value cases must reflect whole-life cost, including sustainable funding for maintenance and modernisation.</li>
-              <li>Weigh building and retaining capability in-house against long-term dependence on external contractors.</li>
+              <li>Assess value across places, not just at the centre: shared capability should be available to, and adaptable by, every locality so it does not entrench a postcode lottery.</li>
+              <li>Decisions should weigh building and retaining capability in-house against long-term dependence on external contractors.</li>
               <li>Exceptions may be valid for security, resilience, legal, regulatory or strategic reasons, but must be explicit.</li>
+              <li>Architecture governance should require value framing at the point of decision, not after delivery.</li>
             </ul>
           </section>
 
           <section class="app-principle" id="p2">
-            <h3 class="govuk-heading-m app-principle__title">Design around users, outcomes and inclusion</h3>
-            <p class="govuk-body app-principle__statement">Architecture must start from the needs of users and the outcomes government is trying to achieve, ensuring services are accessible, inclusive and usable across channels.</p>
+            <h3 class="govuk-heading-m app-principle__title">Design around users, outcomes, place and inclusion</h3>
+            <p class="govuk-body app-principle__statement">Government architecture must start from the needs of users and the outcomes government is trying to achieve, ensuring services are accessible, inclusive and usable across channels, communities and places, and are designed with communities rather than done to them.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
               <li>Government services exist to serve people, businesses and public servants, not to serve systems.</li>
-              <li>Whole-journey outcomes cross departmental boundaries, so architecture must too.</li>
+              <li>Whole-journey outcomes cross departmental and tier boundaries, so architecture must too.</li>
+              <li>Most services citizens experience are delivered locally or regionally; design that ignores place will not serve real journeys.</li>
               <li>Accessibility, inclusion, assisted digital and trust are core public sector obligations.</li>
-              <li>Ignoring user reality is one of the most common causes of legacy accumulation and failed transformation.</li>
+              <li>Ignoring user reality is one of the most common causes of failed transformation and stranded technical debt.</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Support whole user journeys and life events, not just individual departmental systems.</li>
-              <li>Internal users, operational teams, policy teams, suppliers and AI agents should also be treated as users.</li>
+              <li>Architecture should support whole user journeys and life events, not just individual departmental systems.</li>
+              <li>Internal users, operational teams, policy teams, local delivery partners, suppliers and AI agents should also be treated as users.</li>
+              <li>Treat local government, Strategic Authorities / mayoral bodies and the wider public sector (health, police, transport, housing, skills) as first-class users and delivery partners, not afterthoughts.</li>
+              <li>Support joined-up journeys around a place and a person across the central&ndash;regional&ndash;local boundary.</li>
               <li>Accessibility, inclusion, language, channel choice and continuity must be considered early.</li>
-              <li>Do not optimise back-office convenience at the expense of user outcomes.</li>
+              <li>Work with communities, not to them: make relevant decisions and performance visible to local citizens and leaders.</li>
+              <li>Architecture must not optimise back-office convenience at the expense of user outcomes.</li>
               <li>Service, product, policy and architecture teams should co-design, not sequence handoffs.</li>
             </ul>
           </section>
 
           <section class="app-principle" id="p3">
             <h3 class="govuk-heading-m app-principle__title">Know your estate</h3>
-            <p class="govuk-body app-principle__statement">Maintain a shared, evidence-based and continuously updated view of systems, services, data, dependencies, contracts and legacy risk, at both departmental and cross-government level.</p>
+            <p class="govuk-body app-principle__statement">Government must maintain a shared, evidence-based and continuously updated view of its systems, services, data, dependencies, contracts and modernisation risk &ndash; at departmental, regional, local and cross-government level.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>You cannot rewire, reuse or remediate what you cannot see; visibility is the precondition for firmer foundations.</li>
-              <li>Legacy risk can only be prioritised and funded when it is discovered, classified and made visible.</li>
-              <li>Duplication and concentration risk are invisible without a portfolio-level view across departments.</li>
+              <li>You cannot rewire, reuse or modernise what you cannot see; visibility is the precondition for firmer foundations.</li>
+              <li>Modernisation risk can only be prioritised and funded when ageing and legacy systems are discovered, classified and made visible.</li>
+              <li>Duplication and concentration risk are invisible without a portfolio-level view across departments and tiers.</li>
+              <li>Local government reorganisation and coterminous boundaries create both disruption and a once-in-a-generation chance to rationalise systems and data &ndash; which needs a clear estate picture.</li>
               <li>Evidence-based spend control and reuse depend on an authoritative, queryable record of what already exists.</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Maintain current asset and dependency registers, with legacy systems risk-classified.</li>
-              <li>Prefer automated discovery and scanning over point-in-time manual returns where practical.</li>
-              <li>Capability, application, data and contract information should feed a federated cross-government view.</li>
-              <li>Critical legacy dependencies should be identifiable, with a published register and clear escalation paths.</li>
+              <li>Departments and local bodies should maintain current asset and dependency registers, with ageing and legacy systems risk-classified.</li>
+              <li>Automated discovery and scanning should be preferred over point-in-time manual returns where practical.</li>
+              <li>Capability, application, data and contract information should feed a federated view that spans central, regional and local government.</li>
+              <li>Critical dependencies should be identifiable, with a published register and clear escalation paths.</li>
               <li>Estate data should be good enough to support reuse-before-build checks and portfolio heat-mapping.</li>
-              <li>Treat estate visibility as a shared capability, not a one-off audit.</li>
+              <li>Estate visibility should be treated as a shared capability, not a one-off audit.</li>
             </ul>
           </section>
 
           <section class="app-principle" id="p4">
             <h3 class="govuk-heading-m app-principle__title">Reuse, share and connect &ndash; build once, use many</h3>
-            <p class="govuk-body app-principle__statement">Reuse and share existing capabilities, platforms, patterns and data before buying or building new, and build capabilities that are interoperable, composable and machine-consumable so they can be safely connected and reused by other services, departments, partners and AI agents.</p>
+            <p class="govuk-body app-principle__statement">Government must reuse and share existing capabilities, platforms, patterns and data before buying or building new, and must build capabilities that are interoperable, composable and machine-consumable so they can be safely connected and reused by other services, departments, tiers of government, partners and AI agents. Apply subsidiarity: provide common capability as shared national rails, while keeping delivery, configuration and decision rights as close to the place as is effective.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Duplication across departments creates cost, complexity, inconsistency and risk.</li>
-              <li>A &lsquo;build once, use many&rsquo; model creates the shared building blocks needed for Digital Public Infrastructure.</li>
-              <li>Interoperability is the foundation of cross-government journeys and of legacy modernisation via strangler patterns.</li>
-              <li>Cloud is the default delivery model under the Cloud First policy; the strategic question is which shared platform, and how to retain sovereignty and exit.</li>
-              <li>Open standards and well-designed interfaces protect long-term flexibility, portability and sovereignty.</li>
+              <li>Duplication across departments and localities creates cost, complexity, inconsistency and risk.</li>
+              <li>A &lsquo;build once, use many&rsquo; model creates the shared building blocks and data-sharing rails that let services, departments and tiers reuse capability safely.</li>
+              <li>Interoperability is the foundation of cross-government journeys and of technology modernisation via strangler patterns.</li>
+              <li>Well-designed common rails let places make the right choices for themselves; over-centralised, single-instance designs impose the wrong choices on places.</li>
+              <li>Cloud is the default delivery model under the Cloud First policy; the strategic question is which shared platform, and how to retain exit and portability.</li>
+              <li>Open standards and well-designed interfaces protect long-term flexibility and portability.</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
               <li>&lsquo;Reuse and share first&rsquo; should be the default; new build must have a clear justification.</li>
-              <li>Treat common capabilities (identity, notifications, payments, exchange, registers) as national assets.</li>
-              <li>Assess every capability as commodity, common, differentiating or sovereign, with different treatment for each.</li>
-              <li>Consistent with Cloud First, default to public cloud and SaaS; order of preference is shared government platform, then SaaS, then configured COTS, then PaaS, then IaaS, then bespoke build.</li>
-              <li>Configure and integrate COTS and SaaS rather than heavily customising them; reserve build for differentiating capability.</li>
-              <li>Design APIs, events and schemas as products, with discoverable catalogues and open standards.</li>
-              <li>Make services safely consumable by authorised systems and AI agents through controlled, auditable interfaces.</li>
-              <li>Avoid point-to-point integration where shared patterns exist; plan retirement and decommissioning from the start.</li>
+              <li>Common capabilities (identity, notifications, payments, exchange, registers) should be treated as national assets, consumable by local and regional government and the wider public sector, not only central departments.</li>
+              <li>Every capability should be assessed as commodity, common, differentiating or place-specific, with different treatment for each; commodity and common capabilities should be offered as shared rails.</li>
+              <li>Apply subsidiarity: default to the lowest effective level for delivery and configuration, while sharing common building blocks nationally.</li>
+              <li>Avoid designs that lock delivery into a single central instance where a place-configurable or federated model would better serve local accountability.</li>
+              <li>Support local government reorganisation with reusable patterns for merging, separating and rationalising systems, data and contracts.</li>
+              <li>Consistent with Cloud First, default to public cloud and SaaS; the order of preference is shared government platform, then SaaS, then configured COTS, then PaaS, then IaaS, then bespoke build.</li>
+              <li>COTS and SaaS should be configured and integrated, not heavily customised; build is reserved for differentiating capability.</li>
+              <li>APIs, events and schemas should be designed as products, with discoverable catalogues and open standards.</li>
+              <li>Critical services should retain explicit exit strategies, portability plans and data repatriation routes, and open standards should be used to keep options open.</li>
+              <li>Services should be safely exposable to authorised systems and AI agents through controlled, auditable interfaces.</li>
+              <li>Point-to-point integration should be avoided where shared patterns or platforms exist; retirement and decommissioning should be planned from the start.</li>
             </ul>
           </section>
 
           <section class="app-principle" id="p5">
             <h3 class="govuk-heading-m app-principle__title">Treat data as shared national infrastructure</h3>
-            <p class="govuk-body app-principle__statement">Design, govern, share and protect data as shared national infrastructure, with quality, meaning, lineage, access and reuse considered from the start.</p>
+            <p class="govuk-body app-principle__statement">Data must be designed, governed, shared and protected as shared national infrastructure &ndash; across central, regional and local government &ndash; with quality, meaning, lineage, access and reuse considered from the start.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
               <li>Modern public services, analytics, AI and automation all depend on high-quality, well-governed data.</li>
-              <li>Data trapped inside departmental systems or proprietary products limits transformation and creates risk.</li>
+              <li>Data trapped inside departmental or local systems, or proprietary products, limits transformation and creates risk.</li>
+              <li>Joining services up around a place and a person requires data to flow safely across the central&ndash;regional&ndash;local boundary and the wider public service family.</li>
               <li>Data sharing is a policy, legal and ethical challenge as much as a technical one.</li>
-              <li>Treating data as infrastructure aligns the UK with global DPI thinking.</li>
+              <li>Treating data as shared infrastructure that can be safely shared and reused aligns UK government with global thinking (Estonia, Singapore, India, New Zealand).</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Data models, metadata, ownership, quality and lineage must be part of decisions from the start.</li>
-              <li>Share data by default where lawful, ethical, secure and proportionate.</li>
-              <li>Make access granular, auditable and policy-driven, supported by consent and trust frameworks.</li>
-              <li>Treat registers, exchanges and canonical data sources as strategic capabilities.</li>
-              <li>Avoid locking critical data inside proprietary formats.</li>
-              <li>Make data readiness for AI and automation an explicit architectural consideration.</li>
+              <li>Data models, metadata, ownership, quality and lineage must be part of architecture decisions from the start.</li>
+              <li>Data should be shared by default where lawful, ethical, secure and proportionate.</li>
+              <li>Design for coterminosity and interoperability so data can be joined up across central, regional, local and wider public-service boundaries.</li>
+              <li>Enable place-based data sharing (aligned to structures such as a Mayoral Data Council) with the same governance, security and privacy expectations as national data.</li>
+              <li>Access should be granular, auditable and policy-driven, supported by consent and trust frameworks.</li>
+              <li>Registers, exchanges and canonical data sources should be treated as strategic capabilities.</li>
+              <li>Departments and local bodies should avoid locking critical data inside proprietary formats.</li>
+              <li>Data readiness for AI and automation should be an explicit architectural consideration.</li>
             </ul>
           </section>
 
           <section class="app-principle" id="p6">
             <h3 class="govuk-heading-m app-principle__title">Be open and transparent</h3>
-            <p class="govuk-body app-principle__statement">Work in the open by default: publish source code, use and contribute to open source and open standards, and make architecture decisions and service performance visible, unless there is a clear and justified reason not to.</p>
+            <p class="govuk-body app-principle__statement">Government should work in the open by default: publishing source code, using and contributing to open source and open standards, and making architecture decisions and service performance visible &ndash; nationally and locally &ndash; unless there is a clear and justified reason not to.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
               <li>Public services are built with public money, so their code should be available to reuse and build on unless there is good reason not to (Service Standard point 12).</li>
               <li>Openness improves quality, security and accountability, and reduces duplication and supplier lock-in (Technology Code of Practice point 3).</li>
-              <li>Open standards let government technology interoperate, upgrade and expand, and are a practical enabler of sovereignty and portability (Technology Code of Practice point 4).</li>
-              <li>Transparency of decisions and performance builds public trust and sharpens accountability.</li>
+              <li>Open standards let government technology interoperate, upgrade and expand, and are a practical enabler of portability across tiers (Technology Code of Practice point 4).</li>
+              <li>Transparency of decisions and performance builds public trust and sharpens accountability &ndash; nationally and locally.</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Make new source code open and reusable by default, under appropriate licences, with a convincing explanation where specific code must stay closed.</li>
+              <li>New source code should be open and reusable by default, under appropriate licences, with a convincing explanation where specific code must stay closed.</li>
               <li>It remains appropriate to keep some code or data closed &ndash; for example keys and credentials, fraud-detection algorithms and unannounced policy.</li>
-              <li>Use and contribute to open standards, common components and patterns (Service Standard point 13), and give equal consideration to open source when choosing technology.</li>
-              <li>Record architecture decisions so their context is not lost (for example, using an architecture decision record framework).</li>
-              <li>Define success measures and, where appropriate, publish performance data.</li>
-              <li>Publish reusable artefacts, patterns and guidance to a common front door and keep them current.</li>
+              <li>Teams should use and contribute to open standards, common components and patterns, and give equal consideration to open source when choosing technology.</li>
+              <li>Architecture decisions should be recorded and shareable (for example via an ADR framework), so decision context is not lost.</li>
+              <li>Success measures and performance data should be defined and, where appropriate, published &ndash; including at place level so local leaders and citizens can see them.</li>
+              <li>Reusable artefacts, patterns and guidance should be published to a common front door and kept current.</li>
             </ul>
           </section>
 
           <section class="app-principle" id="p7">
             <h3 class="govuk-heading-m app-principle__title">Secure, private and resilient by design</h3>
-            <p class="govuk-body app-principle__statement">Design in security, privacy, resilience and operational continuity from the start and continually assure them, proportionate to the criticality, risk and public trust implications of the service, in line with the mandatory cross-government Secure by Design approach.</p>
+            <p class="govuk-body app-principle__statement">Security, privacy, resilience and operational continuity must be designed in from the start and continually assured, proportionate to the criticality, risk and public trust implications of the service, in line with the mandatory cross-government Secure by Design approach.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
               <li>Public trust depends on services being safe, private and reliable, especially as government adopts AI and shared platforms.</li>
               <li>Security and privacy problems are exponentially more expensive to fix after delivery.</li>
-              <li>Resilience is a national concern: many government services are effectively critical national infrastructure.</li>
+              <li>Resilience is a national and local concern: many government and local public services are effectively critical national infrastructure.</li>
               <li>Recent incidents show that supply-chain and third-party weaknesses can disrupt essential public services.</li>
               <li>AI, automation and agentic systems introduce new risks that traditional assurance was not designed for.</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Follow the mandatory cross-government Secure by Design approach and the Government Cyber Security Standard, evidenced through spend controls.</li>
-              <li>Align security and resilience to the relevant central cyber assessment framework and target profile, set proportionate to criticality.</li>
+              <li>Services must follow the mandatory cross-government Secure by Design approach and the Government Cyber Security Standard, evidenced through spend controls.</li>
+              <li>Security and resilience should be aligned to the relevant central cyber assessment framework and target profile, set proportionate to the service&rsquo;s criticality.</li>
               <li>Move from point-in-time accreditation to continual assurance across the whole service lifecycle.</li>
-              <li>Carry out threat modelling, privacy assessment, resilience assessment and operational readiness early and iteratively.</li>
-              <li>Make systems observable and recoverable, with explicit recovery objectives, failover, incident response and continuity patterns for critical services.</li>
-              <li>Make secure by design, zero-trust, identity, least privilege and strong audit the default, not an aspiration.</li>
-              <li>Assess and manage supply-chain and third-party security, including concentration and single-point-of-failure risk.</li>
-              <li>Explicitly address AI-specific risks (prompt injection, data leakage, model misuse, hallucination, autonomous action), preserving human control for high-impact decisions.</li>
+              <li>Threat modelling, privacy assessment, resilience assessment and operational readiness must happen early and iteratively.</li>
+              <li>Systems should be observable and recoverable, with explicit RTO, RPO, failover, incident response and continuity patterns for critical services.</li>
+              <li>Secure by design, zero-trust, identity, least privilege and strong audit should be default, not aspirational.</li>
+              <li>Supply-chain and third-party security must be assessed and managed, including supplier and platform concentration and single-point-of-failure risk.</li>
+              <li>AI-specific risks (prompt injection, data leakage, model misuse, hallucination, autonomous action) must be explicitly addressed, with human control preserved for high-impact decisions.</li>
             </ul>
           </section>
 
           <section class="app-principle" id="p8">
-            <h3 class="govuk-heading-m app-principle__title">Retain sovereignty and strategic control</h3>
-            <p class="govuk-body app-principle__statement">Retain strategic control over critical data, services, models, supply chain, architecture choices and operational resilience, regardless of the technology, platform or vendor used to deliver them.</p>
+            <h3 class="govuk-heading-m app-principle__title">Make government AI-ready, agent-ready and adaptable by design</h3>
+            <p class="govuk-body app-principle__statement">Government architecture must actively create the conditions for AI, automation and agentic services to operate safely, lawfully, transparently and under meaningful human control &ndash; and must stay adaptable, so government can change cloud provider, substitute technology components and rework integrations where this makes sense and adds future-proofing.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Concentration risk in cloud, AI, models and platforms has become a national concern.</li>
-              <li>Sovereignty is about control, not location &ndash; over data, decisions, operations, exit and dependency.</li>
-              <li>Public trust requires clarity over where data, models and decisions sit, and under whose jurisdiction.</li>
-              <li>Legacy remediation and DPI both require government to make deliberate choices about what it retains.</li>
-            </ul>
-            <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>Assess sovereignty across data, models, operational control, supply chain, jurisdiction and exit routes.</li>
-              <li>Give critical services explicit exit strategies, portability plans and data repatriation routes.</li>
-              <li>Understand where data, logs, metadata and operational control physically and legally sit.</li>
-              <li>Assess AI services for model provenance, training data rights, auditability and operational dependency.</li>
-              <li>Make supplier and platform concentration risk visible and managed at cross-government level.</li>
-              <li>Treat open standards, portability and interoperability as sovereignty enablers.</li>
-            </ul>
-          </section>
-
-          <section class="app-principle" id="p9">
-            <h3 class="govuk-heading-m app-principle__title">AI-ready and agent-ready by design</h3>
-            <p class="govuk-body app-principle__statement">Actively create the conditions for AI, automation and agentic services to operate safely, lawfully, transparently and under meaningful human control.</p>
-            <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
-            <ul class="govuk-list govuk-list--bullet">
-              <li>AI and agentic systems will be part of how government delivers services within this decade.</li>
-              <li>Without deliberate architecture, AI risks amplifying legacy problems, security weaknesses and data quality issues.</li>
-              <li>Agent-ready architecture (APIs, identity, permissions, audit, metadata, catalogues) is the same architecture that supports firmer foundations and DPI.</li>
+              <li>AI and agentic systems will be part of how government delivers services within this decade, and the technology is moving fast, so architecture must stay adaptable rather than locked to today&rsquo;s choices.</li>
+              <li>Without deliberate architecture, AI risks amplifying ageing technology, security weaknesses and data quality issues.</li>
+              <li>Agent-ready architecture (APIs, identity, permissions, audit, metadata, catalogues) is the same architecture that supports firmer foundations, data sharing and place-based delivery.</li>
+              <li>Flexibility &ndash; the ability to change cloud provider, substitute components and re-point integrations &ndash; protects value, manages concentration risk and keeps future options open as the market and models evolve.</li>
+              <li>Flexibility is a means, not an end: it should be pursued where it makes sense and adds future-proofing, not gold-plated everywhere at disproportionate cost.</li>
               <li>The AI Playbook sets policy expectations; architecture must translate them into practical design.</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
               <li>AI use cases must have a clear public value case, not just novelty.</li>
               <li>Agentic AI must operate within defined permissions, audit trails, policy constraints and human escalation routes.</li>
-              <li>Make services discoverable, described and safely consumable by authorised agents.</li>
-              <li>Ensure underlying data is good enough, lawful and appropriate for the intended AI use.</li>
-              <li>Make model choice, hosting, provenance, evaluation and assurance explicit design decisions.</li>
-              <li>Keep accountability with public servants; AI augments, it does not replace, accountable decision-making.</li>
+              <li>Design for portability and avoid deep lock-in to a single cloud provider, model or vendor where a portable or multi-vendor option is viable; use open standards and clean interfaces so components can be substituted.</li>
+              <li>Favour modular, loosely coupled designs so cloud services, models, technology components and integrations can be replaced without re-engineering the whole service.</li>
+              <li>Apply flexibility proportionately: weigh the cost of keeping options open against the value and future-proofing it delivers, and record the trade-off.</li>
+              <li>Government services should be discoverable, described and safely consumable by authorised agents.</li>
+              <li>Underlying data must be good enough, lawful and appropriate for the intended AI use.</li>
+              <li>Model choice, hosting, provenance, evaluation and assurance must be explicit design decisions, kept reviewable as the market and technology evolve.</li>
+              <li>Accountability must remain with public servants; AI augments, it does not replace, accountable decision-making.</li>
             </ul>
           </section>
 
-          <section class="app-principle" id="p10">
+          <section class="app-principle" id="p9">
             <h3 class="govuk-heading-m app-principle__title">Govern, assure and continuously improve the estate</h3>
-            <p class="govuk-body app-principle__statement">Govern architecture through proportionate standards, patterns, assurance and feedback loops; comply with the mandatory cross-government standards; and continuously improve the estate, its people and its environmental footprint through measurement, learning, skills investment and decommissioning.</p>
+            <p class="govuk-body app-principle__statement">Architecture must be governed through proportionate standards, patterns, assurance and feedback loops, must comply with the mandatory cross-government standards, and the estate &ndash; its people and its environmental footprint &ndash; must continuously improve through measurement, learning, skills investment and decommissioning, across central, regional and local government.</p>
             <h4 class="govuk-heading-s app-principle__subhead">Rationale</h4>
             <ul class="govuk-list govuk-list--bullet">
               <li>Principles only create value if they influence spend controls, service assessments, design authorities and operational reviews.</li>
               <li>Compliance with mandatory standards is the floor; proportionate governance must enable delivery, not obstruct it.</li>
-              <li>Firmer foundations and legacy remediation are long-term programmes that require sustained assurance and improvement.</li>
-              <li>Sustainability &ndash; environmental, financial, operational and skills &ndash; is an architectural concern, not an afterthought.</li>
-              <li>A skilled, multidisciplinary workforce is a foundation in its own right; over-reliance on external contractors weakens the state.</li>
+              <li>Firmer foundations, technology modernisation and place-based reform are long-term programmes that require sustained assurance and improvement.</li>
+              <li>Sustainability (environmental, financial, operational and skills) is an architectural concern, not an afterthought.</li>
+              <li>A skilled, multidisciplinary workforce &ndash; in the centre and in local delivery &ndash; is a foundation in its own right; over-reliance on external contractors weakens the state.</li>
             </ul>
             <h4 class="govuk-heading-s app-principle__subhead">Implications</h4>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Embed principles and mandatory standards in spend controls, service assessments, design authorities and architecture review boards.</li>
-              <li>Make standards, patterns and reference architectures discoverable, reusable and current.</li>
-              <li>Keep exceptions transparent, time-bound and reviewed, with a clear route back to compliance.</li>
-              <li>Maintain portfolio-level architecture views to see duplication, risk and legacy across government.</li>
-              <li>Make environmental sustainability, operational cost and skills sustainability part of decisions.</li>
-              <li>Build multidisciplinary team capability and in-house skills deliberately, reducing avoidable contractor dependency.</li>
-              <li>Feed learning loops back into principles, standards and patterns as government, technology and policy evolve.</li>
+              <li>Principles and mandatory standards must be embedded in spend controls, service assessments, design authorities and architecture review boards.</li>
+              <li>Standards, patterns and reference architectures must be discoverable, reusable and kept current.</li>
+              <li>Exceptions must be transparent, time-bound and reviewed, with a clear route back to compliance.</li>
+              <li>Portfolio-level architecture views should be maintained across central, regional and local government to see duplication, risk and modernisation need across the whole system.</li>
+              <li>Governance should include local and regional government and the wider public sector as participants, not just subjects of central assurance.</li>
+              <li>Environmental sustainability, operational cost and skills sustainability should be part of architecture decisions.</li>
+              <li>Multidisciplinary team capability and in-house skills should be built deliberately &ndash; nationally and locally &ndash; reducing avoidable contractor dependency.</li>
+              <li>Learning loops should feed back into principles, standards and patterns as government, technology and policy evolve.</li>
             </ul>
           </section>
 
