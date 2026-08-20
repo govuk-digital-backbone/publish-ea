@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A practical navigation page for UK public sector teams working with AI adoption, assurance, governance, security and procurement.">
+  <title>AI adoption and assurance guidance - UK public sector AI guidance</title>
+  <style>
+    :root {
+      --govuk-black: #0b0c0c;
+      --govuk-blue: #1d70b8;
+      --govuk-dark-blue: #003078;
+      --govuk-yellow: #ffdd00;
+      --govuk-green: #00703c;
+      --govuk-light-grey: #f3f2f1;
+      --govuk-mid-grey: #b1b4b6;
+      --govuk-dark-grey: #505a5f;
+      --white: #ffffff;
+      --max-width: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--govuk-black);
+      background: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 19px;
+      line-height: 1.45;
+    }
+    a { color: var(--govuk-blue); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+    a:hover { color: var(--govuk-dark-blue); text-decoration-thickness: 3px; }
+    a:focus, button:focus, input:focus {
+      outline: 3px solid transparent;
+      color: var(--govuk-black);
+      background-color: var(--govuk-yellow);
+      box-shadow: 0 -2px var(--govuk-yellow), 0 4px var(--govuk-black);
+      text-decoration: none;
+    }
+    .govuk-width-container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .skip-link { position: absolute; left: -9999px; padding: 8px 12px; }
+    .skip-link:focus { left: 16px; top: 16px; z-index: 100; }
+
+    .top-bar { background: var(--govuk-black); color: var(--white); border-bottom: 10px solid var(--govuk-blue); }
+    .top-bar__inner { display: flex; align-items: center; min-height: 56px; gap: 16px; }
+    .service-name { color: var(--white); font-weight: 700; text-decoration: none; font-size: 22px; }
+    .service-name:hover { color: var(--white); }
+
+    .hero { background: var(--govuk-light-grey); padding: 42px 0 36px; border-bottom: 1px solid var(--govuk-mid-grey); }
+    .phase-banner { border-bottom: 1px solid var(--govuk-mid-grey); padding: 10px 0; font-size: 16px; }
+    .phase-tag { background: var(--govuk-blue); color: var(--white); font-weight: 700; padding: 3px 8px; margin-right: 8px; letter-spacing: 1px; }
+    h1 { font-size: clamp(42px, 6vw, 64px); line-height: 1.03; margin: 0 0 18px; letter-spacing: -1.5px; }
+    .hero p { max-width: 780px; font-size: 22px; margin: 0 0 20px; }
+    .summary-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .summary-pill { border: 2px solid var(--govuk-black); background: var(--white); padding: 8px 12px; font-weight: 700; }
+
+    main { padding: 32px 0 56px; }
+    .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 40px; align-items: start; }
+    .sidebar { position: sticky; top: 16px; }
+    .sidebar h2 { font-size: 19px; margin: 0 0 12px; }
+    .contents-list { list-style: none; padding: 0; margin: 0 0 28px; border-top: 1px solid var(--govuk-mid-grey); }
+    .contents-list li { border-bottom: 1px solid var(--govuk-mid-grey); }
+    .contents-list a { display: block; padding: 10px 0; font-weight: 700; text-decoration: none; }
+
+    .search-panel { background: var(--govuk-light-grey); border: 1px solid var(--govuk-mid-grey); padding: 18px; margin-bottom: 32px; }
+    .search-panel label { font-weight: 700; display: block; margin-bottom: 8px; }
+    .search-row { display: flex; gap: 0; max-width: 720px; }
+    .search-row input { width: 100%; min-height: 48px; border: 2px solid var(--govuk-black); padding: 8px 12px; font-size: 19px; }
+    .search-row button { min-height: 48px; border: 2px solid var(--govuk-black); border-left: 0; background: var(--govuk-blue); color: var(--white); padding: 8px 16px; font-size: 19px; font-weight: 700; cursor: pointer; }
+    .search-row button:hover { background: var(--govuk-dark-blue); }
+    .category-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .category-button { border: 2px solid var(--govuk-blue); background: var(--white); color: var(--govuk-blue); padding: 7px 10px; cursor: pointer; font-size: 16px; font-weight: 700; }
+    .category-button[aria-pressed="true"] { background: var(--govuk-blue); color: var(--white); }
+    .result-count { margin: 14px 0 0; font-weight: 700; }
+
+    .guide-section { margin-bottom: 46px; padding-bottom: 10px; border-bottom: 1px solid var(--govuk-mid-grey); }
+    .section-title-row { display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; }
+    .section-tag { display: inline-block; color: var(--govuk-dark-grey); font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    h2 { font-size: 34px; line-height: 1.1; margin: 0 0 10px; }
+    .section-summary { max-width: 760px; margin-top: 0; color: var(--govuk-dark-grey); }
+    .back-to-top { font-size: 16px; white-space: nowrap; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 18px; }
+    .resource-card { border-top: 5px solid var(--govuk-blue); background: var(--white); padding: 18px; box-shadow: 0 0 0 1px var(--govuk-mid-grey); min-height: 220px; display: flex; flex-direction: column; }
+    .resource-card__category { color: var(--govuk-dark-grey); font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .resource-card h3 { font-size: 22px; line-height: 1.2; margin: 0 0 10px; }
+    .resource-card p { margin: 0 0 12px; }
+    .resource-card__hint { color: var(--govuk-dark-grey); font-size: 16px; margin-top: auto; }
+    .hidden { display: none !important; }
+    .no-results { border: 4px solid var(--govuk-black); padding: 18px; background: var(--white); margin: 20px 0 36px; }
+    .no-results h2 { margin-top: 0; }
+
+    footer { background: var(--govuk-light-grey); border-top: 1px solid var(--govuk-mid-grey); padding: 28px 0; color: var(--govuk-dark-grey); font-size: 16px; }
+
+    @media (max-width: 850px) {
+      body { font-size: 17px; }
+      .govuk-width-container { padding: 0 16px; }
+      .layout { display: block; }
+      .sidebar { position: static; margin-bottom: 28px; }
+      .search-row { display: block; }
+      .search-row button { width: 100%; border-left: 2px solid var(--govuk-black); border-top: 0; }
+      .section-title-row { display: block; }
+      h1 { font-size: 42px; }
+      h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="top-bar" role="banner">
+    <div class="govuk-width-container top-bar__inner">
+      <a class="service-name" href="#top">AI guidance navigation</a>
+    </div>
+  </header>
+
+  <div class="phase-banner">
+    <div class="govuk-width-container">
+      <span class="phase-tag">BETA</span>
+      This is a static guidance navigation page for public sector teams.
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="govuk-width-container">
+      <h1>AI adoption and assurance guidance</h1>
+      <p>A practical navigation page for UK public sector teams working with AI adoption, assurance, governance, security and procurement.</p>
+      <div class="summary-list" aria-label="Page summary">
+        <span class="summary-pill">26 resources</span>
+        <span class="summary-pill">5 sections</span>
+        <span class="summary-pill">GitHub Pages ready</span>
+      </div>
+    </div>
+  </section>
+
+  <main id="main-content" class="govuk-width-container">
+    <div class="layout">
+      <aside class="sidebar" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol class="contents-list">
+          <li><a href="#core-government-ai-guidance">Core government AI guidance</a></li>
+          <li><a href="#ai-assurance-and-governance">AI assurance and governance</a></li>
+          <li><a href="#security-and-safety">Security and safety</a></li>
+          <li><a href="#procurement-and-commercial">Procurement and commercial</a></li>
+          <li><a href="#sector-specific-resources">Sector-specific resources</a></li>
+        </ol>
+      </aside>
+
+      <div>
+        <section class="search-panel" aria-label="Search guidance resources">
+          <label for="resource-search">Search guidance</label>
+          <div class="search-row">
+            <input id="resource-search" type="search" autocomplete="off" placeholder="Search by topic, resource or section">
+            <button id="clear-search" type="button">Clear</button>
+          </div>
+          <div class="category-buttons" aria-label="Filter by section">
+            <button type="button" class="category-button" data-category="all" aria-pressed="true">Show all</button>
+          <button type="button" class="category-button" data-category="core-government-ai-guidance">Core government AI guidance</button>
+          <button type="button" class="category-button" data-category="ai-assurance-and-governance">AI assurance and governance</button>
+          <button type="button" class="category-button" data-category="security-and-safety">Security and safety</button>
+          <button type="button" class="category-button" data-category="procurement-and-commercial">Procurement and commercial</button>
+          <button type="button" class="category-button" data-category="sector-specific-resources">Sector-specific resources</button>
+          </div>
+          <p id="result-count" class="result-count" aria-live="polite">Showing 26 resources.</p>
+        </section>
+
+        <div id="no-results" class="no-results hidden" role="status">
+          <h2>No matching guidance found</h2>
+          <p>Try a broader search term, for example assurance, security, data, procurement or transparency.</p>
+        </div>
+
+
+      <section id="core-government-ai-guidance" class="guide-section" aria-labelledby="core-government-ai-guidance-heading">
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">7 resources</span>
+            <h2 id="core-government-ai-guidance-heading">Core government AI guidance</h2>
+          </div>
+          <a class="back-to-top" href="#top">Back to top</a>
+        </div>
+        <p class="section-summary">Start here for the main cross-government guidance that helps teams adopt AI responsibly.</p>
+        <div class="card-grid">
+
+          <article class="resource-card" data-category="core-government-ai-guidance" data-search="ai knowledge hub central location for ai standards, guidance, good practice and implementation resources. core government ai guidance">
+            <div class="resource-card__category">Core government AI guidance</div>
+            <h3><a href="https://ai.gov.uk/knowledge-hub/" target="_blank" rel="noopener noreferrer">AI Knowledge Hub</a></h3>
+            <p>Central location for AI standards, guidance, good practice and implementation resources.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="core-government-ai-guidance" data-search="ai playbook for the uk government primary guidance for adoption and use of ai across government. core government ai guidance">
+            <div class="resource-card__category">Core government AI guidance</div>
+            <h3><a href="https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government/artificial-intelligence-playbook-for-the-uk-government-html" target="_blank" rel="noopener noreferrer">AI Playbook for the UK Government</a></h3>
+            <p>Primary guidance for adoption and use of AI across government.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="core-government-ai-guidance" data-search="using ai in services - service manual service design and delivery guidance for public services using ai. core government ai guidance">
+            <div class="resource-card__category">Core government AI guidance</div>
+            <h3><a href="https://www.gov.uk/service-manual/technology/using-artificial-intelligence-ai-in-services" target="_blank" rel="noopener noreferrer">Using AI in Services - Service Manual</a></h3>
+            <p>Service design and delivery guidance for public services using AI.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="core-government-ai-guidance" data-search="data readiness for ai guidance on preparing government datasets for ai use. core government ai guidance">
+            <div class="resource-card__category">Core government AI guidance</div>
+            <h3><a href="https://www.gov.uk/government/publications/making-government-datasets-ready-for-ai/guidelines-and-best-practices-for-making-government-datasets-ready-for-ai" target="_blank" rel="noopener noreferrer">Data Readiness for AI</a></h3>
+            <p>Guidance on preparing government datasets for AI use.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="core-government-ai-guidance" data-search="generative ai framework for hm government earlier government guidance on using generative ai safely and securely; now superseded by the ai playbook but still useful for background. core government ai guidance">
+            <div class="resource-card__category">Core government AI guidance</div>
+            <h3><a href="https://www.gov.uk/government/publications/generative-ai-framework-for-hmg" target="_blank" rel="noopener noreferrer">Generative AI Framework for HM Government</a></h3>
+            <p>Earlier government guidance on using generative AI safely and securely; now superseded by the AI Playbook but still useful for background.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="core-government-ai-guidance" data-search="gov.uk service standard standard for creating and running good public services, including user needs, accessibility, privacy, security and reliable operation. core government ai guidance">
+            <div class="resource-card__category">Core government AI guidance</div>
+            <h3><a href="https://www.gov.uk/service-manual/service-standard" target="_blank" rel="noopener noreferrer">GOV.UK Service Standard</a></h3>
+            <p>Standard for creating and running good public services, including user needs, accessibility, privacy, security and reliable operation.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="core-government-ai-guidance" data-search="technology code of practice cross-government standard for designing, building and buying technology, including accessibility, security, data, reuse and sustainability. core government ai guidance">
+            <div class="resource-card__category">Core government AI guidance</div>
+            <h3><a href="https://www.gov.uk/guidance/the-technology-code-of-practice" target="_blank" rel="noopener noreferrer">Technology Code of Practice</a></h3>
+            <p>Cross-government standard for designing, building and buying technology, including accessibility, security, data, reuse and sustainability.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+        </div>
+      </section>
+      <section id="ai-assurance-and-governance" class="guide-section" aria-labelledby="ai-assurance-and-governance-heading">
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">11 resources</span>
+            <h2 id="ai-assurance-and-governance-heading">AI assurance and governance</h2>
+          </div>
+          <a class="back-to-top" href="#top">Back to top</a>
+        </div>
+        <p class="section-summary">Use these resources to plan assurance, governance, transparency, ethics and responsible innovation activities.</p>
+        <div class="card-grid">
+
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="introduction to ai assurance foundational guidance explaining ai assurance concepts, techniques and governance. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/government/publications/introduction-to-ai-assurance" target="_blank" rel="noopener noreferrer">Introduction to AI Assurance</a></h3>
+            <p>Foundational guidance explaining AI assurance concepts, techniques and governance.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="responsible ai toolkit collection of resources supporting safe and responsible ai adoption. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/government/collections/artificial-intelligence-resources-for-the-public-sector" target="_blank" rel="noopener noreferrer">Responsible AI Toolkit</a></h3>
+            <p>Collection of resources supporting safe and responsible AI adoption.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="portfolio of ai assurance techniques catalogue of practical assurance methods including assessments, audits and testing. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/guidance/portfolio-of-ai-assurance-techniques" target="_blank" rel="noopener noreferrer">Portfolio of AI Assurance Techniques</a></h3>
+            <p>Catalogue of practical assurance methods including assessments, audits and testing.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="data and ai ethics framework framework for responsible development, procurement and use of ai and data. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework" target="_blank" rel="noopener noreferrer">Data and AI Ethics Framework</a></h3>
+            <p>Framework for responsible development, procurement and use of AI and data.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="data and ai ethics framework self-assessment tool practical assessment support for teams using the framework. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/government/publications/data-ethics-framework" target="_blank" rel="noopener noreferrer">Data and AI Ethics Framework Self-Assessment Tool</a></h3>
+            <p>Practical assessment support for teams using the framework.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="model for responsible innovation toolkit to help teams innovate responsibly with data and ai. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/data-ethics-guidance/the-model-for-responsible-innovation" target="_blank" rel="noopener noreferrer">Model for Responsible Innovation</a></h3>
+            <p>Toolkit to help teams innovate responsibly with data and AI.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="algorithmic transparency recording standard transparency requirements for public sector algorithmic tools. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub" target="_blank" rel="noopener noreferrer">Algorithmic Transparency Recording Standard</a></h3>
+            <p>Transparency requirements for public sector algorithmic tools.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="ai management essentials self-assessment tool for organisational ai governance and management. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/government/consultations/ai-management-essentials-tool/guidance-for-using-the-ai-management-essentials-tool" target="_blank" rel="noopener noreferrer">AI Management Essentials</a></h3>
+            <p>Self-assessment tool for organisational AI governance and management.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="ico ai and data protection guidance guidance on applying data protection law to ai systems, including fairness, transparency, accountability and risk management. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/" target="_blank" rel="noopener noreferrer">ICO AI and Data Protection Guidance</a></h3>
+            <p>Guidance on applying data protection law to AI systems, including fairness, transparency, accountability and risk management.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="ai standards hub uk hub for ai standards, helping teams find, understand and engage with standards for trustworthy and responsible ai. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://aistandardshub.org/" target="_blank" rel="noopener noreferrer">AI Standards Hub</a></h3>
+            <p>UK hub for AI standards, helping teams find, understand and engage with standards for trustworthy and responsible AI.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="ai-assurance-and-governance" data-search="uk ai regulatory approach overview of the uk pro-innovation approach to ai regulation and how regulators are applying ai principles in their sectors. ai assurance and governance">
+            <div class="resource-card__category">AI assurance and governance</div>
+            <h3><a href="https://www.gov.uk/government/publications/regulators-strategic-approaches-to-ai/regulators-strategic-approaches-to-ai" target="_blank" rel="noopener noreferrer">UK AI Regulatory Approach</a></h3>
+            <p>Overview of the UK pro-innovation approach to AI regulation and how regulators are applying AI principles in their sectors.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+        </div>
+      </section>
+      <section id="security-and-safety" class="guide-section" aria-labelledby="security-and-safety-heading">
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">4 resources</span>
+            <h2 id="security-and-safety-heading">Security and safety</h2>
+          </div>
+          <a class="back-to-top" href="#top">Back to top</a>
+        </div>
+        <p class="section-summary">Use these resources when designing, building, deploying or operating AI systems securely.</p>
+        <div class="card-grid">
+
+          <article class="resource-card" data-category="security-and-safety" data-search="government security guidance security advice and standards from government security authorities. security and safety">
+            <div class="resource-card__category">Security and safety</div>
+            <h3><a href="https://www.security.gov.uk/policy-and-guidance/artificial-intelligence/" target="_blank" rel="noopener noreferrer">Government Security Guidance</a></h3>
+            <p>Security advice and standards from government security authorities.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="security-and-safety" data-search="ai security institute guidance guidance on ai safety, evaluation and advanced ai governance. security and safety">
+            <div class="resource-card__category">Security and safety</div>
+            <h3><a href="https://www.gov.uk/government/organisations/ai-security-institute" target="_blank" rel="noopener noreferrer">AI Security Institute Guidance</a></h3>
+            <p>Guidance on AI safety, evaluation and advanced AI governance.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="security-and-safety" data-search="ncsc secure ai system development guidance cyber security guidance for designing, developing, deploying and operating ai systems securely. security and safety">
+            <div class="resource-card__category">Security and safety</div>
+            <h3><a href="https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development" target="_blank" rel="noopener noreferrer">NCSC Secure AI System Development Guidance</a></h3>
+            <p>Cyber security guidance for designing, developing, deploying and operating AI systems securely.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="security-and-safety" data-search="ai cyber security code of practice baseline cyber security principles for organisations developing or deploying ai systems. security and safety">
+            <div class="resource-card__category">Security and safety</div>
+            <h3><a href="https://www.gov.uk/government/publications/ai-cyber-security-code-of-practice" target="_blank" rel="noopener noreferrer">AI Cyber Security Code of Practice</a></h3>
+            <p>Baseline cyber security principles for organisations developing or deploying AI systems.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+        </div>
+      </section>
+      <section id="procurement-and-commercial" class="guide-section" aria-labelledby="procurement-and-commercial-heading">
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">2 resources</span>
+            <h2 id="procurement-and-commercial-heading">Procurement and commercial</h2>
+          </div>
+          <a class="back-to-top" href="#top">Back to top</a>
+        </div>
+        <p class="section-summary">Use these resources when buying, commissioning or assessing AI products and services.</p>
+        <div class="card-grid">
+
+          <article class="resource-card" data-category="procurement-and-commercial" data-search="government commercial agency ai guidance guidance for procuring ai solutions. procurement and commercial">
+            <div class="resource-card__category">Procurement and commercial</div>
+            <h3><a href="https://www.gca.gov.uk/products-and-services/technology/artificial-intelligence" target="_blank" rel="noopener noreferrer">Government Commercial Agency AI Guidance</a></h3>
+            <p>Guidance for procuring AI solutions.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="procurement-and-commercial" data-search="dsit guidelines for ai procurement - legacy historic procurement guidance retained for reference. procurement and commercial">
+            <div class="resource-card__category">Procurement and commercial</div>
+            <h3><a href="https://www.gov.uk/government/publications/guidelines-for-ai-procurement/guidelines-for-ai-procurement" target="_blank" rel="noopener noreferrer">DSIT Guidelines for AI Procurement - Legacy</a></h3>
+            <p>Historic procurement guidance retained for reference.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+        </div>
+      </section>
+      <section id="sector-specific-resources" class="guide-section" aria-labelledby="sector-specific-resources-heading">
+        <div class="section-title-row">
+          <div>
+            <span class="section-tag">2 resources</span>
+            <h2 id="sector-specific-resources-heading">Sector-specific resources</h2>
+          </div>
+          <a class="back-to-top" href="#top">Back to top</a>
+        </div>
+        <p class="section-summary">Use these resources for sector-specific examples, guidance and case studies.</p>
+        <div class="card-grid">
+
+          <article class="resource-card" data-category="sector-specific-resources" data-search="nhs ai hub health sector ai resources, articles and case studies. sector-specific resources">
+            <div class="resource-card__category">Sector-specific resources</div>
+            <h3><a href="https://digital.nhs.uk/services/ai-knowledge-repository" target="_blank" rel="noopener noreferrer">NHS AI Hub</a></h3>
+            <p>Health sector AI resources, articles and case studies.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+          <article class="resource-card" data-category="sector-specific-resources" data-search="local government association ai hub guidance and examples for local authorities. sector-specific resources">
+            <div class="resource-card__category">Sector-specific resources</div>
+            <h3><a href="https://www.local.gov.uk/our-support/cyber-digital-and-technology/artificial-intelligence-hub" target="_blank" rel="noopener noreferrer">Local Government Association AI Hub</a></h3>
+            <p>Guidance and examples for local authorities.</p>
+            <p class="resource-card__hint">Opens in a new tab</p>
+          </article>
+        </div>
+      </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="govuk-width-container">
+      <p>This page was generated from a Word source document and prepared as a standalone HTML file for GitHub Pages. Check information classification and publication approval before making it public.</p>
+    </div>
+  </footer>
+
+  <script>
+    const input = document.getElementById('resource-search');
+    const clearButton = document.getElementById('clear-search');
+    const cards = Array.from(document.querySelectorAll('.resource-card'));
+    const sections = Array.from(document.querySelectorAll('.guide-section'));
+    const count = document.getElementById('result-count');
+    const noResults = document.getElementById('no-results');
+    const categoryButtons = Array.from(document.querySelectorAll('.category-button'));
+    let activeCategory = 'all';
+
+    function updateFilters() {
+      const term = input.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const matchesText = card.dataset.search.includes(term);
+        const matchesCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+        const isVisible = matchesText && matchesCategory;
+        card.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount += 1;
+      });
+
+      sections.forEach(section => {
+        const visibleCards = section.querySelectorAll('.resource-card:not(.hidden)').length;
+        section.classList.toggle('hidden', visibleCards === 0);
+      });
+
+      const resourceWord = visibleCount === 1 ? 'resource' : 'resources';
+      count.textContent = `Showing ${visibleCount} ${resourceWord}.`;
+      noResults.classList.toggle('hidden', visibleCount !== 0);
+    }
+
+    input.addEventListener('input', updateFilters);
+    clearButton.addEventListener('click', () => {
+      input.value = '';
+      activeCategory = 'all';
+      categoryButtons.forEach(button => button.setAttribute('aria-pressed', button.dataset.category === 'all' ? 'true' : 'false'));
+      updateFilters();
+      input.focus();
+    });
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        activeCategory = button.dataset.category;
+        categoryButtons.forEach(item => item.setAttribute('aria-pressed', item === button ? 'true' : 'false'));
+        updateFilters();
+      });
+    });
+  </script>
+</body>
+</html>
