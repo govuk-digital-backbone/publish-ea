@@ -1,0 +1,1492 @@
+{
+  "list": {
+    "identifier": "services",
+    "label": "All services",
+    "description": "Services provided by local public sector organisations and their partners",
+    "created": "2012-05-14T00:00:00",
+    "modified": "2024-03-11T00:00:00",
+    "fullDescription": "The Service list is a catalogue of all services performed by Local Government in England and Scotland and Municipalities in Belgium, Netherlands, Norway, Sweden, Germany.  The list gives a common understanding of services and is a result of collaboration during The Smart Cities Project 2009 - 2011. Each list can be seen individually by clicking on the drop down menu on the left hand side of the page.  Lists are shown in English but can also be seen in the language of the chosen country by clicking on the flag when looking at an individual country's list . Where services are delivered by more than one country the service number and definition is standardised allowing for the exchange of information between countries by numerical ID regardless of language.<br /><br />A service is a set of actions or activities undertaken by a council (or other public sector body) to deliver a product or conclusion.  Services are usually provided at the request of a customer either as a one-off request (for example planning applications, parking permits) or as a result of the circumstances of the customer (for example local resident, local business, disabled).  Services are provided by a public sector body either as a power (a legal right), a duty (a legal obligation) or at its discretion.<br /><br />A service list provides a standard way of referring to each service when communicating within and between organisations.  It uses unique numeric identifiers for each service, irrespective of the language and naming conventions that are used by different people and organisations to identify or describe services.  The service list uses terminology that is recognised within the public sector but may not necessarily be understood by the customer.  Other lists provide a customer facing view of services which can be used to provide information on services to the public (such as in a web site).<br /><br />Use - to define a core set of tasks that are common to most public sector bodies, allowing communication across boundaries by describing the responsibilities unequivocally within a controlled list of terms.",
+    "accuracy": "Content is based on the collaborative efforts of UK public sector officers and their suppliers. There are no guarantees on accuracy.",
+    "audience": "Public sector officers and their suppliers responsible for service improvement.",
+    "completeness": "Content is based on the collaborative efforts of UK public sector officers and their suppliers. There are no guarantees on completeness.",
+    "coverage": "European local government.",
+    "intendedLongevity": "Indefinite. The list forms part of LG Inform Plus's Local Government Business Model started in 2002, funded by LG Inform Plus subscriptions.",
+    "provenance": "Created by LG Inform Plus to support an evidence based framework for public sector service improvement.",
+    "rights": "This list is licenced under the <a target=\"_blank\" href=\"http://www.nationalarchives.gov.uk/doc/open-government-licence/\">Open Government Licence</a> and must be attributed to the <a href=\"http://standards.esd.org.uk\">LG Inform Plus programme</a>.",
+    "status": "Formal release",
+    "timeliness": "Updated roughly quarterly.",
+    "uri": "http://id.esd.org.uk/list/services",
+    "items": [
+      {
+        "identifier": "642",
+        "label": "Activities for children and young people",
+        "description": "Information about sporting, cultural and social activities in the local area for children and young people.  Activities may be available on a drop-in basis or may require a regular commitment.",
+        "uri": "http://id.esd.org.uk/service/642",
+        "parents": []
+      },
+      {
+        "identifier": "640",
+        "label": "Activities for older people",
+        "description": "Provision of leisure activities for older people within the community. This may include cultural, sporting and other organised social activities.",
+        "uri": "http://id.esd.org.uk/service/640",
+        "parents": []
+      },
+      {
+        "identifier": "160",
+        "label": "Adoption",
+        "description": "The local authority attempts to find adoptive homes for children who are no longer able to live in their own homes.  The authority reviews applications from prospective adoptive parents to assess suitability.  Ongoing support is provided for adopted children and their new families.",
+        "uri": "http://id.esd.org.uk/service/160",
+        "parents": []
+      },
+      {
+        "identifier": "1757",
+        "label": "Adult care plan",
+        "description": "Following a social care assessment the council will work with any adult who has social care needs to create a care plan which will detail how any eligible needs are to be met.  The plan may also suggest ways of meeting needs for which the individual is not eligible to receive help from the council.",
+        "uri": "http://id.esd.org.uk/service/1757",
+        "parents": []
+      },
+      {
+        "identifier": "27",
+        "label": "Adult education and learning",
+        "description": "Provision of ddult learning opportunities which can increase skills to support learners into work, enable attendees to gain qualifications, help attendees to meet new friends or simply find new hobbies or interests.  Courses may be available full time, part time or online.",
+        "uri": "http://id.esd.org.uk/service/27",
+        "parents": []
+      },
+      {
+        "identifier": "293",
+        "label": "Adult hospice care",
+        "description": "Provision of information about hospices in the area for terminally ill people and their carers.",
+        "uri": "http://id.esd.org.uk/service/293",
+        "parents": []
+      },
+      {
+        "identifier": "1121",
+        "label": "Adult placement",
+        "description": "The Adult Placement Scheme helps approved Adult Placement Carers (ordinary people from the local community) to share their home and time with someone in need. It is similar to fostering but for adults.",
+        "uri": "http://id.esd.org.uk/service/1121",
+        "parents": []
+      },
+      {
+        "identifier": "700",
+        "label": "Advice for young people",
+        "description": "Integrated advice, guidance and access to personal development opportunities for young people aged between 13 and 19 to help them make a smooth transition to adulthood and working life",
+        "uri": "http://id.esd.org.uk/service/700",
+        "parents": []
+      },
+      {
+        "identifier": "349",
+        "label": "Advice to businesses and voluntary organisations",
+        "description": "Providing advice to new or existing businesses and voluntary organisations in the area on all aspects of running a business from starting a business to property, tax, employment law, business rates etc.",
+        "uri": "http://id.esd.org.uk/service/349",
+        "parents": []
+      },
+      {
+        "identifier": "162",
+        "label": "Advocacy for carers",
+        "description": "Advocacy on behalf of carers may include raising awareness of carers issues and helping to keep them on the agenda of all relevant agencies, setting out key values and principles for services to carers in the form of a local Carers Charter and improving the quality and increasing the availability of information to carers.",
+        "uri": "http://id.esd.org.uk/service/162",
+        "parents": []
+      },
+      {
+        "identifier": "728",
+        "label": "Advocacy for social care clients",
+        "description": "Providing access to someone who can advocate on behalf of a social services client to ensure that they receive equal rights by writing letters, making phone calls, liaising with relevant agencies etc. on the clients behalf.",
+        "uri": "http://id.esd.org.uk/service/728",
+        "parents": []
+      },
+      {
+        "identifier": "727",
+        "label": "Alcohol advice and support",
+        "description": "This service provides counselling advice and support for people affected by alcohol abuse/dependency.",
+        "uri": "http://id.esd.org.uk/service/727",
+        "parents": []
+      },
+      {
+        "identifier": "510",
+        "label": "Allotments",
+        "description": "Plots of land for use to grow vegetables, fruit and flowers available for rent by local citizens.  Water supplies, sheds/storage and skips are usually provided on allotment sites, car parking may also be available.  The authority will determine the regulations concerning the use of allotments and is responsible for ensuring adequate security (fences etc.) is provided.",
+        "uri": "http://id.esd.org.uk/service/510",
+        "parents": []
+      },
+      {
+        "identifier": "732",
+        "label": "Alternative care providers",
+        "description": "Independent agencies who provide care for adults and children within the local area.  Care agencies may provide any from the range of care services such as residential care, care at home, sheltered housing and day care.  The council may use these agencies to provide care services.",
+        "uri": "http://id.esd.org.uk/service/732",
+        "parents": []
+      },
+      {
+        "identifier": "1765",
+        "label": "Alternative provision of education",
+        "description": "Alternative provision is for pupils who can not attend mainstream school for a variety of reasons, such as school exclusion, behaviour issues, short or long-term illness, school refusal or teenage pregnancy.  Alternative provision may be in a special school, a pupil referral unit, alternative learning unit in school or provided by the council or with independent specialist providers.",
+        "uri": "http://id.esd.org.uk/service/1765",
+        "parents": []
+      },
+      {
+        "identifier": "1803",
+        "label": "Alternative therapies and treatments",
+        "description": "Therapies and treatments provided by private clinics and therapists outside the NHS",
+        "uri": "http://id.esd.org.uk/service/1803",
+        "parents": []
+      },
+      {
+        "identifier": "434",
+        "label": "Animal welfare",
+        "description": "The animal welfare sections responds to both reports from the public, and undertakes proactive patrols. The aims of the service are to protect local wildlife, to prevent nuisance from pet animals or from the keeping or boarding of pet animals and to reduce the risk to animal health arising from commercial keeping of pet or similar non-livestock animals.",
+        "uri": "http://id.esd.org.uk/service/434",
+        "parents": []
+      },
+      {
+        "identifier": "1791",
+        "label": "Arts  and creative classes",
+        "description": "Creative arts classes enabling local residents the opportunity to discover and/or develop their creative potential",
+        "uri": "http://id.esd.org.uk/service/1791",
+        "parents": []
+      },
+      {
+        "identifier": "884",
+        "label": "Arts development",
+        "description": "Support and development of arts in the local community.  This is typically achieved by  by giving residents the opportunity to take part in arts activities and  also by providing information and support to local artists, arts groups and members of the public. The local authority may run arts projects in the community and work with local artists and other groups to plan future arts activity.",
+        "uri": "http://id.esd.org.uk/service/884",
+        "parents": []
+      },
+      {
+        "identifier": "838",
+        "label": "Arts organisations and events",
+        "description": "Provision of information and advice on local arts organisations, exhibitions and events.",
+        "uri": "http://id.esd.org.uk/service/838",
+        "parents": []
+      },
+      {
+        "identifier": "1054",
+        "label": "Assisted housing maintenance",
+        "description": "Assisted housing maintenance schemes are designed to assist elderly or disabled people to maintain and repair their homes to enable them to continue living independently. These services may include minor repairs, adaptations for accessibility, and safety improvements.",
+        "uri": "http://id.esd.org.uk/service/1054",
+        "parents": []
+      },
+      {
+        "identifier": "77",
+        "label": "Asylum seekers and refugee support",
+        "description": "Provision of temporary accommodation, meals and other advice and support for asylum seekers waiting for an application for refugee status to be assessed by the government and for refugees.",
+        "uri": "http://id.esd.org.uk/service/77",
+        "parents": []
+      },
+      {
+        "identifier": "1728",
+        "label": "Autism strategy",
+        "description": "Development and publication of a strategy which sets out the vision, aims, objectives and plans of both health and social care for adults aged 18+ years who have or are seeking a diagnosis of autism.",
+        "uri": "http://id.esd.org.uk/service/1728",
+        "parents": []
+      },
+      {
+        "identifier": "190",
+        "label": "Benefits advice and assessment",
+        "description": "Advisors offering benefit assessment and providing advice about entitlement to welfare benefits to individuals in receipt of benefit or claiming benefit.",
+        "uri": "http://id.esd.org.uk/service/190",
+        "parents": []
+      },
+      {
+        "identifier": "328",
+        "label": "Bereavement support",
+        "description": "Provision of information about how and where to get support and advice after a bereavement",
+        "uri": "http://id.esd.org.uk/service/328",
+        "parents": []
+      },
+      {
+        "identifier": "319",
+        "label": "Birth registration",
+        "description": "Registration of a birth.  Every birth in England or Wales must be registered in the district in which it takes place within 42 days of the date of birth.  In Scotland, a birth must be registered in any Registration Office in Scotland within 21 days.",
+        "uri": "http://id.esd.org.uk/service/319",
+        "parents": []
+      },
+      {
+        "identifier": "280",
+        "label": "Bus passes for disabled or older people",
+        "description": "A bus pass (or other travel concession) is available to local citizens if they are aged 60 and over, they are physically disabled, they have a learning difficulty or they would be refused a driving licence. Eligibility is automatic if the applicant is already in receipt of other services as a result of their age/disability.",
+        "uri": "http://id.esd.org.uk/service/280",
+        "parents": []
+      },
+      {
+        "identifier": "242",
+        "label": "Care at home",
+        "description": "Care in your own home is offered to people who require assistance with personal care such as washing or dressing, or other practical daily tasks such as help with domestic chores like cooking and cleaning, or in some instances, help in managing finances.",
+        "uri": "http://id.esd.org.uk/service/242",
+        "parents": []
+      },
+      {
+        "identifier": "209",
+        "label": "Care needs assessment",
+        "description": "Needs assessment is a programme carried out by the local authority to try to establish the needs of an individual who requires help from social services and to arrange services to meet their needs.  Following an assessment the appropriate services will be provided and a client file opened.",
+        "uri": "http://id.esd.org.uk/service/209",
+        "parents": []
+      },
+      {
+        "identifier": "887",
+        "label": "Careers advice",
+        "description": "Help for pupils who are about to leave school to choose a career or a further education/training course.",
+        "uri": "http://id.esd.org.uk/service/887",
+        "parents": []
+      },
+      {
+        "identifier": "1755",
+        "label": "Carers assessment",
+        "description": "Anyone who is caring for another person for a substantial amount of time has the right to have a carers assessment to identify their needs where either the person they are caring for has refused an assessment or is not receiving help from social care.  The assessment is available to both adult carers and young carers.",
+        "uri": "http://id.esd.org.uk/service/1755",
+        "parents": []
+      },
+      {
+        "identifier": "298",
+        "label": "Carers support groups",
+        "description": "Groups and organisations that provide advice and support for those who are caring for adults or children with special needs.",
+        "uri": "http://id.esd.org.uk/service/298",
+        "parents": []
+      },
+      {
+        "identifier": "266",
+        "label": "Child protection",
+        "description": "The child protection scheme takes measures to safeguard  vulnerable children and young people at risk or suffering from physical, emotional or sexual abuse.  This involves investigating reports of suspected abuse and where appropriate applying for a Child Assessment Order, Care Order, Supervision Order or Emergency Protection Order.",
+        "uri": "http://id.esd.org.uk/service/266",
+        "parents": []
+      },
+      {
+        "identifier": "53",
+        "label": "Children's centres",
+        "description": "Children's centres are usually open to all parents, carers and children and provide early learning and full day care for pre-school children.  They also provide help and advice on child and family health, parenting, money, training and employment to parents and carers.",
+        "uri": "http://id.esd.org.uk/service/53",
+        "parents": []
+      },
+      {
+        "identifier": "313",
+        "label": "Community alarms and Telecare",
+        "description": "The community alarm service provides peace of mind for people who feel at risk in their own homes. It is a 24 hour 365 day monitoring service which works via a special alarm unit connected to the telephone line. \nIn the UK Telecare provides support to people in their own homes with the help of technology and community response services, allowing them to live more safely and independently. The equipment available is designed to assist a wide range of people, including older people, people with disabilities and carers.",
+        "uri": "http://id.esd.org.uk/service/313",
+        "parents": []
+      },
+      {
+        "identifier": "272",
+        "label": "Community and accessible transport",
+        "description": "Provision of  transport for members of the community who do not have full mobility and therefore do not have suitable conventional public transport services available for their travel needs.  Includes schemes such as 'dial-a-ride', shopmobility, community bus and car schemes and taxis or mini-cabs which can be privately ordered.",
+        "uri": "http://id.esd.org.uk/service/272",
+        "parents": []
+      },
+      {
+        "identifier": "719",
+        "label": "Community assemblies and committees",
+        "description": "Publication of details of local assemblies and committees and the dates and venues for forthcoming meetings.",
+        "uri": "http://id.esd.org.uk/service/719",
+        "parents": []
+      },
+      {
+        "identifier": "1149",
+        "label": "Community centres",
+        "description": "Community Centres are a physical resource, which acts as a focal point for activities run by communities coming together through geographic proximity or because of a particular interest and/or identity.   Centres provide meeting places for local interest based clubs and societies, venues for adult education classes and public meetings, offices for community projects, plus they also have many other uses. Centres would be lifeless buildings, lacking in character, if they were not 'owned' by communities. People provide the warmth, which makes centres welcoming to communities.",
+        "uri": "http://id.esd.org.uk/service/1149",
+        "parents": []
+      },
+      {
+        "identifier": "366",
+        "label": "Community engagement",
+        "description": "Community engagement provides a link between local people, local organisations and decision makers.   Physical or virtual meetings and dialogues provide an opportunity for local leaders to listen to the views of their communities and for local people to have their say.",
+        "uri": "http://id.esd.org.uk/service/366",
+        "parents": []
+      },
+      {
+        "identifier": "755",
+        "label": "Community facilities grants",
+        "description": "Provision of grants for improvements to village halls and other local facilities subject to local terms and conditions.",
+        "uri": "http://id.esd.org.uk/service/755",
+        "parents": []
+      },
+      {
+        "identifier": "746",
+        "label": "Community farms",
+        "description": "Farms and smallholdings managed by the local authority on behalf of the community.   Community farms provide an opportunity for children to learn about where food comes from and witness the hustle and bustle and all the elements of a working countryside farm within an urban setting.",
+        "uri": "http://id.esd.org.uk/service/746",
+        "parents": []
+      },
+      {
+        "identifier": "802",
+        "label": "Community fire safety",
+        "description": "The local fire authority will help residents and businesses minimise the risk of fire in their homes or place of work by providing advice on fire prevention and protection.",
+        "uri": "http://id.esd.org.uk/service/802",
+        "parents": []
+      },
+      {
+        "identifier": "871",
+        "label": "Community grants",
+        "description": "Funding made available to community or voluntary groups and organisations which are based in the local area and/or provide services to local people.  The local authority may also provide external funding advice and support to commuity groups.",
+        "uri": "http://id.esd.org.uk/service/871",
+        "parents": []
+      },
+      {
+        "identifier": "870",
+        "label": "Community safety",
+        "description": "Crime, fear of crime and anti-social behaviour is an important consideration for local communities.   Various agencies, including the local council and police, work with the community to reduce crime and risks to safety and to maintain quality of life for people who live, work and visit the area.",
+        "uri": "http://id.esd.org.uk/service/870",
+        "parents": []
+      },
+      {
+        "identifier": "720",
+        "label": "Community strategy",
+        "description": "Preparation of a community strategy to promote and improve the economic, social and environmental well-being of the local area and to contribute to the achievement of sustainable development. \nIn Scotland legislation places duties on local authorities - to initiate, facilitate and maintain Community Planning. Local authorities have a duty to develop a comprehensive Community Plan along with relevant stakeholders to promote or improve the social, economic and environmental well-being of their areas and contribute to the achievement of sustainable development in Scotland.",
+        "uri": "http://id.esd.org.uk/service/720",
+        "parents": []
+      },
+      {
+        "identifier": "297",
+        "label": "Community support groups and organisations",
+        "description": "Information about recognised groups and organisations that provide advice and support for those who may be in need of community care such as the elderly, disabled or those with learning difficulties.",
+        "uri": "http://id.esd.org.uk/service/297",
+        "parents": []
+      },
+      {
+        "identifier": "645",
+        "label": "Complaints advocacy",
+        "description": "Provision of an advocate who can act on behalf of a customer who has made a complaint about one or more services provided by the local authority.",
+        "uri": "http://id.esd.org.uk/service/645",
+        "parents": []
+      },
+      {
+        "identifier": "442",
+        "label": "Computers and IT skills",
+        "description": "Details of locations, such as local libraries, where the public can access the internet, make use of equipment and receive instruction to improve their IT skills.",
+        "uri": "http://id.esd.org.uk/service/442",
+        "parents": []
+      },
+      {
+        "identifier": "58",
+        "label": "Council tax account enquiries",
+        "description": "The council tax service provides householders with information relating to their council tax and payments.  This may include information on payments, arrears, discount eligibility etc. and copies of bills.",
+        "uri": "http://id.esd.org.uk/service/58",
+        "parents": []
+      },
+      {
+        "identifier": "65",
+        "label": "Council tax benefit appeals",
+        "description": "A claimant who may be affected by a relevant decision regarding council tax benefit may request the local authority to revise its decision and also the independent appeals tribunal to consider the revised decision.",
+        "uri": "http://id.esd.org.uk/service/65",
+        "parents": []
+      },
+      {
+        "identifier": "62",
+        "label": "Council tax benefit backdated claims",
+        "description": "A claimant may be eligible for their claim to be backdated if there is a valid reason why they were unable to apply for their council tax benefit earlier",
+        "uri": "http://id.esd.org.uk/service/62",
+        "parents": []
+      },
+      {
+        "identifier": "64",
+        "label": "Council tax benefit current claim",
+        "description": "A claimant in receipt of council tax benefit is responsible for informing  the local authority of any changes in their personal and financial circumstances which may affect their benefit.",
+        "uri": "http://id.esd.org.uk/service/64",
+        "parents": []
+      },
+      {
+        "identifier": "63",
+        "label": "Council tax benefit new claim",
+        "description": "A claimant may be eligible to claim council tax benefit if they are on low income or in receipt of income support or job seekers allowance.",
+        "uri": "http://id.esd.org.uk/service/63",
+        "parents": []
+      },
+      {
+        "identifier": "66",
+        "label": "Council tax benefit overpayments",
+        "description": "Where a claimant has been provided with a benefit greater than that to which they are entitled the local authority is required to inform the claimant and where necessary seek to recover the overpayment by issuing a revised council tax bill.",
+        "uri": "http://id.esd.org.uk/service/66",
+        "parents": []
+      },
+      {
+        "identifier": "67",
+        "label": "Council tax benefit renewal",
+        "description": "Local authorities may review the circumstances of anyone who is currently receiving housing and council tax benefit by issuing a change in circumstances form or by carrying out a visit.",
+        "uri": "http://id.esd.org.uk/service/67",
+        "parents": []
+      },
+      {
+        "identifier": "59",
+        "label": "Council tax discount",
+        "description": "Processing of requests and assessment of eligibility for a single person or other discount on their council tax.",
+        "uri": "http://id.esd.org.uk/service/59",
+        "parents": []
+      },
+      {
+        "identifier": "109",
+        "label": "Council tenant advice",
+        "description": "A local authority will provide existing tenants with advice and assistance on matters such as rents, transfers, mutual exchanges and general matters relating to tenancy.  This may also include advocacy where necessary.",
+        "uri": "http://id.esd.org.uk/service/109",
+        "parents": []
+      },
+      {
+        "identifier": "358",
+        "label": "Councillors directory",
+        "description": "The local authority provides general information on local councillors, including details of who they are, which area they represent and what they do within the council.",
+        "uri": "http://id.esd.org.uk/service/358",
+        "parents": []
+      },
+      {
+        "identifier": "163",
+        "label": "Counselling",
+        "description": "Counselling services for individuals who have been identified as having particular needs to help sort through personal difficulties.  These services may not be provided by the local authority but the authority may provide information on their availability.",
+        "uri": "http://id.esd.org.uk/service/163",
+        "parents": []
+      },
+      {
+        "identifier": "745",
+        "label": "Countryside conservation",
+        "description": "Advice, education and volunteer opportunities related to the protection and enhancement of the local natural environment and wildlife.  Grants may also be provided to develop areas of the countryside for public use and education.",
+        "uri": "http://id.esd.org.uk/service/745",
+        "parents": []
+      },
+      {
+        "identifier": "337",
+        "label": "Current vacancies",
+        "description": "Publication of current job vacancies within a local authority.",
+        "uri": "http://id.esd.org.uk/service/337",
+        "parents": []
+      },
+      {
+        "identifier": "547",
+        "label": "Cycle training",
+        "description": "Provision of training for those who are new to cycling. Many local authorities run cycle training schemes for children in local schools; some may also provide training for adults, either directly or working with independent instructors.  Cycle training is co-ordinated in England by Cycling England, a partnership body set up by several government departments. It administers 'Bikeability', the National Standard for Cycle Training, and provides resources to support training initiatives. In Scotland a similar scheme is operated by Cycling Scotland.",
+        "uri": "http://id.esd.org.uk/service/547",
+        "parents": []
+      },
+      {
+        "identifier": "1566",
+        "label": "Cycling schemes",
+        "description": "Schemes which promote the use of cycling as a method of transport within the local area.  Such schemes typically consider reduction in vehicle traffic, cycle routes, cyclist safety, cycle parking facilities.  In some cases schemes may also include a discount or tax reduction on the purchase of a bicycle.",
+        "uri": "http://id.esd.org.uk/service/1566",
+        "parents": []
+      },
+      {
+        "identifier": "296",
+        "label": "Day centres",
+        "description": "Day centres which provide a range of activities and facilities for groups of people. Places at a day centre are usually allocated following an assessment of needs by a social services officer.",
+        "uri": "http://id.esd.org.uk/service/296",
+        "parents": []
+      },
+      {
+        "identifier": "321",
+        "label": "Death registration",
+        "description": "Registration of a death.  In England and Wales a death should be registered in the district in which it takes place within five days of the date of death. Upon receipt of all required information pertaining to the deceased person a death certificate is issued by the registrar.  In Scotland any death which occurs must be registered within 8 days by the Registrar of Births, Deaths and Marriages. A death may be registered in any Registration Office in Scotland provided the death was in Scotland.",
+        "uri": "http://id.esd.org.uk/service/321",
+        "parents": []
+      },
+      {
+        "identifier": "651",
+        "label": "Debt counselling",
+        "description": "Local authorities may publish information about local providers of confidential debt counselling service to citizens. They can advise on different types of debt such as rent and mortgage arrears, credit card debts and bank loans.",
+        "uri": "http://id.esd.org.uk/service/651",
+        "parents": []
+      },
+      {
+        "identifier": "137",
+        "label": "Disabled facilities grant",
+        "description": "The disabled facilities grant scheme provides financial assistance towards the cost of essential adaptation work to make a house fit for a disabled person.",
+        "uri": "http://id.esd.org.uk/service/137",
+        "parents": []
+      },
+      {
+        "identifier": "279",
+        "label": "Disabled parking permits",
+        "description": "Blue parking badges allow cars carrying people who are registered blind or people who have severe walking difficulties to be parked near shops, stations and other facilities. Blue Badges can only be issued to people who meet the eligibility criteria, not to relatives or carers. They can be used in any car the badge holder is driving or is a passenger in.",
+        "uri": "http://id.esd.org.uk/service/279",
+        "parents": []
+      },
+      {
+        "identifier": "239",
+        "label": "Disabled people - employment and training schemes",
+        "description": "Advice and support on training and employment available to people with physical, sensory or other disabilities.  This includes advice on legal issues surrounding employment.  The advice may be provided by the local authority or through third party organisations and includes schemes such as 'Supported Employment Schemes'.",
+        "uri": "http://id.esd.org.uk/service/239",
+        "parents": []
+      },
+      {
+        "identifier": "299",
+        "label": "Disabled people employment advice",
+        "description": "Advice and support for those with special needs who may wish to seek full-time or part time employment. This may include advice to employers on the requirements of relevant legislation.",
+        "uri": "http://id.esd.org.uk/service/299",
+        "parents": []
+      },
+      {
+        "identifier": "1148",
+        "label": "Discretionary housing payment",
+        "description": "The discretionary housing payment (DHP) scheme covers shortfalls between rental liability and payment of housing benefit or Universal Credit including the housing element. Every claimant who is entitled to the minimum amount of housing benefit or housing element within Universal Credit, and who has a shortfall, is entitled to apply for help.",
+        "uri": "http://id.esd.org.uk/service/1148",
+        "parents": []
+      },
+      {
+        "identifier": "730",
+        "label": "Drugs advice and support",
+        "description": "This service offers confidential help and support to people affected by abuse of  both illegal drugs and prescribed drugs.",
+        "uri": "http://id.esd.org.uk/service/730",
+        "parents": []
+      },
+      {
+        "identifier": "1741",
+        "label": "Early Years education",
+        "description": "From the school term after they turn two some children may be eligible for up to 15 hours per week early education or childcare.",
+        "uri": "http://id.esd.org.uk/service/1741",
+        "parents": []
+      },
+      {
+        "identifier": "1534",
+        "label": "Employment and support allowance",
+        "description": "The employment and support allowance provides financial help to people who are unable to work because of illness or disability. ESA also provides personalised support to those with illnesses or disabilities who are able to work. The allowance is paid by the Department for Work and Pensions (DWP).",
+        "uri": "http://id.esd.org.uk/service/1534",
+        "parents": []
+      },
+      {
+        "identifier": "343",
+        "label": "Employment and training initiatives",
+        "description": "Programmes to promote the development of learning and employment to ensure local people have access to lifelong learning and training opportunities. Provide local people with opportunities through tailored programmes to gain the skills demanded by employers in growth industries and ensure resiments benefit from employment opportunities created within the area. \nIn the UK such programmes delivered in line with national, regional and local priorities include New Deal and Training For Work targeting a range of workless groups including those in receipt of Incapacity Benefit, Income Support or JSA.",
+        "uri": "http://id.esd.org.uk/service/343",
+        "parents": []
+      },
+      {
+        "identifier": "880",
+        "label": "Energy efficiency",
+        "description": "The council will provide advice on energy efficiency and carry out an assessment of a property. \nIn the UK the SAP is the Government's recommended system for energy rating of dwellings. The Standard Assessment Procedure is used for calculating the SAP rating, on a scale from 1 to 120, based on the annual energy costs for space and water heating and also for calculating the Carbon Index, on a scale of 0.0 to 10.0, based on the annual CO2 emissions associated with space and water heating. The SAP rating is used to fulfil requirements of the Building Regulations to notify and display an energy rating in new dwellings.",
+        "uri": "http://id.esd.org.uk/service/880",
+        "parents": []
+      },
+      {
+        "identifier": "861",
+        "label": "Equality and diversity",
+        "description": "The LA is responsible for ensuring that equality and diversity is considered at all times both in employment policy and in the provision of services.  Every authority should assess, and consult on, the impact of policy in relation to equality and diversity within their community",
+        "uri": "http://id.esd.org.uk/service/861",
+        "parents": []
+      },
+      {
+        "identifier": "1789",
+        "label": "Exercise and fitness classes",
+        "description": "Group classes in a range of activities to help local residents keep fit and active",
+        "uri": "http://id.esd.org.uk/service/1789",
+        "parents": []
+      },
+      {
+        "identifier": "1808",
+        "label": "Facilities - fire safety",
+        "description": "Ensuring fire safety measures are implemented and maintained in all council buildngs including routine inspections of fire safety procedures and equipment.",
+        "uri": "http://id.esd.org.uk/service/1808",
+        "parents": []
+      },
+      {
+        "identifier": "1813",
+        "label": "Faith organisations and services",
+        "description": "Organisations whose values are based on faith and/or beliefs, which have a mission based on social values of the particular faith, and which most often draws itheir activists (leaders, staff, volunteers) from a particular faith group.",
+        "uri": "http://id.esd.org.uk/service/1813",
+        "parents": []
+      },
+      {
+        "identifier": "831",
+        "label": "Family support groups and organisations",
+        "description": "Organisations and support groups providing information and advice to families.  Support can range from parenting groups to individual professional advice.",
+        "uri": "http://id.esd.org.uk/service/831",
+        "parents": []
+      },
+      {
+        "identifier": "1818",
+        "label": "Food banks",
+        "description": "Emergency food supplies for those who find themselves in poverty for whatever reason. Those in need of help are referred by GPs, Health visitors, CAB, clergy, Community Workers etcï¿½and any professionals who are likely to come into contact with people in real need.",
+        "uri": "http://id.esd.org.uk/service/1818",
+        "parents": []
+      },
+      {
+        "identifier": "1423",
+        "label": "Food waste recycling",
+        "description": "Local administrations may run a food waste recycle scheme.  This may take the form of collecting of food waste in special containers to be composted in a central facility or providing home food composters for which there may be a charge.",
+        "uri": "http://id.esd.org.uk/service/1423",
+        "parents": []
+      },
+      {
+        "identifier": "748",
+        "label": "Forest and woodland management",
+        "description": "Advice and information on trees, woodland and tree-related issues to local organisations and the public.  Where woodland/forests are on council owned land the local authority has a responsibility to maintain them in a way which is beneficial to the local environment and ensures public safety.",
+        "uri": "http://id.esd.org.uk/service/748",
+        "parents": []
+      },
+      {
+        "identifier": "159",
+        "label": "Fostering",
+        "description": "Fostering provides homes for children who are temporarily unable to live with their own families but who wish to maintain contact.  Fostering may provide respite care or shared care for children with disabilities.  Support is provided for the children, the foster carers and the family of the fostered children.",
+        "uri": "http://id.esd.org.uk/service/159",
+        "parents": []
+      },
+      {
+        "identifier": "4",
+        "label": "Free school meals",
+        "description": "Free school meals are provided for children whose families are in receipt of benefits such as income support or income based job seeker's allowance. They are also available to families in receipt of Child Tax Credit or Universal Credit if earned income is below a set threshold. Eligibility criteria may be determined by the local authority or in some cases by individual schools.",
+        "uri": "http://id.esd.org.uk/service/4",
+        "parents": []
+      },
+      {
+        "identifier": "1819",
+        "label": "Further and higher education",
+        "description": "Further education includes any study after secondary education that is not part of higher education.  Higher education includes any study taken as part of an undergraduate or graduate degree.",
+        "uri": "http://id.esd.org.uk/service/1819",
+        "parents": []
+      },
+      {
+        "identifier": "1820",
+        "label": "Gambling addiction advice and support",
+        "description": "Advice and support for anyone affected by problem gambling.  Typically services are available both to individuals who have a problem with gambling and to families and friends of problem gamblers.",
+        "uri": "http://id.esd.org.uk/service/1820",
+        "parents": []
+      },
+      {
+        "identifier": "832",
+        "label": "Going into hospital",
+        "description": "Where the local authority is notified that a local resident is going into hospital the council will have to reassess any benefit entitlement.",
+        "uri": "http://id.esd.org.uk/service/832",
+        "parents": []
+      },
+      {
+        "identifier": "1805",
+        "label": "GPs and surgeries",
+        "description": "Information about local NHS surgeries and general practitioners including opening times and services available.",
+        "uri": "http://id.esd.org.uk/service/1805",
+        "parents": []
+      },
+      {
+        "identifier": "615",
+        "label": "Grants and support for voluntary organisations",
+        "description": "Provision of grants or other practical or financial assistance to local voluntary organisations.  Grants and advice may be made available by the local council or by other organisations.  Grants are usually available for projects/organisations that comply with the terms and conditions imposed on the issue of funding.",
+        "uri": "http://id.esd.org.uk/service/615",
+        "parents": []
+      },
+      {
+        "identifier": "655",
+        "label": "Gypsy and traveller sites",
+        "description": "Provision and management of permanent or transit sites for use by travellers within the area.  Also dealing with unauthorised use of land by traveller communities.",
+        "uri": "http://id.esd.org.uk/service/655",
+        "parents": []
+      },
+      {
+        "identifier": "1133",
+        "label": "Hate crime",
+        "description": "Local authorities are required to log and monitor instances of serious crime directed at a victim for religious or racial reasons. \nAt present in the UK legislation currently applies to England and Wales only.",
+        "uri": "http://id.esd.org.uk/service/1133",
+        "parents": []
+      },
+      {
+        "identifier": "199",
+        "label": "Health advice",
+        "description": "Advice and information on health issues of concern to individuals and the community.  Providing advice on how to live active and  healthy lives for all members of the community.  The local authority may work with other agencies (health services) and organisations to provide this service.",
+        "uri": "http://id.esd.org.uk/service/199",
+        "parents": []
+      },
+      {
+        "identifier": "1688",
+        "label": "Health and wellbeing strategy",
+        "description": "Established and hosted by local authorities, health and wellbeing boards bring together the NHS, public health, adult social care and children's services, including elected representatives and Local Healthwatch, to plan and form a strategy of how best to meet the needs of their local population and tackle local inequalities in health.",
+        "uri": "http://id.esd.org.uk/service/1688",
+        "parents": []
+      },
+      {
+        "identifier": "1747",
+        "label": "Health checks",
+        "description": "Free health checks are provided to anyone eligible between the ages of 40 and 74 tro enable them to take steps to maintain or improve their health.",
+        "uri": "http://id.esd.org.uk/service/1747",
+        "parents": []
+      },
+      {
+        "identifier": "1807",
+        "label": "Health support groups and organisations",
+        "description": "Local groups and organisations which can offer advice and support to those suffering from long term health conditions such as autism, diabetes, osteoporosis and many others.  Some groups or organisations may work with specified conditions while others may be more general.",
+        "uri": "http://id.esd.org.uk/service/1807",
+        "parents": []
+      },
+      {
+        "identifier": "1817",
+        "label": "Help leaving prison",
+        "description": "Help for prisoners due for release or who have just been release from prison.  Help may include assistance with finding accommodation and benefits advice.",
+        "uri": "http://id.esd.org.uk/service/1817",
+        "parents": []
+      },
+      {
+        "identifier": "202",
+        "label": "HIV / AIDS support for adults",
+        "description": "This service provides a confidential service, counselling and emotional support, financial advice and practical advice to people diagnosed with HIV.",
+        "uri": "http://id.esd.org.uk/service/202",
+        "parents": []
+      },
+      {
+        "identifier": "1804",
+        "label": "Hobby and interest classes and groups",
+        "description": "Classes or groups which provide instrusction or a means of participating in various hobbies an interests such as bridge, board games,",
+        "uri": "http://id.esd.org.uk/service/1804",
+        "parents": []
+      },
+      {
+        "identifier": "178",
+        "label": "Home adaptations and aids",
+        "description": "If a client is visually impaired, hard of hearing or has other disabilities for which he/she may need special equipment or adaptations to his/her home the local authority will provide such equipment which will assist in overcoming difficulties subject to an assessment of personal needs to determine eligibility.",
+        "uri": "http://id.esd.org.uk/service/178",
+        "parents": []
+      },
+      {
+        "identifier": "1810",
+        "label": "Home and garden care and maintenance",
+        "description": "Businesses providing services to maintain your home and garden.  This includes cleaning and laundry services, garden maitenance, decorating etc.",
+        "uri": "http://id.esd.org.uk/service/1810",
+        "parents": []
+      },
+      {
+        "identifier": "123",
+        "label": "Home contents insurance",
+        "description": "Local authorities are responsible for insurance of residential council properties but do not insure tenants personal belongings, household goods and contents. However, they may offer comprehensive insurance cover for contents which is exclusively available to tenants. Tenants are advised to take out home contents insurance.",
+        "uri": "http://id.esd.org.uk/service/123",
+        "parents": []
+      },
+      {
+        "identifier": "1119",
+        "label": "Home fire safety check",
+        "description": "Inspection of residential property to help the homeowner Identify and be aware of the potential fire risks in the home and what to do to reduce or prevent these risks. Attending officers will als help put together an escape plan which can be used in the event of a fire..",
+        "uri": "http://id.esd.org.uk/service/1119",
+        "parents": []
+      },
+      {
+        "identifier": "1602",
+        "label": "Home fire safety equipment",
+        "description": "Advice and information on how to choose, install, and maintain smoke alarms and other types of fire safety equipment residents may want to consider having in their home",
+        "uri": "http://id.esd.org.uk/service/1602",
+        "parents": []
+      },
+      {
+        "identifier": "423",
+        "label": "Home safety advice",
+        "description": "Advice and information about safety in the home including accident prevention, what to do in the event of an accident, risks in the home etc.  Some authorities may run safety awareness training sessions for the local community.",
+        "uri": "http://id.esd.org.uk/service/423",
+        "parents": []
+      },
+      {
+        "identifier": "1800",
+        "label": "Homelessness assessment",
+        "description": "Assessment of the circumstances of anyone in the authority area who is homeless or threatened with homelessness and may be eligible for assistance",
+        "uri": "http://id.esd.org.uk/service/1800",
+        "parents": []
+      },
+      {
+        "identifier": "112",
+        "label": "Homelessness support",
+        "description": "This service provides information and advice about housing to people who are homeless or at risk of becoming homeless. They may be offered temporary accommodation or permanent home.",
+        "uri": "http://id.esd.org.uk/service/112",
+        "parents": []
+      },
+      {
+        "identifier": "264",
+        "label": "Hospice care for children and young people",
+        "description": "Children's hospices provide respite and terminal care for children suffering from life-limiting conditions in a home-from-home environment. Care is provided for the child and their family at no cost to them for as long as is necessary, including post bereavement support.",
+        "uri": "http://id.esd.org.uk/service/264",
+        "parents": []
+      },
+      {
+        "identifier": "1814",
+        "label": "Hospitals and clinics",
+        "description": "NHS hospitals and clinics providing medical services in the local area.",
+        "uri": "http://id.esd.org.uk/service/1814",
+        "parents": []
+      },
+      {
+        "identifier": "1714",
+        "label": "Hostels and emergency accommodation",
+        "description": "Provision of hostels or other temporary accommodation for people who would otherwise be homeless.",
+        "uri": "http://id.esd.org.uk/service/1714",
+        "parents": []
+      },
+      {
+        "identifier": "912",
+        "label": "House clearance and re-housing",
+        "description": "Where a property is unfit to live in the LA may decide to demolish it and redevelop the site (which may mean the clearance of neighbouring property).  The council will usually offer the owners the market value of the property and repay expenses associated with moving plus possible compensation. Where the property is rented tenants will be given priority for re-housing in a council property.",
+        "uri": "http://id.esd.org.uk/service/912",
+        "parents": []
+      },
+      {
+        "identifier": "530",
+        "label": "Household garden waste",
+        "description": "Garden waste may be collected from outside residential properties.  There may be a charge for this service. Containers for garden waste may be provided or may need to be purchased from the local authority..",
+        "uri": "http://id.esd.org.uk/service/530",
+        "parents": []
+      },
+      {
+        "identifier": "1473",
+        "label": "Household waste accumulation",
+        "description": "Where accumulations of rubbish are considered a statutory nuisance the council may ask the landowner to remove the rubbish and has the power to prosecute where no action is taken.",
+        "uri": "http://id.esd.org.uk/service/1473",
+        "parents": []
+      },
+      {
+        "identifier": "524",
+        "label": "Household waste collection",
+        "description": "The local authority provides a regular (usually weekly) collection of household rubbish from all residential premises within the authority boundaries.",
+        "uri": "http://id.esd.org.uk/service/524",
+        "parents": []
+      },
+      {
+        "identifier": "531",
+        "label": "Household waste disposal sites",
+        "description": "Provision of civic amenity sites which may be used by local residents (usually free of charge) and businesses (usually charged).  The sites provide facilities for collection of all household and garden waste other than anything which may be considered as hazardous and requiring special treatment.",
+        "uri": "http://id.esd.org.uk/service/531",
+        "parents": []
+      },
+      {
+        "identifier": "652",
+        "label": "Housing advice",
+        "description": "Advice to homeowners, tenants and landlords in the private sector on housing related matters such as tenancies, welfare benefits, rent, alterations and repairs, neighbour disputes etc.",
+        "uri": "http://id.esd.org.uk/service/652",
+        "parents": []
+      },
+      {
+        "identifier": "87",
+        "label": "Housing association  nomination and registration",
+        "description": "Housing Associations are 'Registered Social Landlords' not private landlords. They provide housing in a very similar way to the Council and are non-profit making.  People on the local  authority transfer list or housing register may be offered a Housing Association property instead of a Council home.",
+        "uri": "http://id.esd.org.uk/service/87",
+        "parents": []
+      },
+      {
+        "identifier": "72",
+        "label": "Housing benefit appeals",
+        "description": "Anyone who has claimed housing benefit and disagrees with the decision made in their assessment can challenge the decision by submitting an appeal form within one month of the date of the original decision.  The authority is responsible for advising claimants of appeal procedures and investigating each appeal.",
+        "uri": "http://id.esd.org.uk/service/72",
+        "parents": []
+      },
+      {
+        "identifier": "68",
+        "label": "Housing benefit backdated claims",
+        "description": "A claimant may be eligible for their claim for housing benefit to be backdated (by up to 1 month if working age and 3 months if pension age) if there is a good cause why they were unable to apply for their housing benefit earlier.  The authority is responsible for advising residents about eligibility for backdating claims and for processing applications.",
+        "uri": "http://id.esd.org.uk/service/68",
+        "parents": []
+      },
+      {
+        "identifier": "69",
+        "label": "Housing benefit new claim",
+        "description": "Processing of a new claim for housing benefit from council, social and private tenants.  Claims require evidence of tenancy and income in order to assess eligibility for benefit, where the LA is unable to obtain it elsewhere.",
+        "uri": "http://id.esd.org.uk/service/69",
+        "parents": []
+      },
+      {
+        "identifier": "71",
+        "label": "Housing benefit overpayments",
+        "description": "The local authority has a duty to recover overpayments of benefit for which there was no entitlement from tenants and landlords and where necessary take criminal proceedings in respect of fraudulent overpayments.",
+        "uri": "http://id.esd.org.uk/service/71",
+        "parents": []
+      },
+      {
+        "identifier": "97",
+        "label": "Housing crime support",
+        "description": "The local authority provides support and assistance to residents who are victims of a crime such as homophobic crime, racist crime, or general crime committed in their home or whilst in the vicinity of their home. If the resident is a council tenant and the council are unable to resolve the problem they may offer the tenant the chance of being re-housed in a different area.",
+        "uri": "http://id.esd.org.uk/service/97",
+        "parents": []
+      },
+      {
+        "identifier": "1821",
+        "label": "Housing enforcement",
+        "description": "The local authority is responsible for enforcing legislation which establishes how landlords and letting agents should deal with tenants regarding living accommodation and associated financial matters",
+        "uri": "http://id.esd.org.uk/service/1821",
+        "parents": []
+      },
+      {
+        "identifier": "117",
+        "label": "Housing evictions",
+        "description": "If a tenant fails to pay rent or breaches any aspects of their tenancy agreement the local authority has the right to evict the tenant by applying to the court to repossess the property.",
+        "uri": "http://id.esd.org.uk/service/117",
+        "parents": []
+      },
+      {
+        "identifier": "110",
+        "label": "Housing legal advice",
+        "description": "Court housing advice and representation schemes aim to provide free, independent and confidential advice and representation to homeowners and tenants attending hearings in possession proceedings brought on grounds of arrears, who either have not previously obtained advice and/or are without legal representation.",
+        "uri": "http://id.esd.org.uk/service/110",
+        "parents": []
+      },
+      {
+        "identifier": "911",
+        "label": "Housing referrals",
+        "description": "The council may refer tenants to Registered Social Landlords (housing associations) within the council area or to the housing division of another LA where a move to another area is a possibility.  RSLs will normally operate a scheme with the council whereby a proportion of their property is set aside for people on the council's housing waiting list.",
+        "uri": "http://id.esd.org.uk/service/911",
+        "parents": []
+      },
+      {
+        "identifier": "141",
+        "label": "Housing repairs",
+        "description": "The council are generally responsible for structural repairs to council property, for repairs to essential supplies (water, gas, electricity etc.) or any repairs where they may be a risk to health or safety. Where the damage has been caused by the resident they may be asked to pay for the repairs.",
+        "uri": "http://id.esd.org.uk/service/141",
+        "parents": []
+      },
+      {
+        "identifier": "91",
+        "label": "Housing tenant support",
+        "description": "As well as officers taking repair reports, collecting rents and other payments, managing rent arrears and dealing with breaches of the tenancy agreement; local estate staff can also help and advise on a number of other issues including moving, adaptations and other tenancy issues",
+        "uri": "http://id.esd.org.uk/service/91",
+        "parents": []
+      },
+      {
+        "identifier": "241",
+        "label": "Inclusive leisure and social activities",
+        "description": "Providing information and advice about local organisations and clubs that provide leisure and social activities in the area, which are targeted at specific groups of people such as people with disabilities, the elderly, ethnic communities etc..",
+        "uri": "http://id.esd.org.uk/service/241",
+        "parents": []
+      },
+      {
+        "identifier": "204",
+        "label": "Independence support for disabled people",
+        "description": "Rehabilitation provides people with physical and sensory disabilities with help to recover and regain their independence often following an illness or injury/stay in hospital.  A care worker will provide advice on how to cope with illness or disability, or organise the provision of aids and equipment to help in everyday tasks.",
+        "uri": "http://id.esd.org.uk/service/204",
+        "parents": []
+      },
+      {
+        "identifier": "1545",
+        "label": "Jobseekers allowance",
+        "description": "Local authorities may provide information about Jobseekers Allowance (JSA).  JSA is a benefit available for people of working age who are out of work. JSA may be available if a person is out of work or working less than 16 hours a week on average. To be eligible any applicant must be capable of working, available for work, actively seeking work and below state pension age.",
+        "uri": "http://id.esd.org.uk/service/1545",
+        "parents": []
+      },
+      {
+        "identifier": "438",
+        "label": "Joining a library",
+        "description": "Processing of requests to join a local library including assessment of eligibility, issuing of library cards etc.  Publication of information about joining a library.",
+        "uri": "http://id.esd.org.uk/service/438",
+        "parents": []
+      },
+      {
+        "identifier": "902",
+        "label": "Journey planning",
+        "description": "Providing members of the public with a means to plan a journey to and from any address or station (bus or rail) within the local area.  The planner usually includes all forms of public transport ( often including walking) and calculates the journey based on departure and arrival times.",
+        "uri": "http://id.esd.org.uk/service/902",
+        "parents": []
+      },
+      {
+        "identifier": "833",
+        "label": "Leaving hospital",
+        "description": "A range of assistance for someone discharged from hospital who may need help to live at home.  Usually a worker will visit the patient in hospital to discuss their needs prior to discharge and will then visit again once the patient is home to see that services arranged are enabling them to live safely at home.",
+        "uri": "http://id.esd.org.uk/service/833",
+        "parents": []
+      },
+      {
+        "identifier": "676",
+        "label": "Legal advice",
+        "description": "Local authorities may provide information about local or national organisations where citizens may obtain legal advice..",
+        "uri": "http://id.esd.org.uk/service/676",
+        "parents": []
+      },
+      {
+        "identifier": "456",
+        "label": "Leisure passes",
+        "description": "Passes which give access to leisure facilities such as swimming pools, gymnasiums, sports halls run by the local authority.  The pass entitles the holder to use the facilities, usually at a reduced charge and to book facilities where available.  The pass may be issued free of charge or at a concessionary rate to those meeting certain eligibility criteria (disabled, on benefits etc.)",
+        "uri": "http://id.esd.org.uk/service/456",
+        "parents": []
+      },
+      {
+        "identifier": "437",
+        "label": "Library facilities",
+        "description": "Information about libraries and library services which are available in the local area.",
+        "uri": "http://id.esd.org.uk/service/437",
+        "parents": []
+      },
+      {
+        "identifier": "733",
+        "label": "Local attractions and facilities",
+        "description": "Advice and information for local residents and for visitors to the area on attractions and facilities available in the local area.  This will include descriptions, opening hours, admission prices and how to get there.",
+        "uri": "http://id.esd.org.uk/service/733",
+        "parents": []
+      },
+      {
+        "identifier": "1795",
+        "label": "Local crisis payment",
+        "description": "Payment or provision of household goods to local households who have an urgent need as a consequence of an emergency, disaster or unforeseen circumstance and where a household has insufficient resources to meet an urgent need that poses an immediate and substantial risk to their health and safety",
+        "uri": "http://id.esd.org.uk/service/1795",
+        "parents": []
+      },
+      {
+        "identifier": "1147",
+        "label": "Local Housing Allowance",
+        "description": "Local Housing Allowance (LHA) is for people on a low income renting from a private landlord. The LHA is based on the broad rental market area and the number of bedrooms the tenant is allowed (based on who lives with them), not on how much their rent is.",
+        "uri": "http://id.esd.org.uk/service/1147",
+        "parents": []
+      },
+      {
+        "identifier": "917",
+        "label": "Management of personal financial affairs",
+        "description": "Administering the financial affairs of people who may be living in their own home or a residential home who are having difficulty managing their own affairs.  As appointee the council will arrange to receive their income from the Benefits Agency and pay their bills.",
+        "uri": "http://id.esd.org.uk/service/917",
+        "parents": []
+      },
+      {
+        "identifier": "1716",
+        "label": "Marriage or civil partnership registration",
+        "description": "Registration of a marriage or civil partnership.  Registration takes place as part of the ceremony with partners signing the marriage register or civil partnership document.",
+        "uri": "http://id.esd.org.uk/service/1716",
+        "parents": []
+      },
+      {
+        "identifier": "1284",
+        "label": "Mental health support",
+        "description": "Services and advice for people who have, or who are at risk of, mental health problems, together with their families or carers.  The aim is to provide support which can prevent or treat mental illness and  enable service users to live independently in the community.",
+        "uri": "http://id.esd.org.uk/service/1284",
+        "parents": []
+      },
+      {
+        "identifier": "627",
+        "label": "Mentoring schemes",
+        "description": "Learning mentors provide an additional service to teachers and pastoral staff in schools to help children overcome barriers to learning, both inside and outside the school, and to achieve their full potential. The local authority provides assistance and support to mentors or those who wish to become mentors.",
+        "uri": "http://id.esd.org.uk/service/627",
+        "parents": []
+      },
+      {
+        "identifier": "927",
+        "label": "Midwifery and maternity services",
+        "description": "Midwifery and maternity offer services to families within children's centres and local health centres to provide services to families in locations close to their home. Midwifery and health visiting teams provide essential support throughout every stage of pregnancy and through the early years.",
+        "uri": "http://id.esd.org.uk/service/927",
+        "parents": []
+      },
+      {
+        "identifier": "315",
+        "label": "Mobile meals",
+        "description": "The Mobile Meals service delivers meals to older or vulnerable people in their own homes on a short or long term basis according to need.",
+        "uri": "http://id.esd.org.uk/service/315",
+        "parents": []
+      },
+      {
+        "identifier": "276",
+        "label": "Motability scheme",
+        "description": "The Motability scheme provides disabled people with safe, reliable and affordable personal transport through a contract or hire purchase arrangement. Cars account for 99% of the scheme's activities, with powered wheelchairs and scooters making up the balance.",
+        "uri": "http://id.esd.org.uk/service/276",
+        "parents": []
+      },
+      {
+        "identifier": "1020",
+        "label": "Museum events and exhibitions",
+        "description": "Information about any events or exhibitions organised at museums with the local authority area.",
+        "uri": "http://id.esd.org.uk/service/1020",
+        "parents": []
+      },
+      {
+        "identifier": "620",
+        "label": "Museums and galleries",
+        "description": "Information and advice on museums and galleries in the local area.  The galleries and museums may be owned and operated by the local authority or by other public bodies.  The council may also choose to provide information on privately run museums and galleries in the local area.",
+        "uri": "http://id.esd.org.uk/service/620",
+        "parents": []
+      },
+      {
+        "identifier": "1517",
+        "label": "Music rooms and recording studios",
+        "description": "Provision of facilities such as music rooms and recording studios which can be used by local young people for practice in performing and in creating recorded material.",
+        "uri": "http://id.esd.org.uk/service/1517",
+        "parents": []
+      },
+      {
+        "identifier": "1540",
+        "label": "Nature reserves",
+        "description": "Local nature reserves where wildlife is protected. Nature reserves are usually open to the public but may have restrictions at certain times or under other conditions (no bicycles, dogs etc.) to protect the wildlife",
+        "uri": "http://id.esd.org.uk/service/1540",
+        "parents": []
+      },
+      {
+        "identifier": "876",
+        "label": "Notice of marriage or civil partnership",
+        "description": "Couples intending to marry or form a civil partnership must both give notice to a registration office in the district where they have lived for seven full days immediately prior to giving notice. Notice must be given not less than 15 days before the ceremony.  The registrar will issue an authorisation for the marriage or civil partnership to take place.",
+        "uri": "http://id.esd.org.uk/service/876",
+        "parents": []
+      },
+      {
+        "identifier": "12",
+        "label": "Nursery school places",
+        "description": "Nursery education is offered to children aged four in community maintained nursery classes and schools and are for two and a half hour sessions per week in term time.",
+        "uri": "http://id.esd.org.uk/service/12",
+        "parents": []
+      },
+      {
+        "identifier": "1063",
+        "label": "Online library resources",
+        "description": "Public libraries in your area may subscribe to a number of online resources. All will be available in any library. Some may also available from home.",
+        "uri": "http://id.esd.org.uk/service/1063",
+        "parents": []
+      },
+      {
+        "identifier": "312",
+        "label": "Out of hours social care",
+        "description": "Social care will have an 'out of hours' team who will deal with emergencies (child protection issues, homelessness, mental health assessment etc.) which occur outside normal working hours. Details of how to contact the out of hours team should be published.",
+        "uri": "http://id.esd.org.uk/service/312",
+        "parents": []
+      },
+      {
+        "identifier": "1793",
+        "label": "Outdoor activities",
+        "description": "Organised group outdoor activities encouraging local residents to keep active.  Groups may be restricted by age or ability for some activities.",
+        "uri": "http://id.esd.org.uk/service/1793",
+        "parents": []
+      },
+      {
+        "identifier": "1081",
+        "label": "Outdoor activity centres",
+        "description": "Provision of outdoor activity centres for use by schools or other groups.",
+        "uri": "http://id.esd.org.uk/service/1081",
+        "parents": []
+      },
+      {
+        "identifier": "463",
+        "label": "Outdoor events",
+        "description": "Events and outdoor activities in local parks and public open spaces may be organised by the council.  These may be available to local residents, schools or other organisations and are aimed at promoting the facilities of the local area and providing education and enjoyment for all.",
+        "uri": "http://id.esd.org.uk/service/463",
+        "parents": []
+      },
+      {
+        "identifier": "670",
+        "label": "Outdoor play facilities",
+        "description": "Local play facilities such as playgrounds, outdoor play areas, cycle tracks, skateboard parks and others which cater for children and young people.",
+        "uri": "http://id.esd.org.uk/service/670",
+        "parents": []
+      },
+      {
+        "identifier": "723",
+        "label": "Parish/town council and councillors",
+        "description": "Councillors help facilitate the provision of local services and facilities and take decisions that form the policy of the local authority. Parish and town local authorities undertake many duties such as street lighting, managing cemeteries and allotments.",
+        "uri": "http://id.esd.org.uk/service/723",
+        "parents": []
+      },
+      {
+        "identifier": "709",
+        "label": "Parks and open space maintenance and landscaping",
+        "description": "Established standards of horticultural landscaping and maintenance for local parks and open spaces. This includes grass cutting, shrub/flower beds, sports pitches, weed control etc.",
+        "uri": "http://id.esd.org.uk/service/709",
+        "parents": []
+      },
+      {
+        "identifier": "461",
+        "label": "Parks and open spaces",
+        "description": "Information about parks in the local area including location, facilities, opening times, events etc.",
+        "uri": "http://id.esd.org.uk/service/461",
+        "parents": []
+      },
+      {
+        "identifier": "1811",
+        "label": "Personal care",
+        "description": "Businesses providing services such as hairdressing, beauty treatments, footcare etc.  Some may provide these as a mobile 'at home' service.",
+        "uri": "http://id.esd.org.uk/service/1811",
+        "parents": []
+      },
+      {
+        "identifier": "200",
+        "label": "Pet care when hospitalised",
+        "description": "The local authority provides information and advice regarding pet care when people go into hospital.",
+        "uri": "http://id.esd.org.uk/service/200",
+        "parents": []
+      },
+      {
+        "identifier": "1812",
+        "label": "Pharmacies",
+        "description": "Local pharmacies (chemists).  Many of these work with the local council to become \"healthy living pharmacies' which are awarded a quality mark of excellence, assuring people using them of their high standards of service and care",
+        "uri": "http://id.esd.org.uk/service/1812",
+        "parents": []
+      },
+      {
+        "identifier": "1441",
+        "label": "Physiotherapy",
+        "description": "Physiotherapy services to help those recovering from injury or illness.  Services may be available from a local health provider to anyone referred by their general practitioner or can be provided by private clinics and physiotherapists.",
+        "uri": "http://id.esd.org.uk/service/1441",
+        "parents": []
+      },
+      {
+        "identifier": "816",
+        "label": "Post-incident support",
+        "description": "Providing advice and support to residents or businesses who have suffered damage to their property following a fire, flood or similar incident.  This may include advice on ventilation, drying out, cleaning, insurance matters etc.",
+        "uri": "http://id.esd.org.uk/service/816",
+        "parents": []
+      },
+      {
+        "identifier": "837",
+        "label": "Preventative services for children and young people",
+        "description": "The aim of pre-crime prevention scheme is identifying children and young people who are at high risk of offending and helping them to avoid entering the youth justice system.",
+        "uri": "http://id.esd.org.uk/service/837",
+        "parents": []
+      },
+      {
+        "identifier": "579",
+        "label": "Public toilets",
+        "description": "Provision of public conveniences.  Where these are provided the local authority is also responsible for maintenance and cleaning of the facilities.",
+        "uri": "http://id.esd.org.uk/service/579",
+        "parents": []
+      },
+      {
+        "identifier": "221",
+        "label": "Rail cards for disabled or older people",
+        "description": "A rail card (or other travel concession) is available to local citizens if they are aged 60 and over, they are physically disabled or they have a learning difficulty. Eligibility for a rail card or a combined travel concession card will need to be assessed. Depending on the degree of need the rail card may offer either free travel or travel at a reduced rate.",
+        "uri": "http://id.esd.org.uk/service/221",
+        "parents": []
+      },
+      {
+        "identifier": "851",
+        "label": "Recycling advice and initiatives",
+        "description": "General information about waste, recycling, greener alternatives, how to reduce waste and provide access and information about organisations who may provide associated services (reducing junk mail, furniture reselling etc.)",
+        "uri": "http://id.esd.org.uk/service/851",
+        "parents": []
+      },
+      {
+        "identifier": "534",
+        "label": "Recycling sites",
+        "description": "Provision of collection sites (also known as bottle or recycling banks and 'bring sites'), for recyclable waste which are easily accessible by local residents (often near supermarkets, in car parks etc.).  Sites usually have facilities to collect glass and paper with some also providing facilities for textiles, plastics and cans.",
+        "uri": "http://id.esd.org.uk/service/534",
+        "parents": []
+      },
+      {
+        "identifier": "227",
+        "label": "Respite care for adults",
+        "description": "Temporary placement in residential accommodation or provision of an alternative qualified carer where someone is receiving regular care with the aim of giving both the  carer and their families a break.",
+        "uri": "http://id.esd.org.uk/service/227",
+        "parents": []
+      },
+      {
+        "identifier": "784",
+        "label": "Road safety cameras",
+        "description": "Safety cameras are designed to detect and prevent speed limit offences and traffic signal violations, and provide evidence for a fixed penalty notice.",
+        "uri": "http://id.esd.org.uk/service/784",
+        "parents": []
+      },
+      {
+        "identifier": "1758",
+        "label": "Safeguarding Adults Board",
+        "description": "Every authority responsible for social care is required to have a Safeguarding Adults Board which helps and protects adults in their area who have care and support needs and who are experiencing, or are at risk of, abuse or neglect. The safeguarding adults board is typically made up of representatives from the council and other organisations working in social care within the area.",
+        "uri": "http://id.esd.org.uk/service/1758",
+        "parents": []
+      },
+      {
+        "identifier": "1760",
+        "label": "Safeguarding Children Board",
+        "description": "The Children Act 2004 requires each local authority to establish a Local Safeguarding Children Board. The board  is a partnership between all agencies, organisations and services  in an area with responsibility for safeguarding and promoting the welfare of children.  Typically this includes childrens social care, police, education, early years and Sure Start, health services, youth offending teams and probation services.",
+        "uri": "http://id.esd.org.uk/service/1760",
+        "parents": []
+      },
+      {
+        "identifier": "731",
+        "label": "Safeguarding vulnerable adults",
+        "description": "The adult protection procedure aims to provide a system that a range of organisations or individuals can use to report and respond to situations where it is suspected, alleged or known that a vulnerable adult has been abused",
+        "uri": "http://id.esd.org.uk/service/731",
+        "parents": []
+      },
+      {
+        "identifier": "2",
+        "label": "School clothing grants/vouchers",
+        "description": "The award of clothing grants or vouchers to assist with the cost of school clothing for families who are on benefits or on low income.",
+        "uri": "http://id.esd.org.uk/service/2",
+        "parents": []
+      },
+      {
+        "identifier": "889",
+        "label": "School health promotion",
+        "description": "Promotion of a healthy living environment for pupils and staff.  Health promotion addresses issues such as exercise, substances, emotional health and well-being, safety, sexual health and relationships and nutrition.",
+        "uri": "http://id.esd.org.uk/service/889",
+        "parents": []
+      },
+      {
+        "identifier": "229",
+        "label": "Shared care for adults",
+        "description": "Shared care offers short term care to adults who are unable to live on their own (without a full-time carer) and the people who care for them.  The care can vary in length from a few hours up to a maximum of two weeks at a time and is provided by people approved by Social Services to be shared carers.",
+        "uri": "http://id.esd.org.uk/service/229",
+        "parents": []
+      },
+      {
+        "identifier": "107",
+        "label": "Sheltered and supported housing",
+        "description": "Sheltered accommodation and supported housing are types of accommodation for older people or people with a disability, which include relevant care and support services.  SSheltered housing is available for older people who wish to remain independent, but have help available should they need it.  Supported housing is usually for people with disabilities who need housing-related or care-related support. The council carry out an assessment of applicants and maintain a waiting list until suitable properties become available.",
+        "uri": "http://id.esd.org.uk/service/107",
+        "parents": []
+      },
+      {
+        "identifier": "1790",
+        "label": "Short breaks",
+        "description": "Short breaks enable children and young people with disabilities and/or additional needs to join in with safe, fun and interesting activities and to give parents or full-time carers an opportunity to have a short break from caring.",
+        "uri": "http://id.esd.org.uk/service/1790",
+        "parents": []
+      },
+      {
+        "identifier": "1794",
+        "label": "Skills for living",
+        "description": "Helping individuals with learning difficulties and/or disabilities to learn skills that support independent living and developing skills for work. Courses aim to equip learners with the skills to be able to manage tasks more independently, both at home and in the community. These include such topics as personal health and hygiene, personal and social development, and cooking",
+        "uri": "http://id.esd.org.uk/service/1794",
+        "parents": []
+      },
+      {
+        "identifier": "1806",
+        "label": "Social clubs and groups",
+        "description": "Local clubs and groups where people can meet and socialise with others.  Some groups and clubs may provide additional activities in addition to the opportunity to meet and talk to others.",
+        "uri": "http://id.esd.org.uk/service/1806",
+        "parents": []
+      },
+      {
+        "identifier": "9",
+        "label": "Special educational needs assessment",
+        "description": "The assessment of special educational needs may be considered when a child has severe or complex educational needs for which additional resources, or alternative provision may be required to meet their needs.",
+        "uri": "http://id.esd.org.uk/service/9",
+        "parents": []
+      },
+      {
+        "identifier": "10",
+        "label": "Special educational needs placement in mainstream school",
+        "description": "The local authority seeks to meet special educational needs in local mainstream schools, or at a school or unit which has additional resources to meet particular needs.",
+        "uri": "http://id.esd.org.uk/service/10",
+        "parents": []
+      },
+      {
+        "identifier": "865",
+        "label": "Special needs library facilities",
+        "description": "Libraries may provide a range of services to meet the requirements of those with special needs.  These may include talking books, Braille resources, large print, home library service , accessible computers etc.",
+        "uri": "http://id.esd.org.uk/service/865",
+        "parents": []
+      },
+      {
+        "identifier": "205",
+        "label": "Specialist equipment and support for disabled people",
+        "description": "Advice on purchase and/or loan of specialist equipment or services to help those with physical or sensory disability manage at home.  Usually a needs assessment is made in order to determine the equipment which may be required.",
+        "uri": "http://id.esd.org.uk/service/205",
+        "parents": []
+      },
+      {
+        "identifier": "641",
+        "label": "Sports clubs and groups",
+        "description": "A directory of local sports clubs and organisations which provide sporting facilities and tuition to local residents.",
+        "uri": "http://id.esd.org.uk/service/641",
+        "parents": []
+      },
+      {
+        "identifier": "453",
+        "label": "Sports coaching",
+        "description": "Providing courses and schools to assist local people in becoming qualified coaches in a range of sports and activities.  This may also include associated courses such as first-aid, child protection etc.",
+        "uri": "http://id.esd.org.uk/service/453",
+        "parents": []
+      },
+      {
+        "identifier": "451",
+        "label": "Sports facilities",
+        "description": "Information about sports facilities available in the local area for use by individuals or groups.  This will include location, types of facility, opening times, booking conditions etc.",
+        "uri": "http://id.esd.org.uk/service/451",
+        "parents": []
+      },
+      {
+        "identifier": "1746",
+        "label": "Stopping smoking",
+        "description": "Information, advice and help to assist local residents who smoke to stop smoking.",
+        "uri": "http://id.esd.org.uk/service/1746",
+        "parents": []
+      },
+      {
+        "identifier": "582",
+        "label": "Street cleaning",
+        "description": "The local authority street cleansing programme provides a frequent cleansing of streets, gullies, car parks, public conveniences and other public areas to remove litter, build up of leaves or any other conditions which could pose a risk to public health and safety.",
+        "uri": "http://id.esd.org.uk/service/582",
+        "parents": []
+      },
+      {
+        "identifier": "1131",
+        "label": "Sustainable development",
+        "description": "Local authorities are charged with providing leadership on sustainable development. This might include promoting recycling and green initiatives, and providing information and advice.",
+        "uri": "http://id.esd.org.uk/service/1131",
+        "parents": []
+      },
+      {
+        "identifier": "1674",
+        "label": "Swimming pools and water based activities",
+        "description": "Activities, facilties and training courses provided at public swimming pools,  local lakes and waterways.  There may be charges for the use of the facilities and set conditions on their use to ensure public safety. Local groups such as schools and clubs may be able to have exclusive use of the facilities at agreed times.",
+        "uri": "http://id.esd.org.uk/service/1674",
+        "parents": []
+      },
+      {
+        "identifier": "736",
+        "label": "Teenage pregnancy",
+        "description": "Schools and the LEA should provide information and advice aimed at getting more teenage parents into education, training or employment, to reduce the risk of long term social exclusion.",
+        "uri": "http://id.esd.org.uk/service/736",
+        "parents": []
+      },
+      {
+        "identifier": "497",
+        "label": "Town centre crime prevention",
+        "description": "The council should have a strategic approach to town planning and use which aims to reduce the incidence of crime.  This may include the use of CCTV, good lighting, landscaping, supervised car parks etc.",
+        "uri": "http://id.esd.org.uk/service/497",
+        "parents": []
+      },
+      {
+        "identifier": "169",
+        "label": "Translation and interpreting",
+        "description": "The local authority provides interpreting and translation services to people who need help because the national language is not their first language and also sign language interpreting to deaf people.",
+        "uri": "http://id.esd.org.uk/service/169",
+        "parents": []
+      },
+      {
+        "identifier": "908",
+        "label": "Transport timetable information",
+        "description": "Publication of timetables for local transport including trains, buses, metro/underground, tram and any other forms of public transport",
+        "uri": "http://id.esd.org.uk/service/908",
+        "parents": []
+      },
+      {
+        "identifier": "737",
+        "label": "Traveller children support",
+        "description": "The traveller service has teachers and home or school support staff who can help with attendance issues and supporting gypsy or traveller children whilst they are in schools.",
+        "uri": "http://id.esd.org.uk/service/737",
+        "parents": []
+      },
+      {
+        "identifier": "505",
+        "label": "Tree management",
+        "description": "The local authority is responsible for the efficient management of trees in their ownership within urban and rural environments.  This includes the maintenance and protection of trees on all council owned land and on streets and other paved areas to ensure the safety of the public.",
+        "uri": "http://id.esd.org.uk/service/505",
+        "parents": []
+      },
+      {
+        "identifier": "1652",
+        "label": "Universal credit",
+        "description": "Universal credit is a payment to help with living costs for those who are on a low income. Universal credit replaces a number of other income related benefits including housing benefit (with some exceptions)",
+        "uri": "http://id.esd.org.uk/service/1652",
+        "parents": []
+      },
+      {
+        "identifier": "1816",
+        "label": "Victim support",
+        "description": "Confidential help, advice and support to individuals and families who have been the victims of crime, including racial harassment, sexual assault, domestic violence, street crime, bullying, youth crime and homophobic/transphobic crime.",
+        "uri": "http://id.esd.org.uk/service/1816",
+        "parents": []
+      },
+      {
+        "identifier": "734",
+        "label": "Visitor accommodation  and holidays",
+        "description": "Information on visitor accommodation available in the local area including local hotels, guest houses, bed and breakfast accommodation, holiday cottages etc.  and on organisations providing holidays outside the area for local residents particularly those in need of holidays with specialised facilities or additional support.",
+        "uri": "http://id.esd.org.uk/service/734",
+        "parents": []
+      },
+      {
+        "identifier": "1113",
+        "label": "Volunteering",
+        "description": "Provision of information on volunteering opportunities available in the community.",
+        "uri": "http://id.esd.org.uk/service/1113",
+        "parents": []
+      },
+      {
+        "identifier": "269",
+        "label": "Warm homes healthy people",
+        "description": "Warm Homes, Healthy People provides advice and practical support to households who are vulnerable to the cold. Support may include: - home visit from an energy advisor - stay warm pack - 1-2-1 advice on how to lower fuel costs - advice on how to keep warm and well - access to discounts on energy bills, grants for first time central heating",
+        "uri": "http://id.esd.org.uk/service/269",
+        "parents": []
+      },
+      {
+        "identifier": "300",
+        "label": "Young carers support",
+        "description": "Support, information and advice for young carers and their families. The service provides recreational respite, advocacy, a befriending service and therapeutic support to young people who have caring responsibilities for a relative with a long-term illness or disability.",
+        "uri": "http://id.esd.org.uk/service/300",
+        "parents": []
+      },
+      {
+        "identifier": "643",
+        "label": "Young people's organised activities",
+        "description": "Provision and support of a range of educational services and social activities for children and young people.",
+        "uri": "http://id.esd.org.uk/service/643",
+        "parents": []
+      },
+      {
+        "identifier": "1109",
+        "label": "Zoos and farm parks",
+        "description": "Zoos, farms, wildlife parks or 'pets' corners' open to the public",
+        "uri": "http://id.esd.org.uk/service/1109",
+        "parents": []
+      }
+    ]
+  }
+}

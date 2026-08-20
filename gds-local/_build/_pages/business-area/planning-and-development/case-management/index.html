@@ -1,0 +1,155 @@
+---
+title: Planning case management
+caption: LGAM Business Areas
+status: draft
+target: business-area/planning-and-development/case-management/index.html
+parent: index.html
+parent_title: Planning and development
+description: "Landing page for the planning case management concept prototype. Routes users to persona-targeted versions of the content based on their role and needs."
+---
+<style>
+    .persona-card {
+        background-color: #f3f2f1;
+        padding: 25px;
+        height: 100%;
+        box-sizing: border-box;
+        border-top: 5px solid #000080;
+    }
+    .persona-card--decision {
+        border-top-color: #1d70b8;
+    }
+    .persona-card__tag {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 2px 8px;
+        margin-bottom: 10px;
+        background: #000080;
+        color: #fff;
+    }
+    .persona-card__tag--decision {
+        background: #1d70b8;
+    }
+    .flex-row { display: flex; flex-wrap: wrap; }
+</style>
+
+<nav-contents>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#about">About this prototype</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#choose">Choose a version</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#why-two-versions">Why two versions</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#feedback">Give feedback</a></li>
+</nav-contents>
+
+<main-content>
+      <span class="govuk-caption-xl">Business Area: Planning & Development</span>
+      <h1 class="govuk-heading-xl">Planning case management</h1>
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Prototype</h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">This is a concept prototype testing whether this content is useful.</p>
+          <p class="govuk-body">It presents the same subject — planning case management architecture — in two versions aimed at different audiences. We want to learn which version (if either) helps people make better decisions.</p>
+        </div>
+      </div>
+
+      <section id="about">
+        <p class="govuk-body govuk-!-font-size-24">Planning case management supports the receipt, assessment and determination of planning applications. It depends on other capabilities — payments, documents, identity, geospatial information, notifications and records management — that may be provided by planning-specific products, shared council services, or a combination.</p>
+
+        <p class="govuk-body">This prototype explores whether architectural guidance about those relationships helps councils make better technology decisions. It exists in two versions, each targeting a different set of users and needs.</p>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="choose">
+        <h2 class="govuk-heading-l">Choose a version</h2>
+
+        <div class="govuk-grid-row govuk-!-margin-top-6 flex-row">
+          <div class="govuk-grid-column-one-half govuk-!-margin-bottom-4">
+            <div class="persona-card">
+              <span class="persona-card__tag">Technical architect</span>
+              <h3 class="govuk-heading-m">
+                <a href="architect.html" class="govuk-link">Architecture and integration view</a>
+              </h3>
+              <p class="govuk-body govuk-!-font-size-14">For people who design how systems connect — solution architects, integration leads, technical designers. Covers capability boundaries, integration characteristics, failure modes, data ownership and what makes planning technically distinct from other council domains.</p>
+              <p class="govuk-body govuk-!-font-size-14"><strong>Assumes:</strong> You already understand enterprise integration patterns and want planning-specific detail, not generic architecture education.</p>
+              <a href="architect.html" class="govuk-link govuk-!-font-size-14 govuk-!-font-weight-bold">View architect version&nbsp;<span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+
+          <div class="govuk-grid-column-one-half govuk-!-margin-bottom-4">
+            <div class="persona-card persona-card--decision">
+              <span class="persona-card__tag persona-card__tag--decision">Decision-maker</span>
+              <h3 class="govuk-heading-m">
+                <a href="decision-maker.html" class="govuk-link">Strategy and procurement view</a>
+              </h3>
+              <p class="govuk-body govuk-!-font-size-14">For digital leaders, procurement professionals, service managers and heads of planning. Covers what planning case management depends on, what questions to ask suppliers and colleagues, and how to think about scope and boundaries.</p>
+              <p class="govuk-body govuk-!-font-size-14"><strong>Assumes:</strong> You make decisions about planning technology but don't design the integrations yourself.</p>
+              <a href="decision-maker.html" class="govuk-link govuk-!-font-size-14 govuk-!-font-weight-bold">View decision-maker version&nbsp;<span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="why-two-versions">
+        <h2 class="govuk-heading-l">Why two versions</h2>
+
+        <p class="govuk-body">Our research identified five user needs that LGAM content should address:</p>
+
+        <ol class="govuk-list govuk-list--number">
+          <li><strong>A common language</strong> for describing local government technology, so that discussions use shared terminology across organisations.</li>
+          <li><strong>Clear architectural guidance</strong> that explains how capabilities relate and how decisions should be approached — practical, not purely conceptual.</li>
+          <li><strong>Confidence in published content</strong> — accuracy and credibility are essential to adoption.</li>
+          <li><strong>Support for technology decision-making</strong> — procurement, architecture and investment decisions need a common understanding of capabilities and dependencies.</li>
+          <li><strong>Ongoing collaboration</strong> — users need to continue contributing as the model evolves.</li>
+        </ol>
+
+        <p class="govuk-body">A technical architect and a procurement lead both need support for decision-making (need 4), but at different levels of detail and with different prior knowledge. A single page that tries to serve both tends to be too shallow for architects and too dense for non-technical readers.</p>
+
+        <p class="govuk-body">This prototype tests whether explicitly targeting different audiences produces content that better meets those needs — or whether a single version would serve everyone adequately.</p>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">There is also a third version</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">An <a href="v1-index.html" class="govuk-link">earlier generic version</a> attempted to serve all audiences in a single page. It is retained for comparison but we believe it falls between two stools — too shallow for architects, too abstract for non-technical readers.</p>
+          </div>
+        </details>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="feedback">
+        <h2 class="govuk-heading-l">Give feedback</h2>
+
+        <p class="govuk-body">This prototype exists to test assumptions. We want to learn:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Does either version help you make a real decision you're currently facing?</li>
+          <li>Is the level of detail right for your role?</li>
+          <li>Is anything stated here that you know to be wrong?</li>
+          <li>Is anything missing that would make this genuinely useful?</li>
+          <li>Would you share this with a colleague? Which version, and in what context?</li>
+        </ul>
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">This content has not been validated with practitioners. Confidence levels are stated on each page. If you have direct experience that confirms or contradicts anything here, that feedback is especially valuable.</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--l"/>
+</main-content>
+
+<page-modules></page-modules>
+
+<page-script>
+</page-script>
+
+<page-history>
+  <ul class="govuk-list govuk-list--bullet">
+    <li><strong>12th August 2026:</strong> Initial concept prototype with persona-targeted versions</li>
+  </ul>
+</page-history>

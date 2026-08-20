@@ -14,169 +14,1053 @@
     },
     "FunctionGroup": {
       "description": "The overarching service domain or directorate (e.g., Adult Social Care, Environmental Services)."
+    },
+    "Layer": {
+      "description": "A top-level category in the LGAM architecture."
+    },
+    "FoundationalTechnology": {
+      "description": "Foundational technology components."
+    },
+    "Integration": {
+      "description": "Integration components."
+    },
+    "Security": {
+      "description": "Security components."
+    },
+    "DataAndInfo": {
+      "description": "Data and information components."
     }
   },
   "nodes": [
-    { "id": "PC_InPerson", "label": "In person", "type": "PublicChannel", "description": "Some council services will still need to be delivered in-person. This includes at a council’s offices, at a household or business, or at another location." },
-    { "id": "PC_Phone", "label": "Phone", "type": "PublicChannel", "description": "Some services are delivered via telephone, allowing users to speak directly with council staff for support, enquiries, or transactions where digital access may not be suitable/available to the user." },
-    { "id": "PC_Email", "label": "Email", "type": "PublicChannel", "description": "Asynchronous written communication via email." },
-    { "id": "PC_Letter", "label": "Letter", "type": "PublicChannel", "description": "Some services rely on postal communication, particularly for formal notifications, legal correspondence or where physical record of delivery is required." },
-    { "id": "PC_Online", "label": "Online", "type": "PublicChannel", "description": "Many council services are delivered online through websites, portals or forms, enabling users to self-serve at a time that suits them." },
-    { "id": "PC_SMS", "label": "SMS/ Messaging", "type": "PublicChannel", "description": "Some services may use SMS or messaging channels to provide updates, reminders or quick interactions." },
-    { "id": "PC_SocialMedia", "label": "Social Media", "type": "PublicChannel", "description": "Some councils may use social media platforms to share information, respond to enquiries and engage with residents in a more informal/accessible way." },
-    { "id": "PC_SmartDevice", "label": "Smart Device", "type": "PublicChannel", "description": "Some services can be accessed through smart devices such as Internet of Things, to enable automated interaction where appropriate." },
-    { "id": "PC_ThirdParty", "label": "Third Party", "type": "PublicChannel", "description": "Users may sometimes access council services through proxy; by going through their local MP or local media." },
-    { "id": "PC_Video", "label": "Video", "type": "PublicChannel", "description": "Some councils may use video calls to deliver service remotely, allowing users to speak face-to-face with staff without needing to attend in person." },
-    { "id": "CA_App", "label": "App", "type": "CouncilAgent", "description": "Native or cross-platform mobile application providing dedicated services to citizens." },
-    { "id": "CA_API", "label": "API Gateway", "type": "CouncilAgent", "description": "Machine-to-machine interface handling third-party integrations and smart device inputs." },
-    { "id": "CA_AutoPhone", "label": "Automated Phone", "type": "CouncilAgent", "description": "Automated telephony system, such as IVR or conversational voicebots." },
-    { "id": "CA_Human", "label": "Human", "type": "CouncilAgent", "description": "Customer Service Representatives or specialist officers handling queries." },
-    { "id": "CA_PublicDevice", "label": "Public Device", "type": "CouncilAgent", "description": "These are devices owned by the council that are in the public domain, and include technology such as touch-screens in a public location for example in a library, or an internet of things device for example in a drain or bin." },
-    { "id": "CA_Website", "label": "Website", "type": "CouncilAgent", "description": "The primary council web portal, forms, and digital content interfaces." },
-    { "id": "Cap_AgenticAI", "label": "Agentic AI", "type": "Capability", "description": "Autonomous AI agents capable of reasoning, executing multi-step tasks, and making routing decisions." },
-    { "id": "Cap_Booking", "label": "Booking", "type": "Capability", "description": "Councils use booking tools to arrange and manage appointments or service slots, such as inspections, and interviews with users." },
-    { "id": "Cap_Email", "label": "Email", "type": "Capability", "description": "Emails are used as the primary tool to send and receive messages when dealing with users, internal/external stakeholders" },
-    { "id": "Cap_Forms", "label": "Forms", "type": "Capability", "description": "Forms are used to collect and check information provided by users, such as in applications, reports and requests." },
-    { "id": "Cap_Identity", "label": "Identity", "type": "Capability", "description": "Councils use identity tools to check and verify who a user is" },
-    { "id": "Cap_Payments", "label": "Payments", "type": "Capability", "description": "Payment tools are used to take and track payments made by users for services, such as council tax, licences or permits." },
-    { "id": "Cap_SMS", "label": "SMS", "type": "Capability", "description": "Councils use SMS tools to send and receive text messages for updates, reminders and quick communications with users." },
-    { "id": "Cap_Telephony", "label": "Telephony / Fax", "type": "Capability", "description": "Councils use telephone (and in some cases where still needed, fax) to communicate/exchange information with their users." },
-    { "id": "Cap_Workflow", "label": "Workflow", "type": "Capability", "description": "These are used to manage and track users request/application/casework as it moves through different processing stages." },
-    { "id": "SYS_Care", "label": "Social Care System", "type": "ITSystem", "description": "Core case management system for Adult and Children's statutory social care." },
-    { "id": "SYS_Waste", "label": "Waste System", "type": "ITSystem", "description": "Operational system for managing domestic/commercial waste collection and fleet routing." },
-    { "id": "SYS_Elections", "label": "Electoral System", "type": "ITSystem", "description": "Specialist system for electoral registration and ballot management." },
-    { "id": "SYS_CRM", "label": "Corporate CRM", "type": "ITSystem", "description": "Centralised system for managing citizen interactions and service requests." },
-    { "id": "SYS_RevsBens", "label": "Revs and Bens System", "type": "ITSystem", "description": "System for processing council tax, business rates, and housing benefits." },
-    { "id": "SYS_Income", "label": "Income Management System", "type": "ITSystem", "description": "Corporate income management, receipting, and cash management platform." },
-    { "id": "SYS_HRPayroll", "label": "HR & Payroll System", "type": "ITSystem", "description": "Human resources, staff management, recruitment, and payroll processing." },
-    { "id": "SYS_EnvHealth", "label": "Environmental Health System", "type": "ITSystem", "description": "Regulatory system for protection, trading standards, and food safety." },
-    { "id": "SYS_Housing", "label": "Housing Management System", "type": "ITSystem", "description": "System covering tenancies, allocations, rents, and repairs." },
-    { "id": "SYS_Leisure", "label": "Leisure Management System", "type": "ITSystem", "description": "Booking and facility management platform for leisure centers and cultural venues." },
-    { "id": "SYS_Planning", "label": "Planning & Building Control System", "type": "ITSystem", "description": "System managing spatial planning applications and building control." },
-    { "id": "SYS_Highways", "label": "Highways Management System", "type": "ITSystem", "description": "Asset management system for roads, street lighting, and parking." },
-    { "id": "SYS_ERP", "label": "Corporate ERP", "type": "ITSystem", "description": "Enterprise Resource Planning for core back-office finance and procurement." },
-    { "id": "SYS_Lib", "label": "Library Management System", "type": "ITSystem", "description": "System for cataloging, loans, and membership management." },
-    { "id": "SYS_Education", "label": "Education Management System", "type": "ITSystem", "description": "Management information system for schools, pupil admissions, and early years." },
-    { "id": "FG_AdultSocial", "label": "Adult Social Care", "type": "FunctionGroup" },
-    { "id": "FG_ChildSocial", "label": "Children's Social Care", "type": "FunctionGroup" },
-    { "id": "FG_Democratic", "label": "Democratic Services", "type": "FunctionGroup" },
-    { "id": "FG_Education", "label": "Education", "type": "FunctionGroup" },
-    { "id": "FG_Highways", "label": "Highways / Transport", "type": "FunctionGroup" },
-    { "id": "FG_Housing", "label": "Housing", "type": "FunctionGroup" },
-    { "id": "FG_Leisure", "label": "Leisure / Culture", "type": "FunctionGroup" },
-    { "id": "FG_Licensing", "label": "Licensing / Regulation", "type": "FunctionGroup" },
-    { "id": "FG_Planning", "label": "Planning / Development", "type": "FunctionGroup" },
-    { "id": "FG_PublicHealth", "label": "Public Health", "type": "FunctionGroup" },
-    { "id": "FG_RevsBens", "label": "Revenues / Benefits", "type": "FunctionGroup" },
-    { "id": "FG_Waste", "label": "Waste Management", "type": "FunctionGroup" },
-    { "id": "FG_BizPlanning", "label": "Business Planning / Performance", "type": "FunctionGroup" },
-    { "id": "FG_Comms", "label": "Communications / PR", "type": "FunctionGroup" },
-    { "id": "FG_Governance", "label": "Corporate Governance / Risk", "type": "FunctionGroup" },
-    { "id": "FG_CustRel", "label": "Customer Relationship / B2C", "type": "FunctionGroup" },
-    { "id": "FG_Facilities", "label": "Facilities", "type": "FunctionGroup" },
-    { "id": "FG_Financial", "label": "Financial", "type": "FunctionGroup" },
-    { "id": "FG_GIS", "label": "Geographical", "type": "FunctionGroup" },
-    { "id": "FG_Legal", "label": "Legal / Compliance", "type": "FunctionGroup" },
-    { "id": "FG_HR", "label": "Human Resource / Workforce", "type": "FunctionGroup" },
-    { "id": "FG_Procurement", "label": "Procurement / B2B", "type": "FunctionGroup" }
+    {
+      "id": "Lyr_PublicChannels",
+      "label": "Public Channels",
+      "type": "Layer",
+      "description": "Public channels are how service users interact with councils."
+    },
+    {
+      "id": "PC_InPerson",
+      "label": "In person",
+      "type": "PublicChannel",
+      "description": "Face-to-face interactions at a council office, a user's home or business, or another physical location."
+    },
+    {
+      "id": "PC_Phone",
+      "label": "Phone",
+      "type": "PublicChannel",
+      "description": "Voice calls allowing users to speak directly with council staff for support, enquiries, or complex transactions."
+    },
+    {
+      "id": "PC_Email",
+      "label": "Email",
+      "type": "PublicChannel",
+      "description": "Asynchronous written messages used for direct communication between users and the council."
+    },
+    {
+      "id": "PC_Letter",
+      "label": "Letter",
+      "type": "PublicChannel",
+      "description": "Physical postal mail used for formal notifications, legal correspondence, or providing a permanent physical record."
+    },
+    {
+      "id": "PC_Online",
+      "label": "Online",
+      "type": "PublicChannel",
+      "description": "Websites, web portals, apps, and online forms enabling users to self-serve and access information digitally."
+    },
+    {
+      "id": "PC_SMS",
+      "label": "Messaging",
+      "type": "PublicChannel",
+      "description": "Text-based messages including SMS, used to provide quick updates, alerts, or appointment reminders."
+    },
+    {
+      "id": "PC_SocialMedia",
+      "label": "Social media",
+      "type": "PublicChannel",
+      "description": "Social networking platforms used to broadcast information, answer queries, and engage with the community."
+    },
+    {
+      "id": "PC_SmartDevice",
+      "label": "Smart devices",
+      "type": "PublicChannel",
+      "description": "Connected hardware (such as Internet of Things sensors or smart speakers) enabling automated or voice-activated interactions."
+    },
+    {
+      "id": "PC_Thirdpartychannels",
+      "label": "Third-party channels",
+      "type": "PublicChannel",
+      "description": "Indirect channels where users interact via a proxy, such as a local MP, an advocate, or local media."
+    },
+    {
+      "id": "PC_Video",
+      "label": "Video",
+      "type": "PublicChannel",
+      "description": "Remote video calls enabling face-to-face conversations without the need to travel to a council building."
+    },
+    {
+      "id": "Lyr_CouncilInterfaces",
+      "label": "Council Interfaces",
+      "type": "Layer",
+      "description": "Interfaces through which councils deliver services and information."
+    },
+    {
+      "id": "CA_App",
+      "label": "Apps",
+      "type": "CouncilAgent",
+      "description": "Both native and cross-platform mobile applications providing dedicated services to citizens."
+    },
+    {
+      "id": "CA_API",
+      "label": "API gateways",
+      "type": "CouncilAgent",
+      "description": "Machine-to-machine interfaces handling third-party integrations and smart device inputs."
+    },
+    {
+      "id": "CA_AutoPhone",
+      "label": "Automated phones",
+      "type": "CouncilAgent",
+      "description": "Automated telephony systems, such as IVR and conversational voicebots."
+    },
+    {
+      "id": "CA_Human",
+      "label": "Human",
+      "type": "CouncilAgent",
+      "description": "Customer service representatives or specialist officers handling queries."
+    },
+    {
+      "id": "CA_PublicDevice",
+      "label": "Public devices",
+      "type": "CouncilAgent",
+      "description": "Publicly-accessible devices owned by the council, such as touch-screens in a library or Internet of Things sensors in a drain or bin."
+    },
+    {
+      "id": "CA_Website",
+      "label": "Websites",
+      "type": "CouncilAgent",
+      "description": "Primary council web portals, forms, webchat, and other digital content interfaces."
+    },
+    {
+      "id": "Lyr_Capabilities",
+      "label": "Capabilities",
+      "type": "Layer",
+      "description": "Capabilities used by council's interfaces to help them meet the needs of their service users."
+    },
+    {
+      "id": "Cap_AgenticAI",
+      "label": "Agentic AI",
+      "type": "Capability",
+      "description": "Autonomous AI agents capable of reasoning, executing multi-step tasks, and making routing decisions."
+    },
+    {
+      "id": "Cap_Booking",
+      "label": "Booking",
+      "type": "Capability",
+      "description": "Capabilities used to arrange and manage appointments or service slots, such as inspections and interviews with users."
+    },
+    {
+      "id": "Cap_Email",
+      "label": "Email",
+      "type": "Capability",
+      "description": "Capabilities used to send and receive messages when dealing with users and both internal and external stakeholders."
+    },
+    {
+      "id": "Cap_Forms",
+      "label": "Forms",
+      "type": "Capability",
+      "description": "Capabilities used to collect and check information provided by users, such as within applications, reports, and requests."
+    },
+    {
+      "id": "Cap_Identity",
+      "label": "Identity",
+      "type": "Capability",
+      "description": "Capabilities used to check and verify a user's identity."
+    },
+    {
+      "id": "Cap_Payments",
+      "label": "Payments",
+      "type": "Capability",
+      "description": "Tools used to take and track payments made by users for services such as paying council taxes, and getting licences and permits."
+    },
+    {
+      "id": "Cap_Messaging",
+      "label": "Messaging",
+      "type": "Capability",
+      "description": "Tools used to send and receive text messages including SMS, for updates, reminders, and quick communications with users."
+    },
+    {
+      "id": "Cap_Telephony",
+      "label": "Telephony and fax",
+      "type": "Capability",
+      "description": "Capabilities used to communicate or exchange information with users via voice calls or fax."
+    },
+    {
+      "id": "Cap_Workflow",
+      "label": "Workflow",
+      "type": "Capability",
+      "description": "Capabilities used to manage and track users' requests, applications, or casework as the users move through different processing stages."
+    },
+    {
+      "id": "Lyr_BusinessAreas",
+      "label": "Business Areas",
+      "type": "Layer",
+      "description": "Business areas cover the specific functions each council must provide. Each area features individual technology components designed for a specific need."
+    },
+    {
+      "id": "FG_AdultSocial",
+      "label": "Adult social care",
+      "type": "FunctionGroup",
+      "description": "The provision of support services for adults with physical or mental health needs, and their carers."
+    },
+    {
+      "id": "FG_Childrenssocialcare",
+      "label": "Childrens’ social care",
+      "type": "FunctionGroup",
+      "description": "The provision of services, including child protection and safeguarding, family support, and care for looked-after children and care leavers."
+    },
+    {
+      "id": "FG_Democratic",
+      "label": "Democratic services",
+      "type": "FunctionGroup",
+      "description": "The management of elections, committee meetings, and support for elected councillors."
+    },
+    {
+      "id": "FG_Education",
+      "label": "Education",
+      "type": "FunctionGroup",
+      "description": "The management of school admissions, transport, special educational needs, and support for local educational settings."
+    },
+    {
+      "id": "FG_Highwaysandtransport",
+      "label": "Highways and transport",
+      "type": "FunctionGroup",
+      "description": "The management of road maintenance, traffic, public transport planning, and parking."
+    },
+    {
+      "id": "FG_Housing",
+      "label": "Housing",
+      "type": "FunctionGroup",
+      "description": "The management of social housing, repairs, and homelessness prevention."
+    },
+    {
+      "id": "FG_Leisureandculture",
+      "label": "Leisure and culture",
+      "type": "FunctionGroup",
+      "description": "The operation of parks, libraries, museums, leisure centres, and community events."
+    },
+    {
+      "id": "FG_Licensingandregulation",
+      "label": "Licensing and regulation",
+      "type": "FunctionGroup",
+      "description": "The processing of alcohol, taxi, and trade licences, and environmental health enforcement."
+    },
+    {
+      "id": "FG_Planninganddevelopment",
+      "label": "Planning and development",
+      "type": "FunctionGroup",
+      "description": "The processing of planning applications, building control, and local spatial planning."
+    },
+    {
+      "id": "FG_PublicHealth",
+      "label": "Public health",
+      "type": "FunctionGroup",
+      "description": "The provision of community health initiatives, sexual health services, and health protection."
+    },
+    {
+      "id": "FG_Revenuesandbenefits",
+      "label": "Revenues and benefits",
+      "type": "FunctionGroup",
+      "description": "The collection of council tax and business rates, and administration of housing benefit."
+    },
+    {
+      "id": "FG_Waste",
+      "label": "Waste management",
+      "type": "FunctionGroup",
+      "description": "The management of kerbside collections, recycling, and the operation of household waste centres."
+    },
+    {
+      "id": "Lyr_CorporateAreas",
+      "label": "Corporate Areas",
+      "type": "Layer",
+      "description": "Corporate areas are required functions not specific to councils, each with their own individual technology components."
+    },
+    {
+      "id": "FG_Businessplanningandperformance",
+      "label": "Business planning and performance",
+      "type": "FunctionGroup",
+      "description": "The administration of strategic planning, performance monitoring, and business intelligence."
+    },
+    {
+      "id": "FG_CommunicationsandPR",
+      "label": "Communications and PR",
+      "type": "FunctionGroup",
+      "description": "The management of press relations, public campaigns, and omnichannel content publishing."
+    },
+    {
+      "id": "FG_Corporategovernanceandrisk",
+      "label": "Corporate governance and risk",
+      "type": "FunctionGroup",
+      "description": "The management of internal audits, risk, and constitutional compliance."
+    },
+    {
+      "id": "FG_CustomerrelationshipB2C",
+      "label": "Customer relationship (B2C)",
+      "type": "FunctionGroup",
+      "description": "The management of customer service centres and general resident engagement."
+    },
+    {
+      "id": "FG_Facilities",
+      "label": "Facilities",
+      "type": "FunctionGroup",
+      "description": "The maintenance and management of council-owned buildings and estates."
+    },
+    {
+      "id": "FG_Financial",
+      "label": "Financial",
+      "type": "FunctionGroup",
+      "description": "The administration of accounting, treasury management, payroll, and budget setting."
+    },
+    {
+      "id": "FG_GIS",
+      "label": "Geographical",
+      "type": "FunctionGroup",
+      "description": "The management of geographic identity system (GIS) data, mapping services, and gazetteers."
+    },
+    {
+      "id": "FG_Legalandcompliance",
+      "label": "Legal and compliance",
+      "type": "FunctionGroup",
+      "description": "The provision of legal advice, litigation services, and data protection (GDPR) compliance."
+    },
+    {
+      "id": "FG_HR",
+      "label": "Human resources and workforce",
+      "type": "FunctionGroup",
+      "description": "The management of recruitment, staff training, performance, and employee relations."
+    },
+    {
+      "id": "FG_ProcurementB2B",
+      "label": "Procurement (B2B)",
+      "type": "FunctionGroup",
+      "description": "The management of contracts, supply chains, and purchasing of goods and services."
+    },
+    {
+      "id": "Lyr_FoundationalTechnology",
+      "label": "Foundational Technology",
+      "type": "Layer",
+      "description": "Technology platforms and capabilities that underpin council service delivery."
+    },
+    {
+      "id": "Lyr_Integration",
+      "label": "Integration",
+      "type": "Layer",
+      "description": "Integrations ensure systems, applications, and data sources can seamlessly connect and share information to provide consistent data and unified digital experiences across the organisation."
+    },
+    {
+      "id": "INT_APImanagementandgateways",
+      "label": "API management and gateways",
+      "type": "Integration",
+      "description": "Platforms and services for designing, publishing, securing, and monitoring APIs, often combined with API developer portals/catalogues for discovery and governance."
+    },
+    {
+      "id": "INT_DataintegrationandpipelinesETLELT",
+      "label": "Data integration and pipelines (ETL/ELT)",
+      "type": "Integration",
+      "description": "Tools and processes for extracting, transforming, and loading data between systems, supporting both batch ETL and real-time ELT pipelines."
+    },
+    {
+      "id": "INT_Eventdrivenandstreamingintegration",
+      "label": "Event-driven and streaming integration",
+      "type": "Integration",
+      "description": "Platforms for capturing and distributing real-time event streams, enabling responsive, event-driven architectures."
+    },
+    {
+      "id": "INT_Filetransfermanagement",
+      "label": "File transfer management",
+      "type": "Integration",
+      "description": "Managed File Transfer (MFT) solutions to securely exchange files between systems or with external partners, ensuring scheduling, auditing, and integrity of bulk data transfers."
+    },
+    {
+      "id": "INT_Integrationgovernanceandtooling",
+      "label": "Integration governance and tooling",
+      "type": "Integration",
+      "description": "Secure by design integration architecture and governance processes supported by integration platforms and tools. These establish common integration patterns, standards, and reusable components for consistency and incorporate security & privacy by design principles (e.g. authentication, encryption, policy enforcement) into integration solutions."
+    },
+    {
+      "id": "INT_Messageorientedmiddleware",
+      "label": "Message-oriented middleware",
+      "type": "Integration",
+      "description": "Enterprise service buses (ESB) and message brokers that route, transform, and orchestrate interactions between applications."
+    },
+    {
+      "id": "INT_PartnerB2Bintegration",
+      "label": "Partner (B2B) integration",
+      "type": "Integration",
+      "description": "Capabilities for business-to-business (B2B) and partner data exchange, including supporting EDI standards, secure partner API connections, and external data-sharing agreements."
+    },
+    {
+      "id": "Lyr_Security",
+      "label": "Security",
+      "type": "Layer",
+      "description": "Security encompasses all capabilities, tools, and practices that protect the organisation's people, data, systems, and services from threats and ensure resilience against disruption."
+    },
+    {
+      "id": "SEC_Applicationanddatasecurity",
+      "label": "Application and data security",
+      "type": "Security",
+      "description": "Capabilities to secure applications and data through secure development practices, data protection controls, and continuous security testing. This involves application security testing (SAST/DAST) during development, enforcing data classification & encryption, protecting APIs, and monitoring for application-level threats."
+    },
+    {
+      "id": "SEC_IdentityandaccessmanagementIAM",
+      "label": "Identity and access management (IAM)",
+      "type": "Security",
+      "description": "Capabilities to verify identities and control access to systems that may use Zero Trust principles. This includes authentication and authorisation services (e.g. single sign-on, multi-factor authentication) to ensure only the right users/devices get appropriate access."
+    },
+    {
+      "id": "SEC_Incidentforensics",
+      "label": "Incident forensics",
+      "type": "Security",
+      "description": "Digital forensic analysis capabilities including tools to collect and analyse digital evidence when breaches occur."
+    },
+    {
+      "id": "SEC_Networkandendpointsecurity",
+      "label": "Network and endpoint security",
+      "type": "Security",
+      "description": "Network, endpoint, and device protection measures to guard against malware, intrusions, and unauthorised access. This includes firewalls, endpoint protection, intrusion detection/prevention systems, network segmentation, and device compliance monitoring."
+    },
+    {
+      "id": "SEC_Physicalsecurityandaccesscontrol",
+      "label": "Physical security and access control",
+      "type": "Security",
+      "description": "Management of physical access and on-site security, including badge access systems, CCTV surveillance, and facility security controls."
+    },
+    {
+      "id": "SEC_SecurityoperationsandmonitoringSOC",
+      "label": "Security operations and monitoring (SOC)",
+      "type": "Security",
+      "description": "Continuous security monitoring and incident management via a Security Operations Centre (SOC). SOC capabilities often include SIEM (Security Information & Event Management) tools and threat detection platforms to maintain real-time visibility of the security posture."
+    },
+    {
+      "id": "SEC_Vulnerabilityandthreatmanagement",
+      "label": "Vulnerability and threat management",
+      "type": "Security",
+      "description": "Tools and processes to identify, assess, and remediate vulnerabilities in systems, as well as manage cyber threat intelligence. This covers regular vulnerability scanning, prioritising patches based on risk, tracking emerging threats, and verifying configuration security."
+    },
+    {
+      "id": "Lyr_DataandInformation",
+      "label": "Data and Information",
+      "type": "Layer",
+      "description": "Data and information management encompasses the capabilities, tools, and practices that equip the organisation to collect, manage, understand, and utilise its data and information assets in an effective manner."
+    },
+    {
+      "id": "DAT_Businessintelligenceandanalytics",
+      "label": "Business intelligence and analytics",
+      "type": "DataAndInfo",
+      "description": "BI and analytics platforms for aggregating data and creating reports, dashboards, and visualisations to inform decision-making. This includes interactive data exploration, performance metrics, and trend analysis ."
+    },
+    {
+      "id": "DAT_Datacataloguemetadatamanagement",
+      "label": "Data catalogue & metadata management",
+      "type": "DataAndInfo",
+      "description": "Systems for cataloguing data assets and managing metadata across the organisation, enabling data discovery and understanding. This includes data dictionaries, metadata repositories, and lineage tracking."
+    },
+    {
+      "id": "DAT_Datagovernanceandquality",
+      "label": "Data governance and quality",
+      "type": "DataAndInfo",
+      "description": "Tools for managing data assets consistently and ethically throughout their lifecycle."
+    },
+    {
+      "id": "DAT_Datascienceandpredictiveanalytics",
+      "label": "Data science and predictive analytics",
+      "type": "DataAndInfo",
+      "description": "Advanced analytics capabilities for statistical analysis, predictive modelling, and data mining to identify patterns, forecast outcomes, and support data-driven decisions."
+    },
+    {
+      "id": "DAT_Datastorageandwarehousing",
+      "label": "Data storage and warehousing",
+      "type": "DataAndInfo",
+      "description": "Data storage platforms for structured and unstructured data, providing scalable databases, data warehouses, and data lakes for analytical and operational needs."
+    },
+    {
+      "id": "DAT_Documentandrecordsmanagement",
+      "label": "Document and records management",
+      "type": "DataAndInfo",
+      "description": "Enterprise document management and records archiving capabilities to organise, store, and retain unstructured information throughout their lifecycle."
+    },
+    {
+      "id": "DAT_Enterprisesearchanddataindexing",
+      "label": "Enterprise search and data indexing",
+      "type": "DataAndInfo",
+      "description": "Capabilities to search and index data and content. This may involve enterprise search engines, indexing services, and taxonomy/metadata tagging."
+    },
+    {
+      "id": "DAT_Geospatialdata",
+      "label": "Geospatial data",
+      "type": "DataAndInfo",
+      "description": "Data for mapping, geospatial analysis, and location based services."
+    },
+    {
+      "id": "SYS_Care",
+      "label": "Social Care System",
+      "type": "ITSystem",
+      "description": "Core case management system for Adult and Children's statutory social care."
+    },
+    {
+      "id": "SYS_Waste",
+      "label": "Waste System",
+      "type": "ITSystem",
+      "description": "Operational system for managing domestic/commercial waste collection and fleet routing."
+    },
+    {
+      "id": "SYS_Elections",
+      "label": "Electoral System",
+      "type": "ITSystem",
+      "description": "Specialist system for electoral registration and ballot management."
+    },
+    {
+      "id": "SYS_CRM",
+      "label": "Corporate CRM",
+      "type": "ITSystem",
+      "description": "Centralised system for managing citizen interactions and service requests."
+    },
+    {
+      "id": "SYS_RevsBens",
+      "label": "Revs and Bens System",
+      "type": "ITSystem",
+      "description": "System for processing council tax, business rates, and housing benefits."
+    },
+    {
+      "id": "SYS_Income",
+      "label": "Income Management System",
+      "type": "ITSystem",
+      "description": "Corporate income management, receipting, and cash management platform."
+    },
+    {
+      "id": "SYS_HRPayroll",
+      "label": "HR & Payroll System",
+      "type": "ITSystem",
+      "description": "Human resources, staff management, recruitment, and payroll processing."
+    },
+    {
+      "id": "SYS_EnvHealth",
+      "label": "Environmental Health System",
+      "type": "ITSystem",
+      "description": "Regulatory system for protection, trading standards, and food safety."
+    },
+    {
+      "id": "SYS_Housing",
+      "label": "Housing Management System",
+      "type": "ITSystem",
+      "description": "System covering tenancies, allocations, rents, and repairs."
+    },
+    {
+      "id": "SYS_Leisure",
+      "label": "Leisure Management System",
+      "type": "ITSystem",
+      "description": "Booking and facility management platform for leisure centers and cultural venues."
+    },
+    {
+      "id": "SYS_Planning",
+      "label": "Planning & Building Control System",
+      "type": "ITSystem",
+      "description": "System managing spatial planning applications and building control."
+    },
+    {
+      "id": "SYS_Highways",
+      "label": "Highways Management System",
+      "type": "ITSystem",
+      "description": "Asset management system for roads, street lighting, and parking."
+    },
+    {
+      "id": "SYS_ERP",
+      "label": "Corporate ERP",
+      "type": "ITSystem",
+      "description": "Enterprise Resource Planning for core back-office finance and procurement."
+    },
+    {
+      "id": "SYS_Lib",
+      "label": "Library Management System",
+      "type": "ITSystem",
+      "description": "System for cataloging, loans, and membership management."
+    },
+    {
+      "id": "SYS_Education",
+      "label": "Education Management System",
+      "type": "ITSystem",
+      "description": "Management information system for schools, pupil admissions, and early years."
+    }
   ],
   "edges": [
-    { "source": "PC_InPerson", "target": "CA_Human", "relationship": "ROUTES_TO" },
-    { "source": "PC_InPerson", "target": "CA_PublicDevice", "relationship": "ROUTES_TO" },
-    { "source": "PC_Phone", "target": "CA_Human", "relationship": "ROUTES_TO" },
-    { "source": "PC_Phone", "target": "CA_AutoPhone", "relationship": "ROUTES_TO" },
-    { "source": "PC_Email", "target": "CA_Human", "relationship": "ROUTES_TO" },
-    { "source": "PC_Email", "target": "CA_API", "relationship": "ROUTES_TO" },
-    { "source": "PC_Letter", "target": "CA_Human", "relationship": "ROUTES_TO" },
-    { "source": "PC_Online", "target": "CA_Website", "relationship": "ROUTES_TO" },
-    { "source": "PC_Online", "target": "CA_App", "relationship": "ROUTES_TO" },
-    { "source": "PC_SMS", "target": "CA_API", "relationship": "ROUTES_TO" },
-    { "source": "PC_SMS", "target": "CA_AutoPhone", "relationship": "ROUTES_TO" },
-    { "source": "PC_SocialMedia", "target": "CA_Human", "relationship": "ROUTES_TO" },
-    { "source": "PC_SocialMedia", "target": "CA_API", "relationship": "ROUTES_TO" },
-    { "source": "PC_SmartDevice", "target": "CA_API", "relationship": "ROUTES_TO" },
-    { "source": "PC_ThirdParty", "target": "CA_Human", "relationship": "ROUTES_TO" },
-    { "source": "PC_Video", "target": "CA_Human", "relationship": "ROUTES_TO" },
-
-    { "source": "CA_Website", "target": "Cap_Forms", "relationship": "USES" },
-    { "source": "CA_Website", "target": "Cap_Payments", "relationship": "USES" },
-    { "source": "CA_Website", "target": "Cap_Booking", "relationship": "USES" },
-    { "source": "CA_Website", "target": "Cap_Identity", "relationship": "USES" },
-    { "source": "CA_Website", "target": "Cap_AgenticAI", "relationship": "USES" },
-    { "source": "CA_App", "target": "Cap_Forms", "relationship": "USES" },
-    { "source": "CA_App", "target": "Cap_Identity", "relationship": "USES" },
-    { "source": "CA_App", "target": "Cap_Payments", "relationship": "USES" },
-    { "source": "CA_Human", "target": "Cap_Workflow", "relationship": "USES" },
-    { "source": "CA_Human", "target": "Cap_Email", "relationship": "USES" },
-    { "source": "CA_Human", "target": "Cap_Telephony", "relationship": "USES" },
-    { "source": "CA_Human", "target": "Cap_Booking", "relationship": "USES" },
-    { "source": "CA_AutoPhone", "target": "Cap_Telephony", "relationship": "USES" },
-    { "source": "CA_AutoPhone", "target": "Cap_Payments", "relationship": "USES" },
-    { "source": "CA_AutoPhone", "target": "Cap_AgenticAI", "relationship": "USES" },
-    { "source": "CA_API", "target": "Cap_Identity", "relationship": "USES" },
-    { "source": "CA_API", "target": "Cap_SMS", "relationship": "USES" },
-    { "source": "CA_API", "target": "Cap_Payments", "relationship": "USES" },
-    { "source": "CA_PublicDevice", "target": "Cap_Forms", "relationship": "USES" },
-    { "source": "CA_PublicDevice", "target": "Cap_Booking", "relationship": "USES" },
-
-    { "source": "Cap_Forms", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Forms", "target": "SYS_RevsBens", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Forms", "target": "SYS_Housing", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Forms", "target": "SYS_Planning", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Forms", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Forms", "target": "SYS_Elections", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Forms", "target": "SYS_Highways", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Forms", "target": "SYS_Education", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Payments", "target": "SYS_Income", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Payments", "target": "SYS_RevsBens", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Payments", "target": "SYS_Leisure", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Payments", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Payments", "target": "SYS_Highways", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Booking", "target": "SYS_Leisure", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Booking", "target": "SYS_Lib", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Booking", "target": "SYS_EnvHealth", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Booking", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Booking", "target": "SYS_Highways", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Booking", "target": "SYS_Education", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Identity", "target": "SYS_ERP", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Identity", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Identity", "target": "SYS_HRPayroll", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Identity", "target": "SYS_Elections", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Identity", "target": "SYS_Education", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Email", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Email", "target": "SYS_ERP", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_SMS", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Telephony", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Workflow", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Workflow", "target": "SYS_Care", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Workflow", "target": "SYS_HRPayroll", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Workflow", "target": "SYS_Waste", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_Workflow", "target": "SYS_Planning", "relationship": "PROVIDED_BY" },
-    { "source": "Cap_AgenticAI", "target": "SYS_CRM", "relationship": "PROVIDED_BY" },
-
-    { "source": "SYS_Care", "target": "FG_AdultSocial", "relationship": "REALIZES" },
-    { "source": "SYS_Care", "target": "FG_ChildSocial", "relationship": "REALIZES" },
-    { "source": "SYS_Waste", "target": "FG_Waste", "relationship": "REALIZES" },
-    { "source": "SYS_Elections", "target": "FG_Democratic", "relationship": "REALIZES" },
-    { "source": "SYS_CRM", "target": "FG_CustRel", "relationship": "REALIZES" },
-    { "source": "SYS_CRM", "target": "FG_Comms", "relationship": "REALIZES" },
-    { "source": "SYS_RevsBens", "target": "FG_RevsBens", "relationship": "REALIZES" },
-    { "source": "SYS_Income", "target": "FG_Financial", "relationship": "REALIZES" },
-    { "source": "SYS_HRPayroll", "target": "FG_HR", "relationship": "REALIZES" },
-    { "source": "SYS_EnvHealth", "target": "FG_Licensing", "relationship": "REALIZES" },
-    { "source": "SYS_EnvHealth", "target": "FG_PublicHealth", "relationship": "REALIZES" },
-    { "source": "SYS_Housing", "target": "FG_Housing", "relationship": "REALIZES" },
-    { "source": "SYS_Leisure", "target": "FG_Leisure", "relationship": "REALIZES" },
-    { "source": "SYS_Planning", "target": "FG_Planning", "relationship": "REALIZES" },
-    { "source": "SYS_Planning", "target": "FG_GIS", "relationship": "REALIZES" },
-    { "source": "SYS_Highways", "target": "FG_Highways", "relationship": "REALIZES" },
-    { "source": "SYS_ERP", "target": "FG_Financial", "relationship": "REALIZES" },
-    { "source": "SYS_ERP", "target": "FG_Procurement", "relationship": "REALIZES" },
-    { "source": "SYS_ERP", "target": "FG_BizPlanning", "relationship": "REALIZES" },
-    { "source": "SYS_ERP", "target": "FG_Governance", "relationship": "REALIZES" },
-    { "source": "SYS_ERP", "target": "FG_Facilities", "relationship": "REALIZES" },
-    { "source": "SYS_ERP", "target": "FG_Legal", "relationship": "REALIZES" },
-    { "source": "SYS_Lib", "target": "FG_Leisure", "relationship": "REALIZES" },
-    { "source": "SYS_Education", "target": "FG_Education", "relationship": "REALIZES" }
+    {
+      "source": "PC_InPerson",
+      "target": "CA_Human",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_InPerson",
+      "target": "CA_PublicDevice",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_Phone",
+      "target": "CA_Human",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_Phone",
+      "target": "CA_AutoPhone",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_Email",
+      "target": "CA_Human",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_Email",
+      "target": "CA_API",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_Letter",
+      "target": "CA_Human",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_Online",
+      "target": "CA_Website",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_Online",
+      "target": "CA_App",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_SMS",
+      "target": "CA_API",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_SMS",
+      "target": "CA_AutoPhone",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_SocialMedia",
+      "target": "CA_Human",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_SocialMedia",
+      "target": "CA_API",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_SmartDevice",
+      "target": "CA_API",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_ThirdParty",
+      "target": "CA_Human",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "PC_Video",
+      "target": "CA_Human",
+      "relationship": "ROUTES_TO"
+    },
+    {
+      "source": "CA_Website",
+      "target": "Cap_Forms",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_Website",
+      "target": "Cap_Payments",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_Website",
+      "target": "Cap_Booking",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_Website",
+      "target": "Cap_Identity",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_Website",
+      "target": "Cap_AgenticAI",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_App",
+      "target": "Cap_Forms",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_App",
+      "target": "Cap_Identity",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_App",
+      "target": "Cap_Payments",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_Human",
+      "target": "Cap_Workflow",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_Human",
+      "target": "Cap_Email",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_Human",
+      "target": "Cap_Telephony",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_Human",
+      "target": "Cap_Booking",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_AutoPhone",
+      "target": "Cap_Telephony",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_AutoPhone",
+      "target": "Cap_Payments",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_AutoPhone",
+      "target": "Cap_AgenticAI",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_API",
+      "target": "Cap_Identity",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_API",
+      "target": "Cap_SMS",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_API",
+      "target": "Cap_Payments",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_PublicDevice",
+      "target": "Cap_Forms",
+      "relationship": "USES"
+    },
+    {
+      "source": "CA_PublicDevice",
+      "target": "Cap_Booking",
+      "relationship": "USES"
+    },
+    {
+      "source": "Cap_Forms",
+      "target": "SYS_CRM",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Forms",
+      "target": "SYS_RevsBens",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Forms",
+      "target": "SYS_Housing",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Forms",
+      "target": "SYS_Planning",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Forms",
+      "target": "SYS_Waste",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Forms",
+      "target": "SYS_Elections",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Forms",
+      "target": "SYS_Highways",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Forms",
+      "target": "SYS_Education",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Payments",
+      "target": "SYS_Income",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Payments",
+      "target": "SYS_RevsBens",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Payments",
+      "target": "SYS_Leisure",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Payments",
+      "target": "SYS_Waste",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Payments",
+      "target": "SYS_Highways",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Booking",
+      "target": "SYS_Leisure",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Booking",
+      "target": "SYS_Lib",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Booking",
+      "target": "SYS_EnvHealth",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Booking",
+      "target": "SYS_Waste",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Booking",
+      "target": "SYS_Highways",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Booking",
+      "target": "SYS_Education",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Identity",
+      "target": "SYS_ERP",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Identity",
+      "target": "SYS_CRM",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Identity",
+      "target": "SYS_HRPayroll",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Identity",
+      "target": "SYS_Elections",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Identity",
+      "target": "SYS_Education",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Email",
+      "target": "SYS_CRM",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Email",
+      "target": "SYS_ERP",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_SMS",
+      "target": "SYS_CRM",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Telephony",
+      "target": "SYS_CRM",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Workflow",
+      "target": "SYS_CRM",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Workflow",
+      "target": "SYS_Care",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Workflow",
+      "target": "SYS_HRPayroll",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Workflow",
+      "target": "SYS_Waste",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_Workflow",
+      "target": "SYS_Planning",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "Cap_AgenticAI",
+      "target": "SYS_CRM",
+      "relationship": "PROVIDED_BY"
+    },
+    {
+      "source": "SYS_Care",
+      "target": "FG_AdultSocial",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Care",
+      "target": "FG_ChildSocial",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Waste",
+      "target": "FG_Waste",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Elections",
+      "target": "FG_Democratic",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_CRM",
+      "target": "FG_CustRel",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_CRM",
+      "target": "FG_Comms",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_RevsBens",
+      "target": "FG_RevsBens",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Income",
+      "target": "FG_Financial",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_HRPayroll",
+      "target": "FG_HR",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_EnvHealth",
+      "target": "FG_Licensing",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_EnvHealth",
+      "target": "FG_PublicHealth",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Housing",
+      "target": "FG_Housing",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Leisure",
+      "target": "FG_Leisure",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Planning",
+      "target": "FG_Planning",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Planning",
+      "target": "FG_GIS",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Highways",
+      "target": "FG_Highways",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_ERP",
+      "target": "FG_Financial",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_ERP",
+      "target": "FG_Procurement",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_ERP",
+      "target": "FG_BizPlanning",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_ERP",
+      "target": "FG_Governance",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_ERP",
+      "target": "FG_Facilities",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_ERP",
+      "target": "FG_Legal",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Lib",
+      "target": "FG_Leisure",
+      "relationship": "REALIZES"
+    },
+    {
+      "source": "SYS_Education",
+      "target": "FG_Education",
+      "relationship": "REALIZES"
+    }
   ]
 }

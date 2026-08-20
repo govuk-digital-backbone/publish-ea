@@ -57,3 +57,52 @@
         max-height: none;
       }
     }
+
+/* Full-width Layout Overrides */
+.app-content-wrapper--full-width {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.app-main-content--full-width {
+    margin-left: 0 !important;
+    max-width: 100%;
+    padding: 24px 32px !important;
+}
+
+/* Service Navbar */
+.app-service-nav {
+    background: govuk-colour("light-grey");
+    border-bottom: 1px solid govuk-colour("mid-grey");
+    width: 100%;
+}
+.app-service-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+.app-service-nav__list li {
+    margin: 0;
+}
+.app-service-nav__link {
+    display: block;
+    padding: 15px 20px;
+    color: govuk-colour("blue");
+    text-decoration: none;
+    @include govuk-font(19);
+}
+.app-service-nav__link:hover {
+    background: #ffffff;
+    text-decoration: underline;
+}
+.app-service-nav__link--active {
+    background: #ffffff;
+    font-weight: 700;
+    border-bottom: 4px solid govuk-colour("blue");
+    padding-bottom: 11px;
+}
