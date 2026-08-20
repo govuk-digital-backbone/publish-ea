@@ -1,0 +1,386 @@
+---
+title: "Planning case management: architecture and integration view"
+caption: LGAM Business Areas
+status: draft
+target: business-area/planning-and-development/case-management/architect.html
+parent: case-management/index.html
+parent_title: Planning case management
+description: "Technical architect view of planning case management — capability boundaries, integration characteristics, failure modes, data ownership, and what makes planning technically distinct. Assumes familiarity with enterprise integration patterns."
+---
+<style>
+    .arch-box {
+        border-top: 4px solid #000080;
+        background: #f3f2f1;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .arch-box--warning {
+        border-top-color: #d4351c;
+    }
+    .arch-box--question {
+        border-top-color: #f47738;
+    }
+    .arch-box--pattern {
+        border-top-color: #00703c;
+    }
+    .integration-row {
+        border-left: 4px solid #000080;
+        padding: 15px 20px;
+        margin-bottom: 0;
+        background: #f3f2f1;
+    }
+    .integration-row + .integration-row {
+        border-top: 1px solid #b1b4b6;
+    }
+    .confidence-tag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 2px 6px;
+        background: #f47738;
+        color: #fff;
+        vertical-align: middle;
+    }
+    .confidence-tag--provisional {
+        background: #1d70b8;
+    }
+</style>
+
+<nav-contents>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#premise">Premise</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#what-makes-planning-different">What makes planning technically different</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#capability-boundaries">Capability boundaries</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#integration-characteristics">Integration characteristics</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#failure-modes">Failure modes and lock-in</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#data-ownership">Data ownership</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#worked-example">Worked example: payments</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#open-questions">Open questions</a></li>
+</nav-contents>
+
+<main-content>
+      <span class="govuk-caption-xl">Business Area: Planning & Development</span>
+      <h1 class="govuk-heading-xl">Architecture and integration view</h1>
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Prototype — architect persona</h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">This version targets technical architects and solution designers.</p>
+          <p class="govuk-body">It assumes you already understand enterprise integration patterns. It aims to provide planning-specific detail you cannot easily derive from general architecture guidance. Confidence levels are marked inline — nothing here should be treated as validated without checking it against your own context.</p>
+        </div>
+      </div>
+
+      <section id="premise">
+        <h2 class="govuk-heading-l">Premise</h2>
+
+        <p class="govuk-body">Planning case management does not operate as a self-contained system. It depends on capabilities that most councils also provide for other services — payments, document storage, identity, notifications, geospatial data, records management. The architectural question is not whether these dependencies exist (they obviously do) but:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Where should the integration boundary sit for each capability?</li>
+          <li>What are the characteristics of each integration point that constrain your options?</li>
+          <li>What specifically about planning makes some of those boundaries harder than in other domains?</li>
+          <li>Where does current market structure create lock-in that a boundary decision could mitigate (or worsen)?</li>
+        </ul>
+
+        <p class="govuk-body">If you already know all of this for your council, this page is not for you. If you're at the point of designing or evaluating a planning system's integration architecture, the intent is to surface the constraints and trade-offs that aren't obvious from supplier documentation.</p>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="what-makes-planning-different">
+        <h2 class="govuk-heading-l">What makes planning technically different</h2>
+
+        <p class="govuk-body">Every council domain has integration points with shared capabilities. Planning is architecturally distinctive in several ways that affect how you design those integrations: <span class="confidence-tag">To validate</span></p>
+
+        <div class="arch-box">
+          <h3 class="govuk-heading-s">Volume and shape of unstructured data</h3>
+          <p class="govuk-body">A single planning application can generate hundreds of documents — architectural drawings, structural calculations, environmental reports, public representations, consultee responses. These are overwhelmingly unstructured (PDFs, TIFFs, large-format plans). The ratio of unstructured to structured data is far higher than in most council domains. This means:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Document management integration cannot be purely metadata-and-reference — the volume and file sizes create real storage, retrieval and indexing challenges.</li>
+            <li>A corporate DMS built for committee papers may not handle the scale or the access patterns (frequent retrieval during assessment, public register obligations).</li>
+            <li>Search and classification of planning documents requires domain awareness that generic enterprise search may not provide.</li>
+          </ul>
+        </div>
+
+        <div class="arch-box">
+          <h3 class="govuk-heading-s">Spatial data is not a lookup — it is structurally integral</h3>
+          <p class="govuk-body">In most council services, geospatial information is a reference — you look up an address, retrieve a UPRN, and move on. In planning, spatial data is structurally embedded in the case logic:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>The application boundary (red-line) is a legal artefact that defines the scope of the permission.</li>
+            <li>Determination requires intersection of that boundary with constraint layers (conservation areas, flood zones, TPOs, Article 4 directions).</li>
+            <li>Changes to the boundary during assessment can change which policies apply and which consultees must be notified.</li>
+            <li>Integration with GIS is not read-only — the planning system may need to write or amend spatial objects.</li>
+          </ul>
+          <p class="govuk-body govuk-!-margin-bottom-0">This makes the geospatial integration tighter and more bidirectional than most domains require. A simple "query the corporate GIS for constraints" pattern may not be sufficient if the planning system also needs to store, display and allow amendment of application-specific geometries.</p>
+        </div>
+
+        <div class="arch-box">
+          <h3 class="govuk-heading-s">Statutory timescales create hard coupling to notifications</h3>
+          <p class="govuk-body">Planning has legally defined determination periods (typically 8 or 13 weeks). Missing these deadlines has direct consequences — the applicant gains a right of appeal. This means:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Notifications (acknowledgements, consultation triggers, decision notices) are not fire-and-forget. The planning system needs to know they were sent and when.</li>
+            <li>If notification delivery fails silently, the statutory clock may expire without proper consultation having occurred — creating legal risk.</li>
+            <li>Integration with notification services needs confirmation of delivery and timestamps, not just acceptance of a message into a queue.</li>
+          </ul>
+        </div>
+
+        <div class="arch-box">
+          <h3 class="govuk-heading-s">Public register obligations</h3>
+          <p class="govuk-body">Planning authorities must maintain a public register of applications and decisions. This is not the same as "publishing data" — it is a statutory requirement with specific content and accessibility expectations. This affects:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Document management — documents placed on the register must be redacted for personal information but remain publicly accessible.</li>
+            <li>Records management — the register is a permanent, legally authoritative record, not a retention-managed archive.</li>
+            <li>Data ownership — the planning system, the register, and the DMS may all hold overlapping copies of "the same" document, with different redaction states.</li>
+          </ul>
+        </div>
+
+        <div class="arch-box">
+          <h3 class="govuk-heading-s">Market concentration and closed ecosystems</h3>
+          <p class="govuk-body">The planning back-office market is dominated by a small number of suppliers whose products tend to provide integrated (bundled) document storage, GIS display, notification, and fee management within the planning application. This means:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>The existing integration boundary for most councils is "everything inside the planning product" — whether or not that's architecturally desirable.</li>
+            <li>Extracting a capability (e.g. moving document storage to a corporate DMS) may require the supplier to expose APIs they have no commercial incentive to provide.</li>
+            <li>Replacing the planning system means migrating not just case data but all the bundled capability data (documents, spatial objects, payment records, audit trails).</li>
+            <li>The cost of migration from one supplier to another is widely reported to exceed £1M per authority, largely because of the data extraction complexity.</li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="capability-boundaries">
+        <h2 class="govuk-heading-l">Capability boundaries</h2>
+
+        <p class="govuk-body">The question "should planning use the corporate capability or its own?" has a different answer for each integration point. The following is a framework for thinking through that boundary, not a prescription: <span class="confidence-tag">To validate</span></p>
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--s govuk-visually-hidden">Capability boundary considerations</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" style="width:20%">Capability</th>
+              <th scope="col" class="govuk-table__header" style="width:30%">Arguments for using the corporate service</th>
+              <th scope="col" class="govuk-table__header" style="width:30%">Arguments for keeping it inside the planning product</th>
+              <th scope="col" class="govuk-table__header" style="width:20%">Key constraint</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><strong>Payments</strong></td>
+              <td class="govuk-table__cell">Fees are standard transactions; corporate payments provide reconciliation, PCI compliance and consistent citizen experience. GOV.UK Pay is free and available.</td>
+              <td class="govuk-table__cell">Fee calculation logic is planning-specific (varies by development type, site area, CIL). The system that knows the application parameters is best placed to calculate the fee.</td>
+              <td class="govuk-table__cell">Fee calculation vs. payment processing are separable. One can be internal while the other is shared.</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><strong>Documents</strong></td>
+              <td class="govuk-table__cell">Avoids duplicate storage costs; corporate DMS may offer better records management, retention and disposal.</td>
+              <td class="govuk-table__cell">Volume, file size, access patterns and public register requirements may exceed corporate DMS design assumptions. Classification requires planning domain knowledge.</td>
+              <td class="govuk-table__cell">If planning documents live in a corporate DMS, does the planning system need its own search and display layer on top? If so, is the separation adding value or just complexity?</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><strong>Identity</strong></td>
+              <td class="govuk-table__cell">Consistent citizen login across council services. Agents (planning professionals) who submit to multiple councils benefit from federated identity.</td>
+              <td class="govuk-table__cell">Planning access control is case-specific (applicant sees their case, consultees see consultation documents, public sees the register). Role models are more complex than most council services.</td>
+              <td class="govuk-table__cell">Authentication (who you are) is clearly a shared concern. Authorisation (what you can see on this case) is planning-specific. The boundary sits between them.</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><strong>Notifications</strong></td>
+              <td class="govuk-table__cell">Corporate notification services (GOV.UK Notify) provide reliable delivery, templates and audit. Consistency of communication across council services.</td>
+              <td class="govuk-table__cell">Planning notifications are triggered by case-state transitions and have statutory timing requirements. The planning system must orchestrate when to notify, not just how.</td>
+              <td class="govuk-table__cell">Orchestration (trigger logic) stays in planning. Delivery (sending the message) can be shared. The interface between them needs delivery confirmation and timestamps.</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><strong>Geospatial</strong></td>
+              <td class="govuk-table__cell">Corporate GIS holds authoritative constraint layers. Single source of truth for addresses and UPRNs.</td>
+              <td class="govuk-table__cell">Planning needs to store, display and allow amendment of application-specific geometries (red-line boundaries). Intersection queries need sub-second response for interactive use.</td>
+              <td class="govuk-table__cell">Read (constraints) vs. write (application boundaries) have different integration patterns. Reading from corporate GIS is straightforward; storing planning-specific spatial objects may need to be local.</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><strong>Records management</strong></td>
+              <td class="govuk-table__cell">Corporate records management applies consistent retention, disposal and accessibility rules. Avoids planning maintaining its own policy.</td>
+              <td class="govuk-table__cell">The planning register is permanent and public — different from retention-managed corporate records. The "record" is a composite (case + documents + decisions + spatial objects + consultations) not a single file.</td>
+              <td class="govuk-table__cell">The planning register may not fit corporate records management assumptions about lifecycle. It needs permanent, publicly accessible, composite records — which is unusual.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="integration-characteristics">
+        <h2 class="govuk-heading-l">Integration characteristics</h2>
+
+        <p class="govuk-body">If you decide to separate a capability, the integration needs to support specific characteristics. These are not generic "use an API" statements — they describe what the interface must actually do in a planning context: <span class="confidence-tag confidence-tag--provisional">Provisional</span></p>
+
+        <div class="integration-row">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Payments → Planning case management</h3>
+          <p class="govuk-body govuk-!-margin-bottom-0"><strong>Pattern:</strong> Synchronous callback or webhook. Payment service processes transaction and returns status + reference to the planning system. <strong>Must support:</strong> Reliable correlation (case reference → payment reference), idempotent status updates (network failures must not create duplicate payments or orphaned cases), confirmation of amount (planning calculates, payment confirms). <strong>Failure case:</strong> Payment succeeds but callback fails — case appears unpaid. Needs reconciliation mechanism.</p>
+        </div>
+        <div class="integration-row">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Geospatial → Planning case management</h3>
+          <p class="govuk-body govuk-!-margin-bottom-0"><strong>Pattern:</strong> Synchronous query for constraint intersection (sub-second for interactive use), plus write-back for application boundaries. <strong>Must support:</strong> Intersection query (polygon vs. constraint layers), UPRN/address resolution, storage and retrieval of application-specific geometries (GeoJSON or equivalent). <strong>Failure case:</strong> Constraint layers updated in GIS after application submitted — does planning re-evaluate, or is it point-in-time? Both are defensible but must be explicit.</p>
+        </div>
+        <div class="integration-row">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Planning case management → Notifications</h3>
+          <p class="govuk-body govuk-!-margin-bottom-0"><strong>Pattern:</strong> Event-driven. Planning emits notification request on case-state transition; notification service delivers and confirms. <strong>Must support:</strong> Delivery confirmation with timestamp (not just acceptance into queue), template selection (planning specifies type; notification service resolves template), multiple channels (email, letter, SMS) per notification type. <strong>Failure case:</strong> Delivery fails or is delayed past statutory deadline. Planning system must detect this and alert — cannot silently assume delivery.</p>
+        </div>
+        <div class="integration-row">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Document management ↔ Planning case management</h3>
+          <p class="govuk-body govuk-!-margin-bottom-0"><strong>Pattern:</strong> Bidirectional. Planning writes documents (or references) to DMS at submission and during case lifecycle; reads them back for assessment and public register. <strong>Must support:</strong> Large file upload (architectural drawings can be 50MB+), case-linked retrieval (all documents for case X), classification metadata (document type, sensitivity, public-register eligibility), redaction state tracking. <strong>Failure case:</strong> Document stored in DMS but reference not written back to planning system — document exists but is invisible to the case. Needs transactional consistency or reconciliation.</p>
+        </div>
+        <div class="integration-row">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Identity → Planning case management</h3>
+          <p class="govuk-body govuk-!-margin-bottom-0"><strong>Pattern:</strong> Federated authentication (OIDC/OAuth 2.0) with planning-specific authorisation rules applied locally. <strong>Must support:</strong> Multiple user types (applicant, agent, officer, consultee, public), case-specific access (applicant sees their case, not all cases), role transitions (applicant becomes appellant on the same case). <strong>Failure case:</strong> Authorisation rules are too coarse — either over-sharing (consultee sees applicant's financial information) or under-sharing (officer cannot see consultation responses). Case-specific ABAC is harder to get right than role-based access.</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="failure-modes">
+        <h2 class="govuk-heading-l">Failure modes and lock-in</h2>
+
+        <p class="govuk-body">Architectural decisions about capability boundaries should be assessed against how they fail, not just how they work: <span class="confidence-tag">To validate</span></p>
+
+        <div class="arch-box arch-box--warning">
+          <h3 class="govuk-heading-s">If everything is inside the planning product</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li><strong>Lock-in intensifies:</strong> Replacing the product means migrating documents, spatial data, payment history, notification logs and case records simultaneously. Cost and risk are maximised.</li>
+            <li><strong>Duplication of corporate investment:</strong> Payment processing, DMS, notification infrastructure duplicated inside planning — but only available to planning.</li>
+            <li><strong>Single point of failure:</strong> If the planning product is unavailable, all dependent capabilities are also unavailable. No graceful degradation.</li>
+            <li><strong>Innovation constraint:</strong> Improving any single capability (e.g. better GIS) requires the planning supplier to implement it. Your roadmap is their roadmap.</li>
+          </ul>
+        </div>
+
+        <div class="arch-box arch-box--warning">
+          <h3 class="govuk-heading-s">If everything is separated</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li><strong>Integration complexity:</strong> Every capability boundary is an interface to build, test, monitor and maintain. Total cost of integration may exceed cost of duplication.</li>
+            <li><strong>Operational fragility:</strong> Planning case management becomes dependent on N external services. If any is slow or unavailable, planning throughput is affected. Statutory deadlines don't pause for service outages.</li>
+            <li><strong>Accountability diffusion:</strong> When a case fails (e.g. notification not sent, payment not recorded), whose problem is it? Distributed ownership can mean distributed blame and slow resolution.</li>
+            <li><strong>Capability mismatch:</strong> Corporate services optimised for other domains may not meet planning's specific needs (volume, access patterns, statutory requirements) — forcing workarounds that negate the reuse benefit.</li>
+          </ul>
+        </div>
+
+        <p class="govuk-body">Neither extreme is inherently correct. The useful architectural work is identifying — for each capability — which failure mode is more costly and more likely in your council's specific context.</p>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="data-ownership">
+        <h2 class="govuk-heading-l">Data ownership</h2>
+
+        <p class="govuk-body">For each integration point, you need to establish which system is authoritative. This is harder than it sounds because planning creates composite records: <span class="confidence-tag confidence-tag--provisional">Provisional</span></p>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Information</th>
+              <th scope="col" class="govuk-table__header">Candidate system of record</th>
+              <th scope="col" class="govuk-table__header">Complication</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Application details (what was proposed)</td>
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">If submitted through a separate portal (e.g. PlanX), where does the authoritative record live — the submission system or the back office?</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Site boundary (red-line)</td>
+              <td class="govuk-table__cell">Planning case management (application-specific geometry)</td>
+              <td class="govuk-table__cell">Corporate GIS holds the base map and constraints. Planning holds the application-specific overlay. Both are "spatial data" but have different lifecycles.</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Constraint data (conservation areas, flood zones)</td>
+              <td class="govuk-table__cell">Corporate GIS / national datasets</td>
+              <td class="govuk-table__cell">Planning needs a point-in-time snapshot of constraints at submission (for legal defensibility). Does it copy them or reference them? If referenced, what if the source changes?</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Payment record</td>
+              <td class="govuk-table__cell">Corporate payments / finance system</td>
+              <td class="govuk-table__cell">Planning needs the payment reference and confirmation. Finance needs the reconciliation. Both need to agree the case was paid — but they're recording different things about the same event.</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Submitted documents</td>
+              <td class="govuk-table__cell">DMS or planning system (depends on architecture)</td>
+              <td class="govuk-table__cell">If in a DMS: planning holds references. If planning product holds them: how are they governed post-case-closure? Who applies retention/disposal?</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Decision and reasons</td>
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">The decision notice is also a records management artefact and a public register entry. Three concerns, one document — which system is authoritative for each purpose?</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="worked-example">
+        <h2 class="govuk-heading-l">Worked example: payments</h2>
+
+        <p class="govuk-body">This walks through the boundary decision for a single capability to illustrate how the framework above applies in practice.</p>
+
+        <h3 class="govuk-heading-m">The decomposition</h3>
+        <p class="govuk-body">"Payment capability" conflates at least three distinct functions:</p>
+        <ol class="govuk-list govuk-list--number">
+          <li><strong>Fee calculation</strong> — determining the amount due based on application type, site area, CIL liability, exemptions.</li>
+          <li><strong>Payment processing</strong> — taking the money (card transaction, bank transfer), PCI compliance, receipting.</li>
+          <li><strong>Reconciliation</strong> — matching the payment to the case, recording it in the finance system, handling refunds.</li>
+        </ol>
+
+        <p class="govuk-body">These three functions do not need to live in the same system. A useful boundary might be:</p>
+
+        <div class="arch-box arch-box--pattern">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li><strong>Fee calculation</strong> stays in the planning system (it requires application-specific knowledge — development type, floor area, CIL zones).</li>
+            <li><strong>Payment processing</strong> uses the corporate payment service (GOV.UK Pay or equivalent — PCI compliance is their problem, not yours).</li>
+            <li><strong>Reconciliation</strong> needs an interface between the planning system (case reference, expected amount) and the finance system (actual payment received, GL coding).</li>
+          </ul>
+        </div>
+
+        <h3 class="govuk-heading-m">Interface requirements</h3>
+        <p class="govuk-body">For this boundary to work, the integration must handle:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Planning sends: case reference, calculated fee amount, return URL.</li>
+          <li>Payment service returns: payment reference, status (success/failure/pending), timestamp.</li>
+          <li>Failure path: if callback fails, planning must poll or the payment service must retry. An unrecorded successful payment must never block case progression indefinitely.</li>
+          <li>Refund path: who initiates (planning officer or finance?) and how is the planning case updated?</li>
+        </ul>
+
+        <h3 class="govuk-heading-m">What this example demonstrates</h3>
+        <p class="govuk-body">The useful architectural decision isn't "use corporate payments: yes/no" — it's identifying that the capability contains separable functions with different natural homes. Fee calculation is domain-specific. Payment processing is a commodity. Reconciliation is a shared concern. Decomposing at that level produces a clearer, more defensible boundary than "all in" or "all out".</p>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="open-questions">
+        <h2 class="govuk-heading-l">Open questions</h2>
+
+        <p class="govuk-body">This page does not yet resolve the following. If you have direct experience that addresses any of these, that is the most valuable feedback you could provide:</p>
+
+        <div class="arch-box arch-box--question">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>In councils that have separated document storage from the planning product, what operational problems emerged? (Specifically: access patterns, search quality, large-file performance, public register workflows.)</li>
+            <li>What does the actual API surface of current planning products look like? (Are suppliers exposing integration points, or is integration restricted to import/export and RPA?)</li>
+            <li>Where councils have used GOV.UK Pay for planning fees, how is the fee calculation communicated to the payment service? Is there a standard interface or does each council build bespoke?</li>
+            <li>What happens to spatial data (application boundaries, officer annotations) when a council migrates between planning systems? Is it exported, or effectively lost?</li>
+            <li>Do any councils operate planning case management with genuinely separated capabilities (corporate DMS, federated identity, shared payments) — and if so, what does the integration architecture actually look like in practice?</li>
+            <li>Are there councils where the cost of maintaining integrations to corporate services exceeded the cost that bundled equivalents would have incurred?</li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--l"/>
+</main-content>
+
+<page-modules></page-modules>
+
+<page-script>
+</page-script>
+
+<page-history>
+  <ul class="govuk-list govuk-list--bullet">
+    <li><strong>12th August 2026:</strong> Initial concept prototype created from desk research</li>
+  </ul>
+</page-history>

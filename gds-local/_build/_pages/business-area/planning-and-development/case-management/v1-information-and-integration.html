@@ -1,0 +1,201 @@
+---
+title: Information and integration
+caption: LGAM Business Areas
+status: draft
+target: business-area/planning-and-development/case-management/information-and-integration.html
+parent: case-management/index.html
+parent_title: Planning case management
+description: "Data exchange requirements, interface considerations, questions about access and continuity, and a worked example comparing two approaches to planning payments integration."
+---
+<style>
+    .option-box {
+        border-top: 4px solid #000080;
+        background: #f3f2f1;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .option-box--b {
+        border-top-color: #1d70b8;
+    }
+    .question-group {
+        border-left: 4px solid #1d70b8;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        background: #f3f2f1;
+    }
+    .consideration-box {
+        border-left: 10px solid #f47738;
+        background: #f3f2f1;
+        padding: 20px;
+    }
+</style>
+
+<nav-contents>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#about">About this page</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#data-questions">Data and integration questions</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#access-questions">Access and continuity questions</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#worked-example">Worked example: planning payments</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#recording-decisions">Recording decisions</a></li>
+</nav-contents>
+
+<main-content>
+      <span class="govuk-caption-xl">Business Area: Planning & Development</span>
+      <h1 class="govuk-heading-xl">Information and integration</h1>
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Prototype</h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">This is an illustrative concept based on initial desk research.</p>
+          <p class="govuk-body">It has not been validated with practitioners. Use it to explore ideas and provide feedback, not as authoritative guidance.</p>
+        </div>
+      </div>
+
+      <section id="about">
+        <p class="govuk-body govuk-!-font-size-24">Understanding what information moves between planning case management and related capabilities, and how to approach integration decisions.</p>
+
+        <p class="govuk-body">Once capability boundaries have been considered (see <a href="reuse-and-boundaries.html" class="govuk-link">Reuse and boundaries</a>), the next set of decisions concerns how information moves between those capabilities. This page provides questions to structure that thinking and a worked example to illustrate how the questions apply in practice.</p>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="data-questions">
+        <h2 class="govuk-heading-l">Data and integration questions</h2>
+
+        <p class="govuk-body">These questions help establish the information architecture and integration requirements between planning case management and its related capabilities.</p>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">Information requirements</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>What information must move between planning case management and each related capability?</li>
+            <li>Which system is authoritative for each item of information?</li>
+            <li>Where information exists in more than one system, which holds the master record?</li>
+          </ul>
+        </div>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">Standards and interfaces</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Which data standards, identifiers and interfaces should be supported?</li>
+            <li>Can information be exchanged through documented and maintainable interfaces?</li>
+            <li>Are interfaces proprietary, or based on open standards that other systems could use?</li>
+          </ul>
+        </div>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">Data quality and consistency</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>How will data quality and consistency be maintained when information is updated in more than one system?</li>
+            <li>What happens when information is updated in the source system — does the change propagate?</li>
+            <li>How are conflicts or inconsistencies detected and resolved?</li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="access-questions">
+        <h2 class="govuk-heading-l">Access and continuity questions</h2>
+
+        <p class="govuk-body">These questions address the long-term accessibility and portability of planning information — particularly relevant when considering supplier change.</p>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">During the case lifecycle</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>What information must remain accessible throughout the life of the planning case?</li>
+            <li>Can all parties who need access (officers, applicants, consultees, members of the public) reach the information they are entitled to see?</li>
+          </ul>
+        </div>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">After the case closes</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>What must remain accessible after the case has closed?</li>
+            <li>Are documents, decisions, audit histories and relationships between records preserved?</li>
+            <li>Does access to closed case records depend on the original supplier's system remaining in place?</li>
+          </ul>
+        </div>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">Supplier transition</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Can the council retrieve its information in a usable format if the supplier or product changes?</li>
+            <li>Does access depend on proprietary software, formats or identifiers?</li>
+            <li>Are relationships between records (for example, between a case and its documents) maintained in the exported data?</li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="worked-example">
+        <h2 class="govuk-heading-l">Worked example: taking a planning application payment</h2>
+
+        <p class="govuk-body">This example illustrates how the questions on this page and on <a href="reuse-and-boundaries.html" class="govuk-link">Reuse and boundaries</a> apply to a single integration point. It is not a recommendation — it demonstrates the kind of analysis a council might undertake.</p>
+
+        <div class="option-box">
+          <h3 class="govuk-heading-m">Option A: Payment capability within the planning product</h3>
+
+          <p class="govuk-body">The planning supplier provides its own payment function as part of the case-management product.</p>
+
+          <p class="govuk-body">The council should establish:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>whether this duplicates an existing corporate capability;</li>
+            <li>how payment information is reconciled with corporate finance systems;</li>
+            <li>whether users receive a consistent payment experience;</li>
+            <li>how payment records will be retrieved if the planning supplier changes; and</li>
+            <li>whether the payment component can be changed independently of the wider planning product.</li>
+          </ul>
+        </div>
+
+        <div class="option-box option-box--b">
+          <h3 class="govuk-heading-m">Option B: Shared council payment capability</h3>
+
+          <p class="govuk-body">The planning service sends the payment amount and case reference to the council's shared payment capability. The payment capability processes the transaction and returns the payment status and reference to planning case management.</p>
+
+          <p class="govuk-body">The council should establish:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>which service calculates the amount due;</li>
+            <li>how the case and payment are reliably matched;</li>
+            <li>what happens if payment succeeds but the status is not returned;</li>
+            <li>which service issues confirmation or handles refunds; and</li>
+            <li>which system holds the authoritative payment record.</li>
+          </ul>
+        </div>
+
+        <div class="consideration-box">
+          <h3 class="govuk-heading-s">Architectural consideration</h3>
+          <p class="govuk-body govuk-!-margin-bottom-0">The preferred option is not determined solely by whether a shared payment capability exists. The council should compare the options against service needs, integration complexity, continuity, cost, operational ownership and the ability to change suppliers.</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="recording-decisions">
+        <h2 class="govuk-heading-l">Recording decisions</h2>
+
+        <p class="govuk-body">When applying this guidance, record:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>systems of record and information ownership for each item;</li>
+          <li>required interfaces and standards;</li>
+          <li>significant dependencies and constraints;</li>
+          <li>continuity requirements and exit provisions;</li>
+          <li>options considered and reasons for the preferred approach; and</li>
+          <li>assumptions that still require validation.</li>
+        </ul>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--l"/>
+</main-content>
+
+<page-modules></page-modules>
+
+<page-script>
+</page-script>
+
+<page-history>
+  <ul class="govuk-list govuk-list--bullet">
+    <li><strong>12th August 2026:</strong> Initial concept prototype created from desk research</li>
+  </ul>
+</page-history>

@@ -123,25 +123,40 @@ def build_page(target_filename, front_matter, blocks, is_preview=False):
     parts.append(header)
     parts.append("\n")
 
-    # Content wrapper with sidebar + main
-    parts.append("  <div class=\"app-content-wrapper\">\n")
-    parts.append("    <nav class=\"app-sidebar\" aria-label=\"Page navigation\">\n")
+    layout = front_matter.get("layout", "default")
 
-    # Back-link for child pages
-    if parent:
-        back_text = f"Back to {parent_title}" if parent_title else "Back"
-        parts.append(f"      <a href=\"{parent}\" class=\"govuk-back-link govuk-!-margin-bottom-4 govuk-!-margin-top-0\">{back_text}</a>\n")
+    if layout == "full-width":
+        parts.append(f"""
+    <nav class="app-service-nav" aria-label="Service">
+        <ul class="app-service-nav__list">
+            <li><a class="app-service-nav__link" href="{prefix}index.html">Documentation</a></li>
+            <li><a class="app-service-nav__link app-service-nav__link--active" href="#">{title}</a></li>
+        </ul>
+    </nav>
+""")
+        parts.append("  <div class=\"app-content-wrapper app-content-wrapper--full-width\">\n")
+        parts.append("      <main class=\"app-main-content app-main-content--full-width\" id=\"main-content\" role=\"main\">\n")
+        parts.append(blocks["main_content"])
+    else:
+        # Content wrapper with sidebar + main
+        parts.append("  <div class=\"app-content-wrapper\">\n")
+        parts.append("    <nav class=\"app-sidebar\" aria-label=\"Page navigation\">\n")
 
-    parts.append("      <h2 class=\"app-navigation__heading\">Contents</h2>\n")
-    parts.append("      <ul class=\"app-navigation\">\n")
-    parts.append(blocks["nav_contents"])
-    parts.append("\n      </ul>\n")
+        # Back-link for child pages
+        if parent:
+            back_text = f"Back to {parent_title}" if parent_title else "Back"
+            parts.append(f"      <a href=\"{parent}\" class=\"govuk-back-link govuk-!-margin-bottom-4 govuk-!-margin-top-0\">{back_text}</a>\n")
 
-    parts.append(sidebar_lgam)
+        parts.append("      <h2 class=\"app-navigation__heading\">Contents</h2>\n")
+        parts.append("      <ul class=\"app-navigation\">\n")
+        parts.append(blocks["nav_contents"])
+        parts.append("\n      </ul>\n")
 
-    parts.append("    </nav>\n\n")
-    parts.append("      <main class=\"app-main-content\" id=\"main-content\" role=\"main\">\n")
-    parts.append(blocks["main_content"])
+        parts.append(sidebar_lgam)
+
+        parts.append("    </nav>\n\n")
+        parts.append("      <main class=\"app-main-content\" id=\"main-content\" role=\"main\">\n")
+        parts.append(blocks["main_content"])
 
     if blocks.get("page_history", "").strip():
         parts.append("\n<hr class=\"govuk-section-break govuk-section-break--xl govuk-section-break--visible\">\n")

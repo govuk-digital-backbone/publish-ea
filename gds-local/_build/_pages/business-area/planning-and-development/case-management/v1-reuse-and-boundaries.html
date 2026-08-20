@@ -1,0 +1,210 @@
+---
+title: Reuse and boundaries
+caption: LGAM Business Areas
+status: draft
+target: business-area/planning-and-development/case-management/reuse-and-boundaries.html
+parent: case-management/index.html
+parent_title: Planning case management
+description: "Questions and architectural patterns for deciding what belongs inside a planning product versus shared council capabilities. Includes a suggested reuse pattern and guidance on when separation may not be appropriate."
+---
+<style>
+    .pattern-box {
+        border-top: 4px solid #000080;
+        background: #f3f2f1;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    .pattern-box--caution {
+        border-top-color: #f47738;
+    }
+    .question-group {
+        border-left: 4px solid #1d70b8;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        background: #f3f2f1;
+    }
+</style>
+
+<nav-contents>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#about">About this page</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#reuse-questions">Questions about reuse</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#scope-questions">Questions about scope</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#suggested-pattern">Suggested architectural pattern</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#when-not-suitable">When this pattern may not be suitable</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#recording-decisions">Recording decisions</a></li>
+</nav-contents>
+
+<main-content>
+      <span class="govuk-caption-xl">Business Area: Planning & Development</span>
+      <h1 class="govuk-heading-xl">Reuse and boundaries</h1>
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Prototype</h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">This is an illustrative concept based on initial desk research.</p>
+          <p class="govuk-body">It has not been validated with practitioners. Use it to explore ideas and provide feedback, not as authoritative guidance.</p>
+        </div>
+      </div>
+
+      <section id="about">
+        <p class="govuk-body govuk-!-font-size-24">Deciding what belongs inside a planning case-management product and what should be provided by shared council capabilities.</p>
+
+        <p class="govuk-body">When a council procures or replaces a planning system, it often inherits a package of capabilities that may overlap with existing corporate services. This page provides questions and a suggested pattern to help councils make deliberate decisions about those boundaries.</p>
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">This page is part of the <a href="index.html" class="govuk-link">Planning case management</a> concept. Read the overview first for context on the capabilities and relationships described here.</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="reuse-questions">
+        <h2 class="govuk-heading-l">Questions about reuse of council capabilities</h2>
+
+        <p class="govuk-body">These questions help establish whether existing shared capabilities could serve planning needs, or whether a planning-specific version is justified.</p>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">Existing provision</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Does the council already provide a corporate payment, identity, notification or document-management capability?</li>
+            <li>Is that capability currently used by other council services?</li>
+            <li>What is its current maturity and capacity?</li>
+          </ul>
+        </div>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">Suitability for planning</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Can the planning service use that capability without creating unacceptable operational or user-experience constraints?</li>
+            <li>Does it support the volume, complexity and statutory requirements of planning?</li>
+            <li>Would adaptation be disproportionately costly compared to a separate solution?</li>
+          </ul>
+        </div>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">Duplication risk</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Would including the same capability within a planning product duplicate an existing service?</li>
+            <li>Would duplication create inconsistency in citizen experience or staff processes?</li>
+            <li>Would it create parallel maintenance, licensing or support costs?</li>
+          </ul>
+        </div>
+
+        <div class="question-group">
+          <h3 class="govuk-heading-s">Justification for specialisation</h3>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Is there a clear reason why planning requires a specialist version of this capability?</li>
+            <li>Is that reason based on genuine service needs or primarily on the planning product's architecture?</li>
+            <li>Would the specialist version need to integrate with the corporate version anyway?</li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="scope-questions">
+        <h2 class="govuk-heading-l">Questions about the scope of the planning product</h2>
+
+        <p class="govuk-body">These questions help examine where the boundary of a planning case-management product should sit.</p>
+
+        <div class="question-group">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>Is the functionality genuinely specific to planning?</li>
+            <li>Is it a common council capability being bundled into a planning product?</li>
+            <li>Would separating the capability improve reuse, flexibility or consistency?</li>
+            <li>Would separation introduce disproportionate cost, complexity or operational risk?</li>
+            <li>Is the proposed boundary based on user and service needs, or primarily on the current supplier's product design?</li>
+          </ul>
+        </div>
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">These questions are not intended to produce a single correct answer. They are intended to surface assumptions and make the boundary decision a conscious one rather than a default inherited from the product.</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="suggested-pattern">
+        <h2 class="govuk-heading-l">Suggested architectural pattern</h2>
+
+        <div class="pattern-box">
+          <h3 class="govuk-heading-m">Reuse shared council capabilities where appropriate</h3>
+
+          <p class="govuk-body">Where suitable shared capabilities already exist, the planning case-management service should integrate with them rather than automatically procuring separate equivalents.</p>
+
+          <p class="govuk-body">For example:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>use the council's shared payment capability to process planning fees;</li>
+            <li>use the council's identity and access capability where authenticated access is required;</li>
+            <li>use shared notification services for email or message delivery;</li>
+            <li>use corporate document or records-management capabilities where they meet planning requirements; and</li>
+            <li>use agreed geospatial services and identifiers to reference sites and locations consistently.</li>
+          </ul>
+
+          <p class="govuk-body govuk-!-margin-bottom-0">The planning case-management capability should retain the information needed to manage the case, including references to relevant payments, documents, people, locations, consultations and decisions.</p>
+        </div>
+
+        <h3 class="govuk-heading-m">Why consider this pattern?</h3>
+        <p class="govuk-body">Potential advantages include:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>reducing duplication of common functionality;</li>
+          <li>providing a more consistent experience across council services;</li>
+          <li>making common capabilities easier to manage and improve;</li>
+          <li>reducing dependence on a single planning-system supplier; and</li>
+          <li>allowing components to change without necessarily replacing the complete service.</li>
+        </ul>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="when-not-suitable">
+        <h2 class="govuk-heading-l">When this pattern may not be suitable</h2>
+
+        <div class="pattern-box pattern-box--caution">
+          <p class="govuk-body">Reuse should not be treated as an absolute rule. A shared capability may not meet planning needs where it cannot support:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the required information or workflow;</li>
+            <li>planning-specific access controls;</li>
+            <li>statutory or records-management requirements;</li>
+            <li>necessary service levels or operational processes; or</li>
+            <li>reliable integration with the planning service.</li>
+          </ul>
+          <p class="govuk-body govuk-!-margin-bottom-0">The decision should be based on the council's context and evidence, rather than an assumption that either an integrated suite or separate shared capabilities will always be preferable.</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="recording-decisions">
+        <h2 class="govuk-heading-l">Recording decisions</h2>
+
+        <p class="govuk-body">When applying this guidance, record:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>the capabilities included in scope;</li>
+          <li>the proposed boundary of the planning case-management product;</li>
+          <li>existing council capabilities considered for reuse;</li>
+          <li>options considered and reasons for the preferred approach;</li>
+          <li>assumptions that still require validation; and</li>
+          <li>any departure from the suggested pattern.</li>
+        </ul>
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">Recording these decisions explicitly helps the council revisit them when circumstances change, such as when a shared capability matures, a contract expires, or a new requirement emerges.</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--l"/>
+</main-content>
+
+<page-modules></page-modules>
+
+<page-script>
+</page-script>
+
+<page-history>
+  <ul class="govuk-list govuk-list--bullet">
+    <li><strong>12th August 2026:</strong> Initial concept prototype created from desk research</li>
+  </ul>
+</page-history>

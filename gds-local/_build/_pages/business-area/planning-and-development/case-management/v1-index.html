@@ -1,0 +1,370 @@
+---
+title: "Planning case management (v1 — generic)"
+caption: LGAM Business Areas
+status: draft
+target: business-area/planning-and-development/case-management/v1-index.html
+parent: case-management/index.html
+parent_title: Planning case management
+description: "SUPERSEDED — earlier generic version that attempted to serve all audiences. Retained for comparison. See case-management/index.html for the current persona-targeted approach."
+---
+<style>
+    .capability-card {
+        background-color: #f3f2f1;
+        padding: 20px;
+        height: 100%;
+        box-sizing: border-box;
+        border-top: 4px solid #000080;
+    }
+    .capability-card--shared {
+        border-top-color: #1d70b8;
+    }
+    .flow-step {
+        border-left: 4px solid #000080;
+        padding: 15px 20px;
+        margin-bottom: 0;
+        background: #f3f2f1;
+    }
+    .flow-step + .flow-step {
+        border-top: 1px solid #b1b4b6;
+    }
+    .flow-step__number {
+        font-weight: 700;
+        color: #000080;
+    }
+    .evidence-box {
+        border-left: 10px solid #f47738;
+        background: #f3f2f1;
+        padding: 20px;
+    }
+    .flex-row { display: flex; flex-wrap: wrap; }
+    .concept-card { height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+</style>
+
+<nav-contents>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#overview">Overview</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#who-this-is-for">Who this is for</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#capability-map">Capability map</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#how-capabilities-relate">How the capabilities relate</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#explore-further">Explore further</a></li>
+        <li class="app-navigation__item"><a class="app-navigation__link" href="#evidence">Evidence and limitations</a></li>
+</nav-contents>
+
+<main-content>
+      <span class="govuk-caption-xl">Business Area: Planning & Development</span>
+      <h1 class="govuk-heading-xl">Planning case management</h1>
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Prototype</h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">This is an illustrative concept based on initial desk research.</p>
+          <p class="govuk-body">It has not been validated with practitioners. Use it to explore ideas and provide feedback, not as authoritative guidance.</p>
+        </div>
+      </div>
+
+      <section id="overview">
+        <p class="govuk-body govuk-!-font-size-24">Planning case management supports the receipt, assessment and determination of planning applications and related cases.</p>
+
+        <p class="govuk-body">It does not operate independently. It exchanges information with other planning capabilities and with common council capabilities such as document management, payments, identity and access management, notifications, geospatial information and records management.</p>
+
+        <p class="govuk-body">This page helps councils:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>understand the relationships between planning case management and other capabilities;</li>
+          <li>identify integration and data requirements;</li>
+          <li>distinguish planning-specific functionality from common capabilities;</li>
+          <li>consider opportunities to reuse existing council services; and</li>
+          <li>assess the architectural implications of changing or replacing a planning case-management system.</li>
+        </ul>
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body"><strong>Status:</strong> Illustrative pattern<br>
+          <strong>Evidence maturity:</strong> Partially validated<br>
+          <strong>Use this page for:</strong> Early discovery, options assessment, procurement preparation and solution design<br>
+          <strong>Do not use it as:</strong> A specification for an individual council or procurement</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="who-this-is-for">
+        <h2 class="govuk-heading-l">Who this is for</h2>
+
+        <p class="govuk-body">This guidance is primarily intended for people responsible for technology decisions affecting planning services. The descriptions below reflect roles as they commonly appear in local government, though titles and responsibilities vary between councils.</p>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">Technical architects and solution designers</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">People who design how systems connect, define integration patterns, and make decisions about capability boundaries. They need to understand what planning case management depends on and what information flows between components, so they can design solutions that work within the council's wider architecture.</p>
+            <p class="govuk-body"><strong>Use this page to:</strong> identify integration points, understand information exchange requirements, and assess where shared capabilities can serve planning needs.</p>
+          </div>
+        </details>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">Digital and IT leaders</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">Heads of digital, chief technology officers, or service directors who make investment decisions about council technology. They need to understand whether replacing a planning system is a like-for-like change or a wider architectural decision affecting shared services.</p>
+            <p class="govuk-body"><strong>Use this page to:</strong> understand the scope and dependencies of planning technology, challenge assumptions about what must be bundled, and inform business cases.</p>
+          </div>
+        </details>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">Procurement professionals</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">People who write requirements, evaluate supplier responses, and manage technology contracts. They need to avoid inadvertently specifying and paying for functionality that already exists elsewhere in the council.</p>
+            <p class="govuk-body"><strong>Use this page to:</strong> distinguish planning-specific from common requirements, and ask informed questions about integration, portability and exit.</p>
+          </div>
+        </details>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">Planning service managers</span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">Heads of planning or development management who own the service but may not be responsible for the technology that supports it. They need to articulate what their service depends on without needing to be technical.</p>
+            <p class="govuk-body"><strong>Use this page to:</strong> understand what your system relies on beyond itself, and have informed conversations with IT colleagues about change.</p>
+          </div>
+        </details>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="capability-map">
+        <h2 class="govuk-heading-l">Capability map</h2>
+
+        <p class="govuk-body">Planning case management is the central capability considered on this page. It commonly interacts with the following capabilities:</p>
+
+        <div class="govuk-grid-row govuk-!-margin-top-6 flex-row">
+          <div class="govuk-grid-column-one-third govuk-!-margin-bottom-4">
+            <div class="capability-card capability-card--shared">
+              <h3 class="govuk-heading-s">Document management</h3>
+              <p class="govuk-body govuk-!-font-size-14">Stores application forms, plans, supporting evidence, correspondence, consultation responses and decision notices.</p>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third govuk-!-margin-bottom-4">
+            <div class="capability-card capability-card--shared">
+              <h3 class="govuk-heading-s">Payments</h3>
+              <p class="govuk-body govuk-!-font-size-14">Takes and records application fees and other chargeable payments.</p>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third govuk-!-margin-bottom-4">
+            <div class="capability-card capability-card--shared">
+              <h3 class="govuk-heading-s">Identity and access management</h3>
+              <p class="govuk-body govuk-!-font-size-14">Provides appropriate access for applicants, agents, officers, consultees and members of the public.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-row flex-row">
+          <div class="govuk-grid-column-one-third govuk-!-margin-bottom-4">
+            <div class="capability-card capability-card--shared">
+              <h3 class="govuk-heading-s">Notifications</h3>
+              <p class="govuk-body govuk-!-font-size-14">Issues acknowledgements, consultation notices, requests for information, status updates and decisions.</p>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third govuk-!-margin-bottom-4">
+            <div class="capability-card capability-card--shared">
+              <h3 class="govuk-heading-s">Geospatial information</h3>
+              <p class="govuk-body govuk-!-font-size-14">Connects an application to a site, boundary, constraint, designation or other location-based information.</p>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third govuk-!-margin-bottom-4">
+            <div class="capability-card capability-card--shared">
+              <h3 class="govuk-heading-s">Records management</h3>
+              <p class="govuk-body govuk-!-font-size-14">Applies retention, disposal, audit and accessibility requirements to the formal case record.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">These capabilities describe <strong>what the council needs to be able to do</strong>. They do not prescribe whether each capability should be provided by a single planning product, an existing corporate service, or a combination of systems.</p>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="how-capabilities-relate">
+        <h2 class="govuk-heading-l">How the capabilities relate</h2>
+
+        <p class="govuk-body">A planning application may pass through the following capability relationships:</p>
+
+        <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+          <div class="flow-step">
+            <p class="govuk-body govuk-!-margin-bottom-0"><span class="flow-step__number">1.</span> An applicant or agent provides application information and supporting documents.</p>
+          </div>
+          <div class="flow-step">
+            <p class="govuk-body govuk-!-margin-bottom-0"><span class="flow-step__number">2.</span> <strong>Identity and access management</strong> controls access to online services and restricted case information.</p>
+          </div>
+          <div class="flow-step">
+            <p class="govuk-body govuk-!-margin-bottom-0"><span class="flow-step__number">3.</span> <strong>Payments</strong> processes any required fee and returns payment status.</p>
+          </div>
+          <div class="flow-step">
+            <p class="govuk-body govuk-!-margin-bottom-0"><span class="flow-step__number">4.</span> <strong>Geospatial information</strong> associates the application with the relevant site and location-based constraints.</p>
+          </div>
+          <div class="flow-step">
+            <p class="govuk-body govuk-!-margin-bottom-0"><span class="flow-step__number">5.</span> <strong>Document management</strong> stores plans, evidence, correspondence and consultation responses.</p>
+          </div>
+          <div class="flow-step">
+            <p class="govuk-body govuk-!-margin-bottom-0"><span class="flow-step__number">6.</span> <strong>Planning case management</strong> brings the relevant information together to support validation, assessment and determination.</p>
+          </div>
+          <div class="flow-step">
+            <p class="govuk-body govuk-!-margin-bottom-0"><span class="flow-step__number">7.</span> <strong>Notifications</strong> communicates progress, consultation activity, information requests and the final decision.</p>
+          </div>
+          <div class="flow-step">
+            <p class="govuk-body govuk-!-margin-bottom-0"><span class="flow-step__number">8.</span> <strong>Records management</strong> ensures that the authoritative case record remains available and is managed appropriately.</p>
+          </div>
+        </div>
+
+        <h3 class="govuk-heading-m">Information exchanged</h3>
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--s govuk-visually-hidden">Information exchanged between planning case management and related capabilities</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">From</th>
+              <th scope="col" class="govuk-table__header">To</th>
+              <th scope="col" class="govuk-table__header">Example information</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Applicant-facing service</td>
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">Application details, applicant information and site reference</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Payments</td>
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">Payment reference, amount and payment status</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Geospatial information</td>
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">Site boundary, address, constraints and designations</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Document management</td>
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">Plans, reports, photographs and supporting evidence</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">Notifications</td>
+              <td class="govuk-table__cell">Recipient, message type, case status and notification trigger</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Consultees</td>
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">Consultation comments, representations and supporting documents</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Planning case management</td>
+              <td class="govuk-table__cell">Records management</td>
+              <td class="govuk-table__cell">Decision, supporting evidence, audit history and final case record</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="govuk-body">The precise information exchanged, its format and the system of record should be established locally.</p>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="explore-further">
+        <h2 class="govuk-heading-l">Explore further</h2>
+        <p class="govuk-body">The following pages explore specific aspects of planning case management architecture in more detail:</p>
+
+        <div class="govuk-grid-row govuk-!-margin-top-6 flex-row">
+          <div class="govuk-grid-column-one-half govuk-!-margin-bottom-4">
+            <div class="concept-card" style="background-color: #f3f2f1; padding: 20px; height: 100%; box-sizing: border-box; border-top: 4px solid #000080;">
+              <h3 class="govuk-heading-m">
+                <a href="reuse-and-boundaries.html" class="govuk-link">Reuse and boundaries</a>
+              </h3>
+              <p class="govuk-body govuk-!-font-size-14">Questions and patterns for deciding what belongs inside a planning product and what should be provided by shared council capabilities.</p>
+              <a href="reuse-and-boundaries.html" class="govuk-link govuk-!-font-size-14 govuk-!-font-weight-bold">View detail&nbsp;<span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+
+          <div class="govuk-grid-column-one-half govuk-!-margin-bottom-4">
+            <div class="concept-card" style="background-color: #f3f2f1; padding: 20px; height: 100%; box-sizing: border-box; border-top: 4px solid #000080;">
+              <h3 class="govuk-heading-m">
+                <a href="information-and-integration.html" class="govuk-link">Information and integration</a>
+              </h3>
+              <p class="govuk-body govuk-!-font-size-14">Data exchange requirements, interface considerations, and a worked example comparing approaches to planning payments.</p>
+              <a href="information-and-integration.html" class="govuk-link govuk-!-font-size-14 govuk-!-font-weight-bold">View detail&nbsp;<span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <section id="evidence">
+        <h2 class="govuk-heading-l">Evidence and limitations</h2>
+
+        <div class="evidence-box govuk-!-margin-bottom-6">
+          <h3 class="govuk-heading-s">Current level of confidence</h3>
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Statement</th>
+                <th scope="col" class="govuk-table__header">Confidence</th>
+                <th scope="col" class="govuk-table__header">Basis and limitation</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Planning case management has relationships with documents, payments, identity, notifications, location information and records.</td>
+                <td class="govuk-table__cell"><strong>To validate</strong></td>
+                <td class="govuk-table__cell">Proposed model from desk research. Should be tested with planning and architecture practitioners.</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Councils may benefit from reusing established corporate capabilities.</td>
+                <td class="govuk-table__cell"><strong>To validate</strong></td>
+                <td class="govuk-table__cell">Suggested architectural pattern, not a universally applicable rule. Value depends on local capability maturity.</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Clear ownership and interfaces are needed between related capabilities.</td>
+                <td class="govuk-table__cell"><strong>Provisional</strong></td>
+                <td class="govuk-table__cell">Follows from the proposed separation of capabilities but requires validation against real architectures.</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">LGAM could support planning-system replacement and procurement decisions.</td>
+                <td class="govuk-table__cell"><strong>To validate with users</strong></td>
+                <td class="govuk-table__cell">Research should establish which practitioners make these decisions and whether this guidance would materially help.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="govuk-heading-m">Known limitations</h3>
+        <p class="govuk-body">This page does not yet:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>define a complete planning capability model;</li>
+          <li>specify mandatory technical interfaces or data standards;</li>
+          <li>establish which system should be authoritative in every council;</li>
+          <li>assess the maturity of existing council capabilities;</li>
+          <li>replace service-specific discovery or architecture work; or</li>
+          <li>recommend a particular supplier, product or deployment model.</li>
+        </ul>
+      </section>
+
+      <hr class="govuk-section-break govuk-section-break--l"/>
+</main-content>
+
+<page-modules></page-modules>
+
+<page-script>
+</page-script>
+
+<page-history>
+  <ul class="govuk-list govuk-list--bullet">
+    <li><strong>12th August 2026:</strong> Initial concept prototype created from desk research</li>
+  </ul>
+</page-history>
